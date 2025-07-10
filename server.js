@@ -19,9 +19,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-  },
+    origin: ['http://localhost:5173', 'https://nothing-nine-neon.vercel.app'],
+    credentials: true
+  }
 });
 
 // Twilio Config
