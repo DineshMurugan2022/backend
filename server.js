@@ -14,15 +14,21 @@ const User = require("./models/User");
 const bcrypt = require("bcrypt");
 const callsRouter = require('./routes/calls');
 const leadsRouter = require('./routes/leads');
+const { Parser } = require('json2csv'); // For CSV export
 
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: ['http://localhost:5173', 'https://nothing-nine-neon.vercel.app'],
+    origin: [
+      'http://localhost:5173',
+      'http://localhost:3000', // 👈 Add this line
+      'https://nothing-nine-neon.vercel.app'
+    ],
     credentials: true
   }
 });
+
 
 // Twilio Config
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
@@ -355,6 +361,45 @@ app.post("/twilio/status-callback", (req, res) => {
 
 // Calls Routes
 app.use('/api/calls', callsRouter);
+
+// Attendance export endpoint
+app.get('/api/users/attendance', async (req, res) => {
+  try {
+    const { month, year } = req.query;
+    let users = await User.find({ userGroup: { $ne: "admin" } }, "username loginTime logoutTime").lean();
+    if (month && year) {
+      const m = parseInt(month, 10) - 1; // JS months are 0-based
+      const y = parseInt(year, 10);
+      const start = new Date(y, m, 1);
+      const end = new Date(y, m + 1, 1);
+      users = users.filter(u => {
+        const login = u.loginTime ? new Date(u.loginTime) : null;
+        const logout = u.logoutTime ? new Date(u.logoutTime) : null;
+        return (login && login >= start && login < end) || (logout && logout >= start && logout < end);
+      });
+    }
+    // Format dates as YYYY-MM-DD HH:mm:ss
+    const formatDateTime = dt => {
+      if (!dt) return '';
+      const d = new Date(dt);
+      const pad = n => n.toString().padStart(2, '0');
+      return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    };
+    users = users.map(u => ({
+      username: u.username,
+      loginTime: formatDateTime(u.loginTime),
+      logoutTime: formatDateTime(u.logoutTime)
+    }));
+    const fields = ['username', 'loginTime', 'logoutTime'];
+    const parser = new Parser({ fields });
+    const csv = parser.parse(users);
+    res.header('Content-Type', 'text/csv');
+    res.attachment('attendance.csv');
+    return res.send(csv);
+  } catch (err) {
+    res.status(500).json({ error: "Failed to export attendance" });
+  }
+});
 
 // Global Error Handler
 app.use((err, req, res, next) => {

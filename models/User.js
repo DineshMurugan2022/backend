@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   phone: String,
   loginStatus: { type: String, default: "active" },
   loginTime: { type: Date },
-  logoutTime: { type: Date }
+  logoutTime: { type: Date },
+  refreshToken: { type: String } // Store refresh token for session management
 });
 
 module.exports = mongoose.model("User", userSchema);
