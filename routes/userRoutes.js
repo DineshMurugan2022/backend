@@ -12,4 +12,16 @@ router.post('/reset-status', async (req, res) => {
   }
 });
 
+// Logout endpoint to update logout time and status
+router.post('/logout', async (req, res) => {
+  const { userId } = req.body;
+  if (!userId) return res.status(400).json({ error: 'userId required' });
+  try {
+    await User.findByIdAndUpdate(userId, { loginStatus: 'inactive', logoutTime: new Date() });
+    res.json({ message: 'Logout time updated' });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;
