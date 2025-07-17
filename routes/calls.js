@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
     const log = new CallLog({ phoneNumber, personName, companyName });
     await log.save();
     res.status(201).json(log);
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: 'Failed to log call' });
   }
 });
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
       logs = await CallLog.find().sort({ callTime: -1 });
     }
     res.json(logs);
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: 'Failed to fetch call logs' });
   }
 });

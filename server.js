@@ -6,7 +6,6 @@ const helmet = require("helmet");
 const http = require("http");
 const { Server } = require("socket.io");
 const twilio = require("twilio");
-const fetch = require("node-fetch"); // Ensure this is installed
 const authRouter = require("./login/Auth"); // Corrected path
 const appointmentsRouter = require("./routes/appointments");
 const userRoutesRouter = require("./routes/userRoutes");
@@ -180,7 +179,7 @@ app.get("/api/admin-status", async (req, res) => {
     const admin = await User.findOne({ userGroup: "admin" }, "username loginStatus").lean();
     if (!admin) return res.status(404).json({ error: "Admin not found" });
     res.json({ username: admin.username, status: admin.loginStatus });
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: "Failed to fetch admin status" });
   }
 });
@@ -266,8 +265,8 @@ app.delete("/api/users/:id", async (req, res) => {
     if (!deletedUser) return res.status(404).json({ error: "User not found" });
 
     res.json({ message: "User deleted" });
-  } catch (err) {
-    console.error("Delete user error:", err);
+  } catch {
+    console.error("Delete user error");
     res.status(500).json({ error: "Failed to delete user" });
   }
 });
@@ -314,8 +313,6 @@ app.post('/send-whatsapp', async (req, res) => {
   }
 
   try {
-    const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
-
     const response = await fetch(`https://graph.facebook.com/v18.0/${process.env.PHONE_NUMBER_ID}/messages`, {
       method: 'POST',
       headers: {
@@ -396,13 +393,13 @@ app.get('/api/users/attendance', async (req, res) => {
     res.header('Content-Type', 'text/csv');
     res.attachment('attendance.csv');
     return res.send(csv);
-  } catch (err) {
+  } catch {
     res.status(500).json({ error: "Failed to export attendance" });
   }
 });
 
 // Global Error Handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error("Unhandled error:", err);
   res.status(500).json({ error: "Something went wrong" });
 });
