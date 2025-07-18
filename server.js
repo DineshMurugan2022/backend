@@ -204,6 +204,8 @@ app.post("/api/users/register", async (req, res) => {
       userGroup,
       phone,
       loginStatus,
+      loginTime: null,
+      logoutTime: null,
     });
 
     await user.save();
@@ -222,7 +224,13 @@ app.post("/api/users/register", async (req, res) => {
 app.get("/api/users", async (req, res) => {
   try {
     // Exclude admins and passwordHash, include loginTime and logoutTime
-    const users = await User.find({ userGroup: { $ne: "admin" } }, "-passwordHash").lean();
+    let users = await User.find({ userGroup: { $ne: "admin" } }, "-passwordHash").lean();
+    // Ensure loginTime and logoutTime are always present
+    users = users.map(u => ({
+      ...u,
+      loginTime: typeof u.loginTime === 'undefined' ? null : u.loginTime,
+      logoutTime: typeof u.logoutTime === 'undefined' ? null : u.logoutTime
+    }));
     res.json(users);
   } catch (err) {
     console.error("Fetch users error:", err);

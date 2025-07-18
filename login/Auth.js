@@ -5,8 +5,8 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_fallback_secret";
-const ACCESS_TOKEN_EXPIRES_IN = "15m"; // Short-lived access token
-const REFRESH_TOKEN_EXPIRES_IN = "30d"; // Long-lived refresh token
+const ACCESS_TOKEN_EXPIRES_IN = "365d"; // Extended access token expiration
+const REFRESH_TOKEN_EXPIRES_IN = "365d"; // Extended refresh token expiration
 
 // POST /api/auth/login
 router.post("/login", async (req, res) => {
