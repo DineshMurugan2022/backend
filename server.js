@@ -80,11 +80,17 @@ io.on("connection", (socket) => {
     }
   });
 
-  // Handle user logout
+  const mongoose = require('mongoose');
+
   socket.on("userLogout", async (data) => {
     console.log('🔔 Received userLogout event:', data);
     try {
       const { userId, username } = data;
+      if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
+        console.error('⚠️ Invalid or missing userId received for socket logout:', userId);
+        return;
+      }
+
       activeSessions.delete(userId);
       
       // Update user status in database
@@ -99,6 +105,9 @@ io.on("connection", (socket) => {
       console.error("Logout tracking error:", error);
     }
   });
+  
+  
+
 
   // Handle user activity (heartbeat)
   socket.on("userActivity", (data) => {

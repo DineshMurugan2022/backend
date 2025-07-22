@@ -23,7 +23,7 @@ router.post("/login", async (req, res) => {
     console.log("User found:", user);
 
     if (!user || !user.passwordHash) {
-      console.log("Invalid credentials");
+      console.warn(`⚠️ Login attempt for non-existent user: ${username}`);
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
@@ -31,7 +31,7 @@ router.post("/login", async (req, res) => {
     console.log("Password match:", isMatch);
 
     if (!isMatch) {
-      console.log("Incorrect password for user:", username);
+      console.warn(`⚠️ Incorrect password for user: ${username}`);
       return res.status(401).json({ error: "Invalid username or password" });
     }
 
@@ -66,12 +66,18 @@ router.post("/login", async (req, res) => {
     // Update user status to active in database
     await User.findByIdAndUpdate(user._id, { loginStatus: "active", loginTime: new Date(), logoutTime: null });
 
+    if (!user._id) {
+      console.error('❌ FATAL: User object is missing _id after login:', user);
+      return res.status(500).json({ error: 'Server error: User data is corrupt' });
+    }
+
     res.json({
       message: "Login successful",
       accessToken,
       refreshToken,
       user: {
         id: user._id,
+        _id: user._id, // Ensure _id is always returned
         username: user.username,
         userGroup: user.userGroup,
         phone: user.phone,

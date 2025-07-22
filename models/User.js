@@ -6,8 +6,9 @@ const userSchema = new mongoose.Schema({
   userGroup: { type: String, required: true },
   phone: String,
   loginStatus: { type: String, default: "active" },
-  loginTime: { type: Date },
-  logoutTime: { type: Date },
+  loginTime: { type: Date, default: null },
+  logoutTime: { type: Date, default: null },
+  
   refreshToken: { type: String } // Store refresh token for session management
 });
 
