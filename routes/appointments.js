@@ -3,6 +3,8 @@ const router = express.Router();
 const Appointment = require("../models/Appointment");
 const jwt = require("jsonwebtoken");
 
+const JWT_SECRET = process.env.JWT_SECRET || "your_fallback_secret";
+
 // Middleware to check JWT
 const requireAuth = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -12,10 +14,11 @@ const requireAuth = (req, res, next) => {
 
   const token = authHeader.split(" ")[1];
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, JWT_SECRET);
     req.user = decoded;
     next();
-  } catch {
+  } catch (error) {
+    console.error("JWT verification error:", error.message);
     return res.status(401).json({ message: "Invalid token" });
   }
 };

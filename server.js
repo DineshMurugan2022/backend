@@ -14,6 +14,7 @@ const bcrypt = require("bcrypt");
 const callsRouter = require('./routes/calls');
 const leadsRouter = require('./routes/leads');
 const { Parser } = require('json2csv'); // For CSV export
+const proxyRouter = require('./routes/proxy');
 
 const app = express();
 const server = http.createServer(app);
@@ -26,6 +27,7 @@ const io = new Server(server, {
     ],
     credentials: true
   }
+  // transports: ['websocket'], // FIX: Avoid xhr poll error
 });
 
 
@@ -126,6 +128,16 @@ io.on("connection", (socket) => {
   socket.on("hangup", ({ to }) => {
     io.emit("callEnded", { to });
     delete activeCalls[to];
+  });
+
+  // Real-time BDM location tracking
+  socket.on("bdmLocationUpdate", async ({ userId, lat, lng }) => {
+    try {
+      await User.findByIdAndUpdate(userId, { lat, lng });
+      io.emit("bdmLocationChanged", { userId, lat, lng });
+    } catch (err) {
+      console.error("Failed to update BDM location:", err);
+    }
   });
 
   socket.on("disconnect", () => {
@@ -358,23 +370,11 @@ app.post('/send-whatsapp', async (req, res) => {
   }
 });
 
-// Twilio Callback
-app.post("/twilio/status-callback", (req, res) => {
-  const { CallSid, CallStatus, To, From } = req.body;
-  console.log("🔁 Call status:", CallSid, CallStatus);
 
-  io.emit("callStatus", { sid: CallSid, status: CallStatus, to: To, from: From });
-
-  if (["completed", "failed", "busy", "no-answer"].includes(CallStatus)) {
-    delete activeCalls[To];
-    io.emit("callEnded", { to: To });
-  }
-
-  res.sendStatus(200);
-});
 
 // Calls Routes
 app.use('/api/calls', callsRouter);
+app.use('/api', proxyRouter);
 
 // Attendance export endpoint
 app.get('/api/users/attendance', async (req, res) => {
@@ -416,9 +416,14 @@ app.get('/api/users/attendance', async (req, res) => {
 });
 
 // Global Error Handler
-app.use((err, req, res) => {
+app.use((err, req, res, next) => {
   console.error("Unhandled error:", err);
-  res.status(500).json({ error: "Something went wrong" });
+  if (res && typeof res.status === 'function') {
+    res.status(500).json({ error: "Something went wrong" });
+  } else {
+    // fallback for non-standard res
+    res.end && res.end('Internal server error');
+  }
 });
 
 const PORT = process.env.PORT || 5000;
@@ -433,6 +438,8 @@ module.exports = app;
 
 app.use('/uploads', express.static(require('path').join(__dirname, 'uploads')));
 
-app.get('/', (req, res) => {
-  res.send('API is running');
+app.use(express.static(require('path').join(__dirname, '../frontend/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(require('path').join(__dirname, '../frontend/dist', 'index.html'));
 });
