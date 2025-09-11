@@ -15,6 +15,8 @@ const callsRouter = require('./routes/calls');
 const leadsRouter = require('./routes/leads');
 const { Parser } = require('json2csv'); // For CSV export
 const proxyRouter = require('./routes/proxy');
+const connectDB = require("./db");
+const task = require("./routes/tasks");
 
 const app = express();
 const server = http.createServer(app);
@@ -42,13 +44,8 @@ app.use(cors());
 app.use(express.json({ limit: '20mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/teamdb")
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch(err => {
-    console.error("MongoDB connection error:", err.message);
-    process.exit(1);
-  });
+// ✅ Connect to MongoDB
+connectDB();
 
 // Socket.IO Events
 const activeCalls = {};
@@ -82,7 +79,7 @@ io.on("connection", (socket) => {
     }
   });
 
-  const mongoose = require('mongoose');
+
 
   socket.on("userLogout", async (data) => {
     console.log('🔔 Received userLogout event:', data);
@@ -140,6 +137,12 @@ io.on("connection", (socket) => {
     }
   });
 
+  // Handle joining user room for notifications
+  socket.on("joinUserRoom", (userId) => {
+    socket.join(`user_${userId}`);
+    console.log(`🔔 User ${userId} joined notification room`);
+  });
+
   socket.on("disconnect", () => {
     console.log("🔴 Socket disconnected:", socket.id);
     // Find and mark user as inactive if their socket disconnected
@@ -190,6 +193,12 @@ app.use("/api/auth", authRouter);
 // Appointment Routes
 app.use("/api/appointments", appointmentsRouter);
 app.use("/api/leads", leadsRouter);
+  
+//task routes
+app.use("/api/tasks", (req, res, next) => {
+  req.io = io;
+  next();
+}, task);
 
 // User Routes
 app.use("/api/users", userRoutesRouter);
@@ -416,7 +425,7 @@ app.get('/api/users/attendance', async (req, res) => {
 });
 
 // Global Error Handler
-app.use((err, req, res, next) => {
+app.use((err, req, res, _next) => {
   console.error("Unhandled error:", err);
   if (res && typeof res.status === 'function') {
     res.status(500).json({ error: "Something went wrong" });
