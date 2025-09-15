@@ -445,10 +445,3 @@ if (require.main === module) {
 
 module.exports = app;
 
-app.use('/uploads', express.static(require('path').join(__dirname, 'uploads')));
-
-app.use(express.static(require('path').join(__dirname, '../frontend/dist')));
-
-app.get('*', (req, res) => {
-  res.sendFile(require('path').join(__dirname, '../frontend/dist', 'index.html'));
-});
