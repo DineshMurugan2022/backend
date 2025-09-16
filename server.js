@@ -385,11 +385,15 @@ app.post('/send-whatsapp', async (req, res) => {
 app.use('/api/calls', callsRouter);
 app.use('/api', proxyRouter);
 
-// Attendance export endpoint
-app.get('/api/users/attendance', async (req, res) => {
+// Import auth middleware
+const auth = require('./middleware/auth');
+
+// Attendance data endpoint (for viewing)
+app.get('/api/users/attendance', auth, async (req, res) => {
   try {
     const { month, year } = req.query;
     let users = await User.find({ userGroup: { $ne: "admin" } }, "username loginTime logoutTime").lean();
+    
     if (month && year) {
       const m = parseInt(month, 10) - 1; // JS months are 0-based
       const y = parseInt(year, 10);
@@ -401,25 +405,85 @@ app.get('/api/users/attendance', async (req, res) => {
         return (login && login >= start && login < end) || (logout && logout >= start && logout < end);
       });
     }
-    // Format dates as YYYY-MM-DD HH:mm:ss
+    
+    // Format dates for display
     const formatDateTime = dt => {
       if (!dt) return '';
       const d = new Date(dt);
       const pad = n => n.toString().padStart(2, '0');
       return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
     };
-    users = users.map(u => ({
+    
+    const formattedUsers = users.map(u => ({
       username: u.username,
       loginTime: formatDateTime(u.loginTime),
       logoutTime: formatDateTime(u.logoutTime)
     }));
-    const fields = ['username', 'loginTime', 'logoutTime'];
+    
+    res.json(formattedUsers);
+  } catch (error) {
+    console.error('Error fetching attendance:', error);
+    res.status(500).json({ error: "Failed to fetch attendance" });
+  }
+});
+
+// Attendance download endpoint (for CSV export)
+app.get('/api/users/attendance/download', auth, async (req, res) => {
+  try {
+    const { month, year } = req.query;
+    let users = await User.find({ userGroup: { $ne: "admin" } }, "username loginTime logoutTime").lean();
+    
+    if (month && year) {
+      const m = parseInt(month, 10) - 1; // JS months are 0-based
+      const y = parseInt(year, 10);
+      const start = new Date(y, m, 1);
+      const end = new Date(y, m + 1, 1);
+      users = users.filter(u => {
+        const login = u.loginTime ? new Date(u.loginTime) : null;
+        const logout = u.logoutTime ? new Date(u.logoutTime) : null;
+        return (login && login >= start && login < end) || (logout && logout >= start && logout < end);
+      });
+    }
+    
+    // Format dates for CSV export
+    const formatDateTime = dt => {
+      if (!dt) return '';
+      const d = new Date(dt);
+      const pad = n => n.toString().padStart(2, '0');
+      return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+    };
+    
+    const csvData = users.map(u => ({
+      Username: u.username,
+      'Login Time': formatDateTime(u.loginTime),
+      'Logout Time': formatDateTime(u.logoutTime),
+      'Working Hours': (() => {
+        const login = u.loginTime ? new Date(u.loginTime) : null;
+        const logout = u.logoutTime ? new Date(u.logoutTime) : null;
+        if (login && logout) {
+          const hours = Math.abs(logout - login) / 36e5; // Convert milliseconds to hours
+          return hours.toFixed(2);
+        }
+        return 'N/A';
+      })()
+    }));
+    
+    const fields = ['Username', 'Login Time', 'Logout Time', 'Working Hours'];
     const parser = new Parser({ fields });
-    const csv = parser.parse(users);
-    res.header('Content-Type', 'text/csv');
-    res.attachment('attendance.csv');
+    const csv = parser.parse(csvData);
+    
+    // Set proper headers for file download
+    const monthName = month ? new Date(0, parseInt(month) - 1).toLocaleString('default', { month: 'long' }) : 'All';
+    const fileName = `attendance_${monthName}_${year || 'All'}.csv`;
+    
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader('Content-Disposition', `attachment; filename="${fileName}"`);
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Pragma', 'no-cache');
+    
     return res.send(csv);
-  } catch {
+  } catch (error) {
+    console.error('Error downloading attendance:', error);
     res.status(500).json({ error: "Failed to export attendance" });
   }
 });
