@@ -112,6 +112,7 @@ async function connectSIM800(io) {
     parser.on("data", (line) => {
       console.log("📡 SIM800 >", line);
 
+      // Basic AT command responses
       if (line.includes("OK")) {
         modemStatus.ready = true;
         emitStatus();
@@ -120,6 +121,62 @@ async function connectSIM800(io) {
       if (line.includes("ERROR")) {
         modemStatus.ready = false;
         emitStatus();
+      }
+
+      // Call status responses
+      if (line.includes("CONNECT") || line.includes("VOICE CALL: BEGIN")) {
+        console.log("📞 Call Connected!");
+        if (ioInstance) {
+          ioInstance.emit("callStatus", { status: "connected", message: "Call connected successfully" });
+        }
+      }
+
+      if (line.includes("BUSY")) {
+        console.log("📞 Call Status: Busy");
+        if (ioInstance) {
+          ioInstance.emit("callStatus", { status: "busy", message: "Number is busy" });
+        }
+      }
+
+      if (line.includes("NO CARRIER") || line.includes("NO ANSWER")) {
+        console.log("📞 Call Status: No Answer/No Carrier");
+        if (ioInstance) {
+          ioInstance.emit("callStatus", { status: "no_answer", message: "Call not answered" });
+        }
+      }
+
+      if (line.includes("NO DIALTONE")) {
+        console.log("📞 Call Status: No Dial Tone");
+        if (ioInstance) {
+          ioInstance.emit("callStatus", { status: "no_dialtone", message: "No dial tone - check SIM/network" });
+        }
+      }
+
+      // SIM card status
+      if (line.includes("+CPIN: READY")) {
+        console.log("📱 SIM Card Ready");
+      }
+
+      if (line.includes("+CPIN: SIM PIN")) {
+        console.log("🔒 SIM Card requires PIN");
+        if (ioInstance) {
+          ioInstance.emit("simStatus", { status: "pin_required", message: "SIM card requires PIN" });
+        }
+      }
+
+      // Network registration
+      if (line.includes("+CREG: 0,1") || line.includes("+CREG: 0,5")) {
+        console.log("📶 Network Registered");
+        if (ioInstance) {
+          ioInstance.emit("networkStatus", { status: "registered", message: "Connected to network" });
+        }
+      }
+
+      if (line.includes("+CREG: 0,0") || line.includes("+CREG: 0,2")) {
+        console.log("📶 Network Not Registered");
+        if (ioInstance) {
+          ioInstance.emit("networkStatus", { status: "not_registered", message: "Not connected to network" });
+        }
       }
     });
 

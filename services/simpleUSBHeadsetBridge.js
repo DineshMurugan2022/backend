@@ -1,6 +1,7 @@
 // Simple USB Headset Bridge - Computer Audio Bridge for SIM800 USB + USB Headset
 const { exec } = require('child_process');
 const EventEmitter = require('events');
+const { getIOInstance } = require('../sockets/io');
 
 class SimpleUSBHeadsetBridge extends EventEmitter {
   constructor() {
@@ -70,6 +71,16 @@ class SimpleUSBHeadsetBridge extends EventEmitter {
       await this.configureWindowsAudioBridge();
       
       this.isActive = true;
+      
+      // Emit socket event for audio bridge connection
+      const io = getIOInstance();
+      if (io) {
+        io.emit('audioBridgeConnected', {
+          headsetInfo: this.headsetInfo,
+          bridgeType: 'SIM800 USB + Logitech Headset',
+          status: 'configured'
+        });
+      }
       
       return {
         success: true,
@@ -187,8 +198,20 @@ class SimpleUSBHeadsetBridge extends EventEmitter {
   // Set call status
   setCallStatus(active, phoneNumber = null) {
     this.callActive = active;
+    this.audioCallActive = active;
+    
+    // Emit socket event for call audio status
+    const io = getIOInstance();
     
     if (active) {
+      if (io) {
+        io.emit('callAudioBridgeActive', {
+          phoneNumber,
+          headsetConnected: this.headsetConnected,
+          bridgeType: 'SIM800 USB + Computer + Logitech Headset',
+          audioFlow: 'Call ↔ SIM800 USB ↔ Computer Audio ↔ USB Headset'
+        });
+      }
       console.log('\n📞 CALL ACTIVE - SIM800 USB + LOGITECH HEADSET BRIDGE:');
       console.log('=====================================================');
       console.log('🔊 AUDIO BRIDGE: SIM800 USB + Computer + USB Headset');
@@ -236,6 +259,12 @@ class SimpleUSBHeadsetBridge extends EventEmitter {
       
     } else {
       console.log('📴 Call ended - Audio bridge ready for next call');
+      
+      if (io) {
+        io.emit('callAudioBridgeInactive', {
+          message: 'Call ended - Audio bridge on standby'
+        });
+      }
     }
   }
 

@@ -121,11 +121,24 @@ io.on("connection", (socket) => {
   socket.on("startCall", ({ to, callSid }) => {
     activeCalls[to] = callSid;
     io.emit("callStatus", { to, status: "Initiated by user" });
+    
+    // Emit audio bridge status
+    io.emit("audioBridgeStatus", { 
+      active: true, 
+      message: "Audio bridge active: SIM800 + Computer + USB Headset",
+      callSid 
+    });
   });
 
   socket.on("hangup", ({ to }) => {
     io.emit("callEnded", { to });
     delete activeCalls[to];
+    
+    // Emit audio bridge deactivation
+    io.emit("audioBridgeStatus", { 
+      active: false, 
+      message: "Audio bridge deactivated - Call ended" 
+    });
   });
 
   // Real-time BDM location tracking
@@ -142,6 +155,24 @@ io.on("connection", (socket) => {
   socket.on("joinUserRoom", (userId) => {
     socket.join(`user_${userId}`);
     console.log(`🔔 User ${userId} joined notification room`);
+  });
+
+  // Audio bridge status events
+  socket.on("audioBridgeConnected", (data) => {
+    console.log('🎧 Audio bridge connected:', data);
+    socket.broadcast.emit("audioBridgeStatus", {
+      status: "connected",
+      headsetInfo: data.headsetInfo,
+      message: "USB Logitech headset audio bridge active"
+    });
+  });
+
+  socket.on("audioBridgeDisconnected", () => {
+    console.log('🔇 Audio bridge disconnected');
+    socket.broadcast.emit("audioBridgeStatus", {
+      status: "disconnected",
+      message: "Audio bridge deactivated"
+    });
   });
 
   socket.on("disconnect", () => {
