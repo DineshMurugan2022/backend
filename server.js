@@ -5,7 +5,6 @@ const cors = require("cors");
 const helmet = require("helmet");
 const http = require("http");
 const { Server } = require("socket.io");
-const twilio = require("twilio");
 const authRouter = require("./login/Auth"); // Corrected path
 const appointmentsRouter = require("./routes/appointments");
 const userRoutesRouter = require("./routes/userRoutes");
@@ -17,6 +16,8 @@ const { Parser } = require('json2csv'); // For CSV export
 const proxyRouter = require('./routes/proxy');
 const connectDB = require("./db");
 const task = require("./routes/tasks");
+const modem = require("./services/modem");
+const { setIOInstance } = require("./sockets/io");
 
 const app = express();
 const server = http.createServer(app);
@@ -33,10 +34,7 @@ const io = new Server(server, {
 });
 
 
-// Twilio Config
-const accountSid = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.TWILIO_AUTH_TOKEN;
-const client = twilio(accountSid, authToken);
+
 
 // Middleware
 app.use(helmet());
@@ -46,6 +44,9 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
 // ✅ Connect to MongoDB
 connectDB();
+
+// Initialize Socket.IO instance for services
+setIOInstance(io);
 
 // Socket.IO Events
 const activeCalls = {};
@@ -309,39 +310,6 @@ app.delete("/api/users/:id", async (req, res) => {
   }
 });
 
-// Make a call
-app.post('/api/call', async (req, res) => {
-  try {
-    const { to, from } = req.body;
-    
-    const call = await client.calls.create({
-      to,
-      from,
-      url: 'http://your-webhook-url/voice', // You'll need to set up a webhook URL
-      statusCallback: 'http://your-webhook-url/status', // Optional: for call status updates
-      statusCallbackEvent: ['initiated', 'ringing', 'answered', 'completed'],
-      statusCallbackMethod: 'POST'
-    });
-
-    res.json({ success: true, callSid: call.sid });
-  } catch (error) {
-    console.error('Call failed:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
-// Hang up a call
-app.post('/api/hangup', async (req, res) => {
-  try {
-    const { callSid } = req.body;
-    await client.calls(callSid).update({ status: 'completed' });
-    res.json({ success: true });
-  } catch (error) {
-    console.error('Hangup failed:', error);
-    res.status(500).json({ error: error.message });
-  }
-});
-
 // WhatsApp Message via Meta API
 app.post('/send-whatsapp', async (req, res) => {
   const { phone, message } = req.body;
@@ -384,6 +352,10 @@ app.post('/send-whatsapp', async (req, res) => {
 // Calls Routes
 app.use('/api/calls', callsRouter);
 app.use('/api', proxyRouter);
+// Initialize SIM800 Modem
+modem.connectSIM800(io);
+
+
 
 // Import auth middleware
 const auth = require('./middleware/auth');
