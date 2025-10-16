@@ -257,7 +257,7 @@ router.post('/test-usb-audio', async (req, res) => {
 // POST /api/calls/setup-simple-usb - Simple USB headset setup
 router.post('/setup-simple-usb', async (req, res) => {
   try {
-    const result = await simpleUSBBridge.setupUSBHeadset();
+    const result = await simpleUSBBridge.startBridge();
     res.json(result);
   } catch (error) {
     console.error('Simple USB setup error:', error);
@@ -279,11 +279,25 @@ router.get('/simple-usb-status', async (req, res) => {
 // POST /api/calls/test-simple-usb - Test simple USB setup
 router.post('/test-simple-usb', async (req, res) => {
   try {
-    const testResults = await simpleUSBBridge.testAudio();
+    const testResults = await simpleUSBBridge.testBridge();
     res.json(testResults);
   } catch (error) {
     console.error('Simple USB test error:', error);
     res.status(500).json({ error: 'Failed to test simple USB setup', details: error.message });
+  }
+});
+
+// POST /api/calls/test-ringtone - Test ringtone playback through USB headset
+router.post('/test-ringtone', async (req, res) => {
+  try {
+    simpleUSBBridge.testRingtone();
+    res.json({ 
+      success: true, 
+      message: 'Ringtone test started - should play for 5 seconds through USB headset' 
+    });
+  } catch (error) {
+    console.error('Ringtone test error:', error);
+    res.status(500).json({ error: 'Failed to test ringtone', details: error.message });
   }
 });
 

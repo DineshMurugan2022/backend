@@ -8,6 +8,13 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_fallback_secret";
 const ACCESS_TOKEN_EXPIRES_IN = "365d"; // Extended access token expiration
 const REFRESH_TOKEN_EXPIRES_IN = "365d"; // Extended refresh token expiration
 
+// Helper function to get date without time (for attendance tracking)
+function getDateWithoutTime(date) {
+  const d = new Date(date);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
 // POST /api/auth/login
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -63,8 +70,35 @@ router.post("/login", async (req, res) => {
 
     console.log("Login successful:", username);
 
-    // Update user status to active in database
-    await User.findByIdAndUpdate(user._id, { loginStatus: "active", loginTime: new Date(), logoutTime: null });
+    // Update user status to active in database and add attendance record
+    const loginTime = new Date();
+    const loginDate = getDateWithoutTime(loginTime);
+    
+    // Find existing attendance record for today or create new one
+    let attendanceRecord = user.attendanceRecords.find(record => 
+      getDateWithoutTime(record.date).getTime() === loginDate.getTime()
+    );
+    
+    if (!attendanceRecord) {
+      // Create new attendance record for today
+      attendanceRecord = {
+        date: loginDate,
+        loginTime: loginTime,
+        logoutTime: null,
+        totalHours: 0
+      };
+      user.attendanceRecords.push(attendanceRecord);
+    } else {
+      // Update existing record
+      attendanceRecord.loginTime = loginTime;
+      attendanceRecord.logoutTime = null;
+      attendanceRecord.totalHours = 0;
+    }
+    
+    user.loginStatus = "active";
+    user.loginTime = loginTime;
+    user.logoutTime = null;
+    await user.save();
 
     if (!user._id) {
       console.error('❌ FATAL: User object is missing _id after login:', user);

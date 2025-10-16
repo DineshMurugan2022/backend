@@ -6,6 +6,10 @@ const appointmentSchema = new mongoose.Schema({
     required: [true, 'Client name is required'],
     trim: true,
   },
+  companyName: {
+    type: String,
+    trim: true,
+  },
   date: {
     type: Date,
     required: [true, 'Date is required'],
@@ -31,11 +35,21 @@ const appointmentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  renewal: {
+    type: String,
+    enum: ['renewal', 'fresh'],
+    default: 'fresh'
+  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: [true, 'CreatedBy (user) is required'],
   },
+  // Soft delete field - tracks which users have deleted this appointment
+  deletedFor: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }]
 }, { timestamps: true });
 
 module.exports = mongoose.model('Appointment', appointmentSchema);
