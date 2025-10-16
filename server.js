@@ -27,7 +27,7 @@ const server = http.createServer(app);
 // Socket.IO setup with enhanced configuration
 const io = new Server(server, {
   cors: {
-    origin: ["http://localhost:5173", "http://localhost:3000", "http://localhost:3001", "*"],
+    origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ["http://localhost:5173", "http://localhost:3000", "http://localhost:3001", "https://nothing-nine-neon.vercel.app"],
     credentials: true,
     methods: ["GET", "POST"]
   },
@@ -248,7 +248,7 @@ io.on("connection", (socket) => {
 connectDB();
 
 // Middlewares
-app.use(cors({ origin: ["http://localhost:5173", "http://localhost:3000", "http://localhost:3001"], credentials: true }));
+app.use(cors({ origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ["http://localhost:5173", "http://localhost:3000", "http://localhost:3001", "https://nothing-nine-neon.vercel.app"], credentials: true }));
 app.use(helmet());
 app.use(express.json({ limit: "2mb" }));
 
