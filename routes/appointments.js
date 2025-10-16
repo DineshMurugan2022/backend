@@ -129,8 +129,19 @@ router.get("/", requireAuth, async (req, res) => {
 // GET all appointments for admin/telecaller - show all appointments
 router.get("/all", requireAuth, async (req, res) => {
   try {
+    // Get filter parameters
+    const { createdBy } = req.query;
+    
+    // Build query object
+    const query = {};
+    
+    // Apply BDM filter if provided
+    if (createdBy) {
+      query.createdBy = createdBy;
+    }
+    
     // Returns ALL appointments for admin/telecaller view
-    const appointments = await Appointment.find({}).populate('createdBy', 'username userGroup').sort({ date: -1 });
+    const appointments = await Appointment.find(query).populate('createdBy', 'username userGroup').sort({ date: -1 });
     res.json(appointments);
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
@@ -171,7 +182,7 @@ router.post("/", requireAuth, async (req, res) => {
     console.log('User from token:', req.user);
     console.log('Saving appointment with createdBy:', userId);
 
-    const { client, date, met, signed, contractValue, clearancePending, follow, renewal } = req.body;
+    const { client, companyName, date, met, signed, contractValue, clearancePending, follow, renewal } = req.body;
 
     if (!client || !date) {
       return res.status(400).json({ error: "Client and date are required." });
@@ -179,6 +190,7 @@ router.post("/", requireAuth, async (req, res) => {
 
     const appointment = new Appointment({
       client,
+      companyName: companyName || '', // Add companyName field
       date,
       met: met || false,
       signed: signed || false,
