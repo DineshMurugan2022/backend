@@ -1,5 +1,7 @@
+
+
+
 const express = require('express');
-const Attendance = require('../models/Attendance');
 const router = express.Router();
 const User = require('../models/User');
 const auth = require('../middleware/auth');
@@ -17,33 +19,90 @@ function requireAdminOrLeader(req, res, next) {
 // User login (mark present and set login time)
 router.post('/login', async (req, res) => {
   const { userId } = req.body;
-  const today = new Date();
-  const dateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  let attendance = await Attendance.findOne({ userId, date: dateOnly });
-  if (!attendance) {
-    attendance = new Attendance({ userId, date: dateOnly });
+  
+  try {
+    // Find user
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+    
+    // Update login time in user's attendance records
+    const today = new Date();
+    const dateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    
+    // Find existing attendance record for today or create new one
+    let attendanceRecord = user.attendanceRecords.find(record => 
+      new Date(record.date).toDateString() === dateOnly.toDateString()
+    );
+    
+    if (!attendanceRecord) {
+      // Create new attendance record for today
+      attendanceRecord = {
+        date: dateOnly,
+        loginTime: today,
+        logoutTime: null,
+        totalHours: 0
+      };
+      user.attendanceRecords.push(attendanceRecord);
+    } else {
+      // Update existing record
+      attendanceRecord.loginTime = today;
+      attendanceRecord.logoutTime = null;
+      attendanceRecord.totalHours = 0;
+    }
+    
+    await user.save();
+    
+    res.json({ success: true, attendance: attendanceRecord });
+  } catch (error) {
+    console.error('Error updating attendance login:', error);
+    res.status(500).json({ success: false, message: 'Failed to update attendance' });
   }
-  attendance.loginTime = today;
-  attendance.status = 'present';
-  await attendance.save();
-  res.json({ success: true, attendance });
 });
 
 // User logout (set logout time)
 router.post('/logout', async (req, res) => {
   const { userId } = req.body;
-  const today = new Date();
-  const dateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  let attendance = await Attendance.findOne({ userId, date: dateOnly });
-  if (!attendance) {
-    return res.status(404).json({ success: false, message: 'Attendance not found' });
+  
+  try {
+    // Find user
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+    
+    // Update logout time in user's attendance records
+    const today = new Date();
+    const dateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    
+    // Find existing attendance record for today
+    let attendanceRecord = user.attendanceRecords.find(record => 
+      new Date(record.date).toDateString() === dateOnly.toDateString()
+    );
+    
+    if (!attendanceRecord) {
+      return res.status(404).json({ success: false, message: 'Attendance record not found' });
+    }
+    
+    // Update logout time and calculate total hours
+    attendanceRecord.logoutTime = today;
+    if (attendanceRecord.loginTime) {
+      const diffMs = today - attendanceRecord.loginTime;
+      const diffHours = diffMs / (1000 * 60 * 60);
+      attendanceRecord.totalHours = parseFloat(diffHours.toFixed(2));
+    }
+    
+    await user.save();
+    
+    res.json({ success: true, attendance: attendanceRecord });
+  } catch (error) {
+    console.error('Error updating attendance logout:', error);
+    res.status(500).json({ success: false, message: 'Failed to update attendance' });
   }
-  attendance.logoutTime = today;
-  await attendance.save();
-  res.json({ success: true, attendance });
 });
 
-// GET /api/users/attendance/:year/:month - Get attendance data for a specific month
+// GET /api/attendance/:year/:month - Get attendance data for a specific month
 router.get('/:year/:month', auth, requireAdminOrLeader, async (req, res) => {
   try {
     const { year, month } = req.params;
@@ -60,14 +119,12 @@ router.get('/:year/:month', auth, requireAdminOrLeader, async (req, res) => {
     const startDate = new Date(yearNum, monthNum - 1, 1);
     const endDate = new Date(yearNum, monthNum, 0, 23, 59, 59, 999);
     
-    // Find users with attendance records in the specified month
-    const users = await User.find({
-      'attendanceRecords.date': { $gte: startDate, $lte: endDate }
-    }).select('username userGroup attendanceRecords');
+    // Get all users
+    const allUsers = await User.find().select('username userGroup attendanceRecords');
     
     // Format the data
     const attendanceData = [];
-    users.forEach(user => {
+    allUsers.forEach(user => {
       user.attendanceRecords.forEach(record => {
         const recordDate = new Date(record.date);
         if (recordDate >= startDate && recordDate <= endDate) {
