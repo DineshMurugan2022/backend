@@ -18,8 +18,8 @@ function getStatus() {
  */
 async function startAudioBridge() {
   return {
-    success: true,
-    message: "Audio bridge started (simulated)"
+    success: false,
+    message: "Audio bridge not implemented"
   };
 }
 

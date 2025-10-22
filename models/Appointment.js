@@ -40,6 +40,10 @@ const appointmentSchema = new mongoose.Schema({
     enum: ['renewal', 'fresh'],
     default: 'fresh'
   },
+  assignedBDM: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
   createdBy: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

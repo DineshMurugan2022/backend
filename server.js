@@ -174,6 +174,12 @@ io.on("connection", (socket) => {
         });
         console.log(`📡 Broadcast location update to all users (no session)`);
       }
+
+      // Send success response back to client
+      socket.emit('locationUpdateSuccess', { 
+        message: 'Location update processed successfully',
+        timestamp: new Date().toISOString()
+      });
       
     } catch (error) {
       console.error('❌ Error processing location update:', error);
@@ -277,6 +283,7 @@ app.post("/api/create-session", (req, res) => {
   try {
     // Generate a random session ID
     const sessionId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    console.log(`📋 Created new tracking session: ${sessionId}`);
     res.json({ sessionId });
   } catch (error) {
     console.error('Error creating session:', error.message);

@@ -119,7 +119,9 @@ router.get("/", requireAuth, async (req, res) => {
     const appointments = await Appointment.find({ 
       deletedFor: { $ne: userId },
       createdBy: userId
-    }).populate('createdBy', 'username').sort({ date: -1 });
+    }).populate({ path: 'createdBy', select: 'username' })
+      .populate({ path: 'assignedBDM', select: 'username' })
+      .sort({ date: -1 });
     res.json(appointments);
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
@@ -141,7 +143,10 @@ router.get("/all", requireAuth, async (req, res) => {
     }
     
     // Returns ALL appointments for admin/telecaller view
-    const appointments = await Appointment.find(query).populate('createdBy', 'username userGroup').sort({ date: -1 });
+    const appointments = await Appointment.find(query)
+      .populate({ path: 'createdBy', select: 'username userGroup' })
+      .populate({ path: 'assignedBDM', select: 'username' })
+      .sort({ date: -1 });
     res.json(appointments);
   } catch (error) {
     res.status(500).json({ message: "Server error", error });
@@ -153,11 +158,8 @@ router.get("/telecaller", requireAuth, async (req, res) => {
   try {
     // Returns appointments created by telecaller users only
     const appointments = await Appointment.find({})
-      .populate({
-        path: 'createdBy',
-        select: 'username userGroup',
-        match: { userGroup: 'user' } // Only populate if createdBy is a telecaller
-      })
+      .populate({ path: 'createdBy', select: 'username userGroup' })
+      .populate({ path: 'assignedBDM', select: 'username' })
       .sort({ date: -1 });
     
     // Filter out appointments where createdBy doesn't match (telecallers only)
@@ -182,7 +184,7 @@ router.post("/", requireAuth, async (req, res) => {
     console.log('User from token:', req.user);
     console.log('Saving appointment with createdBy:', userId);
 
-    const { client, companyName, date, met, signed, contractValue, clearancePending, follow, renewal } = req.body;
+    const { client, companyName, date, met, signed, contractValue, clearancePending, follow, renewal, assignedBDM } = req.body;
 
     if (!client || !date) {
       return res.status(400).json({ error: "Client and date are required." });
@@ -198,14 +200,16 @@ router.post("/", requireAuth, async (req, res) => {
       clearancePending: clearancePending || false,
       follow: follow || false,
       renewal: renewal || 'fresh', // Add renewal field with default value
+      assignedBDM: assignedBDM || null, // Add assignedBDM field
       createdBy: userId,
       deletedFor: [] // Initialize as empty array
     });
 
     const saved = await appointment.save();
     
-    // Populate the createdBy field for the response
-    await saved.populate('createdBy', 'username');
+    // Populate the createdBy and assignedBDM fields for the response
+    await saved.populate({ path: 'createdBy', select: 'username' });
+    await saved.populate({ path: 'assignedBDM', select: 'username' });
     
     // Emit socket event for new appointment
     const io = getIOInstance();
@@ -236,8 +240,9 @@ router.put("/:id", requireAuth, async (req, res) => {
       return res.status(404).json({ error: 'Appointment not found.' });
     }
     
-    // Populate the createdBy field for the response
-    await updated.populate('createdBy', 'username');
+    // Populate the createdBy and assignedBDM fields for the response
+    await updated.populate({ path: 'createdBy', select: 'username' });
+    await updated.populate({ path: 'assignedBDM', select: 'username' });
     
     // Emit socket event for updated appointment
     const io = getIOInstance();

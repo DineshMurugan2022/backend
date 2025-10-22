@@ -29,7 +29,7 @@ async function updateUserStatus(userId) {
       await User.findByIdAndUpdate(userId, { loginStatus, lastUpdate: new Date(lastUpdate) });
       
       // Emit status change to all clients
-      const io = require('../sockets/io').getIO();
+      const io = require('../sockets/io').getIOInstance();
       if (io) {
         io.emit('userStatusChanged', { userId, status: loginStatus });
       }
@@ -38,7 +38,7 @@ async function updateUserStatus(userId) {
       await User.findByIdAndUpdate(userId, { loginStatus: 'inactive' });
       
       // Emit status change to all clients
-      const io = require('../sockets/io').getIO();
+      const io = require('../sockets/io').getIOInstance();
       if (io) {
         io.emit('userStatusChanged', { userId, status: 'inactive' });
       }

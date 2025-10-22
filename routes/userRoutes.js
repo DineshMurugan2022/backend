@@ -160,9 +160,9 @@ router.post('/reset-status', async (req, res) => {
 // @access  Private (admin only)
 router.get('/all', auth, async (req, res) => {
   try {
-    // Check if user is admin
-    if (req.user.userGroup !== 'admin') {
-      return res.status(403).json({ message: 'Only admins can access this endpoint' });
+    // Check if user is admin or team leader
+    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'team leader') {
+      return res.status(403).json({ message: 'Only admins and team leaders can access this endpoint' });
     }
     
     // Return all users for attendance page
