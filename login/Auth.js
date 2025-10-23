@@ -89,8 +89,11 @@ router.post("/login", async (req, res) => {
       };
       user.attendanceRecords.push(attendanceRecord);
     } else {
-      // Update existing record
-      attendanceRecord.loginTime = loginTime;
+      // Preserve the original login time, only update if it doesn't exist
+      // This ensures the first login time is not changed
+      if (!attendanceRecord.loginTime) {
+        attendanceRecord.loginTime = loginTime;
+      }
       attendanceRecord.logoutTime = null;
       attendanceRecord.totalHours = 0;
     }

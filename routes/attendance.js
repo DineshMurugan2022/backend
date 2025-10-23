@@ -43,8 +43,11 @@ router.post('/login', async (req, res) => {
       };
       user.attendanceRecords.push(attendanceRecord);
     } else {
-      // Update existing record
-      attendanceRecord.loginTime = today;
+      // Preserve the original login time, only update if it doesn't exist
+      // This ensures the first login time is not changed
+      if (!attendanceRecord.loginTime) {
+        attendanceRecord.loginTime = today;
+      }
       attendanceRecord.logoutTime = null;
       attendanceRecord.totalHours = 0;
     }
@@ -175,16 +178,6 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Attendance');
     
-    // Define columns (added Present/Absent column)
-    worksheet.columns = [
-      { header: 'Username', key: 'username', width: 20 },
-      { header: 'User Group', key: 'userGroup', width: 15 },
-      { header: 'Date', key: 'date', width: 15 },
-      { header: 'Login Time', key: 'loginTime', width: 25 },
-      { header: 'Logout Time', key: 'logoutTime', width: 25 },
-      { header: 'Status', key: 'status', width: 15 }
-    ];
-    
     // Generate all dates in the month
     const datesInMonth = [];
     const currentDate = new Date(startDate);
@@ -193,64 +186,119 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
       currentDate.setDate(currentDate.getDate() + 1);
     }
     
-    // Add data to worksheet - include all users for all dates
+    // Create header row with dates
+    const headerRow = ['Username'];
+    datesInMonth.forEach(date => {
+      headerRow.push(date.getDate().toString());
+    });
+    headerRow.push('Total Present', 'Total Logged In', 'Total Absent');
+    
+    worksheet.addRow(headerRow);
+    
+    // Process each user
     allUsers.forEach(user => {
-      // If user has attendance records in this month, use them
-      const userAttendanceRecords = user.attendanceRecords.filter(record => {
+      // Create a map of date to attendance record for this user
+      const userAttendanceMap = {};
+      user.attendanceRecords.forEach(record => {
         const recordDate = new Date(record.date);
-        return recordDate >= startDate && recordDate <= endDate;
+        if (recordDate >= startDate && recordDate <= endDate) {
+          const dateKey = recordDate.getDate();
+          userAttendanceMap[dateKey] = record;
+        }
       });
       
-      // If user has attendance records, add them
-      if (userAttendanceRecords.length > 0) {
-        userAttendanceRecords.forEach(record => {
+      // Create row for this user
+      const userRow = [user.username];
+      
+      // Track counts for summary
+      let presentCount = 0;
+      let loggedInCount = 0;
+      let absentCount = 0;
+      
+      // Add attendance status for each date
+      datesInMonth.forEach(date => {
+        const dateKey = date.getDate();
+        const record = userAttendanceMap[dateKey];
+        
+        if (record) {
           // Determine status based on login/logout times
-          let status = 'Absent';
           if (record.loginTime) {
-            status = record.logoutTime ? 'Present' : 'Logged In';
+            if (record.logoutTime) {
+              userRow.push('P'); // Present
+              presentCount++;
+            } else {
+              userRow.push('LI'); // Logged In
+              loggedInCount++;
+            }
+          } else {
+            userRow.push('A'); // Absent
+            absentCount++;
           }
-          
-          worksheet.addRow({
-            username: user.username,
-            userGroup: user.userGroup,
-            date: record.date ? record.date.toISOString().split('T')[0] : '',
-            loginTime: record.loginTime ? record.loginTime.toLocaleString() : '',
-            logoutTime: record.logoutTime ? record.logoutTime.toLocaleString() : '',
-            status: status
-          });
-        });
-      } else {
-        // If user has no attendance records, add placeholder rows for each date
-        datesInMonth.forEach(date => {
-          worksheet.addRow({
-            username: user.username,
-            userGroup: user.userGroup,
-            date: date.toISOString().split('T')[0],
-            loginTime: '',
-            logoutTime: '',
-            status: 'Absent'
-          });
-        });
+        } else {
+          userRow.push('A'); // Absent (no record)
+          absentCount++;
+        }
+      });
+      
+      // Add summary counts
+      userRow.push(presentCount, loggedInCount, absentCount);
+      
+      worksheet.addRow(userRow);
+    });
+    
+    // Style the header row
+    const headerRowObj = worksheet.getRow(1);
+    headerRowObj.font = { bold: true };
+    headerRowObj.alignment = { horizontal: 'center' };
+    
+    // Style the data rows
+    worksheet.eachRow((row, rowNumber) => {
+      if (rowNumber > 1) {
+        row.alignment = { horizontal: 'center' };
       }
     });
     
-    // Sort worksheet by username and date
-    worksheet.model.rows.sort((a, b) => {
-      const aUsername = a.cells[1].value || '';
-      const bUsername = b.cells[1].value || '';
-      const aDate = new Date(a.cells[3].value || '').getTime();
-      const bDate = new Date(b.cells[3].value || '').getTime();
-      
-      if (aUsername !== bUsername) {
-        return aUsername.localeCompare(bUsername);
+    // Auto-filter for the data
+    worksheet.autoFilter = {
+      from: 'A1',
+      to: `${String.fromCharCode(64 + headerRow.length)}1`
+    };
+    
+    // Freeze the first row and first column
+    worksheet.views = [
+      {
+        state: 'frozen',
+        xSplit: 1,
+        ySplit: 1,
       }
-      return aDate - bDate;
-    });
+    ];
+    
+    // Set column widths
+    worksheet.getColumn(1).width = 25; // Username column
+    for (let i = 2; i <= datesInMonth.length + 1; i++) {
+      worksheet.getColumn(i).width = 4; // Date columns
+    }
+    // Summary columns
+    worksheet.getColumn(datesInMonth.length + 2).width = 12; // Total Present
+    worksheet.getColumn(datesInMonth.length + 3).width = 12; // Total Logged In
+    worksheet.getColumn(datesInMonth.length + 4).width = 12; // Total Absent
+    
+    // Add some styling to make it look better
+    worksheet.getRow(1).fill = {
+      type: 'pattern',
+      pattern: 'solid',
+      fgColor: { argb: 'FF4472C4' }
+    };
+    
+    worksheet.getRow(1).font = {
+      bold: true,
+      color: { argb: 'FFFFFFFF' }
+    };
     
     // Set response headers
     const monthName = new Date(yearNum, monthNum - 1).toLocaleString('default', { month: 'long' });
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    res.setHeader('Content-Disposition', `attachment; filename=attendance_${monthName}_${yearNum}.xlsx`);
+    res.setHeader('Content-Disposition', `attachment; filename=attendance_summary_${monthName}_${yearNum}.xlsx`);
     
     // Write workbook to response
     await workbook.xlsx.write(res);
