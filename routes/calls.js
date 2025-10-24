@@ -7,6 +7,7 @@ const { SerialPort } = require('serialport');
 const audioBridge = require('../services/audioBridge');
 const usbHeadsetBridge = require('../services/usbHeadsetBridge');
 const simpleUSBBridge = require('../services/simpleUSBHeadsetBridge');
+const auth = require('../middleware/auth'); // Import auth middleware
 
 // Middleware to validate request body
 const validateCallLog = (req, res, next) => {
@@ -21,7 +22,7 @@ const validateCallLog = (req, res, next) => {
 };
 
 // POST /api/calls - Add a new call log
-router.post('/', validateCallLog, async (req, res) => {
+router.post('/', auth, validateCallLog, async (req, res) => {
   try {
     const { phoneNumber, personName, companyName } = req.body;
     const log = new CallLog({
@@ -40,7 +41,7 @@ router.post('/', validateCallLog, async (req, res) => {
 });
 
 // GET /api/calls - Get all call logs, or filter by phone
-router.get('/', async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const { phone } = req.query;
     let logs;
@@ -60,7 +61,7 @@ router.get('/', async (req, res) => {
 });
 
 // PATCH /api/calls/:id - Update call log (e.g., duration after hang-up)
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', auth, async (req, res) => {
   try {
     const { id } = req.params;
     const { duration } = req.body;
@@ -83,7 +84,7 @@ router.patch('/:id', async (req, res) => {
 });
 
 // DELETE /api/calls/:id - Delete a call log
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
     const { id } = req.params;
     const log = await CallLog.findByIdAndDelete(id);
@@ -98,7 +99,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // POST /api/calls/make - Make a call using SIM800
-router.post('/make', async (req, res) => {
+router.post('/make', auth, async (req, res) => {
   try {
     const { phoneNumber, personName, companyName } = req.body;
     
@@ -124,7 +125,7 @@ router.post('/make', async (req, res) => {
 });
 
 // POST /api/calls/hangup - Hang up a call
-router.post('/hangup', async (req, res) => {
+router.post('/hangup', auth, async (req, res) => {
   try {
     const { callSid } = req.body;
     
@@ -142,13 +143,13 @@ router.post('/hangup', async (req, res) => {
 });
 
 // GET /api/calls/modem-status - Get SIM800 modem status
-router.get('/modem-status', (req, res) => {
+router.get('/modem-status', auth, (req, res) => {
   const status = getModemStatus();
   res.json(status);
 });
 
 // GET /api/calls/test-ports - Test available COM ports
-router.get('/test-ports', async (req, res) => {
+router.get('/test-ports', auth, async (req, res) => {
   try {
     const ports = await SerialPort.list();
     const availablePorts = ports.map(port => ({
@@ -170,10 +171,8 @@ router.get('/test-ports', async (req, res) => {
 });
 
 // POST /api/calls/audio-notification - Notify about call audio status
-router.post('/audio-notification', (req, res) => {
+router.post('/audio-notification', auth, (req, res) => {
   try {
-    const { phoneNumber, status, message } = req.body;
-    
     // This endpoint can be used to trigger computer audio notifications
     // For example: "Call connected, use your USB headset for communication"
     
@@ -194,7 +193,7 @@ router.post('/audio-notification', (req, res) => {
 });
 
 // GET /api/calls/audio-status - Get audio bridge status
-router.get('/audio-status', (req, res) => {
+router.get('/audio-status', auth, (req, res) => {
   try {
     const status = audioBridge.getStatus();
     res.json({ success: true, ...status });
@@ -205,7 +204,7 @@ router.get('/audio-status', (req, res) => {
 });
 
 // POST /api/calls/setup-audio - Setup audio bridge
-router.post('/setup-audio', async (req, res) => {
+router.post('/setup-audio', auth, async (req, res) => {
   try {
     const result = await audioBridge.startAudioBridge();
     res.json(result);
@@ -216,7 +215,7 @@ router.post('/setup-audio', async (req, res) => {
 });
 
 // POST /api/calls/setup-usb-headset - Setup USB headset bridge
-router.post('/setup-usb-headset', async (req, res) => {
+router.post('/setup-usb-headset', auth, async (req, res) => {
   try {
     const result = await usbHeadsetBridge.startAudioBridge();
     res.json({
@@ -233,7 +232,7 @@ router.post('/setup-usb-headset', async (req, res) => {
 });
 
 // GET /api/calls/usb-headset-status - Get USB headset status
-router.get('/usb-headset-status', async (req, res) => {
+router.get('/usb-headset-status', auth, async (req, res) => {
   try {
     const status = usbHeadsetBridge.getStatus();
     res.json(status);
@@ -244,7 +243,7 @@ router.get('/usb-headset-status', async (req, res) => {
 });
 
 // POST /api/calls/test-usb-audio - Test USB headset audio
-router.post('/test-usb-audio', async (req, res) => {
+router.post('/test-usb-audio', auth, async (req, res) => {
   try {
     const testResults = await usbHeadsetBridge.testAudio();
     res.json(testResults);
@@ -255,7 +254,7 @@ router.post('/test-usb-audio', async (req, res) => {
 });
 
 // POST /api/calls/setup-simple-usb - Simple USB headset setup
-router.post('/setup-simple-usb', async (req, res) => {
+router.post('/setup-simple-usb', auth, async (req, res) => {
   try {
     const result = await simpleUSBBridge.startBridge();
     res.json(result);
@@ -266,7 +265,7 @@ router.post('/setup-simple-usb', async (req, res) => {
 });
 
 // GET /api/calls/simple-usb-status - Get simple USB bridge status
-router.get('/simple-usb-status', async (req, res) => {
+router.get('/simple-usb-status', auth, async (req, res) => {
   try {
     const status = simpleUSBBridge.getStatus();
     res.json(status);
@@ -277,7 +276,7 @@ router.get('/simple-usb-status', async (req, res) => {
 });
 
 // POST /api/calls/test-simple-usb - Test simple USB setup
-router.post('/test-simple-usb', async (req, res) => {
+router.post('/test-simple-usb', auth, async (req, res) => {
   try {
     const testResults = await simpleUSBBridge.testBridge();
     res.json(testResults);
@@ -288,7 +287,7 @@ router.post('/test-simple-usb', async (req, res) => {
 });
 
 // POST /api/calls/test-ringtone - Test ringtone playback through USB headset
-router.post('/test-ringtone', async (req, res) => {
+router.post('/test-ringtone', auth, async (req, res) => {
   try {
     simpleUSBBridge.testRingtone();
     res.json({ 

@@ -102,6 +102,80 @@ router.post('/logout', async (req, res) => {
   }
 });
 
+// POST /api/attendance/manual - Manually mark attendance for a user
+router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
+  try {
+    const { userId, date, status } = req.body;
+    
+    // Validate input
+    if (!userId || !date || !status) {
+      return res.status(400).json({ error: 'userId, date, and status are required' });
+    }
+    
+    // Validate status
+    if (!['present', 'absent'].includes(status)) {
+      return res.status(400).json({ error: 'Status must be either "present" or "absent"' });
+    }
+    
+    // Find user
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    
+    // Parse date
+    const attendanceDate = new Date(date);
+    if (isNaN(attendanceDate.getTime())) {
+      return res.status(400).json({ error: 'Invalid date format' });
+    }
+    
+    // Set to start of day
+    attendanceDate.setHours(0, 0, 0, 0);
+    
+    // Find existing attendance record for the date or create new one
+    let attendanceRecord = user.attendanceRecords.find(record => 
+      new Date(record.date).toDateString() === attendanceDate.toDateString()
+    );
+    
+    if (!attendanceRecord) {
+      // Create new attendance record
+      attendanceRecord = {
+        date: attendanceDate,
+        loginTime: status === 'present' ? attendanceDate : null,
+        logoutTime: status === 'present' ? new Date(attendanceDate.getTime() + 8 * 60 * 60 * 1000) : null, // 8 hours later
+        totalHours: status === 'present' ? 8 : 0
+      };
+      user.attendanceRecords.push(attendanceRecord);
+    } else {
+      // Update existing record
+      if (status === 'present') {
+        // If marking as present and no login time, set default times
+        if (!attendanceRecord.loginTime) {
+          attendanceRecord.loginTime = attendanceDate;
+          attendanceRecord.logoutTime = new Date(attendanceDate.getTime() + 8 * 60 * 60 * 1000); // 8 hours later
+          attendanceRecord.totalHours = 8;
+        }
+      } else {
+        // If marking as absent, clear times
+        attendanceRecord.loginTime = null;
+        attendanceRecord.logoutTime = null;
+        attendanceRecord.totalHours = 0;
+      }
+    }
+    
+    await user.save();
+    
+    res.json({ 
+      success: true, 
+      message: `Attendance marked as ${status} for ${user.username} on ${attendanceDate.toDateString()}`,
+      attendance: attendanceRecord 
+    });
+  } catch (error) {
+    console.error('Error marking manual attendance:', error);
+    res.status(500).json({ error: 'Failed to mark manual attendance' });
+  }
+});
+
 // GET /api/attendance/:year/:month - Get attendance data for a specific month
 router.get('/:year/:month', auth, requireAdminOrLeader, async (req, res) => {
   try {

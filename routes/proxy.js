@@ -2,9 +2,10 @@ const express = require('express');
 const fetch = require('node-fetch');
 const router = express.Router();
 const { sendWhatsAppMessage } = require('../services/whatsapp');
+const auth = require('../middleware/auth'); // Import auth middleware
 
 // GET /api/nominatim-reverse?lat=...&lon=...
-router.get('/nominatim-reverse', async (req, res) => {
+router.get('/nominatim-reverse', auth, async (req, res) => {
   const { lat, lon } = req.query;
   if (!lat || !lon) {
     return res.status(400).json({ error: 'lat and lon query parameters are required' });
@@ -63,7 +64,7 @@ router.get('/nominatim-reverse', async (req, res) => {
 });
 
 // POST /api/send-whatsapp
-router.post('/send-whatsapp', async (req, res) => {
+router.post('/send-whatsapp', auth, async (req, res) => {
   try {
     const { phone, message } = req.body;
     
