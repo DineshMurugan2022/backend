@@ -48,14 +48,18 @@ const appointmentListeners = new Set();
 // Store connected users
 const connectedUsers = new Map();
 
+// Enhanced connection handler with better error handling
 io.on("connection", (socket) => {
   console.log(`🔌 New socket connection: ${socket.id}`);
   
   // Add socket to appointment listeners
   appointmentListeners.add(socket);
   
+  // Extract user ID from handshake
   const userId = socket.handshake.auth?.userId || socket.handshake.query?.userId;
+  
   if (userId) {
+    // Join user-specific room
     socket.join(`user_${userId}`);
     console.log(`🔗 Socket ${socket.id} joined room user_${userId}`);
     
@@ -64,6 +68,8 @@ io.on("connection", (socket) => {
       socketId: socket.id,
       connectedAt: new Date()
     });
+    
+    // Record user connection
     recordUserConnection(userId, socket.id);
     
     // Notify others that user is online
@@ -77,6 +83,48 @@ io.on("connection", (socket) => {
       // Update last activity time
       recordUserConnection(userId, socket.id);
     }
+  });
+  
+  // Handle user login
+  socket.on('userLogin', (data) => {
+    const { userId, username } = data;
+    if (userId) {
+      connectedUsers.set(userId, {
+        socketId: socket.id,
+        username,
+        connectedAt: new Date()
+      });
+      
+      // Record user connection
+      recordUserConnection(userId, socket.id);
+      
+      // Notify others that user is online
+      socket.broadcast.emit('userStatusChanged', { userId, status: 'active' });
+      
+      console.log(`👤 User ${username} (${userId}) logged in`);
+    }
+  });
+  
+  // Handle user logout
+  socket.on('userLogout', (data) => {
+    const { userId, username } = data;
+    if (userId) {
+      connectedUsers.delete(userId);
+      
+      // Record user disconnection
+      recordUserDisconnection(userId);
+      
+      // Notify others that user is offline
+      socket.broadcast.emit('userStatusChanged', { userId, status: 'inactive' });
+      
+      console.log(`👋 User ${username} (${userId}) logged out`);
+    }
+  });
+  
+  // Handle joining rooms
+  socket.on('joinRoom', (roomName) => {
+    socket.join(roomName);
+    console.log(`🚪 Socket ${socket.id} joined room ${roomName}`);
   });
   
   // Handle BDM joining a tracking session
@@ -119,6 +167,10 @@ io.on("connection", (socket) => {
       // Validate required data
       if (!userId) {
         console.warn('⚠️ Location update missing userId');
+        socket.emit('locationUpdateError', { 
+          error: 'Missing userId in location update',
+          message: 'User ID is required for location updates'
+        });
         return;
       }
       
@@ -193,11 +245,37 @@ io.on("connection", (socket) => {
   
   // Handle appointment updates
   socket.on('appointmentUpdated', (data) => {
+    console.log(`📋 Appointment updated:`, data);
+    
     // Broadcast to all connected clients that an appointment was updated
     for (const listener of appointmentListeners) {
       if (listener !== socket) { // Don't send to the sender
         listener.emit('appointmentUpdated', data);
       }
+    }
+    
+    // Also emit to user-specific rooms for targeted notifications
+    if (data.appointment?.createdBy) {
+      socket.to(`user_${data.appointment.createdBy}`).emit('appointmentUpdated', data);
+    }
+  });
+  
+  // Handle task notifications
+  socket.on('taskAssigned', (data) => {
+    console.log(`📋 Task assigned:`, data);
+    
+    // Send notification to assigned user
+    if (data.assigneeId) {
+      socket.to(`user_${data.assigneeId}`).emit('taskAssigned', data);
+    }
+  });
+  
+  socket.on('taskUpdated', (data) => {
+    console.log(`🔄 Task updated:`, data);
+    
+    // Send notification to assigned user
+    if (data.assigneeId) {
+      socket.to(`user_${data.assigneeId}`).emit('taskUpdated', data);
     }
   });
   
@@ -210,9 +288,12 @@ io.on("connection", (socket) => {
     
     // Find and remove disconnected user
     let disconnectedUserId = null;
+    let disconnectedUsername = null;
+    
     for (const [userId, userInfo] of connectedUsers.entries()) {
       if (userInfo.socketId === socket.id) {
         disconnectedUserId = userId;
+        disconnectedUsername = userInfo.username;
         break;
       }
     }
@@ -220,7 +301,7 @@ io.on("connection", (socket) => {
     if (disconnectedUserId) {
       connectedUsers.delete(disconnectedUserId);
       recordUserDisconnection(disconnectedUserId);
-      console.log(`👤 User ${disconnectedUserId} disconnected`);
+      console.log(`👤 User ${disconnectedUsername} (${disconnectedUserId}) disconnected`);
       
       // Notify others that user is offline
       socket.broadcast.emit('userStatusChanged', { userId: disconnectedUserId, status: 'inactive' });
