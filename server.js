@@ -334,8 +334,49 @@ io.on("connection", (socket) => {
 // Connect to MongoDB
 connectDB();
 
-// Middlewares
-app.use(cors({ origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ["http://localhost:5173", "http://localhost:3000", "http://localhost:3001", "https://nothing-nine-neon.vercel.app"], credentials: true }));
+// Enhanced CORS configuration for production and development
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    
+    // List of allowed origins
+    const allowedOrigins = process.env.CORS_ORIGIN 
+      ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
+      : [
+          "http://localhost:5173", 
+          "http://localhost:3000", 
+          "http://localhost:3001", 
+          "https://nothing-nine-neon.vercel.app",
+          "https://backend-4jwl.onrender.com"
+        ];
+    
+    // In production, be more permissive if no specific origin is set
+    const isProduction = process.env.NODE_ENV === 'production';
+    if (isProduction && !process.env.CORS_ORIGIN) {
+      // Allow all origins in production if not explicitly set (less secure but more flexible)
+      console.log('⚠️ CORS: Allowing all origins in production (no CORS_ORIGIN set)');
+      return callback(null, true);
+    }
+    
+    // Check if the origin is in our allowed list
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      console.log(`⚠️ CORS: Origin ${origin} not allowed`);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true,
+  optionsSuccessStatus: 200
+};
+
+// Apply CORS middleware
+app.use(cors(corsOptions));
+
+// Also handle preflight requests explicitly
+app.options('*', cors(corsOptions));
+
 app.use(helmet());
 app.use(express.json({ limit: "2mb" }));
 
