@@ -119,7 +119,7 @@ router.get("/", requireAuth, async (req, res) => {
     const appointments = await Appointment.find({ 
       deletedFor: { $ne: userId },
       createdBy: userId
-    }).populate({ path: 'createdBy', select: 'username' })
+    }).populate({ path: 'createdBy', select: 'username deleted' })
       .populate({ path: 'assignedBDM', select: 'username' })
       .sort({ date: -1 });
     res.json(appointments);
@@ -144,7 +144,7 @@ router.get("/all", requireAuth, async (req, res) => {
     
     // Returns ALL appointments for admin/telecaller view
     const appointments = await Appointment.find(query)
-      .populate({ path: 'createdBy', select: 'username userGroup' })
+      .populate({ path: 'createdBy', select: 'username userGroup deleted' })
       .populate({ path: 'assignedBDM', select: 'username' })
       .sort({ date: -1 });
     res.json(appointments);
@@ -158,7 +158,7 @@ router.get("/telecaller", requireAuth, async (req, res) => {
   try {
     // Returns appointments created by telecaller users only
     const appointments = await Appointment.find({})
-      .populate({ path: 'createdBy', select: 'username userGroup' })
+      .populate({ path: 'createdBy', select: 'username userGroup deleted' })
       .populate({ path: 'assignedBDM', select: 'username' })
       .sort({ date: -1 });
     
@@ -184,7 +184,7 @@ router.post("/", requireAuth, async (req, res) => {
     console.log('User from token:', req.user);
     console.log('Saving appointment with createdBy:', userId);
 
-    const { client, companyName, date, met, signed, contractValue, clearancePending, follow, renewal, assignedBDM } = req.body;
+    const { client, companyName, date, met, signed, contractValue, clearancePending, clearanceAmount, follow, renewal, assignedBDM } = req.body;
 
     if (!client || !date) {
       return res.status(400).json({ error: "Client and date are required." });
@@ -198,6 +198,7 @@ router.post("/", requireAuth, async (req, res) => {
       signed: signed || false,
       contractValue: contractValue || 0,
       clearancePending: clearancePending || false,
+      clearanceAmount: clearanceAmount || 0, // Add clearanceAmount field
       follow: follow || false,
       renewal: renewal || 'fresh', // Add renewal field with default value
       assignedBDM: assignedBDM || null, // Add assignedBDM field
@@ -208,7 +209,7 @@ router.post("/", requireAuth, async (req, res) => {
     const saved = await appointment.save();
     
     // Populate the createdBy and assignedBDM fields for the response
-    await saved.populate({ path: 'createdBy', select: 'username' });
+    await saved.populate({ path: 'createdBy', select: 'username deleted' });
     await saved.populate({ path: 'assignedBDM', select: 'username' });
     
     // Emit socket event for new appointment
@@ -241,7 +242,7 @@ router.put("/:id", requireAuth, async (req, res) => {
     }
     
     // Populate the createdBy and assignedBDM fields for the response
-    await updated.populate({ path: 'createdBy', select: 'username' });
+    await updated.populate({ path: 'createdBy', select: 'username deleted' });
     await updated.populate({ path: 'assignedBDM', select: 'username' });
     
     // Emit socket event for updated appointment

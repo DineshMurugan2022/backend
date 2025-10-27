@@ -27,7 +27,8 @@ function getDateWithoutTime(date) {
 router.get('/', auth, async (req, res) => {
   try {
     // Optionally filter out admin from assignment lists on the frontend
-    const users = await User.find()
+    // Also filter out deleted users
+    const users = await User.find({ deleted: { $ne: true } })
       .select('-passwordHash -refreshToken -__v');
     res.json(users);
   } catch (err) {
@@ -41,7 +42,7 @@ router.get('/', auth, async (req, res) => {
 // @access  Private
 router.post('/register', auth, requireAdminOrLeader, async (req, res) => {
   try {
-    const { username, password, userGroup, phone } = req.body;
+    const { username, name, password, designation, userGroup, phone } = req.body;
     if (!username || !password || !userGroup) {
       return res.status(400).json({ message: 'username, password and userGroup are required' });
     }
@@ -52,7 +53,15 @@ router.post('/register', auth, requireAdminOrLeader, async (req, res) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
-    const user = new User({ username, passwordHash, userGroup, phone, loginStatus: 'inactive' });
+    const user = new User({ 
+      username, 
+      name: name || '', // Add name field
+      passwordHash, 
+      designation: designation || '', // Add designation field
+      userGroup, 
+      phone, 
+      loginStatus: 'inactive' 
+    });
     await user.save();
 
     const safe = user.toObject();
@@ -116,8 +125,30 @@ router.delete('/:id', auth, requireAdminOrLeader, async (req, res) => {
       return res.status(400).json({ message: 'You cannot delete your own account' });
     }
 
-    const deleted = await User.findByIdAndDelete(id);
-    if (!deleted) return res.status(404).json({ message: 'User not found' });
+    // Instead of deleting the user, we'll soft delete by:
+    // 1. Clearing sensitive information (username, password)
+    // 2. Marking the user as deleted
+    // 3. Keeping all other data intact (appointments, leads, etc.)
+    const updated = await User.findByIdAndUpdate(
+      id, 
+      {
+        username: '[deleted]',
+        passwordHash: '',
+        phone: '',
+        loginStatus: 'inactive',
+        loginTime: null,
+        logoutTime: null,
+        lat: null,
+        lng: null,
+        accuracy: null,
+        lastUpdate: null,
+        refreshToken: null,
+        deleted: true // Mark as deleted
+      },
+      { new: true }
+    ).select('-passwordHash -refreshToken -__v');
+
+    if (!updated) return res.status(404).json({ message: 'User not found' });
 
     res.json({ message: 'User deleted successfully' });
   } catch (err) {
@@ -165,8 +196,8 @@ router.get('/all', auth, async (req, res) => {
       return res.status(403).json({ message: 'Only admins and team leaders can access this endpoint' });
     }
     
-    // Return all users for attendance page
-    const users = await User.find().select('-passwordHash -refreshToken -__v');
+    // Return all users for attendance page, excluding deleted users
+    const users = await User.find({ deleted: { $ne: true } }).select('-passwordHash -refreshToken -__v');
     
     res.json(users);
   } catch (err) {

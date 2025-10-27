@@ -9,7 +9,8 @@ const auth = require('../middleware/auth');
 router.get('/', auth, async (req, res) => {
   try {
     // Only return non-admin users for task assignment
-    const users = await User.find({ userGroup: { $ne: 'admin' } })
+    // Exclude deleted users
+    const users = await User.find({ userGroup: { $ne: 'admin' }, deleted: { $ne: true } })
       .select('-password -refreshToken -__v');
     
     res.json(users);
@@ -29,8 +30,8 @@ router.get('/all', auth, async (req, res) => {
       return res.status(403).json({ message: 'Only admins can access this endpoint' });
     }
     
-    // Return all users for attendance page
-    const users = await User.find().select('-password -refreshToken -__v');
+    // Return all users for attendance page, excluding deleted users
+    const users = await User.find({ deleted: { $ne: true } }).select('-password -refreshToken -__v');
     
     res.json(users);
   } catch (err) {

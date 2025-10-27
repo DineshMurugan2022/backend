@@ -105,20 +105,26 @@ router.post('/logout', async (req, res) => {
 // POST /api/attendance/manual - Manually mark attendance for a user
 router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
   try {
-    const { userId, date, status } = req.body;
+    const { userId, username, date, status } = req.body;
     
     // Validate input
-    if (!userId || !date || !status) {
-      return res.status(400).json({ error: 'userId, date, and status are required' });
+    if ((!userId && !username) || !date || !status) {
+      return res.status(400).json({ error: 'userId or username, date, and status are required' });
     }
     
     // Validate status
-    if (!['present', 'absent'].includes(status)) {
-      return res.status(400).json({ error: 'Status must be either "present" or "absent"' });
+    if (!['present', 'absent', 'leave', 'permission'].includes(status)) {
+      return res.status(400).json({ error: 'Status must be either "present", "absent", "leave", or "permission"' });
     }
     
-    // Find user
-    const user = await User.findById(userId);
+    // Find user by userId or username
+    let user;
+    if (userId) {
+      user = await User.findById(userId);
+    } else if (username) {
+      user = await User.findOne({ username: username });
+    }
+    
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -143,23 +149,30 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
         date: attendanceDate,
         loginTime: status === 'present' ? attendanceDate : null,
         logoutTime: status === 'present' ? new Date(attendanceDate.getTime() + 8 * 60 * 60 * 1000) : null, // 8 hours later
-        totalHours: status === 'present' ? 8 : 0
+        totalHours: status === 'present' ? 8 : (status === 'leave' || status === 'permission') ? 4 : 0,
+        status: status // Store the actual status
       };
       user.attendanceRecords.push(attendanceRecord);
     } else {
       // Update existing record
       if (status === 'present') {
-        // If marking as present and no login time, set default times
-        if (!attendanceRecord.loginTime) {
-          attendanceRecord.loginTime = attendanceDate;
-          attendanceRecord.logoutTime = new Date(attendanceDate.getTime() + 8 * 60 * 60 * 1000); // 8 hours later
-          attendanceRecord.totalHours = 8;
-        }
+        // Always set times when marking as present
+        attendanceRecord.loginTime = attendanceDate;
+        attendanceRecord.logoutTime = new Date(attendanceDate.getTime() + 8 * 60 * 60 * 1000); // 8 hours later
+        attendanceRecord.totalHours = 8;
+        attendanceRecord.status = 'present';
+      } else if (status === 'leave' || status === 'permission') {
+        // For leave or permission, mark partial attendance
+        attendanceRecord.loginTime = attendanceDate;
+        attendanceRecord.logoutTime = new Date(attendanceDate.getTime() + 4 * 60 * 60 * 1000); // 4 hours for leave/permission
+        attendanceRecord.totalHours = 4;
+        attendanceRecord.status = status; // Store the actual status
       } else {
         // If marking as absent, clear times
         attendanceRecord.loginTime = null;
         attendanceRecord.logoutTime = null;
         attendanceRecord.totalHours = 0;
+        attendanceRecord.status = 'absent';
       }
     }
     
@@ -202,12 +215,34 @@ router.get('/:year/:month', auth, requireAdminOrLeader, async (req, res) => {
       user.attendanceRecords.forEach(record => {
         const recordDate = new Date(record.date);
         if (recordDate >= startDate && recordDate <= endDate) {
+          // Determine status based on record data
+          let status = 'absent';
+          if (record.loginTime && record.logoutTime) {
+            status = 'present';
+          } else if (record.loginTime) {
+            status = 'logged-in';
+          } else if (record.totalHours > 0) {
+            // For manually marked attendance, we need to infer the status
+            // Since we don't store the exact status, we'll use a heuristic
+            if (record.totalHours === 8) {
+              status = 'present';
+            } else if (record.totalHours === 4) {
+              // This could be either leave or permission
+              // We'll default to 'leave' for now
+              status = 'leave';
+            } else {
+              status = 'present';
+            }
+          }
+          
           attendanceData.push({
             username: user.username,
             userGroup: user.userGroup,
             date: record.date,
             loginTime: record.loginTime,
-            logoutTime: record.logoutTime
+            logoutTime: record.logoutTime,
+            totalHours: record.totalHours,
+            status: record.status || status // Use stored status if available, otherwise use inferred status
           });
         }
       });
@@ -295,18 +330,45 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
         const record = userAttendanceMap[dateKey];
         
         if (record) {
-          // Determine status based on login/logout times
-          if (record.loginTime) {
-            if (record.logoutTime) {
+          // Use stored status if available
+          if (record.status) {
+            switch (record.status) {
+              case 'present':
+                userRow.push('P'); // Present
+                presentCount++;
+                break;
+              case 'logged-in':
+                userRow.push('LI'); // Logged In
+                loggedInCount++;
+                break;
+              case 'leave':
+                userRow.push('L'); // Leave
+                presentCount++; // Count leave as present for summary purposes
+                break;
+              case 'permission':
+                userRow.push('P'); // Permission (using P for now)
+                presentCount++; // Count permission as present for summary purposes
+                break;
+              default:
+                userRow.push('A'); // Absent
+                absentCount++;
+            }
+          } else {
+            // Fallback to old logic if status is not available
+            if (record.loginTime && record.logoutTime) {
+              userRow.push('P'); // Present (logged in and out)
+              presentCount++;
+            } else if (record.loginTime) {
+              userRow.push('LI'); // Logged In
+              loggedInCount++;
+            } else if (record.totalHours > 0) {
+              // Manually marked as present
               userRow.push('P'); // Present
               presentCount++;
             } else {
-              userRow.push('LI'); // Logged In
-              loggedInCount++;
+              userRow.push('A'); // Absent
+              absentCount++;
             }
-          } else {
-            userRow.push('A'); // Absent
-            absentCount++;
           }
         } else {
           userRow.push('A'); // Absent (no record)

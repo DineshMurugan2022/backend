@@ -31,6 +31,11 @@ const appointmentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  clearanceAmount: {
+    type: Number,
+    default: 0,
+    min: [0, 'Clearance amount cannot be negative'],
+  },
   follow: {
     type: Boolean,
     default: false,
