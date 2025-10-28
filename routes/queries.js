@@ -6,7 +6,9 @@ const auth = require('../middleware/auth');
 // Get all queries
 router.get('/', auth, async (req, res) => {
   try {
+    console.log('Fetching queries for user:', req.user.username, req.user.userGroup);
     const queries = await Query.find().sort({ createdAt: -1 });
+    console.log('Found queries:', queries.length);
     res.json(queries);
   } catch (err) {
     console.error('Error fetching queries:', err);

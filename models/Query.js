@@ -10,4 +10,15 @@ const querySchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model('Query', querySchema);
+// Add indexes for better performance
+querySchema.index({ assignedTo: 1 });
+querySchema.index({ createdAt: -1 });
+
+const Query = mongoose.model('Query', querySchema);
+
+// Test the connection
+Query.findOne({})
+  .then(() => console.log('✅ Query model connected successfully'))
+  .catch(err => console.error('❌ Query model connection error:', err));
+
+module.exports = Query;

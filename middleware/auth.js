@@ -6,22 +6,30 @@ const auth = async (req, res, next) => {
     // Get token from header
     const token = req.header('Authorization')?.replace('Bearer ', '');
     
+    console.log('Auth middleware - Token:', token ? 'Present' : 'Missing');
+    
     if (!token) {
+      console.log('No token provided');
       return res.status(401).json({ message: 'No token, authorization denied' });
     }
 
     // Verify token
+    console.log('Verifying token with secret:', process.env.JWT_SECRET ? 'Exists' : 'Missing');
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret');
+    console.log('Token decoded:', decoded);
     
     // Find user by ID from token
     const user = await User.findById(decoded.id || decoded.userId);
+    console.log('User found:', user ? 'Yes' : 'No');
     
     if (!user) {
+      console.log('User not found in database');
       return res.status(401).json({ message: 'Token is not valid' });
     }
 
     // Add user to request object
     req.user = user;
+    console.log('Auth successful for user:', user.username);
     next();
   } catch (err) {
     console.error('Auth middleware error:', err);
