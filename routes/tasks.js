@@ -35,6 +35,8 @@ router.post('/', auth, async (req, res) => {
       };
       
       // Emit to specific user room
+      console.log(`Emitting taskAssigned to room user_${task.assignee._id}`);
+      console.log(`Notification data:`, notificationData);
       req.io.to(`user_${task.assignee._id}`).emit('taskAssigned', notificationData);
       console.log(`📋 Task notification sent to user ${task.assignee._id}`);
     }
@@ -133,6 +135,8 @@ router.patch('/:id', auth, async (req, res) => {
         assignedBy: req.user.username
       };
       
+      console.log(`Emitting taskAssigned (reassignment) to room user_${req.body.assignee}`);
+      console.log(`Notification data:`, notificationData);
       req.io.to(`user_${req.body.assignee}`).emit('taskAssigned', notificationData);
       console.log(`📋 Task reassignment notification sent to user ${req.body.assignee}`);
     }
@@ -146,6 +150,8 @@ router.patch('/:id', auth, async (req, res) => {
         updatedBy: req.user.username
       };
       
+      console.log(`Emitting taskUpdated to room user_${task.assignee._id}`);
+      console.log(`Notification data:`, notificationData);
       req.io.to(`user_${task.assignee._id}`).emit('taskUpdated', notificationData);
       console.log(`🔄 Task update notification sent to user ${task.assignee._id}`);
     }
