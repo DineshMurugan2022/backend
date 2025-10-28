@@ -127,6 +127,14 @@ io.on("connection", (socket) => {
     console.log(`🚪 Socket ${socket.id} joined room ${roomName}`);
   });
   
+  // Handle joining user-specific room
+  socket.on('joinUserRoom', (userId) => {
+    if (userId) {
+      socket.join(`user_${userId}`);
+      console.log(`🚪 Socket ${socket.id} joined user room user_${userId}`);
+    }
+  });
+  
   // Handle BDM joining a tracking session
   socket.on('joinAsTrackee', (data) => {
     const { sessionId, userId, userData } = data;
@@ -425,6 +433,11 @@ app.use(
   },
   tasksRouter
 );
+
+// Add queries route
+const queriesRouter = require("./routes/queries");
+app.use("/api/queries", queriesRouter);
+
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRouter);
 app.use("/api/calls", callsRouter);
