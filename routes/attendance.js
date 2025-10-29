@@ -147,33 +147,32 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
       // Create new attendance record
       attendanceRecord = {
         date: attendanceDate,
-        loginTime: status === 'present' ? attendanceDate : null,
-        logoutTime: status === 'present' ? new Date(attendanceDate.getTime() + 8 * 60 * 60 * 1000) : null, // 8 hours later
+        loginTime: null, // Don't set login time automatically
+        logoutTime: null, // Don't set logout time automatically
         totalHours: status === 'present' ? 8 : (status === 'leave' || status === 'permission') ? 4 : 0,
         status: status // Store the actual status
       };
       user.attendanceRecords.push(attendanceRecord);
     } else {
-      // Update existing record
+      // Update existing record - preserve existing login/logout times
+      const originalLoginTime = attendanceRecord.loginTime;
+      const originalLogoutTime = attendanceRecord.logoutTime;
+      
+      // Update the status
+      attendanceRecord.status = status;
+      
+      // Update total hours based on status
       if (status === 'present') {
-        // Always set times when marking as present
-        attendanceRecord.loginTime = attendanceDate;
-        attendanceRecord.logoutTime = new Date(attendanceDate.getTime() + 8 * 60 * 60 * 1000); // 8 hours later
         attendanceRecord.totalHours = 8;
-        attendanceRecord.status = 'present';
       } else if (status === 'leave' || status === 'permission') {
-        // For leave or permission, mark partial attendance
-        attendanceRecord.loginTime = attendanceDate;
-        attendanceRecord.logoutTime = new Date(attendanceDate.getTime() + 4 * 60 * 60 * 1000); // 4 hours for leave/permission
         attendanceRecord.totalHours = 4;
-        attendanceRecord.status = status; // Store the actual status
       } else {
-        // If marking as absent, clear times
-        attendanceRecord.loginTime = null;
-        attendanceRecord.logoutTime = null;
         attendanceRecord.totalHours = 0;
-        attendanceRecord.status = 'absent';
       }
+      
+      // Preserve original login/logout times
+      attendanceRecord.loginTime = originalLoginTime;
+      attendanceRecord.logoutTime = originalLogoutTime;
     }
     
     await user.save();
@@ -215,23 +214,28 @@ router.get('/:year/:month', auth, requireAdminOrLeader, async (req, res) => {
       user.attendanceRecords.forEach(record => {
         const recordDate = new Date(record.date);
         if (recordDate >= startDate && recordDate <= endDate) {
-          // Determine status based on record data
-          let status = 'absent';
-          if (record.loginTime && record.logoutTime) {
-            status = 'present';
-          } else if (record.loginTime) {
-            status = 'logged-in';
-          } else if (record.totalHours > 0) {
-            // For manually marked attendance, we need to infer the status
-            // Since we don't store the exact status, we'll use a heuristic
-            if (record.totalHours === 8) {
+          // Use the stored status if available, otherwise determine from data
+          let status = record.status;
+          
+          // If no stored status, determine from data
+          if (!status) {
+            if (record.loginTime && record.logoutTime) {
               status = 'present';
-            } else if (record.totalHours === 4) {
-              // This could be either leave or permission
-              // We'll default to 'leave' for now
-              status = 'leave';
+            } else if (record.loginTime) {
+              status = 'logged-in';
+            } else if (record.totalHours > 0) {
+              // For manually marked attendance
+              if (record.totalHours >= 8) {
+                status = 'present';
+              } else if (record.totalHours >= 4) {
+                // This could be either leave or permission
+                // We'll default to 'leave' for now
+                status = 'leave';
+              } else {
+                status = 'present';
+              }
             } else {
-              status = 'present';
+              status = 'absent';
             }
           }
           
@@ -242,7 +246,7 @@ router.get('/:year/:month', auth, requireAdminOrLeader, async (req, res) => {
             loginTime: record.loginTime,
             logoutTime: record.logoutTime,
             totalHours: record.totalHours,
-            status: record.status || status // Use stored status if available, otherwise use inferred status
+            status: status // Always use the determined status
           });
         }
       });
@@ -280,8 +284,8 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
     const startDate = new Date(yearNum, monthNum - 1, 1);
     const endDate = new Date(yearNum, monthNum, 0, 23, 59, 59, 999);
     
-    // Get all users (not just those with attendance records)
-    const allUsers = await User.find().select('username userGroup attendanceRecords');
+    // Get all users (not just those with attendance records) - include name field
+    const allUsers = await User.find().select('username name userGroup attendanceRecords');
     
     // Create workbook and worksheet
     const workbook = new ExcelJS.Workbook();
@@ -296,7 +300,7 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
     }
     
     // Create header row with dates
-    const headerRow = ['Username'];
+    const headerRow = ['Full Name'];
     datesInMonth.forEach(date => {
       headerRow.push(date.getDate().toString());
     });
@@ -316,8 +320,8 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
         }
       });
       
-      // Create row for this user
-      const userRow = [user.username];
+      // Create row for this user - use full name if available, otherwise username
+      const userRow = [user.name || user.username];
       
       // Track counts for summary
       let presentCount = 0;
@@ -348,6 +352,10 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
               case 'permission':
                 userRow.push('P'); // Permission (using P for now)
                 presentCount++; // Count permission as present for summary purposes
+                break;
+              case 'absent':
+                userRow.push('A'); // Absent
+                absentCount++;
                 break;
               default:
                 userRow.push('A'); // Absent
@@ -410,7 +418,7 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
     ];
     
     // Set column widths
-    worksheet.getColumn(1).width = 25; // Username column
+    worksheet.getColumn(1).width = 25; // Full Name column
     for (let i = 2; i <= datesInMonth.length + 1; i++) {
       worksheet.getColumn(i).width = 4; // Date columns
     }
