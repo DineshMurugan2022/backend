@@ -127,35 +127,4 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// POST /api/auth/refresh-token
-router.post("/refresh-token", async (req, res) => {
-  const { refreshToken } = req.body;
-  if (!refreshToken) {
-    return res.status(400).json({ error: "Refresh token required" });
-  }
-  try {
-    // Verify refresh token
-    const decoded = jwt.verify(refreshToken, JWT_SECRET);
-    // Find user with this refresh token
-    const user = await User.findOne({ _id: decoded.id, refreshToken });
-    if (!user) {
-      return res.status(401).json({ error: "Invalid refresh token" });
-    }
-    // Issue new access token
-    const accessToken = jwt.sign(
-      {
-        id: user._id,
-        username: user.username,
-        userGroup: user.userGroup,
-      },
-      JWT_SECRET,
-      { expiresIn: ACCESS_TOKEN_EXPIRES_IN }
-    );
-    res.json({ accessToken });
-  } catch (err) {
-    console.error("Refresh token error:", err);
-    res.status(401).json({ error: "Invalid or expired refresh token" });
-  }
-});
-
 module.exports = router;

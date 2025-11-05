@@ -10,6 +10,7 @@ const { setIOInstance } = require("./sockets/io");
 const { handleTimeout, recordLocationUpdate, recordUserConnection, recordUserDisconnection } = require("./services/session");
 const auth = require("./middleware/auth");
 const User = require("./models/User");
+const Message = require("./models/Message");
 const authRouter = require("./login/Auth");
 
 // Routers
@@ -20,6 +21,7 @@ const appointmentsRouter = require("./routes/appointments");
 const leadsRouter = require("./routes/leads");
 const proxyRouter = require("./routes/proxy");
 const tasksRouter = require("./routes/tasks");
+const messagesRouter = require("./routes/messages");
 
 const app = express();
 const server = http.createServer(app);
@@ -136,6 +138,52 @@ io.on("connection", (socket) => {
       console.log(`🚪 Socket ${socket.id} joined user room user_${userId}`);
     } else {
       console.log(`⚠️ joinUserRoom called without userId`);
+    }
+  });
+  
+  // Handle new message
+  socket.on('sendMessage', async (messageData) => {
+    try {
+      const { recipientId, content, messageType = 'text' } = messageData;
+      const senderId = messageData.senderId || socket.userId;
+      
+      // Validate recipient exists
+      const recipient = await User.findById(recipientId);
+      if (!recipient) {
+        socket.emit('messageError', { error: 'Recipient not found' });
+        return;
+      }
+
+      // Validate content
+      if (!content || content.trim() === '') {
+        socket.emit('messageError', { error: 'Message content is required' });
+        return;
+      }
+
+      // Create new message
+      const message = new Message({
+        sender: senderId,
+        recipient: recipientId,
+        content,
+        messageType
+      });
+
+      await message.save();
+
+      // Populate sender and recipient info
+      await message.populate('sender', 'username name');
+      await message.populate('recipient', 'username name');
+
+      // Emit message to recipient via Socket.IO
+      socket.to(`user_${recipientId}`).emit('newMessage', message);
+      
+      // Emit to sender as well for consistency
+      socket.emit('messageSent', message);
+      
+      console.log(`💬 Message sent from ${senderId} to ${recipientId}: ${content}`);
+    } catch (error) {
+      console.error('Error sending message via socket:', error);
+      socket.emit('messageError', { error: 'Failed to send message' });
     }
   });
   
@@ -353,7 +401,7 @@ const corsOptions = {
     }
     
     // Check if the origin is in our allowed list
-    if (allowedOrigins.indexOf(origin) !== -1) {
+    if (allowedOrigins.includes(origin) || allowedOrigins.includes("*")) {
       callback(null, true);
     } else {
       console.log(`⚠️ CORS: Origin ${origin} not allowed`);
@@ -361,7 +409,8 @@ const corsOptions = {
     }
   },
   credentials: true,
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  exposedHeaders: ['Authorization']
 };
 
 // Apply CORS middleware
@@ -407,7 +456,9 @@ app.post("/api/create-session", (req, res) => {
 });
 
 // ----------------- ROUTES -----------------
+// Mount appointments router
 app.use("/api/appointments", appointmentsRouter);
+
 app.use("/api/leads", leadsRouter);
 app.use("/api/attendance", attendanceRouter);
 app.use(
@@ -426,6 +477,7 @@ app.use("/api/queries", queriesRouter);
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRouter);
 app.use("/api/calls", callsRouter);
+app.use("/api/messages", messagesRouter);
 app.use("/api", proxyRouter);
 
 // ----------------- SESSION TIMEOUT -----------------

@@ -40,6 +40,9 @@ const appointmentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  followDate: {
+    type: Date,
+  },
   renewal: {
     type: String,
     enum: ['renewal', 'fresh'],
@@ -54,6 +57,11 @@ const appointmentSchema = new mongoose.Schema({
     ref: 'User',
     required: [true, 'CreatedBy (user) is required'],
   },
+  remark: {
+    type: String,
+    trim: true,
+    default: ''
+  },
   // Soft delete field - tracks which users have deleted this appointment
   deletedFor: [{
     type: mongoose.Schema.Types.ObjectId,
@@ -61,4 +69,41 @@ const appointmentSchema = new mongoose.Schema({
   }]
 }, { timestamps: true });
 
-module.exports = mongoose.model('Appointment', appointmentSchema);
+// Revenue Report Schema
+const revenueReportSchema = new mongoose.Schema({
+  month: {
+    type: Number,
+    required: true,
+    min: 1,
+    max: 12
+  },
+  year: {
+    type: Number,
+    required: true
+  },
+  totalContracts: {
+    type: Number,
+    default: 0
+  },
+  totalRevenue: {
+    type: Number,
+    default: 0
+  },
+  netSales: {
+    type: Number,
+    default: 0
+  },
+  pendingAmounts: {
+    type: Number,
+    default: 0
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+}, { timestamps: true });
+
+const Appointment = mongoose.model('Appointment', appointmentSchema);
+const RevenueReport = mongoose.model('RevenueReport', revenueReportSchema);
+
+module.exports = { Appointment, RevenueReport };
