@@ -26,8 +26,8 @@ router.get('/', auth, async (req, res) => {
 router.get('/all', auth, async (req, res) => {
   try {
     // Check if user is admin
-    if (req.user.userGroup !== 'admin') {
-      return res.status(403).json({ message: 'Only admins can access this endpoint' });
+    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'team leader') {
+      return res.status(403).json({ message: 'Only admin and team leaders can access this endpoint' });
     }
     
     // Return all users for attendance page, excluding deleted users

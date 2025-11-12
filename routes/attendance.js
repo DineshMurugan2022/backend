@@ -39,7 +39,8 @@ router.post('/login', async (req, res) => {
         date: dateOnly,
         loginTime: today,
         logoutTime: null,
-        totalHours: 0
+        totalHours: 0,
+        status: 'logged-in'
       };
       user.attendanceRecords.push(attendanceRecord);
     } else {
@@ -50,6 +51,10 @@ router.post('/login', async (req, res) => {
       }
       attendanceRecord.logoutTime = null;
       attendanceRecord.totalHours = 0;
+      // Update status to logged-in unless it's already set to a final manual state
+      if (!['present','leave','permission'].includes(attendanceRecord.status)) {
+        attendanceRecord.status = 'logged-in';
+      }
     }
     
     await user.save();
@@ -91,6 +96,16 @@ router.post('/logout', async (req, res) => {
       const diffMs = today - attendanceRecord.loginTime;
       const diffHours = diffMs / (1000 * 60 * 60);
       attendanceRecord.totalHours = parseFloat(diffHours.toFixed(2));
+      
+      // Automatically set status to 'present' if worked 8+ hours
+      if (attendanceRecord.totalHours >= 8) {
+        attendanceRecord.status = 'present';
+      } else if (attendanceRecord.totalHours > 0) {
+        // If partial day and no explicit leave/permission was set, mark as leave
+        if (!['leave','permission'].includes(attendanceRecord.status)) {
+          attendanceRecord.status = 'leave';
+        }
+      }
     }
     
     await user.save();
@@ -189,7 +204,8 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
 });
 
 // GET /api/attendance/:year/:month - Get attendance data for a specific month
-router.get('/:year/:month', auth, requireAdminOrLeader, async (req, res) => {
+router.get('/:year/:month', auth, async (req, res) => {
+
   try {
     const { year, month } = req.params;
     
@@ -367,8 +383,15 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
               userRow.push('P'); // Present (logged in and out)
               presentCount++;
             } else if (record.loginTime) {
+              // If only login time exists, check if total hours >= 8 to mark as present
+              // Otherwise show as logged-in
+              if (record.totalHours >= 8) {
+                userRow.push('P'); // Present
+                presentCount++;
+              } else {
               userRow.push('LI'); // Logged In
               loggedInCount++;
+              }
             } else if (record.totalHours > 0) {
               // Manually marked as present
               userRow.push('P'); // Present
