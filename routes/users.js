@@ -12,7 +12,7 @@ router.get('/', auth, async (req, res) => {
     // Exclude deleted users
     const users = await User.find({ userGroup: { $ne: 'admin' }, deleted: { $ne: true } })
       .select('-password -refreshToken -__v');
-    
+
     res.json(users);
   } catch (err) {
     console.error('Error fetching users:', err);
@@ -25,14 +25,15 @@ router.get('/', auth, async (req, res) => {
 // @access  Private (admin only)
 router.get('/all', auth, async (req, res) => {
   try {
-    // Check if user is admin
-    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'team leader') {
+    // Check if user is admin or team leader (case-insensitive)
+    const userRole = req.user.userGroup.toLowerCase().trim();
+    if (userRole !== 'admin' && userRole !== 'teamleader' && userRole !== 'team leader') {
       return res.status(403).json({ message: 'Only admin and team leaders can access this endpoint' });
     }
-    
+
     // Return all users for attendance page, excluding deleted users
     const users = await User.find({ deleted: { $ne: true } }).select('-password -refreshToken -__v');
-    
+
     res.json(users);
   } catch (err) {
     console.error('Error fetching all users:', err);
@@ -47,11 +48,11 @@ router.get('/me', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
       .select('-password -refreshToken -__v');
-    
+
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    
+
     res.json(user);
   } catch (err) {
     console.error('Error fetching current user:', err);

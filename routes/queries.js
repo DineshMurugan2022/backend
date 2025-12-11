@@ -37,11 +37,11 @@ router.patch('/:id/assign', auth, async (req, res) => {
       { assignedTo },
       { new: true, runValidators: true }
     );
-    
+
     if (!query) {
       return res.status(404).json({ error: 'Query not found' });
     }
-    
+
     res.json(query);
   } catch (err) {
     console.error('Error assigning query:', err);
@@ -58,15 +58,70 @@ router.patch('/:id/days', auth, async (req, res) => {
       { daysToComplete },
       { new: true, runValidators: true }
     );
-    
+
     if (!query) {
       return res.status(404).json({ error: 'Query not found' });
     }
-    
+
     res.json(query);
   } catch (err) {
     console.error('Error updating days to complete:', err);
     res.status(400).json({ error: err.message });
+  }
+});
+
+// Update a query (General update)
+router.put('/:id', auth, async (req, res) => {
+  try {
+    const query = await Query.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+
+    if (!query) {
+      return res.status(404).json({ error: 'Query not found' });
+    }
+
+    res.json(query);
+  } catch (err) {
+    console.error('Error updating query:', err);
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Update status
+router.patch('/:id/status', auth, async (req, res) => {
+  try {
+    const { status } = req.body;
+    const query = await Query.findByIdAndUpdate(
+      req.params.id,
+      { status },
+      { new: true, runValidators: true }
+    );
+
+    if (!query) {
+      return res.status(404).json({ error: 'Query not found' });
+    }
+
+    res.json(query);
+  } catch (err) {
+    console.error('Error updating status:', err);
+    res.status(400).json({ error: err.message });
+  }
+});
+
+// Delete a query
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const query = await Query.findByIdAndDelete(req.params.id);
+    if (!query) {
+      return res.status(404).json({ error: 'Query not found' });
+    }
+    res.json({ message: 'Query deleted successfully' });
+  } catch (err) {
+    console.error('Error deleting query:', err);
+    res.status(500).json({ error: err.message });
   }
 });
 

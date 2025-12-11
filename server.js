@@ -3,15 +3,17 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const http = require("http");
+const path = require("path");
 const { Server } = require("socket.io");
 
 const connectDB = require("./db");
-const { setIOInstance } = require("./sockets/io");
-const { handleTimeout, recordLocationUpdate, recordUserConnection, recordUserDisconnection } = require("./services/session");
+
+const { handleTimeout } = require("./services/session");
 const auth = require("./middleware/auth");
 const User = require("./models/User");
-const Message = require("./models/Message");
+
 const authRouter = require("./login/Auth");
+const errorHandler = require("./middleware/errorHandler");
 
 // Routers
 const callsRouter = require("./routes/calls");
@@ -29,7 +31,7 @@ const server = http.createServer(app);
 // Socket.IO setup with enhanced configuration
 const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ["http://localhost:5173", "http://localhost:3000", "http://localhost:3001", "https://nothing-nine-neon.vercel.app"],
+    origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ["http://localhost:5173", "http://localhost:3000"],
     credentials: true,
     methods: ["GET", "POST"]
   },
@@ -39,338 +41,10 @@ const io = new Server(server, {
   pingTimeout: 60000,
   pingInterval: 25000
 });
-setIOInstance(io);
 
-// Store active tracking sessions
-const trackingSessions = new Map();
-
-// Store for appointment update listeners
-const appointmentListeners = new Set();
-
-// Store connected users
-const connectedUsers = new Map();
-
-// Enhanced connection handler with better error handling
-io.on("connection", (socket) => {
-  console.log(`🔌 New socket connection: ${socket.id}`);
-  
-  // Add socket to appointment listeners
-  appointmentListeners.add(socket);
-  
-  // Extract user ID from handshake
-  const userId = socket.handshake.auth?.userId || socket.handshake.query?.userId;
-  
-  if (userId) {
-    // Join user-specific room
-    socket.join(`user_${userId}`);
-    console.log(`🔗 Socket ${socket.id} joined room user_${userId} (auto-join on connection)`);
-    
-    // Track connected user
-    connectedUsers.set(userId, {
-      socketId: socket.id,
-      connectedAt: new Date()
-    });
-    
-    // Record user connection
-    recordUserConnection(userId, socket.id);
-    
-    // Notify others that user is online
-    socket.broadcast.emit('userStatusChanged', { userId, status: 'active' });
-  } else {
-    console.log(`⚠️ Socket ${socket.id} connected without userId`);
-  }
-  
-  // Handle user activity updates
-  socket.on('userActivity', (data) => {
-    const { userId } = data;
-    if (userId) {
-      // Update last activity time
-      recordUserConnection(userId, socket.id);
-    }
-  });
-  
-  // Handle user login
-  socket.on('userLogin', (data) => {
-    const { userId, username } = data;
-    if (userId) {
-      connectedUsers.set(userId, {
-        socketId: socket.id,
-        username,
-        connectedAt: new Date()
-      });
-      
-      // Record user connection
-      recordUserConnection(userId, socket.id);
-      
-      // Notify others that user is online
-      socket.broadcast.emit('userStatusChanged', { userId, status: 'active' });
-      
-      console.log(`👤 User ${username} (${userId}) logged in`);
-    }
-  });
-  
-  // Handle user logout
-  socket.on('userLogout', (data) => {
-    const { userId, username } = data;
-    if (userId) {
-      connectedUsers.delete(userId);
-      
-      // Record user disconnection
-      recordUserDisconnection(userId);
-      
-      // Notify others that user is offline
-      socket.broadcast.emit('userStatusChanged', { userId, status: 'inactive' });
-      
-      console.log(`👋 User ${username} (${userId}) logged out`);
-    }
-  });
-  
-  // Handle joining rooms
-  socket.on('joinRoom', (roomName) => {
-    socket.join(roomName);
-    console.log(`🚪 Socket ${socket.id} joined room ${roomName}`);
-  });
-  
-  // Handle joining user-specific room
-  socket.on('joinUserRoom', (userId) => {
-    if (userId) {
-      socket.join(`user_${userId}`);
-      console.log(`🚪 Socket ${socket.id} joined user room user_${userId}`);
-    } else {
-      console.log(`⚠️ joinUserRoom called without userId`);
-    }
-  });
-  
-  // Handle new message
-  socket.on('sendMessage', async (messageData) => {
-    try {
-      const { recipientId, content, messageType = 'text' } = messageData;
-      const senderId = messageData.senderId || socket.userId;
-      
-      // Validate recipient exists
-      const recipient = await User.findById(recipientId);
-      if (!recipient) {
-        socket.emit('messageError', { error: 'Recipient not found' });
-        return;
-      }
-
-      // Validate content
-      if (!content || content.trim() === '') {
-        socket.emit('messageError', { error: 'Message content is required' });
-        return;
-      }
-
-      // Create new message
-      const message = new Message({
-        sender: senderId,
-        recipient: recipientId,
-        content,
-        messageType
-      });
-
-      await message.save();
-
-      // Populate sender and recipient info
-      await message.populate('sender', 'username name');
-      await message.populate('recipient', 'username name');
-
-      // Emit message to recipient via Socket.IO
-      socket.to(`user_${recipientId}`).emit('newMessage', message);
-      
-      // Emit to sender as well for consistency
-      socket.emit('messageSent', message);
-      
-      console.log(`💬 Message sent from ${senderId} to ${recipientId}: ${content}`);
-    } catch (error) {
-      console.error('Error sending message via socket:', error);
-      socket.emit('messageError', { error: 'Failed to send message' });
-    }
-  });
-  
-  // Handle BDM joining a tracking session
-  socket.on('joinAsTrackee', (data) => {
-    const { sessionId, userId, userData } = data;
-    if (sessionId && userId) {
-      socket.join(`session_${sessionId}`);
-      console.log(`📍 BDM ${userId} joined tracking session ${sessionId}`);
-      
-      // Store session info
-      if (!trackingSessions.has(sessionId)) {
-        trackingSessions.set(sessionId, {
-          trackees: new Map(),
-          watchers: new Set()
-        });
-      }
-      
-      const session = trackingSessions.get(sessionId);
-      session.trackees.set(userId, {
-        ...userData,
-        userId,
-        socketId: socket.id,
-        joinedAt: new Date()
-      });
-      
-      // Notify watchers that a new BDM joined
-      socket.to(`session_${sessionId}`).emit('bdmJoined', {
-        sessionId,
-        userId,
-        userData
-      });
-    }
-  });
-  
-  // Handle location updates from BDMs with enhanced error handling and logging
-  socket.on('bdmLocationUpdate', async (data) => {
-    try {
-      const { sessionId, userId, lat, lng, accuracy, speed, heading, timestamp } = data;
-      
-      // Validate required data
-      if (!userId) {
-        console.warn('⚠️ Location update missing userId');
-        socket.emit('locationUpdateError', { 
-          error: 'Missing userId in location update',
-          message: 'User ID is required for location updates'
-        });
-        return;
-      }
-      
-      // Log the incoming location update
-      console.log(`📍 Received location update from BDM ${userId}: ${lat}, ${lng} (±${accuracy}m)`);
-      
-      // Record location update for attendance tracking
-      recordLocationUpdate(userId);
-      
-      // Update user's location in database with error handling
-      try {
-        const updateData = { 
-          lat, 
-          lng,
-          loginStatus: 'active', // Mark as active when location is updated
-          lastUpdate: new Date() // Update lastUpdate timestamp
-        };
-        
-        // Only update accuracy if it's provided and reasonable
-        if (accuracy !== undefined && accuracy <= 200) {
-          updateData.accuracy = accuracy;
-        }
-        
-        await User.findByIdAndUpdate(userId, updateData);
-        console.log(`✅ Updated location for user ${userId} in database`);
-      } catch (dbError) {
-        console.error('❌ Error updating user location in database:', dbError);
-      }
-      
-      // Broadcast location update to session watchers if session exists
-      if (sessionId) {
-        socket.to(`session_${sessionId}`).emit('bdmLocationChanged', {
-          sessionId,
-          userId,
-          lat,
-          lng,
-          accuracy,
-          speed,
-          heading,
-          timestamp
-        });
-        console.log(`📡 Broadcast location update to session ${sessionId}`);
-      } else {
-        // If no session, broadcast to all connected users
-        socket.broadcast.emit('bdmLocationChanged', {
-          userId,
-          lat,
-          lng,
-          accuracy,
-          speed,
-          heading,
-          timestamp
-        });
-        console.log(`📡 Broadcast location update to all users (no session)`);
-      }
-
-      // Send success response back to client
-      socket.emit('locationUpdateSuccess', { 
-        message: 'Location update processed successfully',
-        timestamp: new Date().toISOString()
-      });
-      
-    } catch (error) {
-      console.error('❌ Error processing location update:', error);
-      // Send error response back to client
-      socket.emit('locationUpdateError', { 
-        error: 'Failed to process location update',
-        message: error.message 
-      });
-    }
-  });
-  
-  // Handle appointment updates
-  socket.on('appointmentUpdated', (data) => {
-    console.log(`📋 Appointment updated:`, data);
-    
-    // Broadcast to all connected clients that an appointment was updated
-    for (const listener of appointmentListeners) {
-      if (listener !== socket) { // Don't send to the sender
-        listener.emit('appointmentUpdated', data);
-      }
-    }
-    
-    // Also emit to user-specific rooms for targeted notifications
-    if (data.appointment?.createdBy) {
-      socket.to(`user_${data.appointment.createdBy}`).emit('appointmentUpdated', data);
-    }
-  });
-  
-  // Handle BDM disconnection with better error handling
-  socket.on('disconnect', (reason) => {
-    console.log(`🔌 Socket ${socket.id} disconnected. Reason: ${reason}`);
-    
-    // Remove socket from appointment listeners
-    appointmentListeners.delete(socket);
-    
-    // Find and remove disconnected user
-    let disconnectedUserId = null;
-    let disconnectedUsername = null;
-    
-    for (const [userId, userInfo] of connectedUsers.entries()) {
-      if (userInfo.socketId === socket.id) {
-        disconnectedUserId = userId;
-        disconnectedUsername = userInfo.username;
-        break;
-      }
-    }
-    
-    if (disconnectedUserId) {
-      connectedUsers.delete(disconnectedUserId);
-      recordUserDisconnection(disconnectedUserId);
-      console.log(`👤 User ${disconnectedUsername} (${disconnectedUserId}) disconnected`);
-      
-      // Notify others that user is offline
-      socket.broadcast.emit('userStatusChanged', { userId: disconnectedUserId, status: 'inactive' });
-    }
-    
-    // Clean up tracking sessions
-    for (const [sessionId, session] of trackingSessions.entries()) {
-      // Remove disconnected trackee
-      for (const [trackeeId, trackeeInfo] of session.trackees.entries()) {
-        if (trackeeInfo.socketId === socket.id) {
-          session.trackees.delete(trackeeId);
-          console.log(`📍 BDM ${trackeeId} left tracking session ${sessionId}`);
-          
-          // Notify watchers that BDM disconnected
-          socket.to(`session_${sessionId}`).emit('bdmDisconnected', {
-            sessionId,
-            userId: trackeeId
-          });
-        }
-      }
-    }
-  });
-  
-  // Handle connection errors
-  socket.on('error', (error) => {
-    console.error(`🔌 Socket error for ${socket.id}:`, error);
-  });
-});
+// Initialize Socket.IO handlers
+const setupSocketIO = require("./sockets");
+setupSocketIO(io);
 
 // Connect to MongoDB
 connectDB();
@@ -380,31 +54,17 @@ const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
-    
-    // List of allowed origins
-    const allowedOrigins = process.env.CORS_ORIGIN 
+
+    // List of allowed origins from environment variable
+    const allowedOrigins = process.env.CORS_ORIGIN
       ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
-      : [
-          "http://localhost:5173", 
-          "http://localhost:3000", 
-          "http://localhost:3001", 
-          "https://nothing-nine-neon.vercel.app",
-          "https://backend-4jwl.onrender.com"
-        ];
-    
-    // In production, be more permissive if no specific origin is set
-    const isProduction = process.env.NODE_ENV === 'production';
-    if (isProduction && !process.env.CORS_ORIGIN) {
-      // Allow all origins in production if not explicitly set (less secure but more flexible)
-      console.log('⚠️ CORS: Allowing all origins in production (no CORS_ORIGIN set)');
-      return callback(null, true);
-    }
-    
+      : ["http://localhost:5173", "http://localhost:3000"];
+
     // Check if the origin is in our allowed list
-    if (allowedOrigins.includes(origin) || allowedOrigins.includes("*")) {
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      console.log(`⚠️ CORS: Origin ${origin} not allowed`);
+      console.log(`⚠️ CORS Blocked: Origin ${origin} not allowed`);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -419,7 +79,19 @@ app.use(cors(corsOptions));
 // Also handle preflight requests explicitly
 app.options('*', cors(corsOptions));
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        connectSrc: ["'self'", "http://localhost:*", "ws://localhost:*", "wss://localhost:*"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Needed for Vite/React
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", "data:", "blob:"],
+      },
+    },
+  })
+);
 app.use(express.json({ limit: "2mb" }));
 
 // Health check
@@ -460,7 +132,16 @@ app.post("/api/create-session", (req, res) => {
 app.use("/api/appointments", appointmentsRouter);
 
 app.use("/api/leads", leadsRouter);
-app.use("/api/attendance", attendanceRouter);
+
+app.use(
+  "/api/attendance",
+  (req, _res, next) => {
+    req.io = io; // attach io for attendance notifications
+    next();
+  },
+  attendanceRouter
+);
+
 app.use(
   "/api/tasks",
   (req, _res, next) => {
@@ -478,7 +159,28 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRouter);
 app.use("/api/calls", callsRouter);
 app.use("/api/messages", messagesRouter);
+const reportsRouter = require("./routes/reports");
+app.use("/api/reports", reportsRouter);
 app.use("/api", proxyRouter);
+
+// Error Handling Middleware
+app.use(errorHandler);
+
+// Serve uploads directory
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Serve static files from frontend/dist
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+// Handle Chrome DevTools 404 (silence error)
+app.get("/.well-known/appspecific/com.chrome.devtools.json", (req, res) => {
+  res.sendStatus(200);
+});
+
+// Catch-all route for SPA (must be last)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
 
 // ----------------- SESSION TIMEOUT -----------------
 setInterval(() => handleTimeout(), 5 * 60 * 1000);

@@ -7,10 +7,10 @@ const auth = require('../middleware/auth');
 router.post('/', auth, async (req, res) => {
   try {
     // Check if user has permission to create tasks
-    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'team leader') {
+    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
       return res.status(403).json({ message: 'Only admin and team leaders can create tasks' });
     }
-    
+
     const task = new Task({
       ...req.body,
       createdBy: req.user._id,
@@ -33,7 +33,7 @@ router.post('/', auth, async (req, res) => {
         assigneeId: task.assignee._id.toString(),
         assignedBy: req.user.username
       };
-      
+
       // Emit to specific user room
       console.log(`Emitting taskAssigned to room user_${task.assignee._id}`);
       console.log(`Notification data:`, notificationData);
@@ -52,15 +52,15 @@ router.post('/', auth, async (req, res) => {
 router.get('/', auth, async (req, res) => {
   try {
     let query = {};
-    
+
     // Admin and team leaders can see all tasks
-    if (req.user.userGroup === 'admin' || req.user.userGroup === 'team leader') {
+    if (req.user.userGroup === 'admin' || req.user.userGroup === 'teamleader' || req.user.userGroup === 'team leader') {
       // No filter - see all tasks
     } else {
       // Regular users only see tasks assigned to them
       query = { assignee: req.user._id };
     }
-    
+
     const tasks = await Task.find(query)
       .populate([
         { path: 'assignee', select: 'username' },
@@ -85,23 +85,23 @@ router.patch('/:id', auth, async (req, res) => {
 
   try {
     // Check if user has permission to edit tasks
-    const canEdit = req.user.userGroup === 'admin' || req.user.userGroup === 'team leader';
-    
+    const canEdit = req.user.userGroup === 'admin' || req.user.userGroup === 'teamleader' || req.user.userGroup === 'team leader';
+
     let query = { _id: req.params.id };
-    
+
     if (canEdit) {
       // Admin and team leaders can edit any task
     } else {
       // Regular users can only update status of tasks assigned to them
       query.$or = [{ assignee: req.user._id }];
-      
+
       // Restrict regular users to only update status
       const restrictedUpdates = updates.filter(u => u !== 'status');
       if (restrictedUpdates.length > 0) {
         return res.status(403).json({ message: 'You can only update task status' });
       }
     }
-    
+
     const task = await Task.findOne(query);
 
     if (!task) return res.status(404).json({ message: 'Task not found or unauthorized' });
@@ -125,16 +125,16 @@ router.patch('/:id', auth, async (req, res) => {
     ]);
 
     // Emit notification if assignee changed
-    if (req.body.assignee && 
-        originalAssignee?.toString() !== req.body.assignee &&
-        req.body.assignee !== req.user._id.toString()) {
+    if (req.body.assignee &&
+      originalAssignee?.toString() !== req.body.assignee &&
+      req.body.assignee !== req.user._id.toString()) {
       const notificationData = {
         taskId: task._id,
         taskTitle: task.title,
         assigneeId: req.body.assignee,
         assignedBy: req.user.username
       };
-      
+
       console.log(`Emitting taskAssigned (reassignment) to room user_${req.body.assignee}`);
       console.log(`Notification data:`, notificationData);
       req.io.to(`user_${req.body.assignee}`).emit('taskAssigned', notificationData);
@@ -149,7 +149,7 @@ router.patch('/:id', auth, async (req, res) => {
         assigneeId: task.assignee._id.toString(),
         updatedBy: req.user.username
       };
-      
+
       console.log(`Emitting taskUpdated to room user_${task.assignee._id}`);
       console.log(`Notification data:`, notificationData);
       req.io.to(`user_${task.assignee._id}`).emit('taskUpdated', notificationData);
@@ -167,10 +167,10 @@ router.patch('/:id', auth, async (req, res) => {
 router.delete('/:id', auth, async (req, res) => {
   try {
     // Check if user has permission to delete tasks
-    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'team leader') {
+    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
       return res.status(403).json({ message: 'Only admin and team leaders can delete tasks' });
     }
-    
+
     const task = await Task.findOneAndDelete({
       _id: req.params.id,
     });
@@ -186,13 +186,17 @@ router.delete('/:id', auth, async (req, res) => {
 // Add a note to a task
 router.post('/:id/notes', auth, async (req, res) => {
   try {
-    const task = await Task.findOne({
-      _id: req.params.id,
-      $or: [
+    let query = { _id: req.params.id };
+
+    // If not admin/teamleader, restrict to assignee or creator
+    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
+      query.$or = [
         { assignee: req.user._id },
-        { createdBy: req.user._id },
-      ],
-    });
+        { createdBy: req.user._id }
+      ];
+    }
+
+    const task = await Task.findOne(query);
 
     if (!task) return res.status(404).json({ message: 'Task not found' });
 

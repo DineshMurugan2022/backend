@@ -7,8 +7,8 @@ const querySchema = new mongoose.Schema({
   query: { type: String, required: true },
   assignedTo: { type: String, default: '' }, // tech team username
   daysToComplete: { type: String, default: '' },
-  createdAt: { type: Date, default: Date.now },
-});
+  status: { type: String, enum: ['Open', 'In Progress', 'Resolved'], default: 'Open' },
+}, { timestamps: true });
 
 // Add indexes for better performance
 querySchema.index({ assignedTo: 1 });

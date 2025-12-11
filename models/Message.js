@@ -20,6 +20,18 @@ const messageSchema = new mongoose.Schema({
     enum: ['text', 'image', 'file'],
     default: 'text'
   },
+  mediaUrl: {
+    type: String,
+    default: null
+  },
+  fileName: {
+    type: String,
+    default: null
+  },
+  mimeType: {
+    type: String,
+    default: null
+  },
   read: {
     type: Boolean,
     default: false

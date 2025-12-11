@@ -4,6 +4,7 @@ const User = require('../models/User');
 const mongoose = require('mongoose');
 const auth = require('../middleware/auth');
 const bcrypt = require('bcryptjs');
+const attendanceService = require('../services/attendanceService');
 
 // Helper: require admin or team leader
 function requireAdminOrLeader(req, res, next) {
@@ -21,6 +22,8 @@ function getDateWithoutTime(date) {
   return d;
 }
 
+const { Appointment } = require('../models/Appointment');
+
 // @route   GET /api/users
 // @desc    Get all users (authenticated)
 // @access  Private
@@ -29,8 +32,57 @@ router.get('/', auth, async (req, res) => {
     // Optionally filter out admin from assignment lists on the frontend
     // Also filter out deleted users
     const users = await User.find({ deleted: { $ne: true } })
-      .select('-passwordHash -refreshToken -__v');
-    res.json(users);
+      .select('-passwordHash -refreshToken -__v')
+      .lean(); // Use lean() to get plain JS objects so we can add properties
+
+    // Get start and end of today
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999);
+
+    // Get appointment stats for all users (Met/Not Met) - FOR TODAY ONLY
+    // We'll aggregate counts based on assignedBDM or createdBy
+    const appointmentStats = await Appointment.aggregate([
+      {
+        $match: {
+          date: { $gte: startOfDay, $lte: endOfDay }
+        }
+      },
+      {
+        $group: {
+          _id: {
+            $ifNull: ["$assignedBDM", "$createdBy"]
+          },
+          met: { $sum: { $cond: [{ $eq: ["$met", true] }, 1, 0] } },
+          notMet: { $sum: { $cond: [{ $eq: ["$met", false] }, 1, 0] } }
+        }
+      }
+    ]);
+
+    // Debug logging
+    console.log(`[DEBUG] Date range: ${startOfDay} to ${endOfDay}`);
+    console.log(`[DEBUG] Appointment stats found: ${appointmentStats.length}`, appointmentStats);
+
+    // Create a map for quick lookup
+    const statsMap = {};
+    appointmentStats.forEach(stat => {
+      if (stat._id) {
+        statsMap[stat._id.toString()] = { met: stat.met, notMet: stat.notMet };
+      }
+    });
+
+    // Merge stats into user objects
+    const usersWithStats = users.map(user => {
+      const stats = statsMap[user._id.toString()] || { met: 0, notMet: 0 };
+      return {
+        ...user,
+        met: stats.met,
+        notMet: stats.notMet
+      };
+    });
+
+    res.json(usersWithStats);
   } catch (err) {
     console.error('Error fetching users:', err);
     res.status(500).json({ message: 'Server error' });
@@ -53,14 +105,14 @@ router.post('/register', auth, requireAdminOrLeader, async (req, res) => {
     }
 
     const passwordHash = await bcrypt.hash(password, 10);
-    const user = new User({ 
-      username, 
+    const user = new User({
+      username,
       name: name || '', // Add name field
-      passwordHash, 
+      passwordHash,
       designation: designation || '', // Add designation field
-      userGroup, 
-      phone, 
-      loginStatus: 'inactive' 
+      userGroup,
+      phone,
+      loginStatus: 'inactive'
     });
     await user.save();
 
@@ -130,9 +182,9 @@ router.delete('/:id', auth, requireAdminOrLeader, async (req, res) => {
     // 2. Marking the user as deleted
     // 3. Keeping all other data intact (appointments, leads, etc.)
     const updated = await User.findByIdAndUpdate(
-      id, 
+      id,
       {
-        username: '[deleted]',
+        username: `[deleted_${Date.now()}_${id}]`,
         passwordHash: '',
         phone: '',
         loginStatus: 'inactive',
@@ -164,11 +216,11 @@ router.get('/me', auth, async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
       .select('-passwordHash -refreshToken -__v');
-    
+
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
-    
+
     res.json(user);
   } catch (err) {
     console.error('Error fetching current user:', err);
@@ -195,10 +247,10 @@ router.get('/all', auth, async (req, res) => {
     if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'team leader') {
       return res.status(403).json({ message: 'Only admins and team leaders can access this endpoint' });
     }
-    
+
     // Return all users for attendance page, excluding deleted users
     const users = await User.find({ deleted: { $ne: true } }).select('-passwordHash -refreshToken -__v');
-    
+
     res.json(users);
   } catch (err) {
     console.error('Error fetching all users:', err);
@@ -221,34 +273,57 @@ router.post('/logout', async (req, res) => {
       console.error('❌ No user found for logout:', userId);
       return res.status(404).json({ error: 'User not found' });
     }
-    
+
     // Update user status to inactive and set logout time
     const logoutTime = new Date();
-    user.loginStatus = 'inactive';
-    user.logoutTime = logoutTime;
-    
-    // Update attendance record for today
-    const logoutDate = getDateWithoutTime(logoutTime);
-    const attendanceRecord = user.attendanceRecords.find(record => 
-      getDateWithoutTime(record.date).getTime() === logoutDate.getTime()
-    );
-    
-    if (attendanceRecord) {
-      attendanceRecord.logoutTime = logoutTime;
-      // Calculate total hours worked today
-      if (attendanceRecord.loginTime) {
-        const diffMs = logoutTime - attendanceRecord.loginTime;
-        const diffHours = diffMs / (1000 * 60 * 60);
-        attendanceRecord.totalHours = parseFloat(diffHours.toFixed(2));
-      }
-    }
-    
+    await attendanceService.recordLogout(user, logoutTime);
+
     await user.save();
-    
+
     res.json({ message: 'Logout time updated' });
   } catch (error) {
     console.error('❌ Logout DB error:', error);
     res.status(500).json({ error: error.message });
+  }
+});
+
+// @route   GET /api/users/:id/location-history
+// @desc    Get location history for a user (authenticated)
+// @access  Private
+router.get('/:id/location-history', auth, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { date } = req.query; // Expect YYYY-MM-DD
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({ message: 'Invalid user id' });
+    }
+
+    const LocationLog = require('../models/LocationLog');
+
+    let startDate, endDate;
+    if (date) {
+      startDate = new Date(date);
+      startDate.setHours(0, 0, 0, 0);
+      endDate = new Date(date);
+      endDate.setHours(23, 59, 59, 999);
+    } else {
+      // Default to today
+      startDate = new Date();
+      startDate.setHours(0, 0, 0, 0);
+      endDate = new Date();
+      endDate.setHours(23, 59, 59, 999);
+    }
+
+    const logs = await LocationLog.find({
+      userId: id,
+      timestamp: { $gte: startDate, $lte: endDate }
+    }).sort({ timestamp: 1 }).select('lat lng timestamp speed accuracy');
+
+    res.json(logs);
+  } catch (err) {
+    console.error('Error fetching location history:', err);
+    res.status(500).json({ message: 'Server error' });
   }
 });
 

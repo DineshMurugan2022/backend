@@ -1,45 +1,49 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const { check } = require("express-validator");
+const validate = require("../middleware/validate");
 
-const JWT_SECRET = process.env.JWT_SECRET || "your_fallback_secret";
-const ACCESS_TOKEN_EXPIRES_IN = "365d"; // Extended access token expiration
-const REFRESH_TOKEN_EXPIRES_IN = "365d"; // Extended refresh token expiration
-
-// Helper function to get date without time (for attendance tracking)
-function getDateWithoutTime(date) {
-  const d = new Date(date);
-  d.setHours(0, 0, 0, 0);
-  return d;
+// SECURITY: Use environment variables for secrets
+if (!process.env.JWT_SECRET) {
+  console.error("❌ FATAL: JWT_SECRET is not defined in environment variables.");
+  process.exit(1);
 }
 
-// POST /api/auth/login
-router.post("/login", async (req, res) => {
-  const { username, password } = req.body;
-  console.log("Login attempt:", username, password);
+const JWT_SECRET = process.env.JWT_SECRET;
+const ACCESS_TOKEN_EXPIRES_IN = "24h"; // Compromise for now
+const REFRESH_TOKEN_EXPIRES_IN = "7d";
 
-  if (!username || !password) {
-    console.log("Missing username or password");
-    return res.status(400).json({ error: "Username and password required" });
-  }
+const attendanceService = require("../services/attendanceService");
+
+// POST /api/auth/login
+router.post("/login", [
+  check("username", "Username is required").not().isEmpty(),
+  check("password", "Password is required").not().isEmpty(),
+  validate
+], async (req, res) => {
+  const { username, password } = req.body;
+  // SECURITY: Do not log passwords
+  console.log(`Login attempt for user: ${username}`);
 
   try {
     const user = await User.findOne({ username });
-    console.log("User found:", user);
+
+    // SECURITY: Use generic error message to prevent username enumeration
+    const invalidCredsMsg = "Invalid username or password";
 
     if (!user || !user.passwordHash) {
-      console.warn(`⚠️ Login attempt for non-existent user: ${username}`);
-      return res.status(401).json({ error: "Invalid username or password" });
+      // Use a consistent delay or check to prevent timing attacks (advanced, but good practice to just fail generically)
+      return res.status(401).json({ error: invalidCredsMsg });
     }
 
     const isMatch = await bcrypt.compare(password, user.passwordHash);
-    console.log("Password match:", isMatch);
 
     if (!isMatch) {
-      console.warn(`⚠️ Incorrect password for user: ${username}`);
-      return res.status(401).json({ error: "Invalid username or password" });
+      console.warn(`⚠️ Failed login attempt for user: ${username}`);
+      return res.status(401).json({ error: invalidCredsMsg });
     }
 
     // Issue access token (short-lived)
@@ -70,38 +74,8 @@ router.post("/login", async (req, res) => {
 
     console.log("Login successful:", username);
 
-    // Update user status to active in database and add attendance record
-    const loginTime = new Date();
-    const loginDate = getDateWithoutTime(loginTime);
-    
-    // Find existing attendance record for today or create new one
-    let attendanceRecord = user.attendanceRecords.find(record => 
-      getDateWithoutTime(record.date).getTime() === loginDate.getTime()
-    );
-    
-    if (!attendanceRecord) {
-      // Create new attendance record for today
-      attendanceRecord = {
-        date: loginDate,
-        loginTime: loginTime,
-        logoutTime: null,
-        totalHours: 0
-      };
-      user.attendanceRecords.push(attendanceRecord);
-    } else {
-      // Preserve the original login time, only update if it doesn't exist
-      // This ensures the first login time is not changed
-      if (!attendanceRecord.loginTime) {
-        attendanceRecord.loginTime = loginTime;
-      }
-      attendanceRecord.logoutTime = null;
-      attendanceRecord.totalHours = 0;
-    }
-    
-    user.loginStatus = "active";
-    user.loginTime = loginTime;
-    user.logoutTime = null;
-    await user.save();
+    // Use centralized attendance service
+    await attendanceService.recordLogin(user, new Date());
 
     if (!user._id) {
       console.error('❌ FATAL: User object is missing _id after login:', user);
