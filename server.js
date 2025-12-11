@@ -56,9 +56,10 @@ const corsOptions = {
     if (!origin) return callback(null, true);
 
     // List of allowed origins from environment variable
+    // List of allowed origins from environment variable
     const allowedOrigins = process.env.CORS_ORIGIN
       ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
-      : ["http://localhost:5173", "http://localhost:3000"];
+      : ["http://localhost:5173", "http://localhost:3000", "https://nothing-nine-neon.vercel.app"];
 
     // Check if the origin is in our allowed list
     if (allowedOrigins.includes(origin)) {
@@ -84,10 +85,10 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        connectSrc: ["'self'", "http://localhost:*", "ws://localhost:*", "wss://localhost:*"],
+        connectSrc: ["'self'", "http://localhost:*", "ws://localhost:*", "wss://localhost:*", "https://backend-4jwl.onrender.com", "wss://backend-4jwl.onrender.com"],
         scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Needed for Vite/React
         styleSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: ["'self'", "data:", "blob:"],
+        imgSrc: ["'self'", "data:", "blob:", "https://user-images.githubusercontent.com"],
       },
     },
   })
@@ -169,18 +170,26 @@ app.use(errorHandler);
 // Serve uploads directory
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Serve static files from frontend/dist
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// Serve static files from frontend/dist (if available)
+const frontendPath = path.join(__dirname, "../frontend/dist");
+if (fs.existsSync(frontendPath)) {
+  app.use(express.static(frontendPath));
 
-// Handle Chrome DevTools 404 (silence error)
-app.get("/.well-known/appspecific/com.chrome.devtools.json", (req, res) => {
-  res.sendStatus(200);
-});
-
-// Catch-all route for SPA (must be last)
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-});
+  // Catch-all route for SPA (must be last)
+  app.get("*", (req, res) => {
+    const indexPath = path.join(frontendPath, "index.html");
+    if (fs.existsSync(indexPath)) {
+      res.sendFile(indexPath);
+    } else {
+      res.status(404).send("Frontend build not found");
+    }
+  });
+} else {
+  // If no frontend build, catch-all returns 404 or API info
+  app.get("/", (req, res) => {
+    res.send("API Server Running (Frontend not served from here)");
+  });
+}
 
 // ----------------- SESSION TIMEOUT -----------------
 setInterval(() => handleTimeout(), 5 * 60 * 1000);
