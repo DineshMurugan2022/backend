@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require('../models/User');
 const auth = require('../middleware/auth');
 const ExcelJS = require('exceljs');
+const attendanceService = require('../services/attendanceService');
 
 // Helper: require admin or team leader
 function requireAdminOrLeader(req, res, next) {
@@ -18,56 +19,26 @@ router.post('/login', async (req, res) => {
   const { userId } = req.body;
 
   try {
-    // Find user
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });
     }
 
-    // Update login time in user's attendance records
+    const updatedUser = await attendanceService.recordLogin(user);
+
+    // Find the record for today to return it
     const today = new Date();
-    const dateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-    // Find existing attendance record for today or create new one
-    let attendanceRecord = user.attendanceRecords.find(record => {
-      // Normalize both dates to midnight for comparison
-      const recordDate = new Date(record.date);
-      recordDate.setHours(0, 0, 0, 0);
-      const todayDate = new Date(dateOnly);
-      todayDate.setHours(0, 0, 0, 0);
-      return recordDate.getTime() === todayDate.getTime();
+    today.setHours(0, 0, 0, 0);
+    const attendanceRecord = updatedUser.attendanceRecords.find(r => {
+      const rDate = new Date(r.date);
+      rDate.setHours(0, 0, 0, 0);
+      return rDate.getTime() === today.getTime();
     });
-
-    if (!attendanceRecord) {
-      // Create new attendance record for today
-      attendanceRecord = {
-        date: dateOnly,
-        loginTime: today,
-        logoutTime: null,
-        totalHours: 0,
-        status: 'logged-in'
-      };
-      user.attendanceRecords.push(attendanceRecord);
-    } else {
-      // Preserve the original login time, only update if it doesn't exist
-      // This ensures the first login time is not changed
-      if (!attendanceRecord.loginTime) {
-        attendanceRecord.loginTime = today;
-      }
-      attendanceRecord.logoutTime = null;
-      attendanceRecord.totalHours = 0;
-      // Update status to logged-in unless it's already set to a final manual state
-      if (!['present', 'leave', 'permission'].includes(attendanceRecord.status)) {
-        attendanceRecord.status = 'logged-in';
-      }
-    }
-
-    await user.save();
 
     res.json({ success: true, attendance: attendanceRecord });
   } catch (error) {
     console.error('Error updating attendance login:', error);
-    res.status(500).json({ success: false, message: 'Failed to update attendance' });
+    res.status(500).json({ success: false, message: error.message || 'Failed to update attendance' });
   }
 });
 
@@ -76,54 +47,26 @@ router.post('/logout', async (req, res) => {
   const { userId } = req.body;
 
   try {
-    // Find user
     const user = await User.findById(userId);
     if (!user) {
       return res.status(404).json({ success: false, message: 'User not found' });
     }
 
-    // Update logout time in user's attendance records
+    const updatedUser = await attendanceService.recordLogout(user);
+
+    // Find the record for today to return it
     const today = new Date();
-    const dateOnly = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-
-    // Find existing attendance record for today
-    let attendanceRecord = user.attendanceRecords.find(record => {
-      // Normalize both dates to midnight for comparison
-      const recordDate = new Date(record.date);
-      recordDate.setHours(0, 0, 0, 0);
-      const todayDate = new Date(dateOnly);
-      todayDate.setHours(0, 0, 0, 0);
-      return recordDate.getTime() === todayDate.getTime();
+    today.setHours(0, 0, 0, 0);
+    const attendanceRecord = updatedUser.attendanceRecords.find(r => {
+      const rDate = new Date(r.date);
+      rDate.setHours(0, 0, 0, 0);
+      return rDate.getTime() === today.getTime();
     });
-
-    if (!attendanceRecord) {
-      return res.status(404).json({ success: false, message: 'Attendance record not found' });
-    }
-
-    // Update logout time and calculate total hours
-    attendanceRecord.logoutTime = today;
-    if (attendanceRecord.loginTime) {
-      const diffMs = today - attendanceRecord.loginTime;
-      const diffHours = diffMs / (1000 * 60 * 60);
-      attendanceRecord.totalHours = parseFloat(diffHours.toFixed(2));
-
-      // Automatically set status to 'present' if worked 8+ hours
-      if (attendanceRecord.totalHours >= 8) {
-        attendanceRecord.status = 'present';
-      } else if (attendanceRecord.totalHours > 0) {
-        // If partial day and no explicit leave/permission was set, mark as leave
-        if (!['leave', 'permission'].includes(attendanceRecord.status)) {
-          attendanceRecord.status = 'leave';
-        }
-      }
-    }
-
-    await user.save();
 
     res.json({ success: true, attendance: attendanceRecord });
   } catch (error) {
     console.error('Error updating attendance logout:', error);
-    res.status(500).json({ success: false, message: 'Failed to update attendance' });
+    res.status(500).json({ success: false, message: error.message || 'Failed to update attendance' });
   }
 });
 

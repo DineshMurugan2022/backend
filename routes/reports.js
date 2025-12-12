@@ -29,16 +29,13 @@ router.get('/', auth, async (req, res) => {
 // Create a new report
 router.post('/', auth, async (req, res) => {
     try {
-        const { date, startTime, endTime, taskDescription, status } = req.body;
+        const { date, items } = req.body;
 
         const report = new Report({
             user: req.user._id,
             userName: req.user.name || req.user.username,
             date: date || new Date(),
-            startTime,
-            endTime,
-            taskDescription,
-            status
+            items: items || []
         });
 
         await report.save();
@@ -52,7 +49,7 @@ router.post('/', auth, async (req, res) => {
 // Update a report
 router.put('/:id', auth, async (req, res) => {
     try {
-        const { date, startTime, endTime, taskDescription, status } = req.body;
+        const { date, items } = req.body;
 
         let report = await Report.findById(req.params.id);
         if (!report) return res.status(404).json({ error: 'Report not found' });
@@ -69,7 +66,7 @@ router.put('/:id', auth, async (req, res) => {
 
         report = await Report.findByIdAndUpdate(
             req.params.id,
-            { date, startTime, endTime, taskDescription, status },
+            { date, items },
             { new: true }
         );
 
@@ -77,6 +74,28 @@ router.put('/:id', auth, async (req, res) => {
     } catch (err) {
         console.error('Error updating report:', err);
         res.status(400).json({ error: err.message });
+    }
+});
+
+// Delete a report
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        let report = await Report.findById(req.params.id);
+        if (!report) return res.status(404).json({ error: 'Report not found' });
+
+        const userGroup = req.user.userGroup.toLowerCase().trim();
+        const isOwner = report.user.toString() === req.user._id.toString();
+        const isAdminOrLeader = userGroup === 'admin' || userGroup === 'teamleader' || userGroup === 'team leader';
+
+        if (!isOwner && !isAdminOrLeader) {
+            return res.status(401).json({ error: 'Not authorized to delete this report' });
+        }
+
+        await Report.findByIdAndDelete(req.params.id);
+        res.json({ message: 'Report deleted' });
+    } catch (err) {
+        console.error('Error deleting report:', err);
+        res.status(500).json({ error: err.message });
     }
 });
 
