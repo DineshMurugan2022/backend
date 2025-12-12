@@ -6,7 +6,7 @@ const User = require('../models/User');
 const { getIOInstance } = require('../sockets/io');
 
 const multer = require('multer');
-const path = require('path');
+
 const fs = require('fs');
 
 // Configure multer for file upload
