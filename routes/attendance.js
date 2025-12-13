@@ -314,51 +314,34 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
         const record = userAttendanceMap[dateKey];
 
         if (record) {
-          // Use stored status if available
-          if (record.status) {
-            switch (record.status) {
-              case 'present':
-                userRow.push('P'); // Present
-                presentCount++;
-                break;
-              case 'logged-in':
-                // Convert logged-in to Present in export
-                userRow.push('P'); // Present (was logged in)
-                presentCount++;
-                break;
-              case 'leave':
-                userRow.push('L'); // Leave
-                presentCount++; // Count leave as present for summary purposes
-                break;
-              case 'permission':
-                userRow.push('P'); // Permission (using P for now)
-                presentCount++; // Count permission as present for summary purposes
-                break;
-              case 'absent':
-                userRow.push('A'); // Absent
-                absentCount++;
-                break;
-              default:
-                userRow.push('A'); // Absent
-                absentCount++;
-            }
-          } else {
-            // Fallback to old logic if status is not available
-            if (record.loginTime && record.logoutTime) {
-              userRow.push('P'); // Present (logged in and out)
-              presentCount++;
-            } else if (record.loginTime) {
-              // Convert logged-in to Present in export
-              userRow.push('P'); // Present (was logged in)
-              presentCount++;
-            } else if (record.totalHours > 0) {
-              // Manually marked as present
+          // Use stored status if available, BUT override 'absent' if login exists
+          let status = record.status || 'absent';
+
+          // Override absent default if user actually logged in
+          if (status === 'absent' && (record.loginTime || (record.totalHours > 0 && record.totalHours < 8))) {
+            // If they have login time, treat as Present/Logged-In for report
+            if (record.loginTime) status = 'present';
+            // Note: We removed the auto 8-hour rule, so only manual leaves/permissions or actual logins count
+          }
+
+          switch (status) {
+            case 'present':
+            case 'logged-in':
               userRow.push('P'); // Present
               presentCount++;
-            } else {
+              break;
+            case 'leave':
+              userRow.push('L'); // Leave
+              presentCount++; // Count leave as present for summary purposes
+              break;
+            case 'permission':
+              userRow.push('P'); // Permission (using P for now)
+              presentCount++; // Count permission as present for summary purposes
+              break;
+            case 'absent':
+            default:
               userRow.push('A'); // Absent
               absentCount++;
-            }
           }
         } else {
           userRow.push('A'); // Absent (no record)

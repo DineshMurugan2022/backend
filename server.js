@@ -192,6 +192,16 @@ if (fs.existsSync(frontendPath)) {
   });
 }
 
+const cronService = require("./services/cronService");
+
+// ----------------- CRON JOBS -----------------
+// Initialize Auto-Logout Job (Runs check immediately and then hourly)
+try {
+  cronService.startAutoLogoutJob();
+} catch (cronError) {
+  console.error("FAILED to start Auto-Logout Job:", cronError);
+}
+
 // ----------------- SESSION TIMEOUT -----------------
 setInterval(() => handleTimeout(), 5 * 60 * 1000);
 

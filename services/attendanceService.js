@@ -25,7 +25,8 @@ class AttendanceService {
                 date: loginDate,
                 loginTime: loginTime,
                 logoutTime: null,
-                totalHours: 0
+                totalHours: 0,
+                status: 'logged-in' // Explicitly set status
             };
             user.attendanceRecords.push(attendanceRecord);
         } else {
@@ -33,20 +34,10 @@ class AttendanceService {
             if (!attendanceRecord.loginTime) {
                 attendanceRecord.loginTime = loginTime;
             }
-            // Reset logout time and total hours for a new session in the same day (re-login)
-            // Note: This logic assumes re-login means "continuing" or "restarting" without closing the previous gap properly if it wasn't logged out.
-            // However, usually we want to keep the FIRST login time of the day? 
-            // The original code was:
-            // if (!attendanceRecord.loginTime) attendanceRecord.loginTime = loginTime;
-            // attendanceRecord.logoutTime = null;
-            // attendanceRecord.totalHours = 0;
-
-            // We will match original behavior: reset logout/hours on re-login
+            // Reset logout time and total hours for a new session
             attendanceRecord.logoutTime = null;
-            // Re-calculating total hours usually requires summing up sessions. 
-            // The current simple implementation seems to assume one long session or just tracking "last active".
-            // We will stick to the existing logic to avoid breaking business rules:
             attendanceRecord.totalHours = 0;
+            attendanceRecord.status = 'logged-in'; // Explicitly update status
         }
 
         user.loginStatus = "active";

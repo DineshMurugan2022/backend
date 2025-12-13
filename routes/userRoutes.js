@@ -243,8 +243,9 @@ router.post('/reset-status', async (req, res) => {
 // @access  Private (admin only)
 router.get('/all', auth, async (req, res) => {
   try {
-    // Check if user is admin or team leader
-    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'team leader') {
+    // Check if user is admin or team leader (Normalized)
+    const userRole = req.user.userGroup?.toLowerCase().trim();
+    if (userRole !== 'admin' && userRole !== 'team leader' && userRole !== 'teamleader') {
       return res.status(403).json({ message: 'Only admins and team leaders can access this endpoint' });
     }
 
