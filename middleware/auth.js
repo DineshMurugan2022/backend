@@ -24,13 +24,16 @@ const auth = async (req, res, next) => {
     req.user = user;
     next();
   } catch (err) {
-    console.error('Auth middleware error:', err);
-    if (err.name === 'JsonWebTokenError') {
-      return res.status(401).json({ message: 'Token is not valid' });
-    }
     if (err.name === 'TokenExpiredError') {
+      console.warn('Auth middleware: Token has expired');
       return res.status(401).json({ message: 'Token has expired' });
     }
+    if (err.name === 'JsonWebTokenError') {
+      console.warn('Auth middleware: Invalid token');
+      return res.status(401).json({ message: 'Token is not valid' });
+    }
+
+    console.error('Auth middleware error:', err);
     res.status(500).json({ message: 'Server error' });
   }
 };
