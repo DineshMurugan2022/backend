@@ -168,8 +168,9 @@ app.use("/api", proxyRouter);
 // Error Handling Middleware
 app.use(errorHandler);
 
-// Serve uploads directory
+// Serve uploads directory (both at root and under /api for compatibility)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Serve static files from frontend/dist (if available)
 const frontendPath = path.join(__dirname, "../frontend/dist");
