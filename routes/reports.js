@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Report = require('../models/Report');
+const User = require('../models/User');
 const auth = require('../middleware/auth');
 
 // Get reports
@@ -29,11 +30,29 @@ router.get('/', auth, async (req, res) => {
 // Create a new report
 router.post('/', auth, async (req, res) => {
     try {
-        const { date, items } = req.body;
+        const { date, items, targetUserId } = req.body;
+        const userGroup = req.user.userGroup.toLowerCase().trim();
+        const isAdminOrLeader = userGroup === 'admin' || userGroup === 'teamleader' || userGroup === 'team leader';
+
+        let targetUser = req.user;
+        let createdBy = req.user._id;
+        let createdByName = req.user.name || req.user.username;
+
+        // If admin/leader and targetUserId is provided, fetch that user
+        if (isAdminOrLeader && targetUserId) {
+            const User = require('../models/User'); // Weak dependency load if not at top
+            const foundUser = await User.findById(targetUserId);
+            if (foundUser) {
+                targetUser = foundUser;
+            }
+        }
 
         const report = new Report({
-            user: req.user._id,
-            userName: req.user.name || req.user.username,
+            user: targetUser._id,
+            userName: targetUser.name || targetUser.username,
+            userUsername: targetUser.username,
+            createdBy: createdBy,
+            createdByName: createdByName,
             date: date || new Date(),
             items: items || []
         });

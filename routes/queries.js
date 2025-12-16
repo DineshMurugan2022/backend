@@ -6,9 +6,10 @@ const auth = require('../middleware/auth');
 // Get all queries
 router.get('/', auth, async (req, res) => {
   try {
-    console.log('Fetching queries for user:', req.user.username, req.user.userGroup);
-    const queries = await Query.find().sort({ createdAt: -1 });
-    console.log('Found queries:', queries.length);
+    const queries = await Query.find()
+      .populate('createdBy', 'name username')
+      .sort({ createdAt: -1 });
+
     res.json(queries);
   } catch (err) {
     console.error('Error fetching queries:', err);
@@ -19,9 +20,13 @@ router.get('/', auth, async (req, res) => {
 // Add a new query
 router.post('/', auth, async (req, res) => {
   try {
-    const query = new Query(req.body);
-    await query.save();
-    res.status(201).json(query);
+    const query = new Query({
+      ...req.body,
+      createdBy: req.user._id // Assign creator
+    });
+    const savedQuery = await query.save();
+    const populatedQuery = await savedQuery.populate('createdBy', 'name username');
+    res.status(201).json(populatedQuery);
   } catch (err) {
     console.error('Error adding query:', err);
     res.status(400).json({ error: err.message });

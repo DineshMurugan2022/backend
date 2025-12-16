@@ -8,6 +8,7 @@ const querySchema = new mongoose.Schema({
   assignedTo: { type: String, default: '' }, // tech team username
   daysToComplete: { type: String, default: '' },
   status: { type: String, enum: ['Open', 'In Progress', 'Resolved'], default: 'Open' },
+  createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' } // Track who created the query
 }, { timestamps: true });
 
 // Add indexes for better performance
