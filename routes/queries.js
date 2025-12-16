@@ -41,7 +41,7 @@ router.patch('/:id/assign', auth, async (req, res) => {
       req.params.id,
       { assignedTo },
       { new: true, runValidators: true }
-    );
+    ).populate('createdBy', 'name username');
 
     if (!query) {
       return res.status(404).json({ error: 'Query not found' });
@@ -62,7 +62,7 @@ router.patch('/:id/days', auth, async (req, res) => {
       req.params.id,
       { daysToComplete },
       { new: true, runValidators: true }
-    );
+    ).populate('createdBy', 'name username');
 
     if (!query) {
       return res.status(404).json({ error: 'Query not found' });
@@ -82,7 +82,7 @@ router.put('/:id', auth, async (req, res) => {
       req.params.id,
       req.body,
       { new: true, runValidators: true }
-    );
+    ).populate('createdBy', 'name username');
 
     if (!query) {
       return res.status(404).json({ error: 'Query not found' });
@@ -103,7 +103,7 @@ router.patch('/:id/status', auth, async (req, res) => {
       req.params.id,
       { status },
       { new: true, runValidators: true }
-    );
+    ).populate('createdBy', 'name username');
 
     if (!query) {
       return res.status(404).json({ error: 'Query not found' });
