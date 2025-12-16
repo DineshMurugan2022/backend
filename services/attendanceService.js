@@ -26,7 +26,7 @@ class AttendanceService {
                 loginTime: loginTime,
                 logoutTime: null,
                 totalHours: 0,
-                status: 'logged-in' // Explicitly set status
+                status: 'present' // Set status to present immediately
             };
             user.attendanceRecords.push(attendanceRecord);
         } else {
@@ -37,7 +37,7 @@ class AttendanceService {
             // Reset logout time and total hours for a new session
             attendanceRecord.logoutTime = null;
             attendanceRecord.totalHours = 0;
-            attendanceRecord.status = 'logged-in'; // Explicitly update status
+            attendanceRecord.status = 'present'; // Set status to present immediately
         }
 
         user.loginStatus = "active";
