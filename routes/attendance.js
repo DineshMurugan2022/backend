@@ -314,15 +314,24 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
         const record = userAttendanceMap[dateKey];
 
         if (record) {
-          // Use stored status if available, BUT override 'absent' if login exists
-          let status = record.status || 'absent';
-
-          // Override absent default if user actually logged in
-          if (status === 'absent' && (record.loginTime || (record.totalHours > 0 && record.totalHours < 8))) {
-            // If they have login time, treat as Present/Logged-In for report
-            if (record.loginTime) status = 'present';
-            // Note: We removed the auto 8-hour rule, so only manual leaves/permissions or actual logins count
+          // 1. CRITICAL: Manual 'absent' overrides everything
+          if (record.status === 'absent') {
+            userRow.push('A');
+            absentCount++;
+            return; // Skip rest of logic
           }
+
+          // 2. Determine status based on explicit status or timestamps
+          let status = record.status;
+
+          // If no explicit status, but loginTime exists, treat as present
+          if (!status && record.loginTime) {
+            status = 'present';
+          }
+
+          // Default to absent if nothing else matches
+          if (!status) status = 'absent';
+
 
           switch (status) {
             case 'present':
@@ -332,11 +341,13 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
               break;
             case 'leave':
               userRow.push('L'); // Leave
-              presentCount++; // Count leave as present for summary purposes
+              // Note: Leave counts as Present for "Total Present" summary based on previous logic? 
+              // Re-reading frontend: "Leave and Permission count towards Total Present" (from Legend)
+              presentCount++;
               break;
             case 'permission':
-              userRow.push('P'); // Permission (using P for now)
-              presentCount++; // Count permission as present for summary purposes
+              userRow.push('P'); // Permission
+              presentCount++;
               break;
             case 'absent':
             default:
