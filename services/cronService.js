@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Attendance = require('../models/Attendance');
 const attendanceService = require('./attendanceService');
 
 class CronService {
@@ -28,34 +29,51 @@ class CronService {
             if (hour >= 23 || hour < 4) {
                 console.log(`[Cron] Running Nightly Auto-Logout check at ${now.toLocaleTimeString()}`);
 
-                // Find users who are still logged in (loginStatus: 'active')
-                // OR have a loginTime but no logoutTime
-                const activeUsers = await User.find({
-                    $or: [
-                        { loginStatus: 'active' },
-                        { loginStatus: 'inactive', 'attendanceRecords.loginTime': { $exists: true }, 'attendanceRecords.logoutTime': null }
-                    ]
+                // Find users who are logged in (loginStatus: 'active')
+                const activeUsers = await User.find({ loginStatus: 'active' });
+
+                // Also find open attendance records (safety net) where logoutTime is null
+                // We limit to records from the last 48 hours to avoid touching ancient history
+                const twoDaysAgo = new Date();
+                twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
+
+                const openAttendances = await Attendance.find({
+                    logoutTime: null,
+                    date: { $gte: twoDaysAgo }
+                }).populate('user');
+
+                // Merge the lists (unique users)
+                const usersMap = new Map();
+
+                activeUsers.forEach(u => usersMap.set(u._id.toString(), u));
+                openAttendances.forEach(a => {
+                    if (a.user) {
+                        usersMap.set(a.user._id.toString(), a.user);
+                    }
                 });
 
-                if (activeUsers.length > 0) {
-                    console.log(`[Cron] Found ${activeUsers.length} users to auto-logout.`);
+                if (usersMap.size > 0) {
+                    console.log(`[Cron] Found ${usersMap.size} users/sessions to auto-logout.`);
 
-                    for (const user of activeUsers) {
+                    for (const user of usersMap.values()) {
                         try {
-                            // Determine the auto-logout time (e.g., 10 PM of the day they logged in)
-                            // For simplicity, we'll use the current time if it's clearly a "forgot" scenario,
-                            // OR we could retroactively set it to 10 PM of the previous day if we are running at 1 AM.
-
-                            // Let's set it to 10 PM (22:00) of the SAME day as the login if possible,
-                            // or 10 PM of yesterday if running in the early morning.
-
+                            // Determine the auto-logout time
                             let logoutTime = new Date(); // default now
 
-                            // If user logged in today and it's 11 PM, logout time = 22:00 Today
-                            // If user logged in yesterday and it's 1 AM, logout time = 22:00 Yesterday
+                            // Use loginTime from user or try to find it from attendance
+                            // We will just use the logic of "10 PM of the login day"
 
-                            if (user.loginTime) {
-                                const loginDate = new Date(user.loginTime);
+                            // If user has a loginTime property set
+                            let loginRefTime = user.loginTime;
+
+                            // If not valid on user, try to finding the open attendance record for this user
+                            if (!loginRefTime) {
+                                const userAtt = openAttendances.find(a => a.user._id.toString() === user._id.toString());
+                                if (userAtt) loginRefTime = userAtt.loginTime;
+                            }
+
+                            if (loginRefTime) {
+                                const loginDate = new Date(loginRefTime);
                                 const targetLogout = new Date(loginDate);
                                 targetLogout.setHours(22, 0, 0, 0); // Set to 10 PM
 
@@ -74,7 +92,7 @@ class CronService {
                             await attendanceService.recordLogout(user, logoutTime);
 
                         } catch (err) {
-                            console.error(`[Cron] Error logging out ${user.username}:`, err);
+                            console.error(`[Cron] Error logging out ${user.username || 'unknown'}:`, err);
                         }
                     }
                 } else {

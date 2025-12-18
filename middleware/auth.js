@@ -11,7 +11,10 @@ const auth = async (req, res, next) => {
     }
 
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your_jwt_secret');
+    if (!process.env.JWT_SECRET) {
+      throw new Error('FATAL: JWT_SECRET is not defined in environment variables.');
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     // Find user by ID from token
     const user = await User.findById(decoded.id || decoded.userId);

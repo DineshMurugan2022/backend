@@ -15,14 +15,8 @@ const userSchema = new mongoose.Schema({
   accuracy: { type: Number, default: null }, // Add accuracy field for location tracking
   lastUpdate: { type: Date, default: null }, // Add lastUpdate field for tracking BDM activity
   deleted: { type: Boolean, default: false }, // Add deleted flag for soft delete
-  attendanceRecords: [{ 
-    date: { type: Date, required: true },
-    loginTime: { type: Date },
-    logoutTime: { type: Date },
-    totalHours: { type: Number, default: 0 },
-    status: { type: String, default: 'absent' } // Store the actual status (present, absent, leave, permission)
-  }], // Track detailed attendance records
-  
+  // attendanceRecords removed - using separate Attendance model
+
   refreshToken: { type: String } // Store refresh token for session management
 });
 
