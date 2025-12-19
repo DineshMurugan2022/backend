@@ -90,17 +90,18 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
     }
 
     // Parse date safely
-    // Force set to noon to avoid timezone shift to previous day
-    const attendanceDate = new Date(date);
+    // Parse date explicitly to avoid timezone issues
+    const [yyyy, mm, dd] = date.split('-').map(Number);
+    // Store as Noon UTC to safely fall within the day regardless of minor shifts
+    const attendanceDate = new Date(Date.UTC(yyyy, mm - 1, dd, 12, 0, 0, 0));
+
     if (isNaN(attendanceDate.getTime())) {
       return res.status(400).json({ error: 'Invalid date format' });
     }
 
-    // Normalize to start of day in local time sense (store as noon UTC to be safe, or just 00:00)
-    // Here we stick to 00:00 but careful with query ranges
-    attendanceDate.setHours(0, 0, 0, 0);
-
-    const startOfDay = new Date(attendanceDate);
+    // Define UTC start/end for query
+    const startOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 0, 0, 0, 0));
+    const endOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 23, 59, 59, 999));
     const endOfDay = new Date(attendanceDate);
     endOfDay.setHours(23, 59, 59, 999);
 
