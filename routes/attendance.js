@@ -167,13 +167,9 @@ router.get('/:year/:month', auth, async (req, res) => {
       return res.status(400).json({ error: 'Invalid year or month' });
     }
 
-    // Create date range for the month
-    // Use strict boundaries
-    const startDate = new Date(yearNum, monthNum - 1, 1);
-    startDate.setHours(0, 0, 0, 0);
-
-    const endDate = new Date(yearNum, monthNum, 0); // Last day of month
-    endDate.setHours(23, 59, 59, 999);
+    // Create date range for the month using UTC
+    const startDate = new Date(Date.UTC(yearNum, monthNum - 1, 1, 0, 0, 0));
+    const endDate = new Date(Date.UTC(yearNum, monthNum, 0, 23, 59, 59, 999));
 
     // Get all users (lightweight query)
     // const allUsers = await User.find().select('username userGroup').lean(); 
