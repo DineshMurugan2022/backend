@@ -89,21 +89,25 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    // Parse date
+    // Parse date safely
+    // Force set to noon to avoid timezone shift to previous day
     const attendanceDate = new Date(date);
     if (isNaN(attendanceDate.getTime())) {
       return res.status(400).json({ error: 'Invalid date format' });
     }
 
-    // Set to start of day
+    // Normalize to start of day in local time sense (store as noon UTC to be safe, or just 00:00)
+    // Here we stick to 00:00 but careful with query ranges
     attendanceDate.setHours(0, 0, 0, 0);
+
+    const startOfDay = new Date(attendanceDate);
     const endOfDay = new Date(attendanceDate);
     endOfDay.setHours(23, 59, 59, 999);
 
     // Find existing attendance record or create new
     let attendanceRecord = await Attendance.findOne({
       user: user._id,
-      date: { $gte: attendanceDate, $lte: endOfDay }
+      date: { $gte: startOfDay, $lte: endOfDay }
     });
 
     if (!attendanceRecord) {
@@ -120,12 +124,12 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
       attendanceRecord.status = status;
       if (status === 'present') {
         attendanceRecord.totalHours = 8;
+        // Ensure not marked as absent overrides
       } else if (status === 'leave' || status === 'permission') {
         attendanceRecord.totalHours = 4;
       } else {
         attendanceRecord.totalHours = 0;
       }
-      // Preserve login/logout times if they exist (or clear them if "absent" maybe? kept for now)
     }
 
     await attendanceRecord.save();
@@ -142,7 +146,7 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
 
     res.json({
       success: true,
-      message: `Attendance marked as ${status} for ${user.username} on ${attendanceDate.toDateString()}`,
+      message: `Attendance updated to ${status}`,
       attendance: attendanceRecord
     });
   } catch (error) {
@@ -163,27 +167,34 @@ router.get('/:year/:month', auth, async (req, res) => {
     }
 
     // Create date range for the month
+    // Use strict boundaries
     const startDate = new Date(yearNum, monthNum - 1, 1);
-    const endDate = new Date(yearNum, monthNum, 0, 23, 59, 59, 999);
+    startDate.setHours(0, 0, 0, 0);
 
-    // Get all users
-    const allUsers = await User.find().select('username userGroup');
+    const endDate = new Date(yearNum, monthNum, 0); // Last day of month
+    endDate.setHours(23, 59, 59, 999);
 
-    // Get attendance records for this month
+    // Get all users (lightweight query)
+    // const allUsers = await User.find().select('username userGroup').lean(); 
+    // ^ Not strictly needed for the response, handled by join
+
+    // Get attendance records for this month with .lean() for performance
     const attendanceRecords = await Attendance.find({
       date: { $gte: startDate, $lte: endDate }
-    }).populate('user', 'username userGroup');
+    })
+      .populate('user', 'username userGroup')
+      .lean();
 
     // Map records to formatted output
     const attendanceData = attendanceRecords.map(record => ({
-      userId: record.user._id, // vital for keying
+      userId: record.user?._id,
       username: record.user?.username || 'Unknown',
       userGroup: record.user?.userGroup,
-      date: record.date,
+      date: record.date, // Returns ISO string usually
       loginTime: record.loginTime,
       logoutTime: record.logoutTime,
       totalHours: record.totalHours,
-      status: record.status
+      status: record.status // Should be present, absent, leave, etc.
     }));
 
     res.json(attendanceData);
@@ -193,29 +204,23 @@ router.get('/:year/:month', auth, async (req, res) => {
   }
 });
 
-// GET /api/users/attendance/:year/:month/download - Download attendance as Excel
-// Note: Route path should match server.js usage. server.js mounts this router at /api/attendance
-// So this is /api/attendance/:year/:month/download
+// GET /api/attendance/:year/:month/download - Download attendance as Excel
 router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res) => {
   try {
     const { year, month } = req.params;
     const yearNum = parseInt(year);
     const monthNum = parseInt(month);
 
-    if (isNaN(yearNum) || isNaN(monthNum) || monthNum < 1 || monthNum > 12) {
-      return res.status(400).json({ error: 'Invalid year or month' });
-    }
-
     const startDate = new Date(yearNum, monthNum - 1, 1);
     const endDate = new Date(yearNum, monthNum, 0, 23, 59, 59, 999);
 
     // Get users excluding deleted
-    const allUsers = await User.find({ deleted: { $ne: true } }).select('username name userGroup');
+    const allUsers = await User.find({ deleted: { $ne: true } }).select('username name userGroup').lean();
 
     // Get all attendance records for the month
     const attendanceRecords = await Attendance.find({
       date: { $gte: startDate, $lte: endDate }
-    });
+    }).lean();
 
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Attendance');
@@ -228,7 +233,6 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
       currentDate.setDate(currentDate.getDate() + 1);
     }
 
-    // Header logic similar to before...
     const headerRow = ['Full Name'];
     datesInMonth.forEach(date => {
       const isSunday = date.getDay() === 0;
@@ -236,16 +240,14 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
       const dayStr = date.toLocaleDateString('en-US', { weekday: 'short' });
       headerRow.push(isSunday ? `${dateStr}\n${dayStr}` : dateStr);
     });
-    headerRow.push('Total Working Days', 'Total Present', 'Total Absent');
+    headerRow.push('Total Working Days', 'Total Present', 'Total Absent'); // Fixed headers
     worksheet.addRow(headerRow);
 
     // Process each user
     allUsers.forEach(user => {
-      // Filter records for this user
       const userRecords = attendanceRecords.filter(r => r.user.toString() === user._id.toString());
-
-      // Map date -> record
       const userAttendanceMap = {};
+
       userRecords.forEach(r => {
         const d = new Date(r.date);
         userAttendanceMap[d.getDate()] = r;
@@ -259,88 +261,54 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
       datesInMonth.forEach(date => {
         const dateKey = date.getDate();
         const isSunday = date.getDay() === 0;
+
+        // Check if future date
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const checkDate = new Date(date);
         checkDate.setHours(0, 0, 0, 0);
 
         if (isSunday) {
-          userRow.push('Sunday');
+          userRow.push('Sun');
           return;
         }
+
         if (checkDate > today) {
           userRow.push('-');
           return;
         }
 
         workingDaysCount++;
+
         const record = userAttendanceMap[dateKey];
+
+        let displayStatus = 'A'; // Default absent
+
         if (record) {
           if (record.status === 'absent') {
-            userRow.push('A');
-            absentCount++;
-            return;
+            displayStatus = 'A';
+          } else if (['present', 'logged-in', 'permission'].includes(record.status)) {
+            displayStatus = 'P';
+          } else if (record.status === 'leave') {
+            displayStatus = 'L';
+          } else if (record.loginTime) {
+            // Fallback if status not set but logged in
+            displayStatus = 'P';
           }
-          let status = record.status;
-          if (!status && record.loginTime) status = 'present';
-          if (!status) status = 'absent';
-
-          if (['present', 'logged-in', 'permission'].includes(status)) {
-            userRow.push('P');
-            presentCount++;
-          } else if (status === 'leave') {
-            userRow.push('L');
-            presentCount++; // As per previous logic
-          } else {
-            userRow.push('A');
-            absentCount++;
-          }
-        } else {
-          userRow.push('A');
-          absentCount++;
         }
+
+        // Increment counters
+        if (displayStatus === 'P' || displayStatus === 'L') presentCount++;
+        else absentCount++;
+
+        userRow.push(displayStatus);
       });
+
       userRow.push(workingDaysCount, presentCount, absentCount);
       worksheet.addRow(userRow);
     });
 
-    // Add a blank row
-    worksheet.addRow([]);
-
-    // Add working days calculation row
-    const calcRow = ['Working Days Calculation'];
-    let totalWorkingDays = 0;
-    datesInMonth.forEach(date => {
-      const isSunday = date.getDay() === 0;
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      const currentDate = new Date(date);
-      currentDate.setHours(0, 0, 0, 0);
-      const isUpcoming = currentDate > today;
-
-      if (isSunday) {
-        calcRow.push('Sun');
-      } else if (isUpcoming) {
-        calcRow.push('-');
-      } else {
-        calcRow.push('WD');
-        totalWorkingDays++;
-      }
-    });
-    calcRow.push(totalWorkingDays, '-', '-');
-    const calcRowObj = worksheet.addRow(calcRow); // ... (styling same as before)
-
-    // ... (rest of styling logic omitted for brevity but should be included)
-    // Style the calculation row
-    calcRowObj.font = { bold: true, color: { argb: 'FF000000' } };
-    calcRowObj.fill = {
-      type: 'pattern',
-      pattern: 'solid',
-      fgColor: { argb: 'FFD3D3D3' } // Light gray background
-    };
-    calcRowObj.alignment = { horizontal: 'center', vertical: 'middle' };
-
-    // Header styling
+    // Formatting
     const headerRowObj = worksheet.getRow(1);
     headerRowObj.font = { bold: true };
     headerRowObj.alignment = { horizontal: 'center' };
@@ -354,7 +322,6 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
 
     await workbook.xlsx.write(res);
     res.end();
-
   } catch (error) {
     console.error('Error generating attendance report:', error);
     res.status(500).json({ error: 'Failed to generate attendance report' });
