@@ -60,7 +60,7 @@ const corsOptions = {
     // List of allowed origins from environment variable
     const allowedOrigins = process.env.CORS_ORIGIN
       ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
-      : ["http://localhost:5173", "http://localhost:3000", "https://nothing-nine-neon.vercel.app", "https://frontend-eosin-zeta-66.vercel.app"];
+      : ["http://localhost:5173", "http://localhost:3000", "https://nothing-nine-neon.vercel.app", "https://frontend-eosin-zeta-66.vercel.app", "https://bnycrm1.vercel.app"];
 
     // Check if the origin is in our allowed list
     if (allowedOrigins.includes(origin)) {
