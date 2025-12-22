@@ -102,8 +102,7 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
     // Define UTC start/end for query
     const startOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 0, 0, 0, 0));
     const endOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 23, 59, 59, 999));
-    const endOfDay = new Date(attendanceDate);
-    endOfDay.setHours(23, 59, 59, 999);
+
 
     // Find existing attendance record or create new
     let attendanceRecord = await Attendance.findOne({
