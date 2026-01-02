@@ -6,7 +6,9 @@ const { getModemStatus } = require('../services/modem');
 const { SerialPort } = require('serialport');
 const audioBridge = require('../services/audioBridge');
 const usbHeadsetBridge = require('../services/usbHeadsetBridge');
-const simpleUSBBridge = require('../services/simpleUSBHeadsetBridge');
+const huaweiAudioBridge = require("../services/huaweiAudioBridge");
+const huaweiE173Audio = require("../services/huaweiE173Audio"); // Use specialized E173 audio service
+const simpleUSBBridge = require("../services/simpleUSBHeadsetBridge"); // Fix reference error
 const auth = require('../middleware/auth'); // Import auth middleware
 
 // Middleware to validate request body
@@ -98,26 +100,39 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
-// POST /api/calls/make - Make a call using SIM800
+// POST /api/calls/make - Make a call using Huawei E173 modem
 router.post('/make', auth, async (req, res) => {
   try {
     const { phoneNumber, personName, companyName } = req.body;
-    
+
+    // Validate inputs
     if (!phoneNumber || !personName || !companyName) {
       return res.status(400).json({ error: 'phoneNumber, personName, and companyName are required' });
     }
-    
+
+    // Basic format check
     if (!/^\+\d{10,15}$/.test(phoneNumber)) {
       return res.status(400).json({ error: 'Invalid phone number format. Use international format (e.g., +12345678901)' });
     }
-    
-    const result = await makeCall({ 
-      to: phoneNumber, 
-      personName, 
-      companyName 
+
+    // Call Huawei Modem Service
+    const result = await makeCall({ to: phoneNumber, personName, companyName });
+
+    // Create Call Log in DB
+    const log = new CallLog({
+      phoneNumber,
+      personName,
+      companyName,
+      callTime: new Date(),
+      userId: req.user.id, // Track the user
+      sid: result.callSid,
+      status: 'initiated',
+      duration: 0
     });
-    
-    res.json({ success: true, message: 'Call initiated successfully', callSid: result.callSid });
+
+    await log.save();
+
+    res.json({ success: true, message: 'Call initiated successfully through Huawei modem', callSid: result.callSid });
   } catch (error) {
     console.error('Failed to make call:', error);
     res.status(500).json({ error: 'Failed to make call', details: error.message });
@@ -128,13 +143,13 @@ router.post('/make', auth, async (req, res) => {
 router.post('/hangup', auth, async (req, res) => {
   try {
     const { callSid } = req.body;
-    
+
     if (!callSid) {
       return res.status(400).json({ error: 'callSid is required' });
     }
-    
+
     await hangupCall(callSid);
-    
+
     res.json({ success: true, message: 'Call hung up successfully' });
   } catch (error) {
     console.error('Failed to hang up call:', error);
@@ -158,9 +173,9 @@ router.get('/test-ports', auth, async (req, res) => {
       vendorId: port.vendorId,
       productId: port.productId
     }));
-    
-    res.json({ 
-      success: true, 
+
+    res.json({
+      success: true,
       availablePorts,
       message: `Found ${availablePorts.length} serial ports`
     });
@@ -175,9 +190,9 @@ router.post('/audio-notification', auth, (req, res) => {
   try {
     // This endpoint can be used to trigger computer audio notifications
     // For example: "Call connected, use your USB headset for communication"
-    
-    res.json({ 
-      success: true, 
+
+    res.json({
+      success: true,
       message: 'Audio notification sent',
       audioInstructions: {
         usbHeadset: 'Connect Logitech USB headset to computer',
@@ -191,6 +206,55 @@ router.post('/audio-notification', auth, (req, res) => {
     res.status(500).json({ error: 'Failed to send audio notification', details: error.message });
   }
 });
+
+// --- HUAWEI SPECIFIC ROUTES (Matching Frontend Call.jsx) ---
+
+// GET /api/calls/huawei-audio-status - Get Huawei audio status
+router.get('/huawei-audio-status', auth, (req, res) => {
+  try {
+    const status = huaweiE173Audio.getStatus();
+    res.json(status);
+  } catch (error) {
+    console.error('Huawei audio status error:', error);
+    res.status(500).json({ error: 'Failed to get Huawei audio status', details: error.message });
+  }
+});
+
+// POST /api/calls/setup-huawei-audio - Setup Huawei audio routing
+router.post('/setup-huawei-audio', auth, async (req, res) => {
+  try {
+    // Note: In some versions frontend might not pass phoneNumber here, using a dummy or latest if needed
+    const result = await huaweiE173Audio.activateCallAudio(req.body.phoneNumber || "Current Call");
+    res.json(result);
+  } catch (error) {
+    console.error('Huawei audio setup error:', error);
+    res.status(500).json({ error: 'Failed to setup Huawei audio', details: error.message });
+  }
+});
+
+// POST /api/calls/test-huawei-audio - Test Huawei audio bridge
+router.post('/test-huawei-audio', auth, async (req, res) => {
+  try {
+    const result = await huaweiE173Audio.testBridge();
+    res.json(result);
+  } catch (error) {
+    console.error('Huawei audio test error:', error);
+    res.status(500).json({ error: 'Failed to test Huawei audio', details: error.message });
+  }
+});
+
+// POST /api/calls/setup-usb-audio - Setup USB headset audio (called after makeCall)
+router.post('/setup-usb-audio', auth, async (req, res) => {
+  try {
+    const result = await huaweiE173Audio.activateCallAudio("USB Audio Setup");
+    res.json(result);
+  } catch (error) {
+    console.error('USB audio setup error:', error);
+    res.status(500).json({ error: 'Failed to setup USB audio', details: error.message });
+  }
+});
+
+// --- LEGACY/GENERAL ROUTES ---
 
 // GET /api/calls/audio-status - Get audio bridge status
 router.get('/audio-status', auth, (req, res) => {
@@ -290,9 +354,9 @@ router.post('/test-simple-usb', auth, async (req, res) => {
 router.post('/test-ringtone', auth, async (req, res) => {
   try {
     simpleUSBBridge.testRingtone();
-    res.json({ 
-      success: true, 
-      message: 'Ringtone test started - should play for 5 seconds through USB headset' 
+    res.json({
+      success: true,
+      message: 'Ringtone test started - should play for 5 seconds through USB headset'
     });
   } catch (error) {
     console.error('Ringtone test error:', error);

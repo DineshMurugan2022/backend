@@ -155,6 +155,65 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
   }
 });
 
+// GET /api/attendance/range - Get attendance data for a specific date range
+router.get('/range', auth, async (req, res) => {
+  try {
+    const { start, end } = req.query;
+    if (!start || !end) {
+      return res.status(400).json({ error: 'Start and end dates are required' });
+    }
+
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    endDate.setHours(23, 59, 59, 999);
+
+    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+      return res.status(400).json({ error: 'Invalid date format' });
+    }
+
+    // Get attendance records for this range
+    const attendanceRecords = await Attendance.find({
+      date: { $gte: startDate, $lte: endDate }
+    })
+      .populate('user', 'username name userGroup createdAt')
+      .sort({ date: 1 })
+      .lean();
+
+    // Helper to format date as YYYY-MM-DD regardless of TZ
+    const toYMD = (d) => {
+      const date = new Date(d);
+      // We want to extract the date as it was intended (at midday to avoid day jumps)
+      // Actually, safest is to use the local components of the date object
+      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    };
+
+    // Map records to formatted output
+    const attendanceData = attendanceRecords.map(record => {
+      const userDoc = record.user || {};
+      const uId = userDoc._id || record.user; // fallback to raw ID if not populated
+
+      return {
+        userId: uId ? String(uId) : null,
+        username: userDoc.username || 'Unknown',
+        name: userDoc.name,
+        userGroup: userDoc.userGroup,
+        userCreatedAt: userDoc.createdAt,
+        date: record.date,
+        dateStr: toYMD(record.date),
+        loginTime: record.loginTime,
+        logoutTime: record.logoutTime,
+        totalHours: record.totalHours,
+        status: record.status
+      };
+    });
+
+    res.json(attendanceData);
+  } catch (error) {
+    console.error('Error fetching attendance range:', error);
+    res.status(500).json({ error: 'Failed to fetch attendance data' });
+  }
+});
+
 // GET /api/attendance/:year/:month - Get attendance data for a specific month
 router.get('/:year/:month', auth, async (req, res) => {
   try {
@@ -181,17 +240,29 @@ router.get('/:year/:month', auth, async (req, res) => {
       .populate('user', 'username userGroup')
       .lean();
 
+    // Helper to format date as YYYY-M-D
+    const toYMD = (d) => {
+      const date = new Date(d);
+      return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    };
+
     // Map records to formatted output
-    const attendanceData = attendanceRecords.map(record => ({
-      userId: record.user?._id,
-      username: record.user?.username || 'Unknown',
-      userGroup: record.user?.userGroup,
-      date: record.date, // Returns ISO string usually
-      loginTime: record.loginTime,
-      logoutTime: record.logoutTime,
-      totalHours: record.totalHours,
-      status: record.status // Should be present, absent, leave, etc.
-    }));
+    const attendanceData = attendanceRecords.map(record => {
+      const userDoc = record.user || {};
+      const uId = userDoc._id || record.user;
+
+      return {
+        userId: uId ? String(uId) : null,
+        username: userDoc.username || 'Unknown',
+        userGroup: userDoc.userGroup,
+        date: record.date,
+        dateStr: toYMD(record.date),
+        loginTime: record.loginTime,
+        logoutTime: record.logoutTime,
+        totalHours: record.totalHours,
+        status: record.status
+      };
+    });
 
     res.json(attendanceData);
   } catch (error) {

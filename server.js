@@ -40,7 +40,12 @@ const io = new Server(server, {
   upgrade: true,
   allowEIO3: true,
   pingTimeout: 60000,
-  pingInterval: 25000
+  pingInterval: 25000,
+  reconnection: true,
+  reconnectionAttempts: 5,
+  reconnectionDelay: 1000,
+  maxHttpBufferSize: 1e8,
+  compression: true
 });
 
 // Initialize Socket.IO handlers
@@ -194,6 +199,10 @@ if (fs.existsSync(frontendPath)) {
 }
 
 const cronService = require("./services/cronService");
+
+// Initialize Huawei E173 Modem
+const { connectHuaweiE173 } = require("./services/modem");
+connectHuaweiE173(io);
 
 // ----------------- CRON JOBS -----------------
 // Initialize Auto-Logout Job (Runs check immediately and then hourly)

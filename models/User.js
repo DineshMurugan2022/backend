@@ -18,6 +18,6 @@ const userSchema = new mongoose.Schema({
   // attendanceRecords removed - using separate Attendance model
 
   refreshToken: { type: String } // Store refresh token for session management
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model("User", userSchema);
