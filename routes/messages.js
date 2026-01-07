@@ -28,8 +28,8 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
 });
 
-// Get conversation between two users
-router.get('/conversation/:userId', auth, async (req, res) => {
+// Get conversation between two users (simplified for new chat)
+router.get('/:userId', auth, async (req, res) => {
   try {
     const { userId } = req.params;
     const currentUserId = req.user.id;
@@ -49,6 +49,44 @@ router.get('/conversation/:userId', auth, async (req, res) => {
     })
       .populate('sender', 'username name')
       .populate('recipient', 'username name')
+      .sort({ timestamp: 1 })
+      .limit(100); // Limit to last 100 messages
+
+    // Transform to match frontend format
+    const formattedMessages = messages.map(msg => ({
+      _id: msg._id,
+      from: msg.sender._id.toString(),
+      to: msg.recipient._id.toString(),
+      message: msg.content,
+      timestamp: msg.timestamp
+    }));
+
+    res.json(formattedMessages);
+  } catch (error) {
+    console.error('Error fetching messages:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Keep the old route for backwards compatibility
+router.get('/conversation/:userId', auth, async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const currentUserId = req.user.id;
+
+    const userExists = await User.findById(userId);
+    if (!userExists) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const messages = await Message.find({
+      $or: [
+        { sender: currentUserId, recipient: userId },
+        { sender: userId, recipient: currentUserId }
+      ]
+    })
+      .populate('sender', 'username name')
+      .populate('recipient', 'username name')
       .sort({ timestamp: 1 });
 
     res.json(messages);
@@ -58,7 +96,57 @@ router.get('/conversation/:userId', auth, async (req, res) => {
   }
 });
 
-// Send a new message (with optional file)
+// Send a new message (simplified for new chat)
+router.post('/', auth, async (req, res) => {
+  try {
+    const { to, message } = req.body;
+    const from = req.user.id;
+
+    // Validate recipient exists
+    const recipient = await User.findById(to);
+    if (!recipient) {
+      return res.status(404).json({ error: 'Recipient not found' });
+    }
+
+    // Validate message content
+    if (!message || message.trim() === '') {
+      return res.status(400).json({ error: 'Message content is required' });
+    }
+
+    // Create new message
+    const newMessage = new Message({
+      sender: from,
+      recipient: to,
+      content: message,
+      timestamp: new Date()
+    });
+
+    await newMessage.save();
+
+    // Populate sender and recipient info
+    await newMessage.populate('sender', 'username name');
+    await newMessage.populate('recipient', 'username name');
+
+    // Emit message to recipient via Socket.IO
+    const io = getIOInstance();
+    if (io) {
+      io.to(`user_${to}`).emit('chat:message', {
+        _id: newMessage._id,
+        from,
+        to,
+        message,
+        timestamp: newMessage.timestamp
+      });
+    }
+
+    res.status(201).json(newMessage);
+  } catch (error) {
+    console.error('Error sending message:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Send a new message (with optional file) - keep for backwards compatibility
 router.post('/send', auth, upload.single('file'), async (req, res) => {
   try {
     const { recipientId, content, messageType = 'text' } = req.body;

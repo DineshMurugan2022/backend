@@ -6,6 +6,7 @@ const registerUserHandlers = require("./userHandlers");
 const registerMessageHandlers = require("./messageHandlers");
 const registerLocationHandlers = require("./locationHandlers");
 const registerAppointmentHandlers = require("./appointmentHandlers");
+const registerChatHandlers = require("./chatHandlers");
 
 const setupSocketIO = (io) => {
     setIOInstance(io);
@@ -45,6 +46,7 @@ const setupSocketIO = (io) => {
         registerMessageHandlers(io, socket);
         registerLocationHandlers(io, socket);
         registerAppointmentHandlers(io, socket);
+        registerChatHandlers(io, socket);
 
         // Handle disconnection
         socket.on('disconnect', (reason) => {
