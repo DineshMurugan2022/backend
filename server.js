@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const cookieParser = require("cookie-parser");
 const http = require("http");
 const path = require("path");
 const fs = require("fs");
@@ -15,6 +16,11 @@ const User = require("./models/User");
 
 const authRouter = require("./login/Auth");
 const errorHandler = require("./middleware/errorHandler");
+
+// Redis and Rate Limiting
+const { initRedis, closeRedis } = require("./config/redis");
+const { authLimiter, apiLimiter, uploadLimiter } = require("./middleware/rateLimiter");
+const { clearCacheHandler } = require("./middleware/cache");
 
 // Routers
 const callsRouter = require("./routes/calls");
@@ -99,12 +105,16 @@ app.use(
     },
   })
 );
+app.use(cookieParser());
 app.use(express.json({ limit: "2mb" }));
 
 // Health check
 app.get("/api/health", (req, res) => {
   res.json({ ok: true, time: new Date().toISOString() });
 });
+
+// Cache management endpoint (admin only)
+app.post("/api/cache/clear", auth, clearCacheHandler);
 
 // Admin status (authenticated)
 app.get("/api/admin-status", auth, async (req, res) => {
@@ -135,6 +145,9 @@ app.post("/api/create-session", (req, res) => {
 });
 
 // ----------------- ROUTES -----------------
+// Apply general API rate limiting to all /api routes
+app.use("/api", apiLimiter);
+
 // Mount appointments router
 app.use("/api/appointments", appointmentsRouter);
 
@@ -163,7 +176,10 @@ const queriesRouter = require("./routes/queries");
 app.use("/api/queries", queriesRouter);
 
 app.use("/api/users", userRoutes);
-app.use("/api/auth", authRouter);
+
+// Apply strict rate limiting to auth routes
+app.use("/api/auth", authLimiter, authRouter);
+
 app.use("/api/calls", callsRouter);
 app.use("/api/messages", messagesRouter);
 const reportsRouter = require("./routes/reports");
@@ -214,6 +230,31 @@ try {
 
 // ----------------- SESSION TIMEOUT -----------------
 setInterval(() => handleTimeout(), 5 * 60 * 1000);
+
+// ----------------- REDIS INITIALIZATION -----------------
+initRedis().catch(err => {
+  console.error("Redis initialization error:", err.message);
+  console.log("⚠️ Continuing without Redis...");
+});
+
+// ----------------- GRACEFUL SHUTDOWN -----------------
+process.on('SIGTERM', async () => {
+  console.log('SIGTERM signal received: closing HTTP server');
+  await closeRedis();
+  server.close(() => {
+    console.log('HTTP server closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', async () => {
+  console.log('SIGINT signal received: closing HTTP server');
+  await closeRedis();
+  server.close(() => {
+    console.log('HTTP server closed');
+    process.exit(0);
+  });
+});
 
 // Start server
 const PORT = process.env.PORT || 5000;

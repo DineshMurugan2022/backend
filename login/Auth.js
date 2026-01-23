@@ -82,10 +82,21 @@ router.post("/login", [
       return res.status(500).json({ error: 'Server error: User data is corrupt' });
     }
 
+    // Set httpOnly cookie for access token (secure in production)
+    const cookieOptions = {
+      httpOnly: true, // Not accessible via JavaScript (XSS protection)
+      secure: process.env.NODE_ENV === 'production', // HTTPS only in production
+      sameSite: 'strict', // CSRF protection
+      maxAge: 24 * 60 * 60 * 1000, // 24 hours
+      path: '/' // Available for all routes
+    };
+
+    res.cookie('token', accessToken, cookieOptions);
+
+    // Return user data and refresh token (refresh token can be stored separately if needed)
     res.json({
       message: "Login successful",
-      accessToken,
-      refreshToken,
+      refreshToken, // Still return refresh token for now
       user: {
         id: user._id,
         _id: user._id, // Ensure _id is always returned
@@ -97,6 +108,24 @@ router.post("/login", [
     });
   } catch (err) {
     console.error("Login error:", err);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+});
+
+// POST /api/auth/logout - Clear httpOnly cookie
+router.post("/logout", (req, res) => {
+  try {
+    // Clear the token cookie
+    res.clearCookie('token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      path: '/'
+    });
+
+    res.json({ message: "Logout successful" });
+  } catch (err) {
+    console.error("Logout error:", err);
     res.status(500).json({ error: "Something went wrong" });
   }
 });

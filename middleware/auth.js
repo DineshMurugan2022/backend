@@ -3,8 +3,13 @@ const User = require('../models/User');
 
 const auth = async (req, res, next) => {
   try {
-    // Get token from header
-    const token = req.header('Authorization')?.replace('Bearer ', '');
+    // Get token from cookie first, then fallback to Authorization header
+    let token = req.cookies?.token;
+
+    // Fallback to Authorization header for backward compatibility
+    if (!token) {
+      token = req.header('Authorization')?.replace('Bearer ', '');
+    }
 
     if (!token) {
       return res.status(401).json({ message: 'No token, authorization denied' });
