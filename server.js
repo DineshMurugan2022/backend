@@ -33,6 +33,9 @@ const messagesRouter = require("./routes/messages");
 
 const app = express();
 
+// Trust the first proxy (Render) for accurate IP-based rate limiting
+app.set('trust proxy', 1);
+
 // Use Morgan for HTTP request logging (linked to Winston)
 app.use(morgan(':method :url :status :res[content-length] - :response-time ms', { stream: logger.stream }));
 
