@@ -83,10 +83,11 @@ router.post("/login", [
     }
 
     // Set httpOnly cookie for access token (secure in production)
+    const isProduction = process.env.NODE_ENV === 'production';
     const cookieOptions = {
       httpOnly: true, // Not accessible via JavaScript (XSS protection)
-      secure: process.env.NODE_ENV === 'production', // HTTPS only in production
-      sameSite: 'strict', // CSRF protection
+      secure: isProduction, // HTTPS only in production
+      sameSite: isProduction ? 'none' : 'strict', // 'none' required for cross-site cookies in production
       maxAge: 24 * 60 * 60 * 1000, // 24 hours
       path: '/' // Available for all routes
     };
@@ -116,10 +117,11 @@ router.post("/login", [
 router.post("/logout", (req, res) => {
   try {
     // Clear the token cookie
+    const isProduction = process.env.NODE_ENV === 'production';
     res.clearCookie('token', {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
+      secure: isProduction,
+      sameSite: isProduction ? 'none' : 'strict',
       path: '/'
     });
 
