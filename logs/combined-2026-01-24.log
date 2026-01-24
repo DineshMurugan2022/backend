@@ -93,3 +93,15 @@
 {"level":"info","message":"GET /api/attendance/2026/1 304 - - 186.776 ms","timestamp":"2026-01-24 16:21:14"}
 {"level":"info","message":"GET /api/attendance/2026/1 304 - - 162.842 ms","timestamp":"2026-01-24 16:22:13"}
 {"level":"info","message":"GET /api/attendance/2026/1 304 - - 131.885 ms","timestamp":"2026-01-24 16:23:13"}
+{"level":"info","message":"GET /api/messages/unread-count 500 24 - 64.350 ms","timestamp":"2026-01-24 16:44:38"}
+{"level":"info","message":"GET /api/messages/unread-count 500 24 - 32.914 ms","timestamp":"2026-01-24 16:44:38"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 327.696 ms","timestamp":"2026-01-24 16:44:39"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 339.702 ms","timestamp":"2026-01-24 16:44:39"}
+{"level":"info","message":"GET /api/users 200 146671 - 405.375 ms","timestamp":"2026-01-24 16:44:39"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 205.489 ms","timestamp":"2026-01-24 16:44:39"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 207.334 ms","timestamp":"2026-01-24 16:44:39"}
+{"level":"info","message":"GET /api/users 304 - - 193.713 ms","timestamp":"2026-01-24 16:44:39"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 64080 - 179.329 ms","timestamp":"2026-01-24 16:45:09"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 64080 - 181.058 ms","timestamp":"2026-01-24 16:45:39"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 64080 - 196.786 ms","timestamp":"2026-01-24 16:46:09"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 64080 - 194.712 ms","timestamp":"2026-01-24 16:46:39"}

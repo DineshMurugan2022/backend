@@ -239,3 +239,41 @@ USB Audio Device             USB\VID_046D&PID_0A38&MI_00\7&12B26085&0&0000      
 2026-01-24 16:31:52: ⏰ Session timeout check triggered at 24/1/2026, 4:31:52 pm
 2026-01-24 16:31:52: ⏰ Session timeout check triggered at 24/1/2026, 4:31:52 pm
 2026-01-24 16:31:52: ⏰ Session timeout check triggered at 24/1/2026, 4:31:52 pm
+2026-01-24 16:36:52: ⏰ Session timeout check triggered at 24/1/2026, 4:36:52 pm
+2026-01-24 16:36:52: ⏰ Session timeout check triggered at 24/1/2026, 4:36:52 pm
+2026-01-24 16:36:52: ⏰ Session timeout check triggered at 24/1/2026, 4:36:52 pm
+2026-01-24 16:36:52: ⏰ Session timeout check triggered at 24/1/2026, 4:36:52 pm
+2026-01-24 16:41:52: ⏰ Session timeout check triggered at 24/1/2026, 4:41:52 pm
+2026-01-24 16:41:52: ⏰ Session timeout check triggered at 24/1/2026, 4:41:52 pm
+2026-01-24 16:41:52: ⏰ Session timeout check triggered at 24/1/2026, 4:41:52 pm
+2026-01-24 16:41:52: ⏰ Session timeout check triggered at 24/1/2026, 4:41:52 pm
+2026-01-24 16:44:38: 🔌 New socket connection: -LRncgLWtQfkfFFQAAAD
+2026-01-24 16:44:38: 🔗 Socket -LRncgLWtQfkfFFQAAAD joined room user_68fcc5bfb85c2281711925bb (auto-join on connection)
+2026-01-24 16:44:38: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket -LRncgLWtQfkfFFQAAAD
+2026-01-24 16:44:38: 🚪 Socket -LRncgLWtQfkfFFQAAAD joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:44:38: 🚪 Socket -LRncgLWtQfkfFFQAAAD joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:44:38: 🚪 Socket -LRncgLWtQfkfFFQAAAD joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:44:38: 🚪 Socket -LRncgLWtQfkfFFQAAAD joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:44:38: 2026-01-24 16:44:38 [32minfo[39m: GET /api/messages/unread-count 500 24 - 64.350 ms
+2026-01-24 16:44:38: 2026-01-24 16:44:38 [32minfo[39m: GET /api/messages/unread-count 500 24 - 32.914 ms
+2026-01-24 16:44:38: 🚪 Socket -LRncgLWtQfkfFFQAAAD joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:44:39: 2026-01-24 16:44:39 [32minfo[39m: GET /api/attendance/2026/1 304 - - 327.696 ms
+2026-01-24 16:44:39: 2026-01-24 16:44:39 [32minfo[39m: GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 339.702 ms
+2026-01-24 16:44:39: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:44:39: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:44:39: 2026-01-24 16:44:39 [32minfo[39m: GET /api/users 200 146671 - 405.375 ms
+2026-01-24 16:44:39: 2026-01-24 16:44:39 [32minfo[39m: GET /api/attendance/2026/1 304 - - 205.489 ms
+2026-01-24 16:44:39: 2026-01-24 16:44:39 [32minfo[39m: GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 207.334 ms
+2026-01-24 16:44:39: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:44:39: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:44:39: 2026-01-24 16:44:39 [32minfo[39m: GET /api/users 304 - - 193.713 ms
+2026-01-24 16:45:09: 2026-01-24 16:45:09 [32minfo[39m: GET /api/attendance/2026/1 200 64080 - 179.329 ms
+2026-01-24 16:45:39: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket -LRncgLWtQfkfFFQAAAD
+2026-01-24 16:45:39: 2026-01-24 16:45:39 [32minfo[39m: GET /api/attendance/2026/1 200 64080 - 181.058 ms
+2026-01-24 16:46:09: 2026-01-24 16:46:09 [32minfo[39m: GET /api/attendance/2026/1 200 64080 - 196.786 ms
+2026-01-24 16:46:39: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket -LRncgLWtQfkfFFQAAAD
+2026-01-24 16:46:39: 2026-01-24 16:46:39 [32minfo[39m: GET /api/attendance/2026/1 200 64080 - 194.712 ms
+2026-01-24 16:46:52: ⏰ Session timeout check triggered at 24/1/2026, 4:46:52 pm
+2026-01-24 16:46:52: ⏰ Session timeout check triggered at 24/1/2026, 4:46:52 pm
+2026-01-24 16:46:52: ⏰ Session timeout check triggered at 24/1/2026, 4:46:52 pm
+2026-01-24 16:46:52: ⏰ Session timeout check triggered at 24/1/2026, 4:46:52 pm

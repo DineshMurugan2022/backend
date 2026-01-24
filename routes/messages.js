@@ -28,6 +28,49 @@ const upload = multer({
   limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
 });
 
+// Get unread message count - WITH DEBUG LOGGING
+router.get('/unread-count', auth, async (req, res) => {
+  console.log('🔍 [DEBUG] Unread count endpoint hit');
+
+  try {
+    console.log('🔍 [DEBUG] req.user exists:', !!req.user);
+    console.log('🔍 [DEBUG] req.user.id:', req.user?.id);
+    console.log('🔍 [DEBUG] req.user._id:', req.user?._id);
+
+    // Handle both req.user.id and req.user._id
+    const currentUserId = req.user.id || req.user._id;
+
+    console.log('🔍 [DEBUG] Extracted user ID:', currentUserId);
+
+    if (!currentUserId) {
+      console.error('❌ No user ID found in request');
+      return res.status(401).json({ error: 'User not authenticated' });
+    }
+
+    console.log('📬 Fetching unread count for user:', currentUserId);
+    console.log('🔍 [DEBUG] About to query database...');
+
+    const unreadCount = await Message.countDocuments({
+      recipient: currentUserId,
+      read: false
+    });
+
+    console.log('📬 Unread count result:', unreadCount);
+
+    res.json({ unreadCount });
+  } catch (error) {
+    console.error('❌ Error fetching unread count:');
+    console.error('❌ Error name:', error.name);
+    console.error('❌ Error message:', error.message);
+    console.error('❌ Error stack:', error.stack);
+    res.status(500).json({
+      error: 'Server error',
+      details: error.message,
+      name: error.name
+    });
+  }
+});
+
 // Get conversation between two users (simplified for new chat)
 router.get('/:userId', auth, async (req, res) => {
   try {
@@ -224,49 +267,6 @@ router.put('/read/:userId', auth, async (req, res) => {
   } catch (error) {
     console.error('Error marking messages as read:', error);
     res.status(500).json({ error: 'Server error' });
-  }
-});
-
-// Get unread message count - WITH DEBUG LOGGING
-router.get('/unread-count', auth, async (req, res) => {
-  console.log('🔍 [DEBUG] Unread count endpoint hit');
-
-  try {
-    console.log('🔍 [DEBUG] req.user exists:', !!req.user);
-    console.log('🔍 [DEBUG] req.user.id:', req.user?.id);
-    console.log('🔍 [DEBUG] req.user._id:', req.user?._id);
-
-    // Handle both req.user.id and req.user._id
-    const currentUserId = req.user.id || req.user._id;
-
-    console.log('🔍 [DEBUG] Extracted user ID:', currentUserId);
-
-    if (!currentUserId) {
-      console.error('❌ No user ID found in request');
-      return res.status(401).json({ error: 'User not authenticated' });
-    }
-
-    console.log('📬 Fetching unread count for user:', currentUserId);
-    console.log('🔍 [DEBUG] About to query database...');
-
-    const unreadCount = await Message.countDocuments({
-      recipient: currentUserId,
-      read: false
-    });
-
-    console.log('📬 Unread count result:', unreadCount);
-
-    res.json({ unreadCount });
-  } catch (error) {
-    console.error('❌ Error fetching unread count:');
-    console.error('❌ Error name:', error.name);
-    console.error('❌ Error message:', error.message);
-    console.error('❌ Error stack:', error.stack);
-    res.status(500).json({
-      error: 'Server error',
-      details: error.message,
-      name: error.name
-    });
   }
 });
 
