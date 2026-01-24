@@ -22,7 +22,7 @@ function getDateWithoutTime(date) {
   return d;
 }
 
-const { Appointment } = require('../models/Appointment');
+const Appointment = require('../models/Appointment');
 
 // @route   GET /api/users
 // @desc    Get all users (authenticated)

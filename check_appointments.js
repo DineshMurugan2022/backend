@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Appointment } = require('./models/Appointment');
+const Appointment = require('./models/Appointment');
 require('dotenv').config();
 
 const checkAppointments = async () => {

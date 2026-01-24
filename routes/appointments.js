@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Appointment = require("../models/Appointment");
+const RevenueReport = require("../models/RevenueReport");
 const auth = require("../middleware/auth");
 const { cacheMiddleware, invalidateResourceCache } = require('../middleware/cache');
 const { getIOInstance } = require("../sockets/io"); // Import socket instance
@@ -525,7 +526,7 @@ router.post("/", auth, invalidateResourceCache('appointments'), async (req, res)
 });
 
 // PUT update appointment
-router.put("/:id", requireAuth, async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   try {
     const userId = req.user.id || req.user._id;
     // Remove the user from deletedFor list when appointment is updated
@@ -575,7 +576,7 @@ router.put("/:id", requireAuth, async (req, res) => {
 });
 
 // Soft DELETE appointment - only hide from current user
-router.delete("/:id", requireAuth, async (req, res) => {
+router.delete("/:id", auth, async (req, res) => {
   try {
     const userId = req.user.id || req.user._id;
 
@@ -603,7 +604,7 @@ router.delete("/:id", requireAuth, async (req, res) => {
 });
 
 // Hard DELETE appointment - completely remove from database (admin only)
-router.delete("/:id/hard", requireAuth, async (req, res) => {
+router.delete("/:id/hard", auth, async (req, res) => {
   try {
     // Check if user is admin
     if (req.user.userGroup !== 'admin') {

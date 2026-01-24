@@ -1,6 +1,9 @@
 const rateLimit = require('express-rate-limit');
 const { getRedisClient, isRedisReady } = require('../config/redis');
 
+// Flag to log Redis warning only once
+let redisWarningLogged = false;
+
 /**
  * Create rate limiter with Redis store if available, otherwise use memory store
  */
@@ -29,12 +32,21 @@ function createRateLimiter(options) {
                 prefix: 'rl:', // Rate limit prefix
             });
 
-            console.log('✅ Rate limiter using Redis store');
+            if (!redisWarningLogged) {
+                console.log('✅ Rate limiter using Redis store');
+                redisWarningLogged = true;
+            }
         } catch (error) {
-            console.log('⚠️ Rate limiter using memory store (Redis store unavailable)');
+            if (!redisWarningLogged) {
+                console.log('⚠️ Rate limiter using memory store (Redis store unavailable)');
+                redisWarningLogged = true;
+            }
         }
     } else {
-        console.log('⚠️ Rate limiter using memory store (Redis not connected)');
+        if (!redisWarningLogged) {
+            console.log('⚠️ Rate limiter using memory store (Redis not connected)');
+            redisWarningLogged = true;
+        }
     }
 
     return rateLimit(defaultOptions);
@@ -46,7 +58,7 @@ function createRateLimiter(options) {
  */
 const authLimiter = createRateLimiter({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 5, // Limit each IP to 5 requests per windowMs
+    max: 20, // Increased from 5 to 20
     message: 'Too many login attempts from this IP, please try again after 15 minutes',
     skipSuccessfulRequests: false, // Count successful requests
     skipFailedRequests: false, // Count failed requests
@@ -58,7 +70,7 @@ const authLimiter = createRateLimiter({
  */
 const apiLimiter = createRateLimiter({
     windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // Limit each IP to 100 requests per windowMs
+    max: 1000, // Increased from 100 to 1000 for rich dashboard usage
     message: 'Too many requests from this IP, please try again later',
     skipSuccessfulRequests: false,
 });
