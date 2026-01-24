@@ -91,3 +91,4 @@
 {"level":"info","message":"GET /api/attendance/2026/1 304 - - 157.358 ms","timestamp":"2026-01-24 16:19:13"}
 {"level":"info","message":"GET /api/attendance/2026/1 304 - - 205.005 ms","timestamp":"2026-01-24 16:20:13"}
 {"level":"info","message":"GET /api/attendance/2026/1 304 - - 186.776 ms","timestamp":"2026-01-24 16:21:14"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 162.842 ms","timestamp":"2026-01-24 16:22:13"}

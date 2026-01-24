@@ -225,3 +225,4 @@ USB Audio Device             USB\VID_046D&PID_0A38&MI_00\7&12B26085&0&0000      
 2026-01-24 16:21:52: ⏰ Session timeout check triggered at 24/1/2026, 4:21:52 pm
 2026-01-24 16:21:52: ⏰ Session timeout check triggered at 24/1/2026, 4:21:52 pm
 2026-01-24 16:21:52: ⏰ Session timeout check triggered at 24/1/2026, 4:21:52 pm
+2026-01-24 16:22:13: 2026-01-24 16:22:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 162.842 ms
