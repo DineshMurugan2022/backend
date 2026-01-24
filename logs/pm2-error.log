@@ -1,0 +1,62 @@
+2026-01-24 16:05:15: Error fetching messages: CastError: Cast to ObjectId failed for value "unread-count" (type string) at path "_id" for model "User"
+    at SchemaObjectId.cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaType.applySetters (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schemaType.js:1258:12)
+    at SchemaType.castForQuery (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schemaType.js:1676:17)
+    at cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\cast.js:390:32)
+    at Query.cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:5055:12)
+    at Query._castConditions (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:2351:10)
+    at model.Query._findOne (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:2674:8)
+    at model.Query.exec (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:4604:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\Users\user\OneDrive\Desktop\CRM\backend\routes\messages.js:38:24 {
+  stringValue: '"unread-count"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: 'unread-count',
+  path: '_id',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\bson\lib\bson.cjs:2538:23)
+      at castObjectId (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at SchemaObjectId.cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schema\objectId.js:249:12)
+      at SchemaType.applySetters (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schemaType.js:1258:12)
+      at SchemaType.castForQuery (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schemaType.js:1676:17)
+      at cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\cast.js:390:32)
+      at Query.cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:5055:12)
+      at Query._castConditions (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:2351:10)
+      at model.Query._findOne (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:2674:8)
+      at model.Query.exec (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:4604:80)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async C:\Users\user\OneDrive\Desktop\CRM\backend\routes\messages.js:38:24,
+  valueType: 'string'
+}
+2026-01-24 16:05:15: Error fetching messages: CastError: Cast to ObjectId failed for value "unread-count" (type string) at path "_id" for model "User"
+    at SchemaObjectId.cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schema\objectId.js:251:11)
+    at SchemaType.applySetters (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schemaType.js:1258:12)
+    at SchemaType.castForQuery (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schemaType.js:1676:17)
+    at cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\cast.js:390:32)
+    at Query.cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:5055:12)
+    at Query._castConditions (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:2351:10)
+    at model.Query._findOne (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:2674:8)
+    at model.Query.exec (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:4604:80)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async C:\Users\user\OneDrive\Desktop\CRM\backend\routes\messages.js:38:24 {
+  stringValue: '"unread-count"',
+  messageFormat: undefined,
+  kind: 'ObjectId',
+  value: 'unread-count',
+  path: '_id',
+  reason: BSONError: input must be a 24 character hex string, 12 byte Uint8Array, or an integer
+      at new ObjectId (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\bson\lib\bson.cjs:2538:23)
+      at castObjectId (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\cast\objectid.js:25:12)
+      at SchemaObjectId.cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schema\objectId.js:249:12)
+      at SchemaType.applySetters (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schemaType.js:1258:12)
+      at SchemaType.castForQuery (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\schemaType.js:1676:17)
+      at cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\cast.js:390:32)
+      at Query.cast (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:5055:12)
+      at Query._castConditions (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:2351:10)
+      at model.Query._findOne (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:2674:8)
+      at model.Query.exec (C:\Users\user\OneDrive\Desktop\CRM\backend\node_modules\mongoose\lib\query.js:4604:80)
+      at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at async C:\Users\user\OneDrive\Desktop\CRM\backend\routes\messages.js:38:24,
+  valueType: 'string'
+}

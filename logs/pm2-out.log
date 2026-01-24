@@ -1,0 +1,227 @@
+2026-01-24 16:01:51: 🔌 Socket.IO instance set successfully
+2026-01-24 16:01:51: 🔌 Socket.IO instance set successfully
+2026-01-24 16:01:51: ℹ️ Huawei E173 Modem Service is disabled via ENABLE_MODEM flag
+2026-01-24 16:01:51: Starting Auto-Logout Job...
+2026-01-24 16:01:52: ℹ️ Huawei E173 Modem Service is disabled via ENABLE_MODEM flag
+2026-01-24 16:01:52: Starting Auto-Logout Job...
+2026-01-24 16:01:52: 🔌 Socket.IO instance set successfully
+2026-01-24 16:01:52: 2026-01-24 16:01:52 [32minfo[39m: 🚀 Server running on http://localhost:5000
+2026-01-24 16:01:52: 2026-01-24 16:01:52 [32minfo[39m: 📡 Socket.IO server ready for connections
+2026-01-24 16:01:52: 2026-01-24 16:01:52 [32minfo[39m: 🚀 Server running on http://localhost:5000
+2026-01-24 16:01:52: 2026-01-24 16:01:52 [32minfo[39m: 📡 Socket.IO server ready for connections
+2026-01-24 16:01:52: ℹ️ Huawei E173 Modem Service is disabled via ENABLE_MODEM flag
+2026-01-24 16:01:52: Starting Auto-Logout Job...
+2026-01-24 16:01:52: 2026-01-24 16:01:52 [32minfo[39m: 🚀 Server running on http://localhost:5000
+2026-01-24 16:01:52: 2026-01-24 16:01:52 [32minfo[39m: 📡 Socket.IO server ready for connections
+2026-01-24 16:01:52: 🔌 Socket.IO instance set successfully
+2026-01-24 16:01:52: 📡 Mongoose connected to Atlas cluster
+2026-01-24 16:01:52: ✅ MongoDB Atlas connected successfully!
+2026-01-24 16:01:52: 📡 Mongoose connected to Atlas cluster
+2026-01-24 16:01:52: ✅ Query model connected successfully
+2026-01-24 16:01:52: ✅ MongoDB Atlas connected successfully!
+2026-01-24 16:01:52: ℹ️ Huawei E173 Modem Service is disabled via ENABLE_MODEM flag
+2026-01-24 16:01:52: Starting Auto-Logout Job...
+2026-01-24 16:01:52: ✅ Query model connected successfully
+2026-01-24 16:01:52: 2026-01-24 16:01:52 [32minfo[39m: 🚀 Server running on http://localhost:5000
+2026-01-24 16:01:52: 2026-01-24 16:01:52 [32minfo[39m: 📡 Socket.IO server ready for connections
+2026-01-24 16:01:52: 📡 Mongoose connected to Atlas cluster
+2026-01-24 16:01:52: ✅ MongoDB Atlas connected successfully!
+2026-01-24 16:01:53: ✅ Query model connected successfully
+2026-01-24 16:01:53: 📡 Mongoose connected to Atlas cluster
+2026-01-24 16:01:53: ✅ MongoDB Atlas connected successfully!
+2026-01-24 16:01:53: ✅ Query model connected successfully
+2026-01-24 16:05:15: 🔌 New socket connection: fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:05:15: 🔗 Socket fWuoWdu3njAZK9XsAAAB joined room user_68fcc5bfb85c2281711925bb (auto-join on connection)
+2026-01-24 16:05:15: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:05:15: 🚪 Socket fWuoWdu3njAZK9XsAAAB joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:05:15: 🚪 Socket fWuoWdu3njAZK9XsAAAB joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:05:15: 🚪 Socket fWuoWdu3njAZK9XsAAAB joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:05:15: 🚪 Socket fWuoWdu3njAZK9XsAAAB joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:05:15: 🚪 Socket fWuoWdu3njAZK9XsAAAB joined user room user_68fcc5bfb85c2281711925bb
+2026-01-24 16:05:15: 2026-01-24 16:05:15 [32minfo[39m: GET /api/messages/unread-count 500 24 - 168.535 ms
+2026-01-24 16:05:15: 2026-01-24 16:05:15 [32minfo[39m: GET /api/messages/unread-count 500 24 - 40.753 ms
+2026-01-24 16:05:15: 2026-01-24 16:05:15 [32minfo[39m: GET /api/leads 200 330568 - 180.244 ms
+2026-01-24 16:05:15: 2026-01-24 16:05:15 [32minfo[39m: GET /api/attendance/2026/1 200 64079 - 201.988 ms
+2026-01-24 16:05:15: 2026-01-24 16:05:15 [32minfo[39m: GET /api/leads 304 - - 110.988 ms
+2026-01-24 16:05:15: 2026-01-24 16:05:15 [32minfo[39m: GET /api/attendance/2026/1 304 - - 168.339 ms
+2026-01-24 16:05:18: 2026-01-24 16:05:18 [32minfo[39m: GET /api/appointments/revenue/reports 304 - - 76.340 ms
+2026-01-24 16:05:18: 2026-01-24 16:05:18 [32minfo[39m: GET /api/tasks 304 - - 197.803 ms
+2026-01-24 16:05:18: 2026-01-24 16:05:18 [32minfo[39m: GET /api/appointments/revenue 304 - - 267.055 ms
+2026-01-24 16:05:18: 2026-01-24 16:05:18 [32minfo[39m: GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 70380 - 413.092 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/users/all 200 146456 - 620.845 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/appointments/stats?month=1&year=2026 304 - - 577.691 ms
+2026-01-24 16:05:19: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/appointments/stats?month=12&year=2025 304 - - 87.796 ms
+2026-01-24 16:05:19: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/users 200 146671 - 259.288 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/appointments 200 56764 - 793.468 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/admin-status 304 - - 288.872 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/tasks 304 - - 231.752 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/appointments/revenue/reports 304 - - 89.180 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/appointments/stats?month=1&year=2026 304 - - 64.636 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/appointments/revenue 304 - - 127.017 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/appointments/stats?month=12&year=2025 304 - - 71.942 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/users/all 304 - - 172.154 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/admin-status 304 - - 62.308 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 216.164 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/tasks 304 - - 156.892 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/appointments 304 - - 314.475 ms
+2026-01-24 16:05:19: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:19: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/users 304 - - 314.728 ms
+2026-01-24 16:05:19: 2026-01-24 16:05:19 [32minfo[39m: GET /api/tasks 304 - - 115.968 ms
+2026-01-24 16:05:22: 2026-01-24 16:05:22 [32minfo[39m: GET /api/leads 304 - - 193.738 ms
+2026-01-24 16:05:22: 2026-01-24 16:05:22 [32minfo[39m: GET /api/leads 304 - - 110.246 ms
+2026-01-24 16:05:24: 2026-01-24 16:05:24 [32minfo[39m: GET /api/users/me 200 13176 - 69.394 ms
+2026-01-24 16:05:24: 2026-01-24 16:05:24 [32minfo[39m: GET /api/tasks 304 - - 96.923 ms
+2026-01-24 16:05:24: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:24: 2026-01-24 16:05:24 [32minfo[39m: GET /api/users/me 304 - - 68.344 ms
+2026-01-24 16:05:24: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:24: 2026-01-24 16:05:24 [32minfo[39m: GET /api/users 304 - - 168.976 ms
+2026-01-24 16:05:24: 2026-01-24 16:05:24 [32minfo[39m: GET /api/tasks 304 - - 115.455 ms
+2026-01-24 16:05:24: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:24: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:24: 2026-01-24 16:05:24 [32minfo[39m: GET /api/users 304 - - 118.059 ms
+2026-01-24 16:05:24: 2026-01-24 16:05:24 [32minfo[39m: GET /api/queries 304 - - 104.534 ms
+2026-01-24 16:05:24: 2026-01-24 16:05:24 [32minfo[39m: GET /api/reports 200 141986 - 241.934 ms
+2026-01-24 16:05:24: 2026-01-24 16:05:24 [32minfo[39m: GET /api/queries 304 - - 205.548 ms
+2026-01-24 16:05:25: 2026-01-24 16:05:25 [32minfo[39m: GET /api/reports 304 - - 229.812 ms
+2026-01-24 16:05:27: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:27: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:27: 2026-01-24 16:05:27 [32minfo[39m: GET /api/users 304 - - 167.729 ms
+2026-01-24 16:05:27: 2026-01-24 16:05:27 [32minfo[39m: GET /api/appointments/telecaller 304 - - 183.050 ms
+2026-01-24 16:05:27: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:27: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:27: 2026-01-24 16:05:27 [32minfo[39m: GET /api/users 304 - - 140.174 ms
+2026-01-24 16:05:27: 2026-01-24 16:05:27 [32minfo[39m: GET /api/appointments/telecaller 304 - - 193.564 ms
+2026-01-24 16:05:28: 2026-01-24 16:05:28 [32minfo[39m: OPTIONS /api/appointments/revenue/report 200 0 - 1.090 ms
+2026-01-24 16:05:28: 2026-01-24 16:05:28 [32minfo[39m: OPTIONS /api/appointments/revenue/report 200 0 - 0.524 ms
+2026-01-24 16:05:28: Revenue report generation requested: { month: 12, year: 2025 }
+2026-01-24 16:05:28: Revenue report generation requested: { month: 12, year: 2025 }
+2026-01-24 16:05:28: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:28: Revenue report generated successfully: { month: 12, year: 2025 }
+2026-01-24 16:05:28: 2026-01-24 16:05:28 [32minfo[39m: POST /api/appointments/revenue/report 200 313 - 213.855 ms
+2026-01-24 16:05:28: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:28: 2026-01-24 16:05:28 [32minfo[39m: GET /api/users 304 - - 218.382 ms
+2026-01-24 16:05:28: Revenue report generated successfully: { month: 12, year: 2025 }
+2026-01-24 16:05:28: 2026-01-24 16:05:28 [32minfo[39m: POST /api/appointments/revenue/report 200 313 - 222.822 ms
+2026-01-24 16:05:28: 2026-01-24 16:05:28 [32minfo[39m: GET /api/appointments/all 200 58763 - 279.095 ms
+2026-01-24 16:05:29: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:29: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:29: 2026-01-24 16:05:29 [32minfo[39m: GET /api/users 304 - - 124.913 ms
+2026-01-24 16:05:29: 2026-01-24 16:05:29 [32minfo[39m: GET /api/appointments/all 304 - - 238.773 ms
+2026-01-24 16:05:29: 🔊 Activating Huawei E173 audio for call to Current Call
+2026-01-24 16:05:29: 2026-01-24 16:05:29 [32minfo[39m: GET /api/calls/huawei-audio-status 304 - - 31.121 ms
+2026-01-24 16:05:29: 2026-01-24 16:05:29 [32minfo[39m: GET /api/calls/huawei-audio-status 304 - - 29.402 ms
+2026-01-24 16:05:30: 🔊 Activating Huawei E173 audio for call to Current Call
+2026-01-24 16:05:30: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:30: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:30: 2026-01-24 16:05:30 [32minfo[39m: GET /api/users 304 - - 189.112 ms
+2026-01-24 16:05:30: 🔌 New socket connection: oPzHJhOt8LYgdqHmAAAC
+2026-01-24 16:05:30: [DEBUG] Date range: Sat Jan 24 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Jan 24 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-01-24 16:05:30: ⚠️ Socket oPzHJhOt8LYgdqHmAAAC connected without userId
+2026-01-24 16:05:30: 2026-01-24 16:05:30 [32minfo[39m: GET /api/tasks 304 - - 317.996 ms
+2026-01-24 16:05:30: [DEBUG] Appointment stats found: 0 []
+2026-01-24 16:05:30: 2026-01-24 16:05:30 [32minfo[39m: GET /api/users 304 - - 161.658 ms
+2026-01-24 16:05:30: 2026-01-24 16:05:30 [32minfo[39m: GET /api/tasks 304 - - 244.416 ms
+2026-01-24 16:05:30: 🔌 Socket oPzHJhOt8LYgdqHmAAAC disconnected. Reason: client namespace disconnect
+2026-01-24 16:05:32: 🔍 Audio devices found: 
+Name             DeviceID                                     
+----             --------                                     
+USB Audio Device USB\VID_046D&PID_0A38&MI_00\7&12B26085&0&0000
+
+
+
+2026-01-24 16:05:32: 📱 Huawei E173 audio device found!
+2026-01-24 16:05:32: 🔍 Audio devices found: 
+Name             DeviceID                                     
+----             --------                                     
+USB Audio Device USB\VID_046D&PID_0A38&MI_00\7&12B26085&0&0000
+
+
+
+2026-01-24 16:05:32: 📱 Huawei E173 audio device found!
+2026-01-24 16:05:32: 2026-01-24 16:05:32 [32minfo[39m: GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 205.413 ms
+2026-01-24 16:05:32: 2026-01-24 16:05:32 [32minfo[39m: GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 213.741 ms
+2026-01-24 16:05:33: 🎧 USB headset device found!
+2026-01-24 16:05:33: 🎧 USB headset device found!
+2026-01-24 16:05:34: ⚠️ Stereo Mix not available
+2026-01-24 16:05:34: ⚠️ Stereo Mix not available
+2026-01-24 16:05:34: 🔊 Communication device set to maximum volume
+2026-01-24 16:05:35: 🔊 Communication device set to maximum volume
+2026-01-24 16:05:35: 📊 All audio devices: 
+Name                         DeviceID                                                                     StatusInfo
+----                         --------                                                                     ----------
+High Definition Audio Device HDAUDIO\FUNC_01&VEN_10EC&DEV_0662&SUBSYS_00000000&REV_1003\4&3AD7007D&0&0001          3
+High Definition Audio Device HDAUDIO\FUNC_01&VEN_8086&DEV_2805&SUBSYS_80860101&REV_1000\4&3AD7007D&0&0301          3
+USB Audio Device             USB\VID_046D&PID_0A38&MI_00\7&12B26085&0&0000                                         3
+
+
+
+2026-01-24 16:05:35: 📊 All audio devices: 
+Name                         DeviceID                                                                     StatusInfo
+----                         --------                                                                     ----------
+High Definition Audio Device HDAUDIO\FUNC_01&VEN_10EC&DEV_0662&SUBSYS_00000000&REV_1003\4&3AD7007D&0&0001          3
+High Definition Audio Device HDAUDIO\FUNC_01&VEN_8086&DEV_2805&SUBSYS_80860101&REV_1000\4&3AD7007D&0&0301          3
+USB Audio Device             USB\VID_046D&PID_0A38&MI_00\7&12B26085&0&0000                                         3
+
+
+
+2026-01-24 16:05:35: 🔊 Volume Mixer opened - Check for Huawei/USB Audio Device
+2026-01-24 16:05:35: 🔊 Huawei E173 audio routing activated!
+2026-01-24 16:05:35: 📢 IMPORTANT: User must check Volume Mixer for 'USB Audio Device' and UNMUTE it
+2026-01-24 16:05:35: 2026-01-24 16:05:35 [32minfo[39m: POST /api/calls/setup-huawei-audio 200 560 - 6070.128 ms
+2026-01-24 16:05:38: 🔊 Volume Mixer opened - Check for Huawei/USB Audio Device
+2026-01-24 16:05:38: 🔊 Huawei E173 audio routing activated!
+2026-01-24 16:05:38: 📢 IMPORTANT: User must check Volume Mixer for 'USB Audio Device' and UNMUTE it
+2026-01-24 16:05:38: 2026-01-24 16:05:38 [32minfo[39m: POST /api/calls/setup-huawei-audio 200 560 - 8088.969 ms
+2026-01-24 16:05:45: 2026-01-24 16:05:45 [32minfo[39m: GET /api/attendance/2026/1 304 - - 133.564 ms
+2026-01-24 16:05:53: 2026-01-24 16:05:53 [32minfo[39m: OPTIONS /api/attendance/manual 200 0 - 0.862 ms
+2026-01-24 16:05:53: 2026-01-24 16:05:53 [32minfo[39m: POST /api/attendance/manual 200 345 - 113.038 ms
+2026-01-24 16:05:53: 2026-01-24 16:05:53 [32minfo[39m: GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 70381 - 142.518 ms
+2026-01-24 16:05:53: 2026-01-24 16:05:53 [32minfo[39m: GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 132.016 ms
+2026-01-24 16:06:15: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:06:16: 2026-01-24 16:06:16 [32minfo[39m: GET /api/attendance/2026/1 200 64080 - 128.079 ms
+2026-01-24 16:06:46: 2026-01-24 16:06:46 [32minfo[39m: GET /api/attendance/2026/1 304 - - 134.377 ms
+2026-01-24 16:06:52: ⏰ Session timeout check triggered at 24/1/2026, 4:06:52 pm
+2026-01-24 16:06:52: ⏰ Session timeout check triggered at 24/1/2026, 4:06:51 pm
+2026-01-24 16:06:52: ⏰ Session timeout check triggered at 24/1/2026, 4:06:52 pm
+2026-01-24 16:06:52: ⏰ Session timeout check triggered at 24/1/2026, 4:06:52 pm
+2026-01-24 16:07:15: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:07:16: 2026-01-24 16:07:16 [32minfo[39m: GET /api/attendance/2026/1 304 - - 122.078 ms
+2026-01-24 16:07:46: 2026-01-24 16:07:46 [32minfo[39m: GET /api/attendance/2026/1 304 - - 123.137 ms
+2026-01-24 16:08:15: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:08:16: 2026-01-24 16:08:16 [32minfo[39m: GET /api/attendance/2026/1 304 - - 135.178 ms
+2026-01-24 16:09:13: 2026-01-24 16:09:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 123.506 ms
+2026-01-24 16:09:15: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:10:13: 2026-01-24 16:10:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 155.605 ms
+2026-01-24 16:10:15: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:11:13: 2026-01-24 16:11:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 139.759 ms
+2026-01-24 16:11:15: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:11:51: ⏰ Session timeout check triggered at 24/1/2026, 4:11:51 pm
+2026-01-24 16:11:52: ⏰ Session timeout check triggered at 24/1/2026, 4:11:52 pm
+2026-01-24 16:11:52: ⏰ Session timeout check triggered at 24/1/2026, 4:11:52 pm
+2026-01-24 16:11:52: ⏰ Session timeout check triggered at 24/1/2026, 4:11:52 pm
+2026-01-24 16:12:13: 2026-01-24 16:12:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 145.556 ms
+2026-01-24 16:13:13: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:13:13: 2026-01-24 16:13:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 137.115 ms
+2026-01-24 16:14:13: 2026-01-24 16:14:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 130.956 ms
+2026-01-24 16:15:13: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:15:13: 2026-01-24 16:15:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 166.496 ms
+2026-01-24 16:16:13: 2026-01-24 16:16:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 137.859 ms
+2026-01-24 16:16:52: ⏰ Session timeout check triggered at 24/1/2026, 4:16:52 pm
+2026-01-24 16:16:52: ⏰ Session timeout check triggered at 24/1/2026, 4:16:52 pm
+2026-01-24 16:16:52: ⏰ Session timeout check triggered at 24/1/2026, 4:16:52 pm
+2026-01-24 16:16:52: ⏰ Session timeout check triggered at 24/1/2026, 4:16:52 pm
+2026-01-24 16:17:13: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:17:13: 2026-01-24 16:17:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 131.493 ms
+2026-01-24 16:18:13: 2026-01-24 16:18:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 158.775 ms
+2026-01-24 16:19:13: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:19:13: 2026-01-24 16:19:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 157.358 ms
+2026-01-24 16:20:13: 2026-01-24 16:20:13 [32minfo[39m: GET /api/attendance/2026/1 304 - - 205.005 ms
+2026-01-24 16:21:14: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket fWuoWdu3njAZK9XsAAAB
+2026-01-24 16:21:14: 2026-01-24 16:21:14 [32minfo[39m: GET /api/attendance/2026/1 304 - - 186.776 ms
+2026-01-24 16:21:52: ⏰ Session timeout check triggered at 24/1/2026, 4:21:52 pm
+2026-01-24 16:21:52: ⏰ Session timeout check triggered at 24/1/2026, 4:21:52 pm
+2026-01-24 16:21:52: ⏰ Session timeout check triggered at 24/1/2026, 4:21:52 pm
+2026-01-24 16:21:52: ⏰ Session timeout check triggered at 24/1/2026, 4:21:52 pm

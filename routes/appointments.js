@@ -3,7 +3,6 @@ const router = express.Router();
 const Appointment = require("../models/Appointment");
 const RevenueReport = require("../models/RevenueReport");
 const auth = require("../middleware/auth");
-const { cacheMiddleware, invalidateResourceCache } = require('../middleware/cache');
 const { getIOInstance } = require("../sockets/io"); // Import socket instance
 const ExcelJS = require('exceljs');
 
@@ -134,6 +133,17 @@ router.get("/revenue", auth, async (req, res) => {
   }
 });
 
+// GET all revenue reports
+router.get("/revenue/reports", auth, async (req, res) => {
+  try {
+    const reports = await RevenueReport.find().sort({ year: -1, month: -1 });
+    res.json(reports);
+  } catch (error) {
+    console.error("Error fetching revenue reports:", error);
+    res.status(500).json({ error: "Failed to fetch revenue reports" });
+  }
+});
+
 // POST generate and store monthly revenue report
 router.post("/revenue/report", auth, async (req, res) => {
   try {
@@ -210,17 +220,6 @@ router.post("/revenue/report", auth, async (req, res) => {
   } catch (error) {
     console.error("Error generating revenue report:", error);
     res.status(500).json({ error: "Failed to generate revenue report" });
-  }
-});
-
-// GET all revenue reports
-router.get("/revenue/reports", auth, async (req, res) => {
-  try {
-    const reports = await RevenueReport.find().sort({ year: -1, month: -1 });
-    res.json(reports);
-  } catch (error) {
-    console.error("Error fetching revenue reports:", error);
-    res.status(500).json({ error: "Failed to fetch revenue reports" });
   }
 });
 
@@ -391,8 +390,8 @@ router.get("/bdm", auth, async (req, res) => {
   }
 });
 
-// GET all appointments// GET /api/appointments - Get all appointments (cached for 5 minutes)
-router.get("/", auth, cacheMiddleware(300), async (req, res) => {
+// GET all appointments// GET /api/appointments - Get all appointments
+router.get("/", auth, async (req, res) => {
   try {
     const userId = req.user.id || req.user._id;
 
@@ -475,7 +474,7 @@ router.get("/telecaller", auth, async (req, res) => {
 });
 
 // POST /api/appointments - Create a new appointment
-router.post("/", auth, invalidateResourceCache('appointments'), async (req, res) => {
+router.post("/", auth, async (req, res) => {
   try {
     // Add a check for the user ID from the token
     const userId = req.user.id || req.user._id;

@@ -1,0 +1,93 @@
+{"level":"info","message":"🚀 Server running on http://localhost:5000","timestamp":"2026-01-24 16:01:52"}
+{"level":"info","message":"🚀 Server running on http://localhost:5000","timestamp":"2026-01-24 16:01:52"}
+{"level":"info","message":"📡 Socket.IO server ready for connections","timestamp":"2026-01-24 16:01:52"}
+{"level":"info","message":"📡 Socket.IO server ready for connections","timestamp":"2026-01-24 16:01:52"}
+{"level":"info","message":"🚀 Server running on http://localhost:5000","timestamp":"2026-01-24 16:01:52"}
+{"level":"info","message":"📡 Socket.IO server ready for connections","timestamp":"2026-01-24 16:01:52"}
+{"level":"info","message":"🚀 Server running on http://localhost:5000","timestamp":"2026-01-24 16:01:52"}
+{"level":"info","message":"📡 Socket.IO server ready for connections","timestamp":"2026-01-24 16:01:52"}
+{"level":"info","message":"GET /api/messages/unread-count 500 24 - 168.535 ms","timestamp":"2026-01-24 16:05:15"}
+{"level":"info","message":"GET /api/messages/unread-count 500 24 - 40.753 ms","timestamp":"2026-01-24 16:05:15"}
+{"level":"info","message":"GET /api/leads 200 330568 - 180.244 ms","timestamp":"2026-01-24 16:05:15"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 64079 - 201.988 ms","timestamp":"2026-01-24 16:05:15"}
+{"level":"info","message":"GET /api/leads 304 - - 110.988 ms","timestamp":"2026-01-24 16:05:15"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 168.339 ms","timestamp":"2026-01-24 16:05:15"}
+{"level":"info","message":"GET /api/appointments/revenue/reports 304 - - 76.340 ms","timestamp":"2026-01-24 16:05:18"}
+{"level":"info","message":"GET /api/tasks 304 - - 197.803 ms","timestamp":"2026-01-24 16:05:18"}
+{"level":"info","message":"GET /api/appointments/revenue 304 - - 267.055 ms","timestamp":"2026-01-24 16:05:18"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 70380 - 413.092 ms","timestamp":"2026-01-24 16:05:18"}
+{"level":"info","message":"GET /api/users/all 200 146456 - 620.845 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/appointments/stats?month=1&year=2026 304 - - 577.691 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/appointments/stats?month=12&year=2025 304 - - 87.796 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/users 200 146671 - 259.288 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/appointments 200 56764 - 793.468 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/admin-status 304 - - 288.872 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/tasks 304 - - 231.752 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/appointments/revenue/reports 304 - - 89.180 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/appointments/stats?month=1&year=2026 304 - - 64.636 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/appointments/revenue 304 - - 127.017 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/appointments/stats?month=12&year=2025 304 - - 71.942 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/users/all 304 - - 172.154 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/admin-status 304 - - 62.308 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 216.164 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/tasks 304 - - 156.892 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/appointments 304 - - 314.475 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/users 304 - - 314.728 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/tasks 304 - - 115.968 ms","timestamp":"2026-01-24 16:05:19"}
+{"level":"info","message":"GET /api/leads 304 - - 193.738 ms","timestamp":"2026-01-24 16:05:22"}
+{"level":"info","message":"GET /api/leads 304 - - 110.246 ms","timestamp":"2026-01-24 16:05:22"}
+{"level":"info","message":"GET /api/users/me 200 13176 - 69.394 ms","timestamp":"2026-01-24 16:05:24"}
+{"level":"info","message":"GET /api/tasks 304 - - 96.923 ms","timestamp":"2026-01-24 16:05:24"}
+{"level":"info","message":"GET /api/users/me 304 - - 68.344 ms","timestamp":"2026-01-24 16:05:24"}
+{"level":"info","message":"GET /api/users 304 - - 168.976 ms","timestamp":"2026-01-24 16:05:24"}
+{"level":"info","message":"GET /api/tasks 304 - - 115.455 ms","timestamp":"2026-01-24 16:05:24"}
+{"level":"info","message":"GET /api/users 304 - - 118.059 ms","timestamp":"2026-01-24 16:05:24"}
+{"level":"info","message":"GET /api/queries 304 - - 104.534 ms","timestamp":"2026-01-24 16:05:24"}
+{"level":"info","message":"GET /api/reports 200 141986 - 241.934 ms","timestamp":"2026-01-24 16:05:24"}
+{"level":"info","message":"GET /api/queries 304 - - 205.548 ms","timestamp":"2026-01-24 16:05:24"}
+{"level":"info","message":"GET /api/reports 304 - - 229.812 ms","timestamp":"2026-01-24 16:05:25"}
+{"level":"info","message":"GET /api/users 304 - - 167.729 ms","timestamp":"2026-01-24 16:05:27"}
+{"level":"info","message":"GET /api/appointments/telecaller 304 - - 183.050 ms","timestamp":"2026-01-24 16:05:27"}
+{"level":"info","message":"GET /api/users 304 - - 140.174 ms","timestamp":"2026-01-24 16:05:27"}
+{"level":"info","message":"GET /api/appointments/telecaller 304 - - 193.564 ms","timestamp":"2026-01-24 16:05:27"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 1.090 ms","timestamp":"2026-01-24 16:05:28"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 0.524 ms","timestamp":"2026-01-24 16:05:28"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 213.855 ms","timestamp":"2026-01-24 16:05:28"}
+{"level":"info","message":"GET /api/users 304 - - 218.382 ms","timestamp":"2026-01-24 16:05:28"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 222.822 ms","timestamp":"2026-01-24 16:05:28"}
+{"level":"info","message":"GET /api/appointments/all 200 58763 - 279.095 ms","timestamp":"2026-01-24 16:05:28"}
+{"level":"info","message":"GET /api/users 304 - - 124.913 ms","timestamp":"2026-01-24 16:05:29"}
+{"level":"info","message":"GET /api/appointments/all 304 - - 238.773 ms","timestamp":"2026-01-24 16:05:29"}
+{"level":"info","message":"GET /api/calls/huawei-audio-status 304 - - 31.121 ms","timestamp":"2026-01-24 16:05:29"}
+{"level":"info","message":"GET /api/calls/huawei-audio-status 304 - - 29.402 ms","timestamp":"2026-01-24 16:05:29"}
+{"level":"info","message":"GET /api/users 304 - - 189.112 ms","timestamp":"2026-01-24 16:05:30"}
+{"level":"info","message":"GET /api/tasks 304 - - 317.996 ms","timestamp":"2026-01-24 16:05:30"}
+{"level":"info","message":"GET /api/users 304 - - 161.658 ms","timestamp":"2026-01-24 16:05:30"}
+{"level":"info","message":"GET /api/tasks 304 - - 244.416 ms","timestamp":"2026-01-24 16:05:30"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 205.413 ms","timestamp":"2026-01-24 16:05:32"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 213.741 ms","timestamp":"2026-01-24 16:05:32"}
+{"level":"info","message":"POST /api/calls/setup-huawei-audio 200 560 - 6070.128 ms","timestamp":"2026-01-24 16:05:35"}
+{"level":"info","message":"POST /api/calls/setup-huawei-audio 200 560 - 8088.969 ms","timestamp":"2026-01-24 16:05:38"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 133.564 ms","timestamp":"2026-01-24 16:05:45"}
+{"level":"info","message":"OPTIONS /api/attendance/manual 200 0 - 0.862 ms","timestamp":"2026-01-24 16:05:53"}
+{"level":"info","message":"POST /api/attendance/manual 200 345 - 113.038 ms","timestamp":"2026-01-24 16:05:53"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 70381 - 142.518 ms","timestamp":"2026-01-24 16:05:53"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 132.016 ms","timestamp":"2026-01-24 16:05:53"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 64080 - 128.079 ms","timestamp":"2026-01-24 16:06:16"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 134.377 ms","timestamp":"2026-01-24 16:06:46"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 122.078 ms","timestamp":"2026-01-24 16:07:16"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 123.137 ms","timestamp":"2026-01-24 16:07:46"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 135.178 ms","timestamp":"2026-01-24 16:08:16"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 123.506 ms","timestamp":"2026-01-24 16:09:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 155.605 ms","timestamp":"2026-01-24 16:10:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 139.759 ms","timestamp":"2026-01-24 16:11:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 145.556 ms","timestamp":"2026-01-24 16:12:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 137.115 ms","timestamp":"2026-01-24 16:13:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 130.956 ms","timestamp":"2026-01-24 16:14:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 166.496 ms","timestamp":"2026-01-24 16:15:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 137.859 ms","timestamp":"2026-01-24 16:16:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 131.493 ms","timestamp":"2026-01-24 16:17:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 158.775 ms","timestamp":"2026-01-24 16:18:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 157.358 ms","timestamp":"2026-01-24 16:19:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 205.005 ms","timestamp":"2026-01-24 16:20:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 186.776 ms","timestamp":"2026-01-24 16:21:14"}

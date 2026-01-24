@@ -5,7 +5,6 @@ const multer = require('multer');
 const path = require('path');
 const LeadFile = require('../models/LeadFile');
 const auth = require('../middleware/auth'); // Import auth middleware
-const { cacheMiddleware, invalidateResourceCache } = require('../middleware/cache');
 
 // Set up multer storage
 const storage = multer.diskStorage({
@@ -20,7 +19,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // POST /api/leads - Create a new lead
-router.post('/', auth, invalidateResourceCache('leads'), async (req, res) => {
+router.post('/', auth, async (req, res) => {
   try {
     const lead = new Lead(req.body);
     await lead.save();
@@ -31,7 +30,7 @@ router.post('/', auth, invalidateResourceCache('leads'), async (req, res) => {
 });
 
 // GET /api/leads - Get all leads (cached for 5 minutes)
-router.get('/', auth, cacheMiddleware(300), async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
     const leads = await Lead.find().sort({ createdAt: -1 });
     res.json(leads);
@@ -41,7 +40,7 @@ router.get('/', auth, cacheMiddleware(300), async (req, res) => {
 });
 
 // DELETE /api/leads/:id - Delete a lead
-router.delete('/:id', auth, invalidateResourceCache('leads'), async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
   try {
     const deleted = await Lead.findByIdAndDelete(req.params.id);
     if (!deleted) return res.status(404).json({ error: 'Lead not found' });
@@ -52,7 +51,7 @@ router.delete('/:id', auth, invalidateResourceCache('leads'), async (req, res) =
 });
 
 // PUT /api/leads/:id - Update a lead
-router.put('/:id', auth, invalidateResourceCache('leads'), async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
   try {
     const updated = await Lead.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!updated) return res.status(404).json({ error: 'Lead not found' });
@@ -82,7 +81,7 @@ router.post('/:leadId/upload', auth, upload.single('file'), async (req, res) => 
 });
 
 // GET /api/leads/:leadId/files - List files for a lead (cached for 5 minutes)
-router.get('/:leadId/files', auth, cacheMiddleware(300), async (req, res) => {
+router.get('/:leadId/files', auth, async (req, res) => {
   try {
     const files = await LeadFile.find({ lead: req.params.leadId }).sort({ uploadDate: -1 });
     res.json(files);

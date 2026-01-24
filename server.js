@@ -7,6 +7,8 @@ const http = require("http");
 const path = require("path");
 const fs = require("fs");
 const { Server } = require("socket.io");
+const morgan = require("morgan");
+const logger = require("./utils/logger");
 
 const connectDB = require("./db");
 
@@ -17,10 +19,7 @@ const User = require("./models/User");
 const authRouter = require("./login/Auth");
 const errorHandler = require("./middleware/errorHandler");
 
-// Redis and Rate Limiting
-const { initRedis, closeRedis } = require("./config/redis");
 const { authLimiter, apiLimiter, uploadLimiter } = require("./middleware/rateLimiter");
-const { clearCacheHandler } = require("./middleware/cache");
 
 // Routers
 const callsRouter = require("./routes/calls");
@@ -33,6 +32,10 @@ const tasksRouter = require("./routes/tasks");
 const messagesRouter = require("./routes/messages");
 
 const app = express();
+
+// Use Morgan for HTTP request logging (linked to Winston)
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms', { stream: logger.stream }));
+
 const server = http.createServer(app);
 
 // Socket.IO setup with enhanced configuration
@@ -112,9 +115,6 @@ app.use(express.json({ limit: "2mb" }));
 app.get("/api/health", (req, res) => {
   res.json({ ok: true, time: new Date().toISOString() });
 });
-
-// Cache management endpoint (admin only)
-app.post("/api/cache/clear", auth, clearCacheHandler);
 
 // Admin status (authenticated)
 app.get("/api/admin-status", auth, async (req, res) => {
@@ -231,16 +231,9 @@ try {
 // ----------------- SESSION TIMEOUT -----------------
 setInterval(() => handleTimeout(), 5 * 60 * 1000);
 
-// ----------------- REDIS INITIALIZATION -----------------
-initRedis().catch(err => {
-  console.error("Redis initialization error:", err.message);
-  console.log("⚠️ Continuing without Redis...");
-});
-
 // ----------------- GRACEFUL SHUTDOWN -----------------
 process.on('SIGTERM', async () => {
   console.log('SIGTERM signal received: closing HTTP server');
-  await closeRedis();
   server.close(() => {
     console.log('HTTP server closed');
     process.exit(0);
@@ -249,7 +242,6 @@ process.on('SIGTERM', async () => {
 
 process.on('SIGINT', async () => {
   console.log('SIGINT signal received: closing HTTP server');
-  await closeRedis();
   server.close(() => {
     console.log('HTTP server closed');
     process.exit(0);
@@ -259,6 +251,6 @@ process.on('SIGINT', async () => {
 // Start server
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
-  console.log(`📡 Socket.IO server ready for connections`);
+  logger.info(`🚀 Server running on http://localhost:${PORT}`);
+  logger.info(`📡 Socket.IO server ready for connections`);
 });

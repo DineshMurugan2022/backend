@@ -18,8 +18,10 @@ const leadSchema = new mongoose.Schema({
   domainName: String,
   seo: String,
   noOfKeywords: String,
+  post: String, // Added missing post field (radio)
+  noOfPosts: String, // Added missing noOfPosts field
   additionalPlans: {
-    SEO: Boolean,
+    aso: Boolean, // Renamed from SEO to match frontend
     smo: Boolean,
     smm: Boolean,
     youtube: Boolean,
@@ -46,4 +48,10 @@ const leadSchema = new mongoose.Schema({
   executiveSignature: String, // store image URL or base64
 }, { timestamps: true });
 
-module.exports = mongoose.model('Lead', leadSchema); 
+// Performance Indexes
+leadSchema.index({ companyName: 1 });
+leadSchema.index({ contactNo: 1 });
+leadSchema.index({ createdAt: -1 });
+leadSchema.index({ companyName: 'text', contactPerson: 'text', mailAddress: 'text' });
+
+module.exports = mongoose.model('Lead', leadSchema);

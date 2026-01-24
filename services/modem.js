@@ -51,7 +51,9 @@ async function tryConnectToPort(portPath) {
  * Auto-detect available Huawei E173 port
  */
 async function findAvailablePort() {
-  console.log("🔍 Searching for Huawei E173 ports...");
+  if (!modemStatus.hasWarnedNoPort) {
+    console.log("🔍 Searching for Huawei E173 ports...");
+  }
 
   const candidates = new Set(COMMON_PORTS.filter(Boolean));
   try {
@@ -129,7 +131,10 @@ async function findAvailablePort() {
     console.log(`❌ ${portPath} not voice-capable: ${result.error}`);
   }
 
-  console.log("❌ No Huawei voice-capable ports found.");
+  if (!modemStatus.hasWarnedNoPort) {
+    console.log("❌ No Huawei voice-capable ports found. Service will retry quietly in background.");
+    modemStatus.hasWarnedNoPort = true;
+  }
   return null;
 }
 
@@ -140,10 +145,20 @@ async function findAvailablePort() {
 async function connectHuaweiE173(io) {
   ioInstance = io;
 
+  // Check if Modem is enabled via environment variable
+  const isEnabled = process.env.ENABLE_MODEM === 'true';
+  if (!isEnabled) {
+    if (!modemStatus.loggedSkip) {
+      console.log('ℹ️ Huawei E173 Modem Service is disabled via ENABLE_MODEM flag');
+      modemStatus.loggedSkip = true;
+    }
+    return;
+  }
+
   try {
     const availablePort = await findAvailablePort();
     if (!availablePort) {
-      modemStatus = { connected: false, ready: false };
+      modemStatus = { ...modemStatus, connected: false, ready: false };
       emitStatus();
       return scheduleReconnect();
     }
@@ -343,8 +358,11 @@ function handlePortError(err) {
  * Reconnect after delay
  */
 function scheduleReconnect() {
-  console.log("🔄 Reconnecting Huawei E173 in 5s...");
-  setTimeout(() => connectHuaweiE173(ioInstance), 5000);
+  const retryTime = 60000; // 60 seconds
+  if (!modemStatus.hasWarnedNoPort) {
+    console.log(`🔄 Reconnecting Huawei E173 in ${retryTime / 1000}s...`);
+  }
+  setTimeout(() => connectHuaweiE173(ioInstance), retryTime);
 }
 
 /**
