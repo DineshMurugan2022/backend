@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
+const compression = require("compression");
 const cookieParser = require("cookie-parser");
 const http = require("http");
 const path = require("path");
@@ -11,6 +12,8 @@ const morgan = require("morgan");
 const logger = require("./utils/logger");
 
 const connectDB = require("./db");
+const { pubClient, subClient, connectRedis } = require("./services/redis");
+const { createAdapter } = require("@socket.io/redis-adapter");
 
 const { handleTimeout } = require("./services/session");
 const auth = require("./middleware/auth");
@@ -60,12 +63,18 @@ const io = new Server(server, {
   compression: true
 });
 
+// Configure Redis adapter for Socket.IO scaling
+io.adapter(createAdapter(pubClient, subClient));
+
 // Initialize Socket.IO handlers
 const setupSocketIO = require("./sockets");
 setupSocketIO(io);
 
 // Connect to MongoDB
 connectDB();
+
+// Connect to Redis
+connectRedis();
 
 // Enhanced CORS configuration for production and development
 const corsOptions = {
@@ -97,6 +106,9 @@ app.use(cors(corsOptions));
 
 // Also handle preflight requests explicitly
 app.options('*', cors(corsOptions));
+
+// Apply Gzip compression to all responses
+app.use(compression());
 
 app.use(
   helmet({
@@ -193,19 +205,41 @@ app.use("/api", proxyRouter);
 app.use(errorHandler);
 
 // Serve uploads directory (both at root and under /api for compatibility)
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-app.use('/api/uploads', express.static(path.join(__dirname, 'uploads')));
+// Cache uploads for 1 day as they rarely change
+const staticOptions = {
+  maxAge: '1d',
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
+    }
+  }
+};
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads'), staticOptions));
+app.use('/api/uploads', express.static(path.join(__dirname, 'uploads'), staticOptions));
 
 // Serve static files from frontend/dist (if available)
 const frontendPath = path.join(__dirname, "../frontend/dist");
 if (fs.existsSync(frontendPath)) {
-  app.use(express.static(frontendPath));
+  // Frontend assets (JS/CSS) are content-hashed by Vite, so we can cache them heavily
+  app.use(express.static(frontendPath, {
+    maxAge: '30d',
+    setHeaders: (res, path) => {
+      if (path.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache');
+      } else {
+        res.setHeader('Cache-Control', 'public, max-age=2592000, immutable'); // 30 days
+      }
+    }
+  }));
 
   // Catch-all route for SPA (must be last)
   app.get("*", (req, res) => {
     const indexPath = path.join(frontendPath, "index.html");
     if (fs.existsSync(indexPath)) {
-      res.sendFile(indexPath);
+      res.sendFile(indexPath, { lastModified: false, etag: false }); // Let browser revalidate HTML
     } else {
       res.status(404).send("Frontend build not found");
     }

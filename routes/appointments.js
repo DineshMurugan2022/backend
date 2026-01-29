@@ -627,4 +627,54 @@ router.delete("/:id/hard", auth, async (req, res) => {
   }
 });
 
+// Bulk DELETE /api/appointments/bulk-delete
+router.delete('/bulk-delete', auth, async (req, res) => {
+  try {
+    const { ids } = req.body;
+    const userId = req.user.id || req.user._id;
+    if (!ids || !ids.length) return res.status(400).json({ error: 'No IDs provided' });
+
+    if (req.user.userGroup === 'admin') {
+      // Hard delete for admins
+      await Appointment.deleteMany({ _id: { $in: ids } });
+    } else {
+      // Soft delete (hide) for others
+      await Appointment.updateMany(
+        { _id: { $in: ids } },
+        { $addToSet: { deletedFor: userId } }
+      );
+    }
+    res.json({ message: `${ids.length} appointments deleted/hidden` });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Bulk PATCH /api/appointments/bulk-assign
+router.patch('/bulk-assign', auth, async (req, res) => {
+  try {
+    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader') {
+      return res.status(403).json({ error: 'Unauthorized' });
+    }
+    const { ids, userId } = req.body;
+    if (!ids || !ids.length) return res.status(400).json({ error: 'No IDs provided' });
+    await Appointment.updateMany({ _id: { $in: ids } }, { assignedBDM: userId });
+    res.json({ message: `${ids.length} appointments assigned` });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Bulk PATCH /api/appointments/bulk-update
+router.patch('/bulk-update', auth, async (req, res) => {
+  try {
+    const { ids, update } = req.body;
+    if (!ids || !ids.length) return res.status(400).json({ error: 'No IDs provided' });
+    await Appointment.updateMany({ _id: { $in: ids } }, update);
+    res.json({ message: `${ids.length} appointments updated` });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;

@@ -4,19 +4,11 @@ const Lead = require('../models/Lead');
 const multer = require('multer');
 const path = require('path');
 const LeadFile = require('../models/LeadFile');
+const { leadStorage } = require('../services/cloudinary');
 const auth = require('../middleware/auth'); // Import auth middleware
 
-// Set up multer storage
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, path.join(__dirname, '../uploads/'));
-  },
-  filename: function (req, file, cb) {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    cb(null, uniqueSuffix + '-' + file.originalname);
-  }
-});
-const upload = multer({ storage: storage });
+// Set up multer storage using Cloudinary
+const upload = multer({ storage: leadStorage });
 
 // POST /api/leads - Create a new lead
 router.post('/', auth, async (req, res) => {
@@ -70,7 +62,7 @@ router.post('/:leadId/upload', auth, upload.single('file'), async (req, res) => 
     const leadFile = new LeadFile({
       lead: req.params.leadId,
       title,
-      filename: req.file.filename,
+      filename: req.file.path, // Store Cloudinary secure URL or path
       originalname: req.file.originalname,
     });
     await leadFile.save();
@@ -95,8 +87,51 @@ router.get('/files/:fileId', auth, async (req, res) => {
   try {
     const file = await LeadFile.findById(req.params.fileId);
     if (!file) return res.status(404).json({ error: 'File not found' });
-    const filePath = path.join(__dirname, '../uploads/', file.filename);
-    res.download(filePath, file.originalname);
+
+    // Check if the filename is a full URL (Cloudinary) or just a filename (Legacy)
+    if (file.filename.startsWith('http')) {
+      res.redirect(file.filename);
+    } else {
+      const filePath = path.join(__dirname, '../uploads/', file.filename);
+      res.download(filePath, file.originalname);
+    }
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Bulk DELETE /api/leads/bulk-delete
+router.delete('/bulk-delete', auth, async (req, res) => {
+  try {
+    const { ids } = req.body;
+    if (!ids || !ids.length) return res.status(400).json({ error: 'No IDs provided' });
+    await Lead.deleteMany({ _id: { $in: ids } });
+    res.json({ message: `${ids.length} leads deleted` });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Bulk PATCH /api/leads/bulk-assign
+router.patch('/bulk-assign', auth, async (req, res) => {
+  try {
+    const { ids, userId } = req.body;
+    if (!ids || !ids.length) return res.status(400).json({ error: 'No IDs provided' });
+    if (!userId) return res.status(400).json({ error: 'No user ID provided' });
+    await Lead.updateMany({ _id: { $in: ids } }, { assignedTo: userId });
+    res.json({ message: `${ids.length} leads assigned` });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Bulk PATCH /api/leads/bulk-update
+router.patch('/bulk-update', auth, async (req, res) => {
+  try {
+    const { ids, update } = req.body;
+    if (!ids || !ids.length) return res.status(400).json({ error: 'No IDs provided' });
+    await Lead.updateMany({ _id: { $in: ids } }, update);
+    res.json({ message: `${ids.length} leads updated` });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

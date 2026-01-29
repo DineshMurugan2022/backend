@@ -46,6 +46,7 @@ const leadSchema = new mongoose.Schema({
   // Signatures
   customerSignature: String, // store image URL or base64
   executiveSignature: String, // store image URL or base64
+  assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Added for bulk assignment
 }, { timestamps: true });
 
 // Performance Indexes

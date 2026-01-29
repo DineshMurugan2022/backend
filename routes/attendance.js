@@ -395,4 +395,52 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
   }
 });
 
+// POST /api/attendance/bulk-manual - Manually mark attendance for multiple users
+router.post('/bulk-manual', auth, requireAdminOrLeader, async (req, res) => {
+  try {
+    const { userIds, date, status } = req.body;
+
+    if (!userIds || !userIds.length || !date || !status) {
+      return res.status(400).json({ error: 'userIds, date, and status are required' });
+    }
+
+    if (!['present', 'absent', 'leave', 'permission'].includes(status)) {
+      return res.status(400).json({ error: 'Invalid status' });
+    }
+
+    const [yyyy, mm, dd] = date.split('-').map(Number);
+    const startOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 0, 0, 0, 0));
+    const endOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 23, 59, 59, 999));
+    const attendanceDate = new Date(Date.UTC(yyyy, mm - 1, dd, 12, 0, 0, 0));
+
+    const totalHours = status === 'present' ? 8 : (status === 'leave' || status === 'permission') ? 4 : 0;
+
+    const bulkOps = userIds.map(userId => ({
+      updateOne: {
+        filter: { user: userId, date: { $gte: startOfDay, $lte: endOfDay } },
+        update: {
+          $set: {
+            user: userId,
+            date: attendanceDate,
+            status: status,
+            totalHours: totalHours
+          }
+        },
+        upsert: true
+      }
+    }));
+
+    await Attendance.bulkWrite(bulkOps);
+
+    if (req.io) {
+      req.io.emit('attendanceUpdated', { bulk: true, userIds, date: attendanceDate.toISOString(), status });
+    }
+
+    res.json({ success: true, message: `Attendance updated for ${userIds.length} users` });
+  } catch (error) {
+    console.error('Error in bulk attendance:', error);
+    res.status(500).json({ error: 'Failed to update bulk attendance' });
+  }
+});
+
 module.exports = router;

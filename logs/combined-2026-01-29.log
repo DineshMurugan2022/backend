@@ -1,0 +1,327 @@
+{"level":"info","message":"✅ Redis Connected successfully","timestamp":"2026-01-29 11:46:05"}
+{"level":"error","message":"Redis Pub Client Error: Connection timeout","stack":"Error: Connection timeout\n    at Socket.onTimeout (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:207:46)\n    at Object.onceWrapper (node:events:632:28)\n    at Socket.emit (node:events:518:28)\n    at Socket._onTimeout (node:net:609:8)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)","timestamp":"2026-01-29 11:46:05"}
+{"level":"error","message":"Redis Sub Client Error: Connection timeout","stack":"Error: Connection timeout\n    at Socket.onTimeout (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:207:46)\n    at Object.onceWrapper (node:events:632:28)\n    at Socket.emit (node:events:518:28)\n    at Socket._onTimeout (node:net:609:8)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)","timestamp":"2026-01-29 11:46:05"}
+{"level":"info","message":"🚀 Server running on http://localhost:5000","timestamp":"2026-01-29 11:46:05"}
+{"level":"info","message":"📡 Socket.IO server ready for connections","timestamp":"2026-01-29 11:46:05"}
+{"level":"error","message":"Redis Sub Client Error: Cannot read properties of undefined (reading 'value')","stack":"TypeError: Cannot read properties of undefined (reading 'value')\n    at #getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:101:43)\n    at decoder.getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:227:65)\n    at #decodeTypeValue (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:108:86)\n    at Decoder.write (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:74:38)\n    at RedisSocket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:437:37)\n    at RedisSocket.emit (node:events:518:28)\n    at Socket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:235:38)\n    at Socket.emit (node:events:518:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)","timestamp":"2026-01-29 11:46:05"}
+{"level":"info","message":"✅ Redis Connected successfully","timestamp":"2026-01-29 11:46:05"}
+{"level":"error","message":"Redis Sub Client Error: Cannot read properties of undefined (reading 'value')","stack":"TypeError: Cannot read properties of undefined (reading 'value')\n    at #getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:101:43)\n    at decoder.getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:227:65)\n    at #decodeTypeValue (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:108:86)\n    at Decoder.write (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:74:38)\n    at RedisSocket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:437:37)\n    at RedisSocket.emit (node:events:518:28)\n    at Socket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:235:38)\n    at Socket.emit (node:events:518:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)","timestamp":"2026-01-29 11:46:48"}
+{"level":"info","message":"GET /api/messages/unread-count 304 - - 179.484 ms","timestamp":"2026-01-29 11:46:48"}
+{"level":"info","message":"GET /api/messages/unread-count 304 - - 86.885 ms","timestamp":"2026-01-29 11:46:48"}
+{"level":"info","message":"GET /api/appointments/revenue/reports 200 909 - 183.981 ms","timestamp":"2026-01-29 11:46:53"}
+{"level":"info","message":"GET /api/users/all 200 - - 450.152 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/admin-status 200 49 - 1060.276 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 - - 1234.202 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/appointments 200 - - 1267.196 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/appointments/stats?month=1&year=2026 200 12 - 127.674 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/appointments/stats?month=12&year=2025 200 12 - 130.079 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/tasks 304 - - 1566.790 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/appointments/revenue 200 46 - 263.272 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 - - 1597.066 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/users 200 - - 314.999 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/appointments/revenue/reports 304 - - 139.166 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/admin-status 304 - - 74.141 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/appointments/stats?month=1&year=2026 304 - - 152.032 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 334.455 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/users/all 304 - - 259.235 ms","timestamp":"2026-01-29 11:46:54"}
+{"level":"info","message":"GET /api/appointments 304 - - 405.173 ms","timestamp":"2026-01-29 11:46:55"}
+{"level":"info","message":"GET /api/appointments/stats?month=12&year=2025 304 - - 258.436 ms","timestamp":"2026-01-29 11:46:55"}
+{"level":"info","message":"GET /api/tasks 304 - - 306.629 ms","timestamp":"2026-01-29 11:46:55"}
+{"level":"info","message":"GET /api/appointments/revenue 304 - - 179.201 ms","timestamp":"2026-01-29 11:46:55"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 207.433 ms","timestamp":"2026-01-29 11:46:55"}
+{"level":"info","message":"GET /api/users 304 - - 286.935 ms","timestamp":"2026-01-29 11:46:55"}
+{"level":"info","message":"GET /api/tasks 304 - - 218.666 ms","timestamp":"2026-01-29 11:46:55"}
+{"level":"info","message":"GET /api/tasks 304 - - 136.610 ms","timestamp":"2026-01-29 11:46:55"}
+{"level":"info","message":"GET /api/appointments/stats?month=1&year=2026 304 - - 97.066 ms","timestamp":"2026-01-29 11:47:03"}
+{"level":"info","message":"GET /api/appointments/stats?month=12&year=2025 304 - - 97.565 ms","timestamp":"2026-01-29 11:47:03"}
+{"level":"info","message":"GET /api/appointments/revenue 304 - - 137.448 ms","timestamp":"2026-01-29 11:47:03"}
+{"level":"info","message":"GET /api/users 304 - - 197.624 ms","timestamp":"2026-01-29 11:47:03"}
+{"level":"info","message":"GET /api/appointments/stats?month=12&year=2025 304 - - 91.816 ms","timestamp":"2026-01-29 11:47:13"}
+{"level":"info","message":"GET /api/appointments/stats?month=1&year=2026 304 - - 113.540 ms","timestamp":"2026-01-29 11:47:13"}
+{"level":"info","message":"GET /api/appointments/revenue 304 - - 184.603 ms","timestamp":"2026-01-29 11:47:13"}
+{"level":"info","message":"GET /api/users 200 - - 248.206 ms","timestamp":"2026-01-29 11:47:13"}
+{"level":"error","message":"Redis Sub Client Error: Cannot read properties of undefined (reading 'value')","stack":"TypeError: Cannot read properties of undefined (reading 'value')\n    at #getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:101:43)\n    at decoder.getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:227:65)\n    at #decodeTypeValue (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:108:86)\n    at Decoder.write (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:74:38)\n    at RedisSocket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:437:37)\n    at RedisSocket.emit (node:events:518:28)\n    at Socket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:235:38)\n    at Socket.emit (node:events:518:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)","timestamp":"2026-01-29 11:47:26"}
+{"level":"error","message":"Redis Sub Client Error: Cannot read properties of undefined (reading 'value')","stack":"TypeError: Cannot read properties of undefined (reading 'value')\n    at #getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:101:43)\n    at decoder.getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:227:65)\n    at #decodeTypeValue (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:108:86)\n    at Decoder.write (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:74:38)\n    at RedisSocket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:437:37)\n    at RedisSocket.emit (node:events:518:28)\n    at Socket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:235:38)\n    at Socket.emit (node:events:518:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)","timestamp":"2026-01-29 11:47:26"}
+{"level":"error","message":"Redis Sub Client Error: Cannot read properties of undefined (reading 'value')","stack":"TypeError: Cannot read properties of undefined (reading 'value')\n    at #getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:101:43)\n    at decoder.getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:227:65)\n    at #decodeTypeValue (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:108:86)\n    at Decoder.write (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:74:38)\n    at RedisSocket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:437:37)\n    at RedisSocket.emit (node:events:518:28)\n    at Socket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:235:38)\n    at Socket.emit (node:events:518:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)","timestamp":"2026-01-29 11:47:27"}
+{"level":"info","message":"GET /api/messages/unread-count 304 - - 85.272 ms","timestamp":"2026-01-29 11:47:27"}
+{"level":"info","message":"GET /api/messages/unread-count 304 - - 79.921 ms","timestamp":"2026-01-29 11:47:27"}
+{"level":"info","message":"GET /api/appointments/revenue/reports 304 - - 88.011 ms","timestamp":"2026-01-29 11:47:27"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 360.560 ms","timestamp":"2026-01-29 11:47:27"}
+{"level":"info","message":"GET /api/admin-status 304 - - 420.664 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/users/all 200 - - 224.322 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 543.876 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/appointments 304 - - 597.875 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/appointments/stats?month=1&year=2026 304 - - 148.838 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/appointments/stats?month=12&year=2025 304 - - 125.288 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/appointments/revenue 304 - - 166.222 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/appointments/revenue/reports 304 - - 132.657 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/tasks 304 - - 807.994 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/users 200 - - 180.182 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/admin-status 304 - - 73.231 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/users/all 304 - - 186.686 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 267.619 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/appointments/stats?month=1&year=2026 304 - - 166.790 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/appointments/stats?month=12&year=2025 304 - - 194.780 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 341.101 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/appointments 304 - - 323.853 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/appointments/revenue 304 - - 242.812 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/tasks 304 - - 182.626 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/users 304 - - 247.197 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/tasks 304 - - 143.315 ms","timestamp":"2026-01-29 11:47:28"}
+{"level":"info","message":"GET /api/tasks 304 - - 113.610 ms","timestamp":"2026-01-29 11:47:29"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 175.092 ms","timestamp":"2026-01-29 11:47:31"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 203.920 ms","timestamp":"2026-01-29 11:47:31"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z - - - - ms","timestamp":"2026-01-29 11:47:34"}
+{"level":"info","message":"GET /api/attendance/2026/1 - - - - ms","timestamp":"2026-01-29 11:47:34"}
+{"level":"error","message":"Redis Sub Client Error: Cannot read properties of undefined (reading 'value')","stack":"TypeError: Cannot read properties of undefined (reading 'value')\n    at #getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:101:43)\n    at decoder.getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:227:65)\n    at #decodeTypeValue (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:108:86)\n    at Decoder.write (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:74:38)\n    at RedisSocket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:437:37)\n    at RedisSocket.emit (node:events:518:28)\n    at Socket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:235:38)\n    at Socket.emit (node:events:518:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)","timestamp":"2026-01-29 11:47:34"}
+{"level":"error","message":"Redis Sub Client Error: Cannot read properties of undefined (reading 'value')","stack":"TypeError: Cannot read properties of undefined (reading 'value')\n    at #getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:101:43)\n    at decoder.getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:227:65)\n    at #decodeTypeValue (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:108:86)\n    at Decoder.write (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:74:38)\n    at RedisSocket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:437:37)\n    at RedisSocket.emit (node:events:518:28)\n    at Socket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:235:38)\n    at Socket.emit (node:events:518:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)","timestamp":"2026-01-29 11:47:34"}
+{"level":"error","message":"Redis Sub Client Error: Cannot read properties of undefined (reading 'value')","stack":"TypeError: Cannot read properties of undefined (reading 'value')\n    at #getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:101:43)\n    at decoder.getTypeMapping (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\commands-queue.js:227:65)\n    at #decodeTypeValue (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:108:86)\n    at Decoder.write (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\RESP\\decoder.js:74:38)\n    at RedisSocket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\index.js:437:37)\n    at RedisSocket.emit (node:events:518:28)\n    at Socket.<anonymous> (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:235:38)\n    at Socket.emit (node:events:518:28)\n    at addChunk (node:internal/streams/readable:561:12)\n    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)\n    at Readable.push (node:internal/streams/readable:392:5)\n    at TCP.onStreamRead (node:internal/stream_base_commons:189:23)","timestamp":"2026-01-29 11:47:35"}
+{"level":"info","message":"GET /api/messages/unread-count 304 - - 100.478 ms","timestamp":"2026-01-29 11:47:35"}
+{"level":"info","message":"GET /api/messages/unread-count 304 - - 82.532 ms","timestamp":"2026-01-29 11:47:35"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 - - 244.449 ms","timestamp":"2026-01-29 11:47:35"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 - - 332.494 ms","timestamp":"2026-01-29 11:47:36"}
+{"level":"info","message":"GET /api/users 200 - - 288.029 ms","timestamp":"2026-01-29 11:47:36"}
+{"level":"info","message":"GET /api/users 304 - - 235.419 ms","timestamp":"2026-01-29 11:47:36"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 266.501 ms","timestamp":"2026-01-29 11:47:36"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 264.175 ms","timestamp":"2026-01-29 11:47:36"}
+{"level":"info","message":"✅ Redis Connected successfully","timestamp":"2026-01-29 11:58:34"}
+{"level":"info","message":"🚀 Server running on http://localhost:5000","timestamp":"2026-01-29 11:58:35"}
+{"level":"info","message":"📡 Socket.IO server ready for connections","timestamp":"2026-01-29 11:58:35"}
+{"level":"info","message":"✅ Redis Connected successfully","timestamp":"2026-01-29 11:58:35"}
+{"level":"info","message":"GET /api/messages/unread-count 304 - - 129.090 ms","timestamp":"2026-01-29 11:58:44"}
+{"level":"info","message":"GET /api/messages/unread-count 304 - - 87.042 ms","timestamp":"2026-01-29 11:58:44"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 524.863 ms","timestamp":"2026-01-29 11:58:46"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 588.197 ms","timestamp":"2026-01-29 11:58:46"}
+{"level":"info","message":"GET /api/users 200 - - 418.109 ms","timestamp":"2026-01-29 11:58:46"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 263.859 ms","timestamp":"2026-01-29 11:58:46"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 291.713 ms","timestamp":"2026-01-29 11:58:46"}
+{"level":"info","message":"GET /api/users 304 - - 282.061 ms","timestamp":"2026-01-29 11:58:47"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"Redis Sub Client Error: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)","syscall":"read","timestamp":"2026-01-29 12:00:40"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:40"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:41"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:41"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:41"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:41"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:42"}
+{"code":"ECONNRESET","errno":-4077,"level":"error","message":"Redis Pub Client Error: read ECONNRESET","stack":"Error: read ECONNRESET\n    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)","syscall":"read","timestamp":"2026-01-29 12:00:43"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:43"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:43"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:43"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:43"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:44"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:44"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:45"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:46"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:47"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:48"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:49"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:50"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:51"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:53"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:53"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:55"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:55"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:57"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:57"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:59"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:00:59"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:01"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:01"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:03"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:04"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:05"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:06"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:07"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:08"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:09"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:10"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:11"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:12"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Sub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:14"}
+{"code":"ENOTFOUND","errno":-3008,"hostname":"redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","level":"error","message":"Redis Pub Client Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com","stack":"Error: getaddrinfo ENOTFOUND redis-19150.crce263.ap-south-1-1.ec2.cloud.redislabs.com\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:122:26)","syscall":"getaddrinfo","timestamp":"2026-01-29 12:01:14"}
+{"level":"error","message":"Redis Pub Client Error: Connection timeout","stack":"Error: Connection timeout\n    at Socket.onTimeout (C:\\Users\\user\\OneDrive\\Desktop\\CRM\\backend\\node_modules\\@redis\\client\\dist\\lib\\client\\socket.js:207:46)\n    at Object.onceWrapper (node:events:632:28)\n    at Socket.emit (node:events:518:28)\n    at Socket._onTimeout (node:net:609:8)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)","timestamp":"2026-01-29 12:01:21"}
+{"level":"info","message":"GET /api/messages/unread-count 200 17 - 94.211 ms","timestamp":"2026-01-29 12:03:09"}
+{"level":"info","message":"GET /api/messages/unread-count 200 17 - 301.460 ms","timestamp":"2026-01-29 12:03:09"}
+{"level":"info","message":"GET /api/users 200 - - 563.465 ms","timestamp":"2026-01-29 12:03:11"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 - - 787.352 ms","timestamp":"2026-01-29 12:03:11"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 - - 856.714 ms","timestamp":"2026-01-29 12:03:11"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 - - 903.861 ms","timestamp":"2026-01-29 12:03:11"}
+{"level":"info","message":"GET /api/users 200 - - 1081.983 ms","timestamp":"2026-01-29 12:03:11"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 - - 1098.607 ms","timestamp":"2026-01-29 12:03:11"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 203.117 ms","timestamp":"2026-01-29 12:03:35"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 187.406 ms","timestamp":"2026-01-29 12:03:40"}
+{"level":"info","message":"OPTIONS /api/attendance/bulk-manual 200 0 - 0.787 ms","timestamp":"2026-01-29 12:04:09"}
+{"level":"info","message":"POST /api/attendance/bulk-manual 200 59 - 197.217 ms","timestamp":"2026-01-29 12:04:09"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 - - 189.695 ms","timestamp":"2026-01-29 12:04:09"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 182.846 ms","timestamp":"2026-01-29 12:04:09"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 - - 176.868 ms","timestamp":"2026-01-29 12:04:10"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 190.979 ms","timestamp":"2026-01-29 12:04:25"}
+{"level":"info","message":"OPTIONS /api/attendance/bulk-manual 200 0 - 0.459 ms","timestamp":"2026-01-29 12:04:30"}
+{"level":"info","message":"POST /api/attendance/bulk-manual 200 59 - 82.748 ms","timestamp":"2026-01-29 12:04:31"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 200 - - 189.612 ms","timestamp":"2026-01-29 12:04:31"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 187.510 ms","timestamp":"2026-01-29 12:04:31"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 - - 189.770 ms","timestamp":"2026-01-29 12:04:40"}
+{"level":"info","message":"GET /api/appointments/telecaller 200 540 - 250.224 ms","timestamp":"2026-01-29 12:04:50"}
+{"level":"info","message":"GET /api/users 200 - - 234.227 ms","timestamp":"2026-01-29 12:04:50"}
+{"level":"info","message":"GET /api/appointments/telecaller 304 - - 236.294 ms","timestamp":"2026-01-29 12:04:50"}
+{"level":"info","message":"GET /api/users 304 - - 180.597 ms","timestamp":"2026-01-29 12:04:50"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 0.625 ms","timestamp":"2026-01-29 12:04:56"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 0.357 ms","timestamp":"2026-01-29 12:04:56"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 270.226 ms","timestamp":"2026-01-29 12:04:56"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 282.879 ms","timestamp":"2026-01-29 12:04:56"}
+{"level":"info","message":"GET /api/users 304 - - 337.861 ms","timestamp":"2026-01-29 12:04:56"}
+{"level":"info","message":"GET /api/users 304 - - 137.552 ms","timestamp":"2026-01-29 12:04:56"}
+{"level":"info","message":"GET /api/appointments/all 200 - - 574.189 ms","timestamp":"2026-01-29 12:04:56"}
+{"level":"info","message":"GET /api/appointments/all 304 - - 221.061 ms","timestamp":"2026-01-29 12:04:57"}
+{"level":"info","message":"GET /api/users/me 200 - - 112.754 ms","timestamp":"2026-01-29 12:05:07"}
+{"level":"info","message":"GET /api/users 200 - - 248.635 ms","timestamp":"2026-01-29 12:05:07"}
+{"level":"info","message":"GET /api/tasks 304 - - 437.786 ms","timestamp":"2026-01-29 12:05:07"}
+{"level":"info","message":"GET /api/users/me 304 - - 89.101 ms","timestamp":"2026-01-29 12:05:07"}
+{"level":"info","message":"GET /api/tasks 304 - - 135.944 ms","timestamp":"2026-01-29 12:05:07"}
+{"level":"info","message":"GET /api/users 304 - - 189.178 ms","timestamp":"2026-01-29 12:05:07"}
+{"level":"info","message":"GET /api/reports 200 - - 320.823 ms","timestamp":"2026-01-29 12:05:08"}
+{"level":"info","message":"GET /api/queries 304 - - 311.033 ms","timestamp":"2026-01-29 12:05:08"}
+{"level":"info","message":"GET /api/queries 304 - - 109.128 ms","timestamp":"2026-01-29 12:05:08"}
+{"level":"info","message":"GET /api/reports 304 - - 393.312 ms","timestamp":"2026-01-29 12:05:08"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 220.921 ms","timestamp":"2026-01-29 12:05:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 214.446 ms","timestamp":"2026-01-29 12:05:41"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 192.478 ms","timestamp":"2026-01-29 12:06:11"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 207.775 ms","timestamp":"2026-01-29 12:06:43"}
+{"level":"info","message":"GET /api/appointments/telecaller 304 - - 236.985 ms","timestamp":"2026-01-29 12:06:48"}
+{"level":"info","message":"GET /api/users 200 - - 257.758 ms","timestamp":"2026-01-29 12:06:48"}
+{"level":"info","message":"GET /api/appointments/telecaller 304 - - 182.166 ms","timestamp":"2026-01-29 12:06:49"}
+{"level":"info","message":"GET /api/users 304 - - 202.383 ms","timestamp":"2026-01-29 12:06:49"}
+{"level":"info","message":"GET /api/users 304 - - 234.548 ms","timestamp":"2026-01-29 12:06:58"}
+{"level":"info","message":"GET /api/appointments/telecaller 304 - - 248.220 ms","timestamp":"2026-01-29 12:06:58"}
+{"level":"info","message":"GET /api/appointments/telecaller 304 - - 193.590 ms","timestamp":"2026-01-29 12:06:58"}
+{"level":"info","message":"GET /api/users 304 - - 233.188 ms","timestamp":"2026-01-29 12:06:58"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 0.475 ms","timestamp":"2026-01-29 12:07:00"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 0.412 ms","timestamp":"2026-01-29 12:07:00"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 161.481 ms","timestamp":"2026-01-29 12:07:00"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 163.310 ms","timestamp":"2026-01-29 12:07:00"}
+{"level":"info","message":"GET /api/appointments/all 304 - - 252.269 ms","timestamp":"2026-01-29 12:07:00"}
+{"level":"info","message":"GET /api/users 304 - - 302.091 ms","timestamp":"2026-01-29 12:07:00"}
+{"level":"info","message":"GET /api/appointments/all 304 - - 193.701 ms","timestamp":"2026-01-29 12:07:00"}
+{"level":"info","message":"GET /api/users 304 - - 203.157 ms","timestamp":"2026-01-29 12:07:00"}
+{"level":"info","message":"GET /api/calls/huawei-audio-status 200 111 - 201.328 ms","timestamp":"2026-01-29 12:07:04"}
+{"level":"info","message":"GET /api/tasks 304 - - 369.619 ms","timestamp":"2026-01-29 12:07:04"}
+{"level":"info","message":"GET /api/users 304 - - 415.081 ms","timestamp":"2026-01-29 12:07:04"}
+{"level":"info","message":"GET /api/calls/huawei-audio-status 304 - - 123.973 ms","timestamp":"2026-01-29 12:07:04"}
+{"level":"info","message":"GET /api/tasks 304 - - 139.999 ms","timestamp":"2026-01-29 12:07:04"}
+{"level":"info","message":"GET /api/users 304 - - 190.671 ms","timestamp":"2026-01-29 12:07:04"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 194.056 ms","timestamp":"2026-01-29 12:07:11"}
+{"level":"info","message":"POST /api/calls/setup-huawei-audio 200 560 - 9209.693 ms","timestamp":"2026-01-29 12:07:13"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 171.923 ms","timestamp":"2026-01-29 12:07:41"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 200.171 ms","timestamp":"2026-01-29 12:09:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 176.812 ms","timestamp":"2026-01-29 12:10:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 185.284 ms","timestamp":"2026-01-29 12:11:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 187.268 ms","timestamp":"2026-01-29 12:12:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 178.854 ms","timestamp":"2026-01-29 12:13:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 185.389 ms","timestamp":"2026-01-29 12:14:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 160.126 ms","timestamp":"2026-01-29 12:15:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 168.701 ms","timestamp":"2026-01-29 12:16:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 157.445 ms","timestamp":"2026-01-29 12:17:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 171.603 ms","timestamp":"2026-01-29 12:18:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 183.110 ms","timestamp":"2026-01-29 12:18:42"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 198.086 ms","timestamp":"2026-01-29 12:18:56"}
+{"level":"info","message":"GET /api/attendance/range?start=2025-12-31T18:30:00.000Z&end=2026-01-31T18:29:59.999Z 304 - - 169.458 ms","timestamp":"2026-01-29 12:18:56"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 173.536 ms","timestamp":"2026-01-29 12:19:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 167.704 ms","timestamp":"2026-01-29 12:19:41"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 157.284 ms","timestamp":"2026-01-29 12:20:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 193.897 ms","timestamp":"2026-01-29 12:20:41"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 201.571 ms","timestamp":"2026-01-29 12:21:12"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 173.135 ms","timestamp":"2026-01-29 12:21:41"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 163.759 ms","timestamp":"2026-01-29 12:22:11"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 168.690 ms","timestamp":"2026-01-29 12:23:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 167.570 ms","timestamp":"2026-01-29 12:24:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 161.432 ms","timestamp":"2026-01-29 12:25:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 487.370 ms","timestamp":"2026-01-29 12:26:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 222.161 ms","timestamp":"2026-01-29 12:27:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 162.362 ms","timestamp":"2026-01-29 12:28:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 219.936 ms","timestamp":"2026-01-29 12:29:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 191.068 ms","timestamp":"2026-01-29 12:30:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 191.314 ms","timestamp":"2026-01-29 12:31:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 164.748 ms","timestamp":"2026-01-29 12:32:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 193.987 ms","timestamp":"2026-01-29 12:33:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 179.493 ms","timestamp":"2026-01-29 12:34:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 237.101 ms","timestamp":"2026-01-29 12:35:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 188.237 ms","timestamp":"2026-01-29 12:36:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 170.333 ms","timestamp":"2026-01-29 12:37:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 166.894 ms","timestamp":"2026-01-29 12:38:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 231.507 ms","timestamp":"2026-01-29 12:39:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 165.593 ms","timestamp":"2026-01-29 12:40:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 173.305 ms","timestamp":"2026-01-29 12:41:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 177.190 ms","timestamp":"2026-01-29 12:42:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 163.131 ms","timestamp":"2026-01-29 12:43:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 163.402 ms","timestamp":"2026-01-29 12:44:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 172.942 ms","timestamp":"2026-01-29 12:45:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 174.189 ms","timestamp":"2026-01-29 12:46:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 183.860 ms","timestamp":"2026-01-29 12:47:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 170.854 ms","timestamp":"2026-01-29 12:47:40"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 162.752 ms","timestamp":"2026-01-29 12:48:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 162.491 ms","timestamp":"2026-01-29 12:48:40"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 158.315 ms","timestamp":"2026-01-29 12:49:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 172.470 ms","timestamp":"2026-01-29 12:49:40"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 161.123 ms","timestamp":"2026-01-29 12:50:10"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 185.433 ms","timestamp":"2026-01-29 12:50:40"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 164.308 ms","timestamp":"2026-01-29 12:51:10"}
+{"level":"info","message":"POST /api/auth/logout 200 31 - 48.971 ms","timestamp":"2026-01-29 12:51:12"}
+{"level":"info","message":"OPTIONS /api/users/logout 200 0 - 3.317 ms","timestamp":"2026-01-29 12:51:12"}
+{"level":"info","message":"POST /api/users/logout 200 33 - 197.172 ms","timestamp":"2026-01-29 12:51:12"}
+{"level":"info","message":"OPTIONS /api/auth/login 200 0 - 1.051 ms","timestamp":"2026-01-29 12:51:43"}
+{"level":"info","message":"POST /api/auth/login 200 442 - 565.239 ms","timestamp":"2026-01-29 12:51:44"}
+{"level":"info","message":"GET /api/messages/unread-count 200 17 - 104.209 ms","timestamp":"2026-01-29 12:51:44"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 0.419 ms","timestamp":"2026-01-29 12:51:45"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 0.526 ms","timestamp":"2026-01-29 12:51:45"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 153.387 ms","timestamp":"2026-01-29 12:51:45"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 199.614 ms","timestamp":"2026-01-29 12:51:45"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 - - 305.333 ms","timestamp":"2026-01-29 12:51:45"}
+{"level":"info","message":"GET /api/appointments/bdm 200 - - 225.825 ms","timestamp":"2026-01-29 12:51:45"}
+{"level":"info","message":"GET /api/appointments/bdm 304 - - 225.522 ms","timestamp":"2026-01-29 12:51:45"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 259.822 ms","timestamp":"2026-01-29 12:51:45"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 186.310 ms","timestamp":"2026-01-29 12:52:15"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 160.229 ms","timestamp":"2026-01-29 12:52:45"}
+{"level":"info","message":"OPTIONS /api/appointments 200 0 - 0.493 ms","timestamp":"2026-01-29 12:52:53"}
+{"level":"info","message":"POST /api/appointments 201 510 - 171.254 ms","timestamp":"2026-01-29 12:52:53"}
+{"level":"info","message":"GET /api/appointments/bdm 200 - - 247.618 ms","timestamp":"2026-01-29 12:52:54"}
+{"level":"info","message":"GET /api/appointments/bdm 304 - - 224.999 ms","timestamp":"2026-01-29 12:52:54"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 160.705 ms","timestamp":"2026-01-29 12:53:15"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 185.527 ms","timestamp":"2026-01-29 12:53:45"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 176.075 ms","timestamp":"2026-01-29 12:54:15"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 190.997 ms","timestamp":"2026-01-29 12:54:45"}
+{"level":"info","message":"OPTIONS /api/appointments 200 0 - 0.276 ms","timestamp":"2026-01-29 12:55:05"}
+{"level":"info","message":"POST /api/appointments 201 514 - 122.643 ms","timestamp":"2026-01-29 12:55:05"}
+{"level":"info","message":"GET /api/appointments/bdm 200 - - 196.813 ms","timestamp":"2026-01-29 12:55:06"}
+{"level":"info","message":"GET /api/appointments/bdm 304 - - 169.788 ms","timestamp":"2026-01-29 12:55:06"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 185.225 ms","timestamp":"2026-01-29 12:55:15"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 163.690 ms","timestamp":"2026-01-29 12:55:45"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 168.475 ms","timestamp":"2026-01-29 12:56:15"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 159.838 ms","timestamp":"2026-01-29 12:56:45"}
+{"level":"info","message":"OPTIONS /api/appointments 200 0 - 0.447 ms","timestamp":"2026-01-29 12:56:48"}
+{"level":"info","message":"POST /api/appointments 201 521 - 110.534 ms","timestamp":"2026-01-29 12:56:48"}
+{"level":"info","message":"GET /api/appointments/bdm 200 - - 173.766 ms","timestamp":"2026-01-29 12:56:49"}
+{"level":"info","message":"GET /api/appointments/bdm 304 - - 184.724 ms","timestamp":"2026-01-29 12:56:49"}
+{"level":"info","message":"POST /api/auth/logout 429 128 - 45.227 ms","timestamp":"2026-01-29 12:56:56"}
+{"level":"info","message":"OPTIONS /api/users/logout 200 0 - 1.162 ms","timestamp":"2026-01-29 12:56:56"}
+{"level":"info","message":"POST /api/users/logout 200 33 - 182.780 ms","timestamp":"2026-01-29 12:56:56"}
+{"level":"info","message":"POST /api/calls/setup-huawei-audio - - - - ms","timestamp":"2026-01-29 15:26:58"}
+{"level":"info","message":"OPTIONS /api/auth/login 200 0 - 1.317 ms","timestamp":"2026-01-29 15:30:13"}
+{"level":"info","message":"POST /api/auth/login 200 442 - 806.291 ms","timestamp":"2026-01-29 15:30:13"}
+{"level":"info","message":"OPTIONS /api/messages/unread-count 200 0 - 0.562 ms","timestamp":"2026-01-29 15:30:14"}
+{"level":"info","message":"GET /api/messages/unread-count 304 - - 152.234 ms","timestamp":"2026-01-29 15:30:14"}
+{"level":"info","message":"OPTIONS /api/appointments/bdm 200 0 - 0.443 ms","timestamp":"2026-01-29 15:30:20"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 0.773 ms","timestamp":"2026-01-29 15:30:20"}
+{"level":"info","message":"OPTIONS /api/appointments/revenue/report 200 0 - 0.456 ms","timestamp":"2026-01-29 15:30:20"}
+{"level":"info","message":"OPTIONS /api/attendance/2026/1 200 0 - 0.703 ms","timestamp":"2026-01-29 15:30:20"}
+{"level":"info","message":"OPTIONS /api/attendance/2026/1 200 0 - 0.468 ms","timestamp":"2026-01-29 15:30:20"}
+{"level":"info","message":"OPTIONS /api/appointments/bdm 200 0 - 0.395 ms","timestamp":"2026-01-29 15:30:20"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 289.678 ms","timestamp":"2026-01-29 15:30:20"}
+{"level":"info","message":"POST /api/appointments/revenue/report 200 313 - 301.090 ms","timestamp":"2026-01-29 15:30:20"}
+{"level":"info","message":"GET /api/appointments/bdm 304 - - 361.996 ms","timestamp":"2026-01-29 15:30:20"}
+{"level":"info","message":"GET /api/attendance/2026/1 200 - - 366.815 ms","timestamp":"2026-01-29 15:30:21"}
+{"level":"info","message":"GET /api/appointments/bdm 304 - - 289.597 ms","timestamp":"2026-01-29 15:30:21"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 341.264 ms","timestamp":"2026-01-29 15:30:21"}
+{"level":"info","message":"OPTIONS /api/attendance/2026/1 200 0 - 0.438 ms","timestamp":"2026-01-29 15:30:50"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 250.874 ms","timestamp":"2026-01-29 15:30:50"}
+{"level":"info","message":"OPTIONS /api/attendance/2026/1 200 0 - 0.206 ms","timestamp":"2026-01-29 15:31:20"}
+{"level":"info","message":"GET /api/attendance/2026/1 304 - - 223.695 ms","timestamp":"2026-01-29 15:31:20"}

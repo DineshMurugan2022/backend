@@ -4,27 +4,15 @@ const auth = require('../middleware/auth');
 const Message = require('../models/Message');
 const User = require('../models/User');
 const { getIOInstance } = require('../sockets/io');
+const { chatStorage } = require('../services/cloudinary');
 
 const multer = require('multer');
 
 const fs = require('fs');
 
-// Configure multer for file upload
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    const uploadDir = 'uploads/chat';
-    if (!fs.existsSync(uploadDir)) {
-      fs.mkdirSync(uploadDir, { recursive: true });
-    }
-    cb(null, uploadDir);
-  },
-  filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname);
-  }
-});
-
+// Configure multer for file upload using Cloudinary
 const upload = multer({
-  storage: storage,
+  storage: chatStorage,
   limits: { fileSize: 10 * 1024 * 1024 } // 10MB limit
 });
 
@@ -216,10 +204,8 @@ router.post('/send', auth, upload.single('file'), async (req, res) => {
     };
 
     if (file) {
-      // In a real app, you'd perform a cloud upload here. 
-      // For now, we serve from the local uploads directory.
-      // Make sure your backend serves 'uploads' folder statically.
-      messageData.mediaUrl = `/uploads/chat/${file.filename}`;
+      // Use Cloudinary secure URL
+      messageData.mediaUrl = file.path;
       messageData.fileName = file.originalname;
       messageData.mimeType = file.mimetype;
       messageData.content = file.originalname; // Show filename as content/fallback

@@ -221,4 +221,56 @@ router.post('/:id/notes', auth, async (req, res) => {
   }
 });
 
+// Bulk DELETE /api/tasks/bulk-delete
+router.delete('/bulk-delete', auth, async (req, res) => {
+  try {
+    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
+      return res.status(403).json({ message: 'Only admin and team leaders can delete tasks' });
+    }
+    const { ids } = req.body;
+    if (!ids || !ids.length) return res.status(400).json({ error: 'No IDs provided' });
+    await Task.deleteMany({ _id: { $in: ids } });
+    res.json({ message: `${ids.length} tasks deleted` });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Bulk PATCH /api/tasks/bulk-assign
+router.patch('/bulk-assign', auth, async (req, res) => {
+  try {
+    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
+      return res.status(403).json({ message: 'Only admin and team leaders can assign tasks' });
+    }
+    const { ids, userId } = req.body;
+    if (!ids || !ids.length) return res.status(400).json({ error: 'No IDs provided' });
+    await Task.updateMany({ _id: { $in: ids } }, { assignee: userId });
+    res.json({ message: `${ids.length} tasks assigned` });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+// Bulk PATCH /api/tasks/bulk-status
+router.patch('/bulk-status', auth, async (req, res) => {
+  try {
+    const { ids, status } = req.body;
+    if (!ids || !ids.length) return res.status(400).json({ error: 'No IDs provided' });
+
+    // Non-admins can only update tasks assigned to them
+    const filter = { _id: { $in: ids } };
+    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
+      filter.assignee = req.user._id;
+    }
+
+    const result = await Task.updateMany(filter, {
+      status,
+      ...(status === 'completed' ? { completedBy: req.user._id, completedAt: new Date() } : {})
+    });
+    res.json({ message: `${result.modifiedCount} tasks updated` });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = router;

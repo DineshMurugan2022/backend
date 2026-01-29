@@ -94,9 +94,10 @@ router.post("/login", [
 
     res.cookie('token', accessToken, cookieOptions);
 
-    // Return user data and refresh token (refresh token can be stored separately if needed)
+    // Return user data and tokens
     res.json({
       message: "Login successful",
+      token: accessToken, // Include access token for Authorization header
       refreshToken, // Still return refresh token for now
       user: {
         id: user._id,
