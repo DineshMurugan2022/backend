@@ -36,14 +36,16 @@ const messagesRouter = require("./routes/messages");
 
 const app = express();
 
-// Trust the first proxy (Render) for accurate IP-based rate limiting
-app.set('trust proxy', 1);
-
-// Use Morgan for HTTP request logging (linked to Winston)
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms', { stream: logger.stream }));
-
 const server = http.createServer(app);
 
+// ----------------- GLOBAL MIDDLEWARE -----------------
+// 1. Trust proxy for Render
+app.set('trust proxy', 1);
+
+// 2. Logging
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms', { stream: logger.stream }));
+
+// 3. SECURE CORS (Must be at the very top)
 const hardcodedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
@@ -59,6 +61,48 @@ const envOrigins = process.env.CORS_ORIGIN
 
 const allowedOrigins = [...new Set([...hardcodedOrigins, ...envOrigins])];
 
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.some(ao => ao === origin || (typeof origin === 'string' && origin.startsWith(ao)))) {
+      callback(null, true);
+    } else {
+      console.log(`⚠️ CORS Blocked: Origin ${origin} not allowed`);
+      callback(null, false); // Reject without throwing Error
+    }
+  },
+  credentials: true,
+  optionsSuccessStatus: 200,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  exposedHeaders: ['Authorization', 'Set-Cookie']
+};
+
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle global preflight
+
+// 4. Security Headers
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        connectSrc: ["'self'", "http://localhost:*", "ws://localhost:*", "wss://localhost:*", "https://backend-4jwl.onrender.com", "wss://backend-4jwl.onrender.com", "https://*.onrender.com"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", "data:", "blob:", "https://res.cloudinary.com", "https://user-images.githubusercontent.com"],
+      },
+    },
+    crossOriginResourcePolicy: { policy: "cross-origin" }
+  })
+);
+
+// 5. Body Parsing
+app.use(express.json({ limit: "5mb" }));
+app.use(cookieParser());
+app.use(compression());
+
+// ----------------- SOCKET.IO & SERVICES -----------------
 // Socket.IO setup with enhanced configuration
 const io = new Server(server, {
   cors: {
@@ -96,50 +140,6 @@ connectDB();
 
 // Connect to Redis
 connectRedis();
-
-// Apply CORS middleware
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-
-    // Check if the origin is in our allowed list
-    if (allowedOrigins.some(ao => ao === origin || origin.startsWith(ao))) {
-      callback(null, true);
-    } else {
-      console.log(`⚠️ CORS Blocked: Origin ${origin} not allowed`);
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-  optionsSuccessStatus: 200,
-  exposedHeaders: ['Authorization']
-};
-
-// Apply CORS middleware
-app.use(cors(corsOptions));
-
-// Also handle preflight requests explicitly
-app.options('*', cors(corsOptions));
-
-// Apply Gzip compression to all responses
-app.use(compression());
-
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        connectSrc: ["'self'", "http://localhost:*", "ws://localhost:*", "wss://localhost:*", "https://backend-4jwl.onrender.com", "wss://backend-4jwl.onrender.com"],
-        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"], // Needed for Vite/React
-        styleSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: ["'self'", "data:", "blob:", "https://user-images.githubusercontent.com"],
-      },
-    },
-  })
-);
-app.use(cookieParser());
-app.use(express.json({ limit: "2mb" }));
 
 // Health check
 app.get("/api/health", (req, res) => {

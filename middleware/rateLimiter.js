@@ -40,6 +40,7 @@ function createRateLimiter(options) {
                 retryAfter: req.rateLimit?.resetTime
             });
         },
+        skip: (req) => req.method === 'OPTIONS', // Never rate limit CORS preflights
         ...rateLimitConfig
     });
 }
