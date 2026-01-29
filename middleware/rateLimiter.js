@@ -1,6 +1,6 @@
 const rateLimit = require('express-rate-limit');
 const { RedisStore } = require('rate-limit-redis');
-const { pubClient } = require('../services/redis');
+const { pubClient, connectRedis } = require('../services/redis');
 
 /**
  * Simplified createRateLimiter using only memory store
@@ -11,12 +11,23 @@ function createRateLimiter(options) {
         // Use Redis store for distributed rate limiting
         store: new RedisStore({
             sendCommand: async (...args) => {
-                // node-redis v4 will queue commands if the client is connecting
-                // but we check isOpen to ensure we've at least started the connection
-                if (!pubClient.isOpen) {
-                    await pubClient.connect().catch(() => { });
+                // Ensure Redis is connected before sending command
+                if (!pubClient.isOpen || !pubClient.isReady) {
+                    await connectRedis().catch(() => { });
                 }
-                return pubClient.sendCommand(args);
+
+                // If still not open, fallback or fail gracefully
+                if (!pubClient.isOpen) {
+                    console.warn(`⚠️ Redis not available for Rate Limiting (${prefix})`);
+                    return null;
+                }
+
+                try {
+                    return await pubClient.sendCommand(args);
+                } catch (cmdErr) {
+                    console.error(`❌ Redis Rate Limit Command Error (${prefix}):`, cmdErr);
+                    return null;
+                }
             },
             prefix: prefix || 'rl:',
         }),
