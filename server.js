@@ -79,7 +79,13 @@ const io = new Server(server, {
 });
 
 // Configure Redis adapter for Socket.IO scaling
-io.adapter(createAdapter(pubClient, subClient));
+try {
+  io.adapter(createAdapter(pubClient, subClient));
+  console.log('🔌 Socket.IO Redis adapter initialized');
+} catch (adapterError) {
+  console.error('❌ Failed to initialize Redis adapter:', adapterError);
+  console.log('⚠️ Continuing with default in-memory adapter');
+}
 
 // Initialize Socket.IO handlers
 const setupSocketIO = require("./sockets");
