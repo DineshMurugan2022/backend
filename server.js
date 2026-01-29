@@ -44,10 +44,25 @@ app.use(morgan(':method :url :status :res[content-length] - :response-time ms', 
 
 const server = http.createServer(app);
 
+const hardcodedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://nothing-nine-neon.vercel.app",
+  "https://bnycrm1.vercel.app",
+  "https://frontend-eosin-zeta-66.vercel.app",
+  "https://bnycrm.netlify.app"
+];
+
+const envOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
+  : [];
+
+const allowedOrigins = [...new Set([...hardcodedOrigins, ...envOrigins])];
+
 // Socket.IO setup with enhanced configuration
 const io = new Server(server, {
   cors: {
-    origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : ["http://localhost:5173", "http://localhost:3000"],
+    origin: allowedOrigins,
     credentials: true,
     methods: ["GET", "POST"]
   },
@@ -76,20 +91,14 @@ connectDB();
 // Connect to Redis
 connectRedis();
 
-// Enhanced CORS configuration for production and development
+// Apply CORS middleware
 const corsOptions = {
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
 
-    // List of allowed origins from environment variable
-    // List of allowed origins from environment variable
-    const allowedOrigins = process.env.CORS_ORIGIN
-      ? process.env.CORS_ORIGIN.split(',').map(o => o.trim())
-      : ["http://localhost:5173", "http://localhost:3000", "https://nothing-nine-neon.vercel.app", "https://frontend-eosin-zeta-66.vercel.app", "https://bnycrm1.vercel.app", "https://bnycrm.netlify.app/", "https://bnycrm1.vercel.app"];
-
     // Check if the origin is in our allowed list
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.some(ao => ao === origin || origin.startsWith(ao))) {
       callback(null, true);
     } else {
       console.log(`⚠️ CORS Blocked: Origin ${origin} not allowed`);
