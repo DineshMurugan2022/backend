@@ -3,52 +3,70 @@ const logger = require('../utils/logger');
 
 const redisUrl = process.env.REDIS_URL || 'redis://localhost:6379';
 
-const pubClient = createClient({ url: redisUrl });
-const subClient = pubClient.duplicate();
+// ----------------- CONFIGURATION -----------------
+const REDIS_CONFIG = {
+    url: redisUrl,
+    socket: {
+        connectTimeout: 10000,
+        keepAlive: 5000,
+        reconnectStrategy: (retries) => {
+            if (retries > 20) return new Error('Retry limit reached');
+            return Math.min(retries * 100, 3000);
+        }
+    }
+};
 
-pubClient.on('error', (err) => logger.error('Redis Pub Client Error:', err));
-subClient.on('error', (err) => logger.error('Redis Sub Client Error:', err));
+// Create separate instances for Pub and Sub (Recommended for high stability)
+const pubClient = createClient(REDIS_CONFIG);
+const subClient = createClient(REDIS_CONFIG);
+
+pubClient.on('error', (err) => logger.error('🔴 Redis Pub Client Error:', err.message));
+subClient.on('error', (err) => logger.error('🔴 Redis Sub Client Error:', err.message));
 
 let connectingPromise = null;
 
 const connectRedis = async (retries = 5) => {
-    // If already ready, nothing to do
-    if (pubClient.isOpen && pubClient.isReady) return true; // Return true for consistency
+    // Return early if both are ready
+    if (pubClient.isReady && subClient.isReady) return true;
 
-    // If already connecting, wait for that promise
+    // Wait for existing connection attempt if one is in progress
     if (connectingPromise) return connectingPromise;
 
     connectingPromise = (async () => {
         try {
             console.log('🔌 Attempting to connect to Redis...');
 
+            // Connect Pub Client
             if (!pubClient.isOpen) {
-                await Promise.all([
-                    pubClient.connect(),
-                    subClient.connect()
-                ]);
+                await pubClient.connect();
             }
 
-            // Wait for both clients to be ready
+            // Connect Sub Client
+            if (!subClient.isOpen) {
+                await subClient.connect();
+            }
+
+            // Ensure both are fully "Ready" (after Ping/Pong)
             if (!pubClient.isReady || !subClient.isReady) {
                 await Promise.all([
-                    pubClient.isReady ? Promise.resolve() : new Promise(resolve => pubClient.once('ready', resolve)),
-                    subClient.isReady ? Promise.resolve() : new Promise(resolve => subClient.once('ready', resolve))
+                    pubClient.isReady ? Promise.resolve() : new Promise(res => pubClient.once('ready', res)),
+                    subClient.isReady ? Promise.resolve() : new Promise(res => subClient.once('ready', res))
                 ]);
             }
 
             logger.info('✅ Redis Clients (Pub/Sub) Connected and Ready');
+            connectingPromise = null;
             return true;
         } catch (err) {
-            logger.error(`❌ Redis Connection Failed (Retries left: ${retries}):`, err);
-            connectingPromise = null; // Reset so next attempt can try
+            logger.error(`❌ Redis Connection Failed (Retries left: ${retries}):`, err.message);
+            connectingPromise = null;
 
             if (retries > 0) {
                 await new Promise(resolve => setTimeout(resolve, 5000));
                 return connectRedis(retries - 1);
-            } else if (process.env.NODE_ENV === 'production') {
-                console.error('🔥 Redis failed permanently in production. Background tasks may fail.');
             }
+
+            console.error('🔥 Redis failed permanently. Operating in restricted mode.');
             return false;
         }
     })();

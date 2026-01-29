@@ -102,44 +102,53 @@ app.use(express.json({ limit: "5mb" }));
 app.use(cookieParser());
 app.use(compression());
 
-// ----------------- SOCKET.IO & SERVICES -----------------
-// Socket.IO setup with enhanced configuration
+// ----------------- SOCKET.IO SETUP -----------------
 const io = new Server(server, {
   cors: {
     origin: allowedOrigins,
     credentials: true,
-    methods: ["GET", "POST"]
+    methods: ["GET", "POST", "OPTIONS"]
   },
   transports: ["websocket", "polling"],
-  upgrade: true,
-  allowEIO3: true,
   pingTimeout: 60000,
-  pingInterval: 25000,
-  reconnection: true,
-  reconnectionAttempts: 5,
-  reconnectionDelay: 1000,
-  maxHttpBufferSize: 1e8,
-  compression: true
+  pingInterval: 25000
 });
 
-// Configure Redis adapter for Socket.IO scaling
-try {
-  io.adapter(createAdapter(pubClient, subClient));
-  console.log('🔌 Socket.IO Redis adapter initialized');
-} catch (adapterError) {
-  console.error('❌ Failed to initialize Redis adapter:', adapterError);
-  console.log('⚠️ Continuing with default in-memory adapter');
-}
+// ----------------- SERVICES & DATABASE -----------------
+// Initialize async services
+const initializeServices = async () => {
+  try {
+    // 1. Connect MongoDB
+    await connectDB();
 
-// Initialize Socket.IO handlers
-const setupSocketIO = require("./sockets");
-setupSocketIO(io);
+    // 2. Connect Redis
+    const redisReady = await connectRedis();
 
-// Connect to MongoDB
-connectDB();
+    // 3. Attach Redis Adapter only if ready
+    if (redisReady) {
+      try {
+        io.adapter(createAdapter(pubClient, subClient));
+        console.log('🔌 Socket.IO Redis adapter initialized');
+      } catch (err) {
+        console.error('❌ Failed to initialize Redis adapter:', err.message);
+      }
+    }
 
-// Connect to Redis
-connectRedis();
+    // 4. Setup Socket.IO handlers
+    const setupSocketIO = require("./sockets");
+    setupSocketIO(io);
+
+    // 5. Start Modem
+    const { connectHuaweiE173 } = require("./services/modem");
+    connectHuaweiE173(io);
+
+    console.log('✅ All services initialized successfully');
+  } catch (error) {
+    console.error('🔥 CRITICAL: Service initialization failed:', error.message);
+  }
+};
+
+initializeServices();
 
 // Health check
 app.get("/api/health", (req, res) => {
@@ -266,11 +275,7 @@ if (fs.existsSync(frontendPath)) {
   });
 }
 
-const cronService = require("./services/cronService");
-
-// Initialize Huawei E173 Modem
-const { connectHuaweiE173 } = require("./services/modem");
-connectHuaweiE173(io);
+// ----------------- CRON & CLEANUP -----------------
 
 // ----------------- CRON JOBS -----------------
 // Initialize Auto-Logout Job (Runs check immediately and then hourly)
