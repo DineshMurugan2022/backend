@@ -14,6 +14,7 @@ const logger = require("./utils/logger");
 const connectDB = require("./db");
 const { pubClient, subClient, connectRedis } = require("./services/redis");
 const { createAdapter } = require("@socket.io/redis-adapter");
+const cronService = require("./services/cronService");
 
 const { handleTimeout } = require("./services/session");
 const auth = require("./middleware/auth");
