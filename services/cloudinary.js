@@ -1,5 +1,5 @@
 const cloudinary = require('cloudinary').v2;
-const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const CloudinaryStorage = require('multer-storage-cloudinary');
 const logger = require('../utils/logger');
 
 // Configure Cloudinary
@@ -10,28 +10,22 @@ cloudinary.config({
 });
 
 // Storage for Leads
-const leadStorage = new CloudinaryStorage({
+const leadStorage = CloudinaryStorage({
     cloudinary: cloudinary,
-    params: {
-        folder: 'crm/leads',
-        resource_type: 'auto', // Support PDF, images, etc.
-        allowed_formats: ['jpg', 'png', 'pdf', 'xlsx', 'csv'],
-        public_id: (req, file) => {
-            const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-            return `${uniqueSuffix}-${file.originalname.split('.')[0]}`;
-        }
+    folder: 'crm/leads',
+    allowedFormats: ['jpg', 'png', 'pdf', 'xlsx', 'csv'],
+    filename: (req, file, cb) => {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(undefined, `${uniqueSuffix}-${file.originalname.split('.')[0]}`);
     }
 });
 
 // Storage for Chat
-const chatStorage = new CloudinaryStorage({
+const chatStorage = CloudinaryStorage({
     cloudinary: cloudinary,
-    params: {
-        folder: 'crm/chat',
-        resource_type: 'auto',
-        allowed_formats: ['jpg', 'png', 'jpeg', 'gif', 'pdf'],
-        public_id: (req, file) => `chat-${Date.now()}`
-    }
+    folder: 'crm/chat',
+    allowedFormats: ['jpg', 'png', 'jpeg', 'gif', 'pdf'],
+    filename: (req, file, cb) => cb(undefined, `chat-${Date.now()}`)
 });
 
 module.exports = {
