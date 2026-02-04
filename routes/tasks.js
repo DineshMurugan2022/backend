@@ -7,7 +7,8 @@ const auth = require('../middleware/auth');
 router.post('/', auth, async (req, res) => {
   try {
     // Check if user has permission to create tasks
-    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
+    const userGroup = req.user.userGroup?.toLowerCase().trim();
+    if (userGroup !== 'admin' && userGroup !== 'teamleader' && userGroup !== 'team leader') {
       return res.status(403).json({ message: 'Only admin and team leaders can create tasks' });
     }
 
@@ -54,7 +55,8 @@ router.get('/', auth, async (req, res) => {
     let query = {};
 
     // Admin and team leaders can see all tasks
-    if (req.user.userGroup === 'admin' || req.user.userGroup === 'teamleader' || req.user.userGroup === 'team leader') {
+    const userGroup = req.user.userGroup?.toLowerCase().trim();
+    if (userGroup === 'admin' || userGroup === 'teamleader' || userGroup === 'team leader') {
       // No filter - see all tasks
     } else {
       // Regular users only see tasks assigned to them
@@ -85,7 +87,8 @@ router.patch('/:id', auth, async (req, res) => {
 
   try {
     // Check if user has permission to edit tasks
-    const canEdit = req.user.userGroup === 'admin' || req.user.userGroup === 'teamleader' || req.user.userGroup === 'team leader';
+    const userGroup = req.user.userGroup?.toLowerCase().trim();
+    const canEdit = userGroup === 'admin' || userGroup === 'teamleader' || userGroup === 'team leader';
 
     let query = { _id: req.params.id };
 
@@ -167,7 +170,7 @@ router.patch('/:id', auth, async (req, res) => {
 router.delete('/:id', auth, async (req, res) => {
   try {
     // Check if user has permission to delete tasks
-    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
+    if (userGroup !== 'admin' && userGroup !== 'teamleader' && userGroup !== 'team leader') {
       return res.status(403).json({ message: 'Only admin and team leaders can delete tasks' });
     }
 
@@ -188,8 +191,9 @@ router.post('/:id/notes', auth, async (req, res) => {
   try {
     let query = { _id: req.params.id };
 
+    const userGroup = req.user.userGroup?.toLowerCase().trim();
     // If not admin/teamleader, restrict to assignee or creator
-    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
+    if (userGroup !== 'admin' && userGroup !== 'teamleader' && userGroup !== 'team leader') {
       query.$or = [
         { assignee: req.user._id },
         { createdBy: req.user._id }
@@ -239,7 +243,8 @@ router.delete('/bulk-delete', auth, async (req, res) => {
 // Bulk PATCH /api/tasks/bulk-assign
 router.patch('/bulk-assign', auth, async (req, res) => {
   try {
-    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
+    const userGroup = req.user.userGroup?.toLowerCase().trim();
+    if (userGroup !== 'admin' && userGroup !== 'teamleader' && userGroup !== 'team leader') {
       return res.status(403).json({ message: 'Only admin and team leaders can assign tasks' });
     }
     const { ids, userId } = req.body;
@@ -259,7 +264,8 @@ router.patch('/bulk-status', auth, async (req, res) => {
 
     // Non-admins can only update tasks assigned to them
     const filter = { _id: { $in: ids } };
-    if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader' && req.user.userGroup !== 'team leader') {
+    const userGroup = req.user.userGroup?.toLowerCase().trim();
+    if (userGroup !== 'admin' && userGroup !== 'teamleader' && userGroup !== 'team leader') {
       filter.assignee = req.user._id;
     }
 

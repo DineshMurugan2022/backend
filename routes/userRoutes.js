@@ -8,9 +8,9 @@ const attendanceService = require('../services/attendanceService');
 
 // Helper: require admin or team leader
 function requireAdminOrLeader(req, res, next) {
-  const role = req.user?.userGroup;
-  if (role !== 'admin' && role !== 'team leader') {
-    return res.status(403).json({ message: 'Only admin and team leaders are allowed' });
+  const role = req.user?.userGroup?.toLowerCase().trim();
+  if (role !== 'admin' && role !== 'team leader' && role !== 'teamleader' && role !== 'hr') {
+    return res.status(403).json({ message: 'Only admin, team leaders and HR are allowed' });
   }
   next();
 }
@@ -245,8 +245,8 @@ router.get('/all', auth, async (req, res) => {
   try {
     // Check if user is admin or team leader (Normalized)
     const userRole = req.user.userGroup?.toLowerCase().trim();
-    if (userRole !== 'admin' && userRole !== 'team leader' && userRole !== 'teamleader') {
-      return res.status(403).json({ message: 'Only admins and team leaders can access this endpoint' });
+    if (userRole !== 'admin' && userRole !== 'team leader' && userRole !== 'teamleader' && userRole !== 'hr') {
+      return res.status(403).json({ message: 'Only admins, team leaders and HR can access this endpoint' });
     }
 
     // Return all users for attendance page, excluding deleted users

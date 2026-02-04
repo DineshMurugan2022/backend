@@ -27,23 +27,30 @@ class AttendanceService {
 
         if (!attendanceRecord) {
             // Create new attendance record for today
+            // Determine status based on login time (After 2:00 PM is Half Day)
+            const hours = loginTime.getHours();
+            const status = hours >= 14 ? 'half-day' : 'present';
+
             attendanceRecord = new Attendance({
                 user: user._id,
                 date: loginDate,
                 loginTime: loginTime,
                 logoutTime: null,
                 totalHours: 0,
-                status: 'present'
+                status: status
             });
         } else {
             // Preserve the original login time if it exists
             if (!attendanceRecord.loginTime) {
                 attendanceRecord.loginTime = loginTime;
+                // Determine status if this is the first login (e.g. updating an 'absent' record)
+                const hours = loginTime.getHours();
+                attendanceRecord.status = hours >= 14 ? 'half-day' : 'present';
             }
             // Reset logout time and total hours for a new session
             attendanceRecord.logoutTime = null;
             attendanceRecord.totalHours = 0;
-            attendanceRecord.status = 'present';
+            // Do NOT overwrite status here; preserve 'half-day' or 'present'
         }
 
         await attendanceRecord.save();

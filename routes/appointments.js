@@ -238,11 +238,47 @@ router.get("/revenue/report/:month/:year", auth, async (req, res) => {
 
     const report = await RevenueReport.findOne({ month: monthNum, year: yearNum });
 
-    if (!report) {
-      return res.status(404).json({ error: "Revenue report not found" });
+    if (report) {
+      return res.json(report);
     }
 
-    res.json(report);
+    // If report not found, calculate from live data
+    // Create date range for the month
+    const startDate = new Date(yearNum, monthNum - 1, 1);
+    const endDate = new Date(yearNum, monthNum, 0, 23, 59, 59, 999);
+
+    // Get all appointments for the month
+    const appointments = await Appointment.find({
+      date: { $gte: startDate, $lte: endDate }
+    });
+
+    const totalContracts = appointments.length;
+    const signedAppointments = appointments.filter(a => a.signed);
+
+    const totalRevenue = signedAppointments.reduce((sum, appointment) => {
+      return sum + (Number(appointment.contractValue) || 0);
+    }, 0);
+
+    const netSales = signedAppointments.reduce((sum, appointment) => {
+      const contractValue = Number(appointment.contractValue) || 0;
+      const clearanceAmount = (appointment.clearancePending && Number(appointment.clearanceAmount)) || 0;
+      return sum + (contractValue - clearanceAmount);
+    }, 0);
+
+    const pendingAmounts = signedAppointments.reduce((sum, appointment) => {
+      return sum + (appointment.clearancePending ? (Number(appointment.clearanceAmount) || 0) : 0);
+    }, 0);
+
+    // Return calculated data structure matching the report model
+    res.json({
+      month: monthNum,
+      year: yearNum,
+      totalContracts,
+      totalRevenue,
+      netSales,
+      pendingAmounts,
+      isLive: true // Flag to indicate this is live data
+    });
   } catch (error) {
     console.error("Error fetching revenue report:", error);
     res.status(500).json({ error: "Failed to fetch revenue report" });

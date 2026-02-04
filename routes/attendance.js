@@ -9,8 +9,8 @@ const attendanceService = require('../services/attendanceService');
 // Helper: require admin or team leader
 function requireAdminOrLeader(req, res, next) {
   const role = req.user?.userGroup?.toLowerCase().trim();
-  if (role !== 'admin' && role !== 'team leader' && role !== 'teamleader') {
-    return res.status(403).json({ message: 'Only admin and team leaders are allowed' });
+  if (role !== 'admin' && role !== 'team leader' && role !== 'teamleader' && role !== 'hr') {
+    return res.status(403).json({ message: 'Only admin, team leaders and HR are allowed' });
   }
   next();
 }
@@ -73,8 +73,8 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
     }
 
     // Validate status
-    if (!['present', 'absent', 'leave', 'permission'].includes(status)) {
-      return res.status(400).json({ error: 'Status must be either "present", "absent", "leave", or "permission"' });
+    if (!['present', 'absent', 'leave', 'permission', 'half-day'].includes(status)) {
+      return res.status(400).json({ error: 'Status must be either "present", "absent", "leave", "permission", or "half-day"' });
     }
 
     // Find user by userId or username
@@ -116,7 +116,7 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
         date: attendanceDate,
         loginTime: null,
         logoutTime: null,
-        totalHours: status === 'present' ? 8 : (status === 'leave' || status === 'permission') ? 4 : 0,
+        totalHours: status === 'present' ? 8 : (status === 'leave' || status === 'permission' || status === 'half-day') ? 4 : 0,
         status: status
       });
     } else {
@@ -125,7 +125,7 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
       if (status === 'present') {
         attendanceRecord.totalHours = 8;
         // Ensure not marked as absent overrides
-      } else if (status === 'leave' || status === 'permission') {
+      } else if (status === 'leave' || status === 'permission' || status === 'half-day') {
         attendanceRecord.totalHours = 4;
       } else {
         attendanceRecord.totalHours = 0;
@@ -356,6 +356,8 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
             displayStatus = 'A';
           } else if (['present', 'logged-in', 'permission'].includes(record.status)) {
             displayStatus = 'P';
+          } else if (record.status === 'half-day') {
+            displayStatus = 'H/D';
           } else if (record.status === 'leave') {
             displayStatus = 'L';
           } else if (record.loginTime) {
@@ -366,12 +368,20 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
 
         // Increment counters
         if (displayStatus === 'P' || displayStatus === 'L') presentCount++;
+        else if (displayStatus === 'H/D') {
+          presentCount += 0.5;
+          absentCount += 0.5;
+        }
         else absentCount++;
 
         userRow.push(displayStatus);
       });
 
-      userRow.push(workingDaysCount, presentCount, absentCount);
+      userRow.push(
+        workingDaysCount,
+        Number.isInteger(presentCount) ? presentCount : Math.floor(presentCount) === 0 ? "1/2" : `${Math.floor(presentCount)} 1/2`,
+        Number.isInteger(absentCount) ? absentCount : Math.floor(absentCount) === 0 ? "1/2" : `${Math.floor(absentCount)} 1/2`
+      );
       worksheet.addRow(userRow);
     });
 
@@ -404,7 +414,7 @@ router.post('/bulk-manual', auth, requireAdminOrLeader, async (req, res) => {
       return res.status(400).json({ error: 'userIds, date, and status are required' });
     }
 
-    if (!['present', 'absent', 'leave', 'permission'].includes(status)) {
+    if (!['present', 'absent', 'leave', 'permission', 'half-day'].includes(status)) {
       return res.status(400).json({ error: 'Invalid status' });
     }
 
@@ -413,7 +423,7 @@ router.post('/bulk-manual', auth, requireAdminOrLeader, async (req, res) => {
     const endOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 23, 59, 59, 999));
     const attendanceDate = new Date(Date.UTC(yyyy, mm - 1, dd, 12, 0, 0, 0));
 
-    const totalHours = status === 'present' ? 8 : (status === 'leave' || status === 'permission') ? 4 : 0;
+    const totalHours = status === 'present' ? 8 : (status === 'leave' || status === 'permission' || status === 'half-day') ? 4 : 0;
 
     const bulkOps = userIds.map(userId => ({
       updateOne: {
