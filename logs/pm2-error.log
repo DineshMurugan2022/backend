@@ -6885,3 +6885,1075 @@ TypeError: CloudinaryStorage is not a constructor
 2026-02-04 10:03:10: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
 2026-02-04 10:03:10: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
 2026-02-04 10:03:10: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-10 10:53:14: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-10 10:53:14: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-10 10:53:14: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-10 10:53:14: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-10 10:53:14: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-25 14:22:45: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-25 14:22:45: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-25 14:22:45: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-25 14:22:45: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-25 14:22:45: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-25 14:29:30: Failed to make call: Error: Huawei E173 modem not connected. Check modem service.
+    at makeCall [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mservices\calls.js:47:11[90m)[39m
+    at [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:119:26
+    at Layer.handle [as handle_request] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mexpress[24m\lib\router\layer.js:95:5[90m)[39m
+    at next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mexpress[24m\lib\router\route.js:149:13[90m)[39m
+    at auth [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mmiddleware\auth.js:33:5[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+2026-02-25 16:46:58: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-25 16:46:58: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-25 16:46:58: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-25 16:46:58: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-25 16:46:58: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-26 10:30:25: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-26 10:30:25: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-26 10:30:25: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-26 10:30:25: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-26 10:30:25: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-26 10:31:31: Auth middleware: Token has expired
+2026-02-26 10:31:31: Auth middleware: Token has expired
+2026-02-27 11:31:18: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-27 11:31:18: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-27 11:31:18: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-27 11:31:18: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-27 11:31:18: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-27 11:35:36: Auth middleware: Token has expired
+2026-02-27 11:35:36: Auth middleware: Token has expired
+2026-02-27 11:40:45: Auth middleware: Token has expired
+2026-02-27 11:40:45: Auth middleware: Token has expired
+2026-02-27 16:44:51: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-27 16:44:51: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-27 16:44:51: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-27 16:44:51: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-27 16:44:51: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-27 17:26:59: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772193418[39m, i: [33m16[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772193418[39m, i: [33m16[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772193418[39m, i: [33m16[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'MO9JTHTqeL0z5xxRngSnWc9YIbM='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772193418[39m, i: [33m16[39m })
+}
+2026-02-27 17:26:59: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772193418[39m, i: [33m23[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772193418[39m, i: [33m23[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772193418[39m, i: [33m23[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'MO9JTHTqeL0z5xxRngSnWc9YIbM='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772193418[39m, i: [33m23[39m })
+}
+2026-02-27 17:27:05: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772193424[39m, i: [33m14[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772193424[39m, i: [33m14[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772193424[39m, i: [33m14[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'9AEsiPbZTWy6CmFcpdPEhV12irc='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772193424[39m, i: [33m14[39m })
+}
+2026-02-27 17:27:05: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772193424[39m, i: [33m20[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772193424[39m, i: [33m20[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772193424[39m, i: [33m20[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'9AEsiPbZTWy6CmFcpdPEhV12irc='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772193424[39m, i: [33m20[39m })
+}
+2026-02-27 17:27:11: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772193430[39m, i: [33m40[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772193430[39m, i: [33m40[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772193430[39m, i: [33m40[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'ntzBjV+ScxAD27snFv4UJGP9uCo='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772193430[39m, i: [33m40[39m })
+}
+2026-02-27 17:27:12: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772193431[39m, i: [33m24[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772193431[39m, i: [33m24[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772193431[39m, i: [33m24[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'XjcBPdD1WwQR2aghJTdgrJ+SaO4='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772193431[39m, i: [33m24[39m })
+}
+2026-02-27 17:27:13: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772193432[39m, i: [33m9[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772193432[39m, i: [33m9[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772193432[39m, i: [33m9[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'IbKJzV67PtcGit6Vnn84vB3LnSc='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772193432[39m, i: [33m9[39m })
+}
+2026-02-28 10:23:35: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 10:23:35: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 10:23:35: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 10:23:35: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 10:23:35: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-28 10:24:22: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772254461[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772254461[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772254461[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'0tmbdRPnBFuwiK/rK+fUH+vtvnc='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772254461[39m, i: [33m1[39m })
+}
+2026-02-28 10:24:23: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772254461[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772254461[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772254461[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'0tmbdRPnBFuwiK/rK+fUH+vtvnc='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772254461[39m, i: [33m1[39m })
+}
+2026-02-28 11:01:15: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 11:01:15: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 11:01:15: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 11:01:15: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 11:01:15: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-28 11:24:33: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772258072[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772258072[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772258072[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'pOdz+bKzi1b1RpooJ46Qopil7gA='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772258072[39m, i: [33m1[39m })
+}
+2026-02-28 11:24:34: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772258072[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772258072[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772258072[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'pOdz+bKzi1b1RpooJ46Qopil7gA='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772258072[39m, i: [33m1[39m })
+}
+2026-02-28 11:24:47: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772258086[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772258086[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772258086[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'Q8wpfGQsMSoBi6TsznuMmvI1ZpM='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772258086[39m, i: [33m1[39m })
+}
+2026-02-28 11:24:47: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772258086[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772258086[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772258086[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'Q8wpfGQsMSoBi6TsznuMmvI1ZpM='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772258086[39m, i: [33m1[39m })
+}
+2026-02-28 11:24:51: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772258090[39m, i: [33m3[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772258090[39m, i: [33m3[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772258090[39m, i: [33m3[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'u6JvU4iSz5XHWfznZlRR3/kK3Ng='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772258090[39m, i: [33m3[39m })
+}
+2026-02-28 11:24:52: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772258090[39m, i: [33m4[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772258090[39m, i: [33m4[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772258090[39m, i: [33m4[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'u6JvU4iSz5XHWfznZlRR3/kK3Ng='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772258090[39m, i: [33m4[39m })
+}
+2026-02-28 11:41:09: Auth middleware: Token has expired
+2026-02-28 11:41:44: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772259102[39m, i: [33m5[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772259102[39m, i: [33m5[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772259102[39m, i: [33m5[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'SWHAHPb2ROJWEbKAUcxYd4KeQlo='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772259102[39m, i: [33m5[39m })
+}
+2026-02-28 11:41:44: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772259102[39m, i: [33m5[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772259102[39m, i: [33m5[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772259102[39m, i: [33m5[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'SWHAHPb2ROJWEbKAUcxYd4KeQlo='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772259102[39m, i: [33m5[39m })
+}
+2026-02-28 11:42:14: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772259133[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772259133[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772259133[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'TGD5OJ61RGHYEscc6cJkFdbstms='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772259133[39m, i: [33m1[39m })
+}
+2026-02-28 11:42:14: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:179:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772259133[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772259133[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772259133[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'TGD5OJ61RGHYEscc6cJkFdbstms='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772259133[39m, i: [33m1[39m })
+}
+2026-02-28 11:51:35: 🔌 Mongoose disconnected
+2026-02-28 11:51:43: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 11:51:43: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 11:51:43: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 11:51:43: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 11:51:43: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-28 17:10:03: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 17:10:03: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 17:10:03: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 17:10:03: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 17:10:03: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+Error: Cannot find module '../services/cloudConnectService'
+Require stack:
+- C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js
+- C:\Users\user\Desktop\Dinesh\CRM\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+    at Hook._require.Module.require (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js:98:29)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+2026-02-28 17:10:08: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 17:10:08: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 17:10:08: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 17:10:08: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 17:10:08: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+Error: Cannot find module '../services/cloudConnectService'
+Require stack:
+- C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js
+- C:\Users\user\Desktop\Dinesh\CRM\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+    at Hook._require.Module.require (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js:98:29)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+2026-02-28 17:10:13: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 17:10:13: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 17:10:13: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 17:10:13: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 17:10:13: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+Error: Cannot find module '../services/cloudConnectService'
+Require stack:
+- C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js
+- C:\Users\user\Desktop\Dinesh\CRM\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+    at Hook._require.Module.require (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js:98:29)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+2026-02-28 17:10:18: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 17:10:18: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 17:10:18: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 17:10:18: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 17:10:18: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+Error: Cannot find module '../services/cloudConnectService'
+Require stack:
+- C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js
+- C:\Users\user\Desktop\Dinesh\CRM\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+    at Hook._require.Module.require (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js:98:29)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+2026-02-28 17:10:23: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 17:10:23: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 17:10:23: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 17:10:23: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 17:10:23: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+Error: Cannot find module '../services/cloudConnectService'
+Require stack:
+- C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js
+- C:\Users\user\Desktop\Dinesh\CRM\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+    at Hook._require.Module.require (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js:98:29)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+2026-02-28 17:10:28: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 17:10:28: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 17:10:28: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 17:10:28: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 17:10:28: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+Error: Cannot find module '../services/cloudConnectService'
+Require stack:
+- C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js
+- C:\Users\user\Desktop\Dinesh\CRM\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+    at Hook._require.Module.require (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js:98:29)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+2026-02-28 17:10:34: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 17:10:34: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 17:10:34: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 17:10:34: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 17:10:34: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+Error: Cannot find module '../services/cloudConnectService'
+Require stack:
+- C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js
+- C:\Users\user\Desktop\Dinesh\CRM\backend\server.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1421:15)
+    at Hook._require.Module.require (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\require-in-the-middle\index.js:81:25)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\routes\calls.js:98:29)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+2026-02-28 17:10:39: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 17:10:39: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 17:10:39: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 17:10:39: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 17:10:39: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-28 17:22:47: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-02-28 17:22:47: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-02-28 17:22:47: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-02-28 17:22:47: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-02-28 17:22:47: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-02-28 17:22:55: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:127:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772279574[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772279574[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772279574[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'5QhVx0ACWDvTvwQM1pBZB+tJrcM='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772279574[39m, i: [33m1[39m })
+}
+2026-02-28 17:22:55: Failed to fetch call analytics: MongoServerError: unrecognized option to $unwind stage: preserveNullAndEmpty
+    at Connection.sendCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:305:27[90m)[39m
+[90m    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)[39m
+    at async Connection.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cmap\connection.js:333:26[90m)[39m
+    at async Server.command [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\sdam\server.js:171:29[90m)[39m
+    at async AggregateOperation.executeCommand [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\command.js:76:16[90m)[39m
+    at async AggregateOperation.execute [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\aggregate.js:86:16[90m)[39m
+    at async tryOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:207:20[90m)[39m
+    at async executeOperation [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\operations\execute_operation.js:75:16[90m)[39m
+    at async AggregationCursor._initialize [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\aggregation_cursor.js:56:26[90m)[39m
+    at async AggregationCursor.cursorInit [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:633:27[90m)[39m
+    at async AggregationCursor.fetchBatch [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:667:13[90m)[39m
+    at async AggregationCursor.next [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:347:17[90m)[39m
+    at async [Symbol.asyncIterator] [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:255:34[90m)[39m
+    at async AggregationCursor.toArray [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\node_modules\[4mmongodb[24m\lib\cursor\abstract_cursor.js:427:26[90m)[39m
+    at async Aggregate.exec [90m(C:\Users\user\Desktop\Dinesh\CRM\backend\[39mnode_modules\[4mmongoose[24m\lib\aggregate.js:1104:14[90m)[39m
+    at async [90mC:\Users\user\Desktop\Dinesh\CRM\backend\[39mroutes\calls.js:127:19 {
+  errorLabelSet: Set(0) {},
+  errorResponse: {
+    ok: [33m0[39m,
+    errmsg: [32m'unrecognized option to $unwind stage: preserveNullAndEmpty'[39m,
+    code: [33m28811[39m,
+    codeName: [32m'Location28811'[39m,
+    [32m'$clusterTime'[39m: {
+      clusterTime: new Timestamp({ t: [33m1772279574[39m, i: [33m1[39m }),
+      signature: [36m[Object][39m
+    },
+    operationTime: new Timestamp({ t: [33m1772279574[39m, i: [33m1[39m })
+  },
+  ok: [33m0[39m,
+  code: [33m28811[39m,
+  codeName: [32m'Location28811'[39m,
+  [32m'$clusterTime'[39m: {
+    clusterTime: new Timestamp({ t: [33m1772279574[39m, i: [33m1[39m }),
+    signature: {
+      hash: Binary.createFromBase64([32m'5QhVx0ACWDvTvwQM1pBZB+tJrcM='[39m, [33m0[39m),
+      keyId: new Long([32m'7575219830693822466'[39m)
+    }
+  },
+  operationTime: new Timestamp({ t: [33m1772279574[39m, i: [33m1[39m })
+}
+2026-03-02 10:08:00: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-02 10:08:00: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-02 10:08:00: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-02 10:08:00: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-02 10:08:00: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-02 10:08:16: Auth middleware: Token has expired
+2026-03-02 10:08:16: Auth middleware: Token has expired
+2026-03-02 10:19:03: Auth middleware: Invalid token
