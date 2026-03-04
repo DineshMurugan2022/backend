@@ -7957,3 +7957,133 @@ Require stack:
 2026-03-02 10:08:16: Auth middleware: Token has expired
 2026-03-02 10:08:16: Auth middleware: Token has expired
 2026-03-02 10:19:03: Auth middleware: Invalid token
+2026-03-02 10:23:33: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-02 10:23:33: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-02 10:23:33: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-02 10:23:33: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-02 10:23:33: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-02 10:23:41: Auth middleware: Token has expired
+2026-03-02 11:43:04: 🔌 Mongoose disconnected
+2026-03-02 11:43:12: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-02 11:43:12: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-02 11:43:12: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-02 11:43:12: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-02 11:43:12: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-02 13:06:13: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-02 13:06:13: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-02 13:06:13: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-02 13:06:13: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-02 13:06:13: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-03 10:19:02: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-03 10:19:02: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-03 10:19:02: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-03 10:19:02: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-03 10:19:02: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-03 10:43:36: 🔌 Mongoose disconnected
+2026-03-03 10:43:42: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-03 10:43:42: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-03 10:43:42: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-03 10:43:42: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-03 10:43:42: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-03 11:31:08: 🔌 Mongoose disconnected
+2026-03-03 11:31:25: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-03 11:31:25: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-03 11:31:25: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-03 11:31:25: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-03 11:31:25: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-03 12:21:08: 🔌 Mongoose disconnected
+2026-03-03 12:21:16: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-03 12:21:16: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-03 12:21:16: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-03 12:21:16: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-03 12:21:16: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-03 13:07:06: Auth middleware: Token has expired
+2026-03-03 14:57:56: 🔌 Mongoose disconnected
+2026-03-03 14:58:03: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-03 14:58:03: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-03 14:58:03: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-03 14:58:03: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-03 14:58:03: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-03 15:10:29: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-03 15:10:29: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-03 15:10:29: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-03 15:10:29: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-03 15:10:29: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-03 17:56:01: 🔌 Mongoose disconnected
+2026-03-04 10:37:28: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-04 10:37:28: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-04 10:37:28: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-04 10:37:28: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-04 10:37:28: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-04 15:20:51: 🔌 Mongoose disconnected
+2026-03-04 15:27:20: 🔌 Mongoose disconnected
+2026-03-04 15:28:42: 🔌 Mongoose disconnected
+2026-03-04 15:30:13: 🔌 Mongoose disconnected
+2026-03-04 15:31:42: 🔌 Mongoose disconnected
+2026-03-04 15:35:30: 🔌 Mongoose disconnected
+2026-03-04 15:37:01: 🔌 Mongoose disconnected
+2026-03-04 15:38:32: 🔌 Mongoose disconnected
+2026-03-04 15:40:02: 🔌 Mongoose disconnected
+2026-03-04 15:41:33: 🔌 Mongoose disconnected
+2026-03-04 15:43:04: 🔌 Mongoose disconnected
+2026-03-04 15:45:05: 🔌 Mongoose disconnected
+2026-03-04 15:46:36: 🔌 Mongoose disconnected
+2026-03-04 15:51:18: 🔌 Mongoose disconnected
+2026-03-04 15:52:59: 🔌 Mongoose disconnected
+2026-03-04 15:56:20: 🔌 Mongoose disconnected
+2026-03-04 15:57:42: 🔌 Mongoose disconnected
+2026-03-04 15:59:13: 🔌 Mongoose disconnected
+2026-03-04 16:00:42: 🔌 Mongoose disconnected
+2026-03-04 16:06:42: 🔌 Mongoose disconnected
+2026-03-04 16:08:03: 🔌 Mongoose disconnected
+2026-03-04 16:09:44: 🔌 Mongoose disconnected
+2026-03-04 16:11:14: 🔌 Mongoose disconnected
+2026-03-04 16:15:36: 🔌 Mongoose disconnected
+2026-03-04 16:16:42: 🔌 Mongoose disconnected
+2026-03-04 16:18:13: 🔌 Mongoose disconnected
+2026-03-04 16:19:54: 🔌 Mongoose disconnected
+2026-03-04 16:21:24: 🔌 Mongoose disconnected
+2026-03-04 16:23:05: 🔌 Mongoose disconnected
+2026-03-04 16:24:36: 🔌 Mongoose disconnected
+2026-03-04 16:26:03: 🔌 Mongoose disconnected
+2026-03-04 16:30:13: 🔌 Mongoose disconnected
+2026-03-04 16:31:44: 🔌 Mongoose disconnected
+2026-03-04 16:41:42: ⚠️ Failed login attempt for user: Thilag@bny
+2026-03-04 16:43:37: 🔌 Mongoose disconnected
+2026-03-04 16:48:07: 🔌 Mongoose disconnected
+2026-03-04 16:50:40: 🔌 Mongoose disconnected
+2026-03-04 16:52:10: 🔌 Mongoose disconnected
+2026-03-04 16:53:42: 🔌 Mongoose disconnected
+2026-03-04 16:55:13: 🔌 Mongoose disconnected
+2026-03-04 16:56:44: 🔌 Mongoose disconnected
+2026-03-04 16:58:24: 🔌 Mongoose disconnected
+2026-03-04 16:59:55: 🔌 Mongoose disconnected
+2026-03-04 17:01:26: 🔌 Mongoose disconnected
+2026-03-04 17:02:57: 🔌 Mongoose disconnected
+2026-03-04 17:04:47: 🔌 Mongoose disconnected
+2026-03-04 17:06:09: 🔌 Mongoose disconnected
+2026-03-04 17:07:49: 🔌 Mongoose disconnected
+2026-03-04 17:09:20: 🔌 Mongoose disconnected
+2026-03-04 17:10:50: 🔌 Mongoose disconnected
+2026-03-04 17:12:21: 🔌 Mongoose disconnected
+2026-03-04 17:13:49: 🔌 Mongoose disconnected
+2026-03-04 17:15:30: 🔌 Mongoose disconnected
+2026-03-04 17:17:11: 🔌 Mongoose disconnected
+2026-03-04 17:23:38: 🔌 Mongoose disconnected
+2026-03-04 17:25:08: 🔌 Mongoose disconnected
+2026-03-04 17:28:33: 🔌 Mongoose disconnected
+2026-03-04 17:31:42: 🔌 Mongoose disconnected
+2026-03-04 17:45:23: 🔌 Mongoose disconnected
+2026-03-04 17:47:24: 🔌 Mongoose disconnected
+2026-03-04 17:56:23: 🔌 Mongoose disconnected
+2026-03-04 17:58:04: 🔌 Mongoose disconnected
+2026-03-04 18:07:33: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-04 18:07:33: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-04 18:07:33: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-04 18:07:33: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-04 18:07:33: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-03-04 18:13:07: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-03-04 18:13:07: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-03-04 18:13:07: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-03-04 18:13:07: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-03-04 18:13:07: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)

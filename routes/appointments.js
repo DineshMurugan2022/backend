@@ -509,6 +509,36 @@ router.get("/telecaller", auth, async (req, res) => {
   }
 });
 
+// GET /api/appointments/search - Find appointment by phone number to auto-fill leads
+router.get('/search', auth, async (req, res) => {
+  try {
+    const { phone } = req.query;
+    if (!phone) {
+      return res.status(400).json({ error: 'Phone number query parameter is required' });
+    }
+
+    // Use regex to strip non-digit formatting for robust search
+    const digitsOnly = phone.replace(/\D/g, '');
+    if (digitsOnly.length < 5) {
+      return res.status(404).json({ error: 'Phone number too short for accurate search' });
+    }
+
+    // Try to find the most recent appointment matching the final digits (ignoring country codes potentially)
+    const regex = new RegExp(`.*${digitsOnly.slice(-10)}$`); // Match the last 10 digits
+    const appointment = await Appointment.findOne({ mobileNumber: { $regex: regex } })
+      .sort({ createdAt: -1 });
+
+    if (!appointment) {
+      return res.status(404).json({ message: 'No lead found with this phone number' });
+    }
+
+    res.json(appointment);
+  } catch (error) {
+    console.error('Error during appointment phone search:', error);
+    res.status(500).json({ error: 'Failed to search for lead details' });
+  }
+});
+
 // POST /api/appointments - Create a new appointment
 router.post("/", auth, async (req, res) => {
   try {
@@ -518,7 +548,12 @@ router.post("/", auth, async (req, res) => {
       return res.status(401).json({ error: 'Invalid token payload. Please log out and log in again.' });
     }
 
-    const { client, companyName, date, met, signed, contractValue, clearancePending, clearanceAmount, follow, followDate, renewal, assignedBDM, remark } = req.body;
+    const {
+      client, companyName, date, met, signed, contractValue,
+      clearancePending, clearanceAmount, follow, followDate, renewal,
+      assignedBDM, remark, mobileNumber, alternateNumber, category,
+      designation, landmark, address, pinNumber, notes
+    } = req.body;
 
     if (!client || !date) {
       return res.status(400).json({ error: "Client and date are required." });
@@ -526,18 +561,26 @@ router.post("/", auth, async (req, res) => {
 
     const appointment = new Appointment({
       client,
-      companyName: companyName || '', // Add companyName field
+      companyName: companyName || '',
       date,
       met: met || false,
       signed: signed || false,
       contractValue: contractValue || 0,
       clearancePending: clearancePending || false,
-      clearanceAmount: clearanceAmount || 0, // Add clearanceAmount field
+      clearanceAmount: clearanceAmount || 0,
       follow: follow || false,
-      followDate: followDate || null, // Add followDate field
-      renewal: renewal || 'fresh', // Add renewal field with default value
-      assignedBDM: assignedBDM || null, // Add assignedBDM field
-      remark: remark || '', // Add remark field
+      followDate: followDate || null,
+      renewal: renewal || 'fresh',
+      assignedBDM: assignedBDM || null,
+      remark: remark || '',
+      mobileNumber: mobileNumber || '',
+      alternateNumber: alternateNumber || '',
+      category: category || '',
+      designation: designation || '',
+      landmark: landmark || '',
+      address: address || '',
+      pinNumber: pinNumber || '',
+      notes: notes || '',
       createdBy: userId,
       deletedFor: [] // Initialize as empty array
     });
@@ -565,7 +608,12 @@ router.put("/:id", auth, async (req, res) => {
   try {
     const userId = req.user.id || req.user._id;
     // Remove the user from deletedFor list when appointment is updated
-    const { client, companyName, date, met, signed, contractValue, clearancePending, clearanceAmount, follow, followDate, renewal, assignedBDM, remark } = req.body;
+    const {
+      client, companyName, date, met, signed, contractValue,
+      clearancePending, clearanceAmount, follow, followDate, renewal,
+      assignedBDM, remark, mobileNumber, alternateNumber, category,
+      designation, landmark, address, pinNumber, notes
+    } = req.body;
 
     const updates = {
       client,
@@ -580,7 +628,15 @@ router.put("/:id", auth, async (req, res) => {
       followDate: followDate || null,
       renewal: renewal || 'fresh',
       assignedBDM: assignedBDM || null,
-      remark: remark || ''
+      remark: remark || '',
+      mobileNumber: mobileNumber || '',
+      alternateNumber: alternateNumber || '',
+      category: category || '',
+      designation: designation || '',
+      landmark: landmark || '',
+      address: address || '',
+      pinNumber: pinNumber || '',
+      notes: notes || '',
     };
 
     const updated = await Appointment.findByIdAndUpdate(

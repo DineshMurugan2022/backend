@@ -105,6 +105,9 @@ router.post("/login", [
         username: user.username,
         userGroup: user.userGroup,
         phone: user.phone,
+        sipExtension: user.sipExtension,
+        sipUsername: user.sipUsername,
+        sipPassword: user.sipPassword,
         loginStatus: "active", // Updated status
       },
     });

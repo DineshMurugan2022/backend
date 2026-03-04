@@ -17,6 +17,11 @@ const userSchema = new mongoose.Schema({
   deleted: { type: Boolean, default: false }, // Add deleted flag for soft delete
   // attendanceRecords removed - using separate Attendance model
 
+  // SIP Credentials
+  sipExtension: { type: String, default: "" },
+  sipUsername: { type: String, default: "" },
+  sipPassword: { type: String, default: "" },
+
   refreshToken: { type: String } // Store refresh token for session management
 }, { timestamps: true });
 

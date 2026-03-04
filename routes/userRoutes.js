@@ -94,7 +94,7 @@ router.get('/', auth, async (req, res) => {
 // @access  Private
 router.post('/register', auth, requireAdminOrLeader, async (req, res) => {
   try {
-    const { username, name, password, designation, userGroup, phone } = req.body;
+    const { username, name, password, designation, userGroup, phone, sipExtension, sipUsername, sipPassword } = req.body;
     if (!username || !password || !userGroup) {
       return res.status(400).json({ message: 'username, password and userGroup are required' });
     }
@@ -112,6 +112,9 @@ router.post('/register', auth, requireAdminOrLeader, async (req, res) => {
       designation: designation || '', // Add designation field
       userGroup,
       phone,
+      sipExtension: sipExtension || '',
+      sipUsername: sipUsername || '',
+      sipPassword: sipPassword || '',
       loginStatus: 'inactive'
     });
     await user.save();

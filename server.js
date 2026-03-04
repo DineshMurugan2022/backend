@@ -34,6 +34,7 @@ const leadsRouter = require("./routes/leads");
 const proxyRouter = require("./routes/proxy");
 const tasksRouter = require("./routes/tasks");
 const messagesRouter = require("./routes/messages");
+const telecallerLeadsRouter = require("./routes/telecaller-leads");
 
 const app = express();
 
@@ -192,6 +193,7 @@ app.use("/api", apiLimiter);
 app.use("/api/appointments", appointmentsRouter);
 
 app.use("/api/leads", leadsRouter);
+app.use("/api/telecaller-leads", telecallerLeadsRouter);
 
 app.use(
   "/api/attendance",

@@ -10,6 +10,38 @@ const appointmentSchema = new mongoose.Schema({
     type: String,
     trim: true,
   },
+  mobileNumber: {
+    type: String,
+    trim: true,
+  },
+  alternateNumber: {
+    type: String,
+    trim: true,
+  },
+  category: {
+    type: String,
+    trim: true,
+  },
+  designation: {
+    type: String,
+    trim: true,
+  },
+  landmark: {
+    type: String,
+    trim: true,
+  },
+  address: {
+    type: String,
+    trim: true,
+  },
+  pinNumber: {
+    type: String,
+    trim: true,
+  },
+  notes: {
+    type: String,
+    trim: true,
+  },
   date: {
     type: Date,
     required: [true, 'Date is required'],
@@ -75,6 +107,7 @@ appointmentSchema.index({ assignedBDM: 1 });
 appointmentSchema.index({ createdBy: 1 });
 appointmentSchema.index({ signed: 1 });
 appointmentSchema.index({ companyName: 1 });
+appointmentSchema.index({ mobileNumber: 1 });
 
 const Appointment = mongoose.model('Appointment', appointmentSchema);
 
