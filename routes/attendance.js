@@ -90,18 +90,18 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
     }
 
     // Parse date safely
-    // Parse date explicitly to avoid timezone issues
+    // Parse date explicitly into UTC to avoid local timezone offset mismatch issues
+    // The frontend and DB often handle this as YYYY-MM-DDT00:00:00.000Z
     const [yyyy, mm, dd] = date.split('-').map(Number);
-    // Store as Noon UTC to safely fall within the day regardless of minor shifts
-    const attendanceDate = new Date(Date.UTC(yyyy, mm - 1, dd, 12, 0, 0, 0));
+    const attendanceDate = new Date(`${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}T00:00:00.000Z`);
 
     if (isNaN(attendanceDate.getTime())) {
       return res.status(400).json({ error: 'Invalid date format' });
     }
 
-    // Define UTC start/end for query
-    const startOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 0, 0, 0, 0));
-    const endOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 23, 59, 59, 999));
+    // Define UTC start/end for query to match DB exactly
+    const startOfDay = new Date(`${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}T00:00:00.000Z`);
+    const endOfDay = new Date(`${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}T23:59:59.999Z`);
 
 
     // Find existing attendance record or create new
@@ -225,9 +225,9 @@ router.get('/:year/:month', auth, async (req, res) => {
       return res.status(400).json({ error: 'Invalid year or month' });
     }
 
-    // Create date range for the month using UTC
-    const startDate = new Date(Date.UTC(yearNum, monthNum - 1, 1, 0, 0, 0));
-    const endDate = new Date(Date.UTC(yearNum, monthNum, 0, 23, 59, 59, 999));
+    // Create date range for the month using local time
+    const startDate = new Date(yearNum, monthNum - 1, 1, 0, 0, 0);
+    const endDate = new Date(yearNum, monthNum, 0, 23, 59, 59, 999);
 
     // Get all users (lightweight query)
     // const allUsers = await User.find().select('username userGroup').lean(); 
@@ -419,9 +419,9 @@ router.post('/bulk-manual', auth, requireAdminOrLeader, async (req, res) => {
     }
 
     const [yyyy, mm, dd] = date.split('-').map(Number);
-    const startOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 0, 0, 0, 0));
-    const endOfDay = new Date(Date.UTC(yyyy, mm - 1, dd, 23, 59, 59, 999));
-    const attendanceDate = new Date(Date.UTC(yyyy, mm - 1, dd, 12, 0, 0, 0));
+    const startOfDay = new Date(`${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}T00:00:00.000Z`);
+    const endOfDay = new Date(`${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}T23:59:59.999Z`);
+    const attendanceDate = new Date(`${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}T00:00:00.000Z`);
 
     const totalHours = status === 'present' ? 8 : (status === 'leave' || status === 'permission' || status === 'half-day') ? 4 : 0;
 

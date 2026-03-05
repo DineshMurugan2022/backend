@@ -2,8 +2,10 @@ const Attendance = require('../models/Attendance');
 
 const getDateWithoutTime = (date) => {
     const d = new Date(date);
-    d.setHours(0, 0, 0, 0);
-    return d;
+    const yyyy = d.getFullYear();
+    const mm = d.getMonth() + 1;
+    const dd = d.getDate();
+    return new Date(`${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}T00:00:00.000Z`);
 };
 
 class AttendanceService {
