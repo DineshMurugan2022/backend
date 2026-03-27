@@ -10,9 +10,13 @@ router.post('/upload', auth, async (req, res) => {
     try {
         // Check if user is admin, teamleader, telecaller tl, or Hr
         const role = req.user.userGroup.toLowerCase().trim();
-        const allowedRoles = ['admin', 'teamleader', 'team leader', 'telecaller tl', 'telecaller-tl', 'hr'];
+        const isAllowed = 
+            ['admin', 'teamleader', 'team leader', 'hr'].includes(role) || 
+            role.includes('tl') || 
+            role.includes('teamleader') || 
+            role.includes('hr');
         
-        if (!allowedRoles.includes(role)) {
+        if (!isAllowed) {
             console.warn(`Unauthorized lead upload attempt by user: ${req.user.username}, role: ${role}`);
             return res.status(403).json({ error: 'Only admins, teamleaders, or HR can assign leads' });
         }
