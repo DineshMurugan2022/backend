@@ -9,7 +9,8 @@ const attendanceService = require('../services/attendanceService');
 // Helper: require admin or team leader
 function requireAdminOrLeader(req, res, next) {
   const role = req.user?.userGroup?.toLowerCase().trim();
-  if (role !== 'admin' && role !== 'team leader' && role !== 'teamleader' && role !== 'hr') {
+  const allowed = ['admin', 'team leader', 'teamleader', 'hr', 'telecaller tl', 'telecaller-tl'];
+  if (!allowed.includes(role)) {
     return res.status(403).json({ message: 'Only admin, team leaders and HR are allowed' });
   }
   next();
@@ -94,7 +95,7 @@ router.get('/', auth, async (req, res) => {
 // @access  Private
 router.post('/register', auth, requireAdminOrLeader, async (req, res) => {
   try {
-    const { username, name, password, designation, userGroup, phone, sipExtension, sipUsername, sipPassword } = req.body;
+    const { username, name, password, designation, userGroup, phone, sipExtension, sipUsername, sipPassword, sipDomain } = req.body;
     if (!username || !password || !userGroup) {
       return res.status(400).json({ message: 'username, password and userGroup are required' });
     }
@@ -115,6 +116,7 @@ router.post('/register', auth, requireAdminOrLeader, async (req, res) => {
       sipExtension: sipExtension || '',
       sipUsername: sipUsername || '',
       sipPassword: sipPassword || '',
+      sipDomain: sipDomain || '',
       loginStatus: 'inactive'
     });
     await user.save();
@@ -246,9 +248,10 @@ router.post('/reset-status', async (req, res) => {
 // @access  Private (admin only)
 router.get('/all', auth, async (req, res) => {
   try {
-    // Check if user is admin or team leader (Normalized)
+    // Check if user is admin, team leader, or telecaller tl (Normalized)
     const userRole = req.user.userGroup?.toLowerCase().trim();
-    if (userRole !== 'admin' && userRole !== 'team leader' && userRole !== 'teamleader' && userRole !== 'hr') {
+    const allowed = ['admin', 'team leader', 'teamleader', 'hr', 'telecaller tl', 'telecaller-tl'];
+    if (!allowed.includes(userRole)) {
       return res.status(403).json({ message: 'Only admins, team leaders and HR can access this endpoint' });
     }
 

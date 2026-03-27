@@ -34,7 +34,7 @@ const setupChatHandlers = (io, socket) => {
     // Emit online status when user connects
     const userId = socket.handshake.auth?.userId || socket.handshake.query?.userId;
     if (userId) {
-        socket.broadcast.emit('user:online', userId);
+        try { socket.broadcast.emit('user:online', userId); } catch (e) { /* Redis may be down */ }
     }
 };
 

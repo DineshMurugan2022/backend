@@ -89,10 +89,10 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        connectSrc: ["'self'", "http://localhost:*", "ws://localhost:*", "wss://localhost:*", "https://backend-4jwl.onrender.com", "wss://backend-4jwl.onrender.com", "https://*.onrender.com"],
-        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+        connectSrc: ["'self'", "http://localhost:*", "ws://localhost:*", "wss://localhost:*", "https://backend-4jwl.onrender.com", "wss://backend-4jwl.onrender.com", "https://*.onrender.com", "wss://*.cloud-connect.in:*", "https://*.cloud-connect.in:*", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
+        scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://www.googletagmanager.com", "https://*.googletagmanager.com", "https://www.google-analytics.com"],
         styleSrc: ["'self'", "'unsafe-inline'"],
-        imgSrc: ["'self'", "data:", "blob:", "https://res.cloudinary.com", "https://user-images.githubusercontent.com"],
+        imgSrc: ["'self'", "data:", "blob:", "https://res.cloudinary.com", "https://user-images.githubusercontent.com", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
       },
     },
     crossOriginResourcePolicy: { policy: "cross-origin" }
@@ -140,17 +140,48 @@ const initializeServices = async () => {
     const setupSocketIO = require("./sockets");
     setupSocketIO(io);
 
-    // 5. Start Modem
-    const { connectHuaweiE173 } = require("./services/modem");
-    connectHuaweiE173(io);
-
     console.log('✅ All services initialized successfully');
   } catch (error) {
     console.error('🔥 CRITICAL: Service initialization failed:', error.message);
   }
 };
 
-initializeServices();
+const startServer = async () => {
+  try {
+    // 1. Initialize DB and critical services FIRST
+    await initializeServices();
+    
+    // 2. Clear port 5000 if occupied by another node process
+    const PORT = process.env.PORT || 5000;
+    
+    // 3. Start listening with error handling
+    const startListen = () => {
+      const serverInstance = server.listen(PORT, () => {
+        logger.info(`🚀 Server running on http://localhost:${PORT}`);
+        logger.info(`📡 Socket.IO server ready for connections`);
+      });
+
+      serverInstance.on('error', (err) => {
+        if (err.code === 'EADDRINUSE') {
+          console.error(`🔥 Port ${PORT} is already in use by another process.`);
+          console.error(`💡 Suggestion: Try running 'npm run kill-port' manually to free it up.`);
+          process.exit(1);
+        } else {
+          console.error('🔥 Server Error:', err);
+        }
+      });
+    };
+
+    startListen();
+
+  } catch (error) {
+    console.error('🔥 FATAL: App failed to start:', error);
+    process.exit(1);
+  }
+};
+
+// Start the sequence
+startServer();
 
 // Health check
 app.get("/api/health", (req, res) => {
@@ -308,9 +339,5 @@ process.on('SIGINT', async () => {
   });
 });
 
-// Start server
-const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
-  logger.info(`🚀 Server running on http://localhost:${PORT}`);
-  logger.info(`📡 Socket.IO server ready for connections`);
-});
+// Server start logic moved to startServer() for synchronization
+// ---------------------------------------------------

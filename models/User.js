@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
   sipExtension: { type: String, default: "" },
   sipUsername: { type: String, default: "" },
   sipPassword: { type: String, default: "" },
+  sipDomain: { type: String, default: "" },
 
   refreshToken: { type: String } // Store refresh token for session management
 }, { timestamps: true });

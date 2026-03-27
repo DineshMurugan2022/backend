@@ -6,6 +6,11 @@ const telecallerLeadSchema = new mongoose.Schema({
         required: [true, 'Phone number is required'],
         trim: true
     },
+    companyName: { type: String, trim: true },
+    clientName: { type: String, trim: true },
+    designation: { type: String, trim: true },
+    state: { type: String, trim: true },
+    industryType: { type: String, trim: true },
     assignedTo: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -13,7 +18,7 @@ const telecallerLeadSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['uncalled', 'called'],
+        enum: ['uncalled', 'picked', 'called'],
         default: 'uncalled'
     },
     dateAssigned: {

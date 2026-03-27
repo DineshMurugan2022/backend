@@ -11,6 +11,16 @@ const registerChatHandlers = require("./chatHandlers");
 const setupSocketIO = (io) => {
     setIOInstance(io);
 
+    // Global error wrapper for all socket events
+    const safeHandler = (handler) => async (...args) => {
+        try {
+            await handler(...args);
+        } catch (err) {
+            console.error('🔥 Socket Event Error:', err.message);
+            // Optionally notify the client of the error
+        }
+    };
+
     // Enhanced connection handler with better error handling
     io.on("connection", (socket) => {
         console.log(`🔌 New socket connection: ${socket.id}`);
@@ -36,7 +46,7 @@ const setupSocketIO = (io) => {
             recordUserConnection(userId, socket.id);
 
             // Notify others that user is online
-            socket.broadcast.emit('userStatusChanged', { userId, status: 'active' });
+            try { socket.broadcast.emit('userStatusChanged', { userId, status: 'active' }); } catch (e) { /* Redis may be down */ }
         } else {
             console.log(`⚠️ Socket ${socket.id} connected without userId`);
         }
@@ -73,7 +83,7 @@ const setupSocketIO = (io) => {
                 console.log(`👤 User ${disconnectedUsername} (${disconnectedUserId}) disconnected`);
 
                 // Notify others that user is offline
-                socket.broadcast.emit('userStatusChanged', { userId: disconnectedUserId, status: 'inactive' });
+                try { socket.broadcast.emit('userStatusChanged', { userId: disconnectedUserId, status: 'inactive' }); } catch (e) { /* Redis may be down */ }
             }
 
             // Clean up tracking sessions

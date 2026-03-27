@@ -108,6 +108,7 @@ router.post("/login", [
         sipExtension: user.sipExtension,
         sipUsername: user.sipUsername,
         sipPassword: user.sipPassword,
+        sipDomain: user.sipDomain,
         loginStatus: "active", // Updated status
       },
     });

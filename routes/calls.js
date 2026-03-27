@@ -1,17 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const CallLog = require('../models/CallLog');
-const { makeCall, hangupCall } = require('../services/calls');
-const { getModemStatus } = require('../services/modem');
-const { SerialPort } = require('serialport');
-const audioBridge = require('../services/audioBridge');
-const usbHeadsetBridge = require('../services/usbHeadsetBridge');
-const huaweiAudioBridge = require("../services/huaweiAudioBridge");
-const huaweiE173Audio = require("../services/huaweiE173Audio"); // Use specialized E173 audio service
-const simpleUSBBridge = require("../services/simpleUSBHeadsetBridge"); // Fix reference error
 const auth = require('../middleware/auth'); // Import auth middleware
 const cloudConnect = require('../services/cloudConnect');
 const { getIOInstance } = require('../sockets/io');
+const User = require('../models/User');
 
 // Middleware to validate request body
 const validateCallLog = (req, res, next) => {
@@ -19,8 +12,9 @@ const validateCallLog = (req, res, next) => {
   if (!phoneNumber || !personName || !companyName) {
     return res.status(400).json({ error: 'All fields (phoneNumber, personName, companyName) are required' });
   }
-  if (!/^\+\d{10,15}$/.test(phoneNumber)) {
-    return res.status(400).json({ error: 'Invalid phone number format. Use international format (e.g., +12345678901)' });
+  // Point 6: Strengthen phone number regex validation
+  if (!/^\+?\d{8,15}$/.test(phoneNumber.replace(/[^\d+]/g, ''))) {
+    return res.status(400).json({ error: 'Invalid phone number format' });
   }
   next();
 };
@@ -34,16 +28,18 @@ router.post('/', auth, validateCallLog, async (req, res) => {
       personName,
       companyName,
       callTime: new Date(),
-      duration: 0, // Initial duration, to be updated after call ends
+      duration: 0,
       direction: direction || 'outbound',
       userId: req.user._id
     });
     await log.save();
 
-    // Emit a socket event so live monitors update instantly
     const io = getIOInstance();
     if (io) {
-      io.emit('callLogAdded', { userId: req.user._id, logId: log._id });
+      // Point 4: Target specific user rooms
+      io.to(`user_${req.user._id}`).emit('callLogAdded', { 
+        logId: log._id 
+      });
     }
 
     res.status(201).json(log);
@@ -56,23 +52,23 @@ router.post('/', auth, validateCallLog, async (req, res) => {
 // GET /api/calls - Get all call logs, or filter by phone
 router.get('/', auth, async (req, res) => {
   try {
-    const { phone } = req.query;
-    let logs;
+    // Point 7: Add User Filtering to Call Logs
+    const query = { userId: req.user._id };
+    const phone = req.query?.phone;
     if (phone) {
-      logs = await CallLog.find({ phoneNumber: phone }).sort({ callTime: -1 }).limit(100);
-    } else {
-      logs = await CallLog.find().sort({ callTime: -1 }).limit(100);
+      query.phoneNumber = phone;
     }
+    const logs = await CallLog.find(query).sort({ callTime: -1 }).limit(100);
     res.json(logs);
   } catch (error) {
     console.error('Failed to fetch call logs:', error);
     res.status(500).json({ error: 'Failed to fetch call logs', details: error.message });
   }
 });
+
 // GET /api/calls/daily-stats - Get aggregated daily stats for monitoring dashboard
 router.get('/daily-stats', auth, async (req, res) => {
   try {
-    // Get beginning of today (local time approximated to UTC based on server, ideally should use timezone)
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -80,7 +76,7 @@ router.get('/daily-stats', auth, async (req, res) => {
       {
         $match: {
           callTime: { $gte: today },
-          userId: { $ne: null }
+          userId: { $exists: true } // Point 11: Fix Daily Stats Filter
         }
       },
       {
@@ -114,7 +110,6 @@ router.get('/daily-stats', auth, async (req, res) => {
       }
     ]);
 
-    // Convert array to dictionary keyed by userId for fast lookup on frontend
     const statsMap = stats.reduce((acc, curr) => {
       acc[curr.userId.toString()] = curr;
       return acc;
@@ -129,13 +124,13 @@ router.get('/daily-stats', auth, async (req, res) => {
 
 router.get('/sip-config', auth, (req, res) => {
   res.json({
-    user: process.env.VITE_SIP_USER || '701',
-    username: process.env.VITE_SIP_USERNAME || '102597701',
-    domain: process.env.VITE_SIP_DOMAIN || 'cccpl',
-    registrar: process.env.VITE_SIP_REGISTRAR || 'sip2.cloud-connect.in',
-    password: process.env.VITE_SIP_PASSWORD || 'B&Y@005#',
-    wssUrl: process.env.VITE_SIP_WSS_URL || 'wss://sip2.cloud-connect.in:7443/',
-    extension: req.user?.extension || 'CRM User'
+    user: process.env.SIP_USER || '702',
+    username: process.env.SIP_USERNAME || '102597702',
+    domain: process.env.SIP_DOMAIN || 'sip2.cloud-connect.in', // Point 2: Fix Backend Domain
+    registrar: process.env.SIP_REGISTRAR || 'sip2.cloud-connect.in',
+    password: process.env.SIP_PASSWORD || 'B&Y@005#',
+    wssUrl: process.env.SIP_WSS_URL || 'wss://sip2.cloud-connect.in:7443/',
+    extension: req.user?.extension || '702'
   });
 });
 
@@ -143,12 +138,21 @@ router.get('/sip-config', auth, (req, res) => {
 router.patch('/:id', auth, async (req, res) => {
   try {
     const { id } = req.params;
-    const { duration, status } = req.body;
+    const { duration, status, callStart, callEnd } = req.body; // Point 8: Duration Calculation
 
     const updateData = {};
+    if (callStart) updateData.callStart = callStart;
+    if (callEnd) updateData.callEnd = callEnd;
+
     if (duration !== undefined && !isNaN(duration) && duration >= 0) {
       updateData.duration = duration;
+    } else if (callStart && callEnd) {
+      // Auto-calculate duration if both timestamps exist
+      const start = new Date(callStart);
+      const end = new Date(callEnd);
+      updateData.duration = Math.round((end - start) / 1000);
     }
+
     if (status) {
       updateData.status = status;
     }
@@ -162,7 +166,6 @@ router.patch('/:id', auth, async (req, res) => {
       return res.status(404).json({ error: 'Call log not found' });
     }
 
-    // Emit socket event to trigger re-fetch of stats
     const io = getIOInstance();
     if (io && log.userId) {
       io.emit('callLogUpdated', { userId: log.userId, logId: log._id });
@@ -190,270 +193,6 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
-// POST /api/calls/make - Make a call using Huawei E173 modem
-router.post('/make', auth, async (req, res) => {
-  try {
-    const { phoneNumber, personName, companyName } = req.body;
-
-    // Validate inputs
-    if (!phoneNumber || !personName || !companyName) {
-      return res.status(400).json({ error: 'phoneNumber, personName, and companyName are required' });
-    }
-
-    // Basic format check
-    if (!/^\+\d{10,15}$/.test(phoneNumber)) {
-      return res.status(400).json({ error: 'Invalid phone number format. Use international format (e.g., +12345678901)' });
-    }
-
-    // Call Huawei Modem Service
-    const result = await makeCall({ to: phoneNumber, personName, companyName });
-
-    // Create Call Log in DB
-    const log = new CallLog({
-      phoneNumber,
-      personName,
-      companyName,
-      callTime: new Date(),
-      userId: req.user._id, // Track the user using Mongoose _id
-      sid: result.callSid,
-      status: 'initiated',
-      duration: 0
-    });
-
-    await log.save();
-
-    res.json({ success: true, message: 'Call initiated successfully through Huawei modem', callSid: result.callSid });
-  } catch (error) {
-    console.error('Failed to make call:', error);
-    res.status(500).json({ error: 'Failed to make call', details: error.message });
-  }
-});
-
-// POST /api/calls/hangup - Hang up a call
-router.post('/hangup', auth, async (req, res) => {
-  try {
-    const { callSid } = req.body;
-
-    if (!callSid) {
-      return res.status(400).json({ error: 'callSid is required' });
-    }
-
-    await hangupCall(callSid);
-
-    res.json({ success: true, message: 'Call hung up successfully' });
-  } catch (error) {
-    console.error('Failed to hang up call:', error);
-    res.status(500).json({ error: 'Failed to hang up call', details: error.message });
-  }
-});
-
-// GET /api/calls/modem-status - Get SIM800 modem status
-router.get('/modem-status', auth, (req, res) => {
-  const status = getModemStatus();
-  res.json(status);
-});
-
-// GET /api/calls/test-ports - Test available COM ports
-router.get('/test-ports', auth, async (req, res) => {
-  try {
-    const ports = await SerialPort.list();
-    const availablePorts = ports.map(port => ({
-      path: port.path,
-      manufacturer: port.manufacturer || 'Unknown',
-      vendorId: port.vendorId,
-      productId: port.productId
-    }));
-
-    res.json({
-      success: true,
-      availablePorts,
-      message: `Found ${availablePorts.length} serial ports`
-    });
-  } catch (error) {
-    console.error('Failed to list ports:', error);
-    res.status(500).json({ error: 'Failed to list serial ports', details: error.message });
-  }
-});
-
-// POST /api/calls/audio-notification - Notify about call audio status
-router.post('/audio-notification', auth, (req, res) => {
-  try {
-    // This endpoint can be used to trigger computer audio notifications
-    // For example: "Call connected, use your USB headset for communication"
-
-    res.json({
-      success: true,
-      message: 'Audio notification sent',
-      audioInstructions: {
-        usbHeadset: 'Connect Logitech USB headset to computer',
-        sim800Audio: 'SIM800 handles GSM call audio',
-        computerAudio: 'Use computer speakers/microphone for local audio',
-        note: 'For full integration, consider hardware audio bridge solution'
-      }
-    });
-  } catch (error) {
-    console.error('Audio notification error:', error);
-    res.status(500).json({ error: 'Failed to send audio notification', details: error.message });
-  }
-});
-
-// --- HUAWEI SPECIFIC ROUTES (Matching Frontend Call.jsx) ---
-
-// GET /api/calls/huawei-audio-status - Get Huawei audio status
-router.get('/huawei-audio-status', auth, (req, res) => {
-  try {
-    const status = huaweiE173Audio.getStatus();
-    res.json(status);
-  } catch (error) {
-    console.error('Huawei audio status error:', error);
-    res.status(500).json({ error: 'Failed to get Huawei audio status', details: error.message });
-  }
-});
-
-// POST /api/calls/setup-huawei-audio - Setup Huawei audio routing
-router.post('/setup-huawei-audio', auth, async (req, res) => {
-  try {
-    // Note: In some versions frontend might not pass phoneNumber here, using a dummy or latest if needed
-    const result = await huaweiE173Audio.activateCallAudio(req.body.phoneNumber || "Current Call");
-    res.json(result);
-  } catch (error) {
-    console.error('Huawei audio setup error:', error);
-    res.status(500).json({ error: 'Failed to setup Huawei audio', details: error.message });
-  }
-});
-
-// POST /api/calls/test-huawei-audio - Test Huawei audio bridge
-router.post('/test-huawei-audio', auth, async (req, res) => {
-  try {
-    const result = await huaweiE173Audio.testBridge();
-    res.json(result);
-  } catch (error) {
-    console.error('Huawei audio test error:', error);
-    res.status(500).json({ error: 'Failed to test Huawei audio', details: error.message });
-  }
-});
-
-// POST /api/calls/setup-usb-audio - Setup USB headset audio (called after makeCall)
-router.post('/setup-usb-audio', auth, async (req, res) => {
-  try {
-    const result = await huaweiE173Audio.activateCallAudio("USB Audio Setup");
-    res.json(result);
-  } catch (error) {
-    console.error('USB audio setup error:', error);
-    res.status(500).json({ error: 'Failed to setup USB audio', details: error.message });
-  }
-});
-
-// --- LEGACY/GENERAL ROUTES ---
-
-// GET /api/calls/audio-status - Get audio bridge status
-router.get('/audio-status', auth, (req, res) => {
-  try {
-    const status = audioBridge.getStatus();
-    res.json({ success: true, ...status });
-  } catch (error) {
-    console.error('Audio status error:', error);
-    res.status(500).json({ error: 'Failed to get audio status', details: error.message });
-  }
-});
-
-// POST /api/calls/setup-audio - Setup audio bridge
-router.post('/setup-audio', auth, async (req, res) => {
-  try {
-    const result = await audioBridge.startAudioBridge();
-    res.json(result);
-  } catch (error) {
-    console.error('Audio setup error:', error);
-    res.status(500).json({ error: 'Failed to setup audio bridge', details: error.message });
-  }
-});
-
-// POST /api/calls/setup-usb-headset - Setup USB headset bridge
-router.post('/setup-usb-headset', auth, async (req, res) => {
-  try {
-    const result = await usbHeadsetBridge.startAudioBridge();
-    res.json({
-      success: result.success,
-      headsetInfo: result.headsetInfo,
-      message: result.message,
-      instructions: result.instructions,
-      requiresManualSetup: result.requiresManualSetup
-    });
-  } catch (error) {
-    console.error('USB headset setup error:', error);
-    res.status(500).json({ error: 'Failed to setup USB headset', details: error.message });
-  }
-});
-
-// GET /api/calls/usb-headset-status - Get USB headset status
-router.get('/usb-headset-status', auth, async (req, res) => {
-  try {
-    const status = usbHeadsetBridge.getStatus();
-    res.json(status);
-  } catch (error) {
-    console.error('USB headset status error:', error);
-    res.status(500).json({ error: 'Failed to get USB headset status', details: error.message });
-  }
-});
-
-// POST /api/calls/test-usb-audio - Test USB headset audio
-router.post('/test-usb-audio', auth, async (req, res) => {
-  try {
-    const testResults = await usbHeadsetBridge.testAudio();
-    res.json(testResults);
-  } catch (error) {
-    console.error('USB audio test error:', error);
-    res.status(500).json({ error: 'Failed to test USB audio', details: error.message });
-  }
-});
-
-// POST /api/calls/setup-simple-usb - Simple USB headset setup
-router.post('/setup-simple-usb', auth, async (req, res) => {
-  try {
-    const result = await simpleUSBBridge.startBridge();
-    res.json(result);
-  } catch (error) {
-    console.error('Simple USB setup error:', error);
-    res.status(500).json({ error: 'Failed to setup simple USB bridge', details: error.message });
-  }
-});
-
-// GET /api/calls/simple-usb-status - Get simple USB bridge status
-router.get('/simple-usb-status', auth, async (req, res) => {
-  try {
-    const status = simpleUSBBridge.getStatus();
-    res.json(status);
-  } catch (error) {
-    console.error('Simple USB status error:', error);
-    res.status(500).json({ error: 'Failed to get simple USB status', details: error.message });
-  }
-});
-
-// POST /api/calls/test-simple-usb - Test simple USB setup
-router.post('/test-simple-usb', auth, async (req, res) => {
-  try {
-    const testResults = await simpleUSBBridge.testBridge();
-    res.json(testResults);
-  } catch (error) {
-    console.error('Simple USB test error:', error);
-    res.status(500).json({ error: 'Failed to test simple USB setup', details: error.message });
-  }
-});
-
-// POST /api/calls/test-ringtone - Test ringtone playback through USB headset
-router.post('/test-ringtone', auth, async (req, res) => {
-  try {
-    simpleUSBBridge.testRingtone();
-    res.json({
-      success: true,
-      message: 'Ringtone test started - should play for 5 seconds through USB headset'
-    });
-  } catch (error) {
-    console.error('Ringtone test error:', error);
-    res.status(500).json({ error: 'Failed to test ringtone', details: error.message });
-  }
-});
-
 // --- CLOUDCONNECT SPECIFIC ROUTES ---
 
 // POST /api/calls/click-to-call - Initiate Click-to-Call
@@ -463,8 +202,8 @@ router.post('/click-to-call', auth, async (req, res) => {
     if (!phoneNumber || !extensionNumber) {
       return res.status(400).json({ error: 'phoneNumber and extensionNumber are required' });
     }
-
-    const password = extensionPassword || process.env.VITE_SIP_PASSWORD || 'B&Y@005#';
+    // Point 9: Secure Click-to-Call (Don't allow password in body)
+    const password = process.env.SIP_PASSWORD || 'B&Y@005#'; 
     const result = await cloudConnect.clickToCall(phoneNumber, extensionNumber, password);
     res.json(result);
   } catch (error) {
@@ -472,47 +211,84 @@ router.post('/click-to-call', auth, async (req, res) => {
   }
 });
 
-// POST /api/calls/cloud-logs - Get logs from CloudConnect
-router.post('/cloud-logs', auth, async (req, res) => {
-  try {
-    const { startDate, endDate, tenantId, number } = req.body;
-    const tenant = tenantId || process.env.VITE_SIP_DOMAIN || 'cccpl';
-    const result = await cloudConnect.getCallLogs(startDate, endDate, tenant, number);
-    res.json(result);
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to fetch CloudConnect logs', details: error.message });
-  }
-});
-
-// POST /api/calls/cid-routing - Manage CID Routing
-router.post('/cid-routing', auth, async (req, res) => {
-  try {
-    const { action, data } = req.body;
-    const result = await cloudConnect.manageCidRouting(action, data);
-    res.json(result);
-  } catch (error) {
-    res.status(500).json({ error: `CID Routing ${action} failed`, details: error.message });
-  }
-});
-
-// POST /api/calls/webhook - CloudConnect Webhook Receiver
-// Note: This endpoint should be public or use a different secret if CloudConnect expects no auth
+// Point 3: Implement Inbound Call Logging in Webhook
 router.post('/webhook', async (req, res) => {
   try {
     const event = req.body;
     console.log('🔔 CloudConnect Webhook Received:', event);
-
+    
     const io = getIOInstance();
-    if (io) {
-      // Broadcast event to relevant users/rooms
-      io.emit('cloudConnectEvent', event);
+    if (!io) {
+      console.error('⚠️ Webhook received but Socket.IO instance is not available');
+    }
 
-      // If it's a specific extension, we could emit to a room
-      if (event.extension_number) {
-        io.to(`user_${event.extension_number}`).emit('callStatusUpdate', event);
+    if (event.event_type === 'incoming_call') {
+      // Map CloudConnect extension/agent identifiers -> our User._id (rooms are keyed by Mongo _id)
+      const extensionCandidate =
+        (event.extension_number ?? event.extension ?? event.agent_extension ?? event.agent_id ?? '')
+          .toString()
+          .trim();
+
+      let userId = null;
+      if (extensionCandidate) {
+        const user = await User.findOne({ sipExtension: extensionCandidate }).select('_id sipExtension');
+        if (user?._id) userId = user._id;
+      }
+
+      const log = new CallLog({
+        phoneNumber: event.caller_number,
+        personName: event.caller_name || event.caller_number,
+        companyName: 'CloudConnect Inbound',
+        callTime: new Date(),
+        duration: 0,
+        direction: 'inbound',
+        userId
+      });
+      await log.save();
+
+      if (io) {
+        const payload = {
+          logId: log._id,
+          phoneNumber: log.phoneNumber,
+          personName: log.personName,
+          companyName: log.companyName,
+          callTime: log.callTime,
+          direction: log.direction,
+          status: 'ringing',
+          userId: log.userId,
+          raw: event
+        };
+
+        // 1) Global broadcast so all clients can choose to show popup
+        io.emit('call:incoming', payload);
+
+        // 2) Backward-compatible and targeted events if user is resolved
+        if (log.userId) {
+          const room = `user_${log.userId.toString()}`;
+          io.to(room).emit('callLogAdded', { logId: log._id });
+          io.to(room).emit('call:incoming', payload);
+        }
       }
     }
 
+    if (io) {
+      io.emit('cloudConnectEvent', event); // Still broadcast for monitoring
+      if (event.extension_number) {
+        // Prefer user room by Mongo _id (sockets join user_<mongoId>), but keep legacy extension room too.
+        const extension = event.extension_number.toString().trim();
+        const user = extension
+          ? await User.findOne({ sipExtension: extension }).select('_id sipExtension')
+          : null;
+        const targetRoom = user?._id ? `user_${user._id.toString()}` : `user_${extension}`;
+
+        // 1) Global status update for any listeners
+        io.emit('call:status', event);
+
+        // 2) Targeted legacy + new events
+        io.to(targetRoom).emit('callStatusUpdate', event);
+        io.to(targetRoom).emit('call:status', event);
+      }
+    }
     res.json({ status: 'SUCCESS' });
   } catch (error) {
     console.error('Webhook Error:', error);

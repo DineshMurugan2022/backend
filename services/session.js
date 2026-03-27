@@ -12,7 +12,7 @@ async function updateUserStatus(userId) {
   try {
     // Check if user is currently connected via socket
     const isConnected = connectedUsers.has(userId);
-    
+
     if (isConnected) {
       // For connected users, check location update time
       const lastUpdate = lastLocationUpdate.get(userId);
@@ -27,20 +27,20 @@ async function updateUserStatus(userId) {
       const loginStatus = isActive ? 'active' : 'inactive';
 
       await User.findByIdAndUpdate(userId, { loginStatus, lastUpdate: new Date(lastUpdate) });
-      
+
       // Emit status change to all clients
       const io = require('../sockets/io').getIOInstance();
       if (io) {
-        io.emit('userStatusChanged', { userId, status: loginStatus });
+        try { io.emit('userStatusChanged', { userId, status: loginStatus }); } catch (e) { /* Redis may be down; ignore emit error */ }
       }
     } else {
       // For disconnected users, mark as inactive
       await User.findByIdAndUpdate(userId, { loginStatus: 'inactive' });
-      
+
       // Emit status change to all clients
       const io = require('../sockets/io').getIOInstance();
       if (io) {
-        io.emit('userStatusChanged', { userId, status: 'inactive' });
+        try { io.emit('userStatusChanged', { userId, status: 'inactive' }); } catch (e) { /* Redis may be down; ignore emit error */ }
       }
     }
   } catch (error) {
@@ -49,19 +49,19 @@ async function updateUserStatus(userId) {
 }
 
 function handleTimeout() {
-    console.log("⏰ Session timeout check triggered at", new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }));
-    
-    // Update status for all users based on last location update
-    for (const userId of lastLocationUpdate.keys()) {
+  console.log("⏰ Session timeout check triggered at", new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }));
+
+  // Update status for all users based on last location update
+  for (const userId of lastLocationUpdate.keys()) {
+    updateUserStatus(userId);
+  }
+
+  // Also check connected users without location updates
+  for (const userId of connectedUsers.keys()) {
+    if (!lastLocationUpdate.has(userId)) {
       updateUserStatus(userId);
     }
-    
-    // Also check connected users without location updates
-    for (const userId of connectedUsers.keys()) {
-      if (!lastLocationUpdate.has(userId)) {
-        updateUserStatus(userId);
-      }
-    }
+  }
 }
 
 // Function to record location update with better error handling
@@ -70,11 +70,11 @@ function recordLocationUpdate(userId) {
     console.warn('⚠️ Attempted to record location update without userId');
     return;
   }
-  
+
   const updateTime = Date.now();
   lastLocationUpdate.set(userId, updateTime);
   console.log(`🕒 Recorded location update for user ${userId} at ${new Date(updateTime).toLocaleTimeString()}`);
-  
+
   // Also update user status immediately
   updateUserStatus(userId);
 }
@@ -85,13 +85,13 @@ function recordUserConnection(userId, socketId) {
     console.warn('⚠️ Attempted to record user connection without userId or socketId');
     return;
   }
-  
+
   connectedUsers.set(userId, {
     socketId,
     connectedAt: Date.now()
   });
   console.log(`🔗 Recorded user connection: ${userId} with socket ${socketId}`);
-  
+
   // When user connects, mark them as active immediately
   updateUserStatus(userId);
 }
@@ -102,16 +102,16 @@ function recordUserDisconnection(userId) {
     console.warn('⚠️ Attempted to record user disconnection without userId');
     return;
   }
-  
+
   connectedUsers.delete(userId);
   console.log(`🚫 Recorded user disconnection: ${userId}`);
-  
+
   // Update status immediately when user disconnects
   updateUserStatus(userId);
 }
 
-module.exports = { 
-  handleTimeout, 
+module.exports = {
+  handleTimeout,
   recordLocationUpdate,
   recordUserConnection,
   recordUserDisconnection

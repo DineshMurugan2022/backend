@@ -2,37 +2,54 @@ const express = require('express');
 const router = express.Router();
 const TelecallerLead = require('../models/TelecallerLead');
 const auth = require('../middleware/auth');
+const mongoose = require('mongoose');
 
 // POST /api/telecaller-leads/upload
 // Bulk upload phone numbers from an array and assign to a specific user
 router.post('/upload', auth, async (req, res) => {
     try {
-        // Check if user is admin or teamleader
-        if (req.user.userGroup !== 'admin' && req.user.userGroup !== 'teamleader') {
-            return res.status(403).json({ error: 'Only admins or teamleaders can assign leads' });
+        // Check if user is admin, teamleader, telecaller tl, or Hr
+        const role = req.user.userGroup.toLowerCase().trim();
+        const allowedRoles = ['admin', 'teamleader', 'team leader', 'telecaller tl', 'telecaller-tl', 'hr'];
+        
+        if (!allowedRoles.includes(role)) {
+            console.warn(`Unauthorized lead upload attempt by user: ${req.user.username}, role: ${role}`);
+            return res.status(403).json({ error: 'Only admins, teamleaders, or HR can assign leads' });
         }
 
-        const { phoneNumbers, assignedTo } = req.body;
+        const { phoneNumbers, leads, assignedTo } = req.body;
 
-        if (!Array.isArray(phoneNumbers) || phoneNumbers.length === 0) {
-            return res.status(400).json({ error: 'An array of phone numbers is required' });
-        }
         if (!assignedTo) {
             return res.status(400).json({ error: 'Assigned user ID is required' });
         }
 
-        // Prepare bulk insert
-        const leadsToInsert = phoneNumbers.map(number => ({
-            phoneNumber: String(number).trim(),
-            assignedTo: assignedTo,
-            status: 'uncalled'
-        })).filter(lead => lead.phoneNumber !== '');
-
-        if (leadsToInsert.length === 0) {
-            return res.status(400).json({ error: 'No valid phone numbers found' });
+        let leadsToInsert = [];
+        
+        if (Array.isArray(leads) && leads.length > 0) {
+            // New detailed format
+            leadsToInsert = leads.map(lead => ({
+                phoneNumber: String(lead.MobileNo || lead.phoneNumber).trim(),
+                companyName: lead.companyName || lead['Company Name'] || '',
+                clientName: lead.clientName || lead['Name'] || '',
+                designation: lead.designation || lead['Designation'] || '',
+                state: lead.state || lead['State'] || '',
+                industryType: lead.industryType || lead['IndustryType'] || lead['Industry Type'] || '',
+                assignedTo: assignedTo,
+                status: 'uncalled'
+            })).filter(lead => lead.phoneNumber !== '');
+        } else if (Array.isArray(phoneNumbers) && phoneNumbers.length > 0) {
+            // Legacy format
+            leadsToInsert = phoneNumbers.map(number => ({
+                phoneNumber: String(number).trim(),
+                assignedTo: assignedTo,
+                status: 'uncalled'
+            })).filter(lead => lead.phoneNumber !== '');
         }
 
-        // Depending on requirements, we could check for duplicates here, but for simple assignment:
+        if (leadsToInsert.length === 0) {
+            return res.status(400).json({ error: 'No valid phone numbers or leads found' });
+        }
+
         await TelecallerLead.insertMany(leadsToInsert);
 
         res.status(201).json({
@@ -54,8 +71,9 @@ router.get('/shuffle', auth, async (req, res) => {
         const userId = req.user.id || req.user._id;
 
         // Use aggregate to get a random uncalled lead
+        // IMPORTANT: Must cast userId string to ObjectId for aggregate $match
         const randomLeadCursor = await TelecallerLead.aggregate([
-            { $match: { assignedTo: userId, status: 'uncalled' } },
+            { $match: { assignedTo: new mongoose.Types.ObjectId(userId), status: 'uncalled' } },
             { $sample: { size: 1 } }
         ]);
 
@@ -65,12 +83,19 @@ router.get('/shuffle', auth, async (req, res) => {
 
         const leadToCall = randomLeadCursor[0];
 
-        // Mark it as called so they don't get it again on the next shuffle
-        await TelecallerLead.findByIdAndUpdate(leadToCall._id, { status: 'called' });
+        // Mark it as 'picked' (NOT 'called') so they don't get it again, 
+        // but it doesn't count as called yet in stats.
+        await TelecallerLead.findByIdAndUpdate(leadToCall._id, { status: 'picked' });
 
         res.json({
             success: true,
-            phoneNumber: leadToCall.phoneNumber
+            id: leadToCall._id,
+            phoneNumber: leadToCall.phoneNumber,
+            companyName: leadToCall.companyName || '',
+            clientName: leadToCall.clientName || '',
+            designation: leadToCall.designation || '',
+            state: leadToCall.state || '',
+            industryType: leadToCall.industryType || ''
         });
 
     } catch (error) {
@@ -83,16 +108,17 @@ router.get('/shuffle', auth, async (req, res) => {
 // Return counts of total assigned vs uncalled for a specific user, or all users if admin
 router.get('/stats', auth, async (req, res) => {
     try {
-        const isAdminOrTL = req.user.userGroup === 'admin' || req.user.userGroup === 'teamleader';
-        const { userId } = req.query;
+        const role = req.user.userGroup.toLowerCase().trim();
+        const isAdminOrTL = ['admin', 'teamleader', 'team leader', 'telecaller tl', 'telecaller-tl', 'hr'].includes(role);
+        const { userId: queryUserId } = req.query;
 
         let matchCriteria = {};
         if (!isAdminOrTL) {
             // Regular telecallers only see their own stats
-            matchCriteria.assignedTo = req.user.id || req.user._id;
-        } else if (userId) {
+            matchCriteria.assignedTo = new mongoose.Types.ObjectId(req.user.id || req.user._id);
+        } else if (queryUserId) {
             // Admins/TLs can filter by specific user
-            matchCriteria.assignedTo = userId;
+            matchCriteria.assignedTo = new mongoose.Types.ObjectId(queryUserId);
         }
 
         const stats = await TelecallerLead.aggregate([
@@ -102,7 +128,7 @@ router.get('/stats', auth, async (req, res) => {
                     _id: "$assignedTo",
                     totalAssigned: { $sum: 1 },
                     uncalledRemaining: {
-                        $sum: { $cond: [{ $eq: ["$status", "uncalled"] }, 1, 0] }
+                        $sum: { $cond: [{ $in: ["$status", ["uncalled", "picked"]] }, 1, 0] }
                     },
                     calledTotal: {
                         $sum: { $cond: [{ $eq: ["$status", "called"] }, 1, 0] }
@@ -116,6 +142,20 @@ router.get('/stats', auth, async (req, res) => {
     } catch (error) {
         console.error('Error fetching telecaller stats:', error);
         res.status(500).json({ error: 'Failed to fetch lead stats', details: error.message });
+    }
+});
+
+// PATCH /api/telecaller-leads/mark-called/:id
+// Explicitly mark a lead as called
+router.patch('/mark-called/:id', auth, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const updated = await TelecallerLead.findByIdAndUpdate(id, { status: 'called' }, { new: true });
+        if (!updated) return res.status(404).json({ error: 'Lead not found' });
+        res.json({ success: true, message: 'Lead marked as called' });
+    } catch (error) {
+        console.error('Error marking lead called:', error);
+        res.status(500).json({ error: 'Failed to update lead status' });
     }
 });
 

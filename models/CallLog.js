@@ -5,6 +5,8 @@ const callLogSchema = new mongoose.Schema({
   personName: { type: String, required: true },
   companyName: { type: String, required: true },
   callTime: { type: Date, default: Date.now },
+  callStart: { type: Date },
+  callEnd: { type: Date },
   duration: { type: Number, default: 0 }, // In seconds
   direction: { type: String, enum: ['inbound', 'outbound'], default: 'outbound' }, // Added to track In vs Out calls
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }, // Track who made the call

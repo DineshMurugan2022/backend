@@ -3,13 +3,15 @@ const mongoose = require("mongoose");
 
 
 const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI, );
-    console.log("✅ MongoDB Atlas connected successfully!");
-  } catch (error) {
-    console.error("❌ MongoDB Connection Error:", error.message);
-    process.exit(1);
-  }
+    try {
+        console.log('📡 Attempting to connect to MongoDB...');
+        await mongoose.connect(process.env.MONGO_URI);
+        console.log("✅ MongoDB Atlas connected successfully!");
+    } catch (error) {
+        console.error("🔥 CRITICAL MongoDB Connection Error:", error.message);
+        console.error("Please check your MONGO_URI in the .env file and ensure your IP is whitelisted on Atlas.");
+        process.exit(1); // Still exit as the app can't function without DB
+    }
 };
 
 // Connection events (useful for debugging)
