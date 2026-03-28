@@ -82891,3 +82891,1406 @@ Realtek High Definition Audio HDAUDIO\FUNC_01&VEN_10EC&DEV_0887&SUBSYS_10438576&
 2026-03-28 15:17:02: 2026-03-28 15:17:02 [32minfo[39m: OPTIONS /api/telecaller-leads/assigned/698ecf0c2cf455ff05611730 200 0 - 0.118 ms
 2026-03-28 15:17:02: 2026-03-28 15:17:02 [32minfo[39m: DELETE /api/telecaller-leads/assigned/698ecf0c2cf455ff05611730 404 196 - 0.670 ms
 2026-03-28 15:17:07: SIGINT signal received: closing HTTP server
+2026-03-28 15:17:12: 🔌 Attempting to connect to Redis...
+2026-03-28 15:17:13: 📡 Attempting to connect to MongoDB...
+2026-03-28 15:17:13: Starting Auto-Logout Job...
+2026-03-28 15:17:13: 2026-03-28 15:17:13 [32minfo[39m: ✅ Redis Clients (Pub/Sub) Connected and Ready
+2026-03-28 15:17:13: 📡 Mongoose connected to Atlas cluster
+2026-03-28 15:17:13: ✅ MongoDB Atlas connected successfully!
+2026-03-28 15:17:13: 🔌 Socket.IO Redis adapter initialized
+2026-03-28 15:17:13: 🔌 Socket.IO instance set successfully
+2026-03-28 15:17:13: ✅ All services initialized successfully
+2026-03-28 15:17:13: 2026-03-28 15:17:13 [32minfo[39m: 🚀 Server running on http://localhost:5000
+2026-03-28 15:17:13: 2026-03-28 15:17:13 [32minfo[39m: 📡 Socket.IO server ready for connections
+2026-03-28 15:17:13: ✅ Query model connected successfully
+2026-03-28 15:17:13: 🔌 New socket connection: JewFQTkdWY59M3E_AAAB
+2026-03-28 15:17:13: 🔗 Socket JewFQTkdWY59M3E_AAAB joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:17:13: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JewFQTkdWY59M3E_AAAB
+2026-03-28 15:17:17: 2026-03-28 15:17:17 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 3.758 ms
+2026-03-28 15:17:17: 2026-03-28 15:17:17 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.497 ms
+2026-03-28 15:17:17: 2026-03-28 15:17:17 [32minfo[39m: GET /api/telecaller-leads/stats 200 466 - 53.508 ms
+2026-03-28 15:17:17: 2026-03-28 15:17:17 [32minfo[39m: GET /api/attendance/2026/3 304 - - 180.817 ms
+2026-03-28 15:17:22: 🚪 Socket JewFQTkdWY59M3E_AAAB joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:17:22: 2026-03-28 15:17:22 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.267 ms
+2026-03-28 15:17:22: 2026-03-28 15:17:22 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.287 ms
+2026-03-28 15:17:22: 2026-03-28 15:17:22 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.165 ms
+2026-03-28 15:17:22: 2026-03-28 15:17:22 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.252 ms
+2026-03-28 15:17:22: 🔌 Socket JewFQTkdWY59M3E_AAAB disconnected. Reason: transport close
+2026-03-28 15:17:22: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:17:22: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:17:22: 🔌 New socket connection: tIW6trk-n_J-XOyIAAAD
+2026-03-28 15:17:22: 🔗 Socket tIW6trk-n_J-XOyIAAAD joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:17:22: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket tIW6trk-n_J-XOyIAAAD
+2026-03-28 15:17:22: 🚪 Socket tIW6trk-n_J-XOyIAAAD joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:17:23: 2026-03-28 15:17:23 [32minfo[39m: GET /api/calls/sip-config 304 - - 24.220 ms
+2026-03-28 15:17:23: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:17:23: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:17:23: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:17:23: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:17:23: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:17:23: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:17:23: 🔍 [DEBUG] About to query database...
+2026-03-28 15:17:23: 📬 Unread count result: [33m0[39m
+2026-03-28 15:17:23: 2026-03-28 15:17:23 [32minfo[39m: GET /api/messages/unread-count 304 - - 45.850 ms
+2026-03-28 15:17:23: 2026-03-28 15:17:23 [32minfo[39m: GET /api/calls/sip-config 304 - - 24.212 ms
+2026-03-28 15:17:23: 🚪 Socket tIW6trk-n_J-XOyIAAAD joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:17:23: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:17:23: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:17:23: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:17:23: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:17:23: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:17:23: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:17:23: 🔍 [DEBUG] About to query database...
+2026-03-28 15:17:23: 📬 Unread count result: [33m0[39m
+2026-03-28 15:17:23: 2026-03-28 15:17:23 [32minfo[39m: GET /api/messages/unread-count 304 - - 53.450 ms
+2026-03-28 15:17:23: 2026-03-28 15:17:23 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.151 ms
+2026-03-28 15:17:23: 2026-03-28 15:17:23 [32minfo[39m: OPTIONS /api/users 200 0 - 0.080 ms
+2026-03-28 15:17:23: 2026-03-28 15:17:23 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.123 ms
+2026-03-28 15:17:23: 2026-03-28 15:17:23 [32minfo[39m: GET /api/telecaller-leads/stats 200 466 - 45.563 ms
+2026-03-28 15:17:23: 2026-03-28 15:17:23 [32minfo[39m: GET /api/telecaller-leads/stats 200 466 - 60.709 ms
+2026-03-28 15:17:23: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:17:23: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:17:24: 2026-03-28 15:17:24 [32minfo[39m: GET /api/attendance/2026/3 304 - - 142.925 ms
+2026-03-28 15:17:24: 2026-03-28 15:17:24 [32minfo[39m: GET /api/users 200 - - 130.295 ms
+2026-03-28 15:17:24: 2026-03-28 15:17:24 [32minfo[39m: GET /api/attendance/2026/3 304 - - 130.840 ms
+2026-03-28 15:17:28: 🔌 Socket tIW6trk-n_J-XOyIAAAD disconnected. Reason: transport close
+2026-03-28 15:17:28: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:17:28: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.151 ms
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.097 ms
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.095 ms
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.196 ms
+2026-03-28 15:17:28: 🔌 New socket connection: KGxpqF7X3lhU3T1wAAAF
+2026-03-28 15:17:28: 🔗 Socket KGxpqF7X3lhU3T1wAAAF joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:17:28: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket KGxpqF7X3lhU3T1wAAAF
+2026-03-28 15:17:28: 🚪 Socket KGxpqF7X3lhU3T1wAAAF joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:17:28: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:17:28: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:17:28: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:17:28: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:17:28: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:17:28: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:17:28: 🔍 [DEBUG] About to query database...
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: GET /api/calls/sip-config 304 - - 33.199 ms
+2026-03-28 15:17:28: 🚪 Socket KGxpqF7X3lhU3T1wAAAF joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:17:28: 📬 Unread count result: [33m0[39m
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: GET /api/messages/unread-count 304 - - 46.390 ms
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: GET /api/calls/sip-config 304 - - 23.811 ms
+2026-03-28 15:17:28: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:17:28: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:17:28: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:17:28: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:17:28: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:17:28: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:17:28: 🔍 [DEBUG] About to query database...
+2026-03-28 15:17:28: 📬 Unread count result: [33m0[39m
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: GET /api/messages/unread-count 304 - - 55.442 ms
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: GET /api/telecaller-leads/stats 200 466 - 43.556 ms
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: GET /api/telecaller-leads/stats 200 466 - 60.005 ms
+2026-03-28 15:17:28: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:17:28: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: GET /api/attendance/2026/3 304 - - 123.344 ms
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: GET /api/users 200 - - 113.728 ms
+2026-03-28 15:17:28: 2026-03-28 15:17:28 [32minfo[39m: GET /api/attendance/2026/3 304 - - 112.333 ms
+2026-03-28 15:17:31: 2026-03-28 15:17:31 [32minfo[39m: OPTIONS /api/telecaller-leads/assigned/68fcc5bfb85c2281711925bb 200 0 - 0.085 ms
+2026-03-28 15:17:31: 2026-03-28 15:17:31 [32minfo[39m: DELETE /api/telecaller-leads/assigned/68fcc5bfb85c2281711925bb 200 55 - 52.581 ms
+2026-03-28 15:17:31: 2026-03-28 15:17:31 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.064 ms
+2026-03-28 15:17:31: 2026-03-28 15:17:31 [32minfo[39m: GET /api/telecaller-leads/stats 200 371 - 41.477 ms
+2026-03-28 15:17:35: 2026-03-28 15:17:35 [32minfo[39m: OPTIONS /api/telecaller-leads/assigned/698ece512cf455ff056116dc 200 0 - 0.068 ms
+2026-03-28 15:17:35: 2026-03-28 15:17:35 [32minfo[39m: DELETE /api/telecaller-leads/assigned/698ece512cf455ff056116dc 200 54 - 46.218 ms
+2026-03-28 15:17:35: 2026-03-28 15:17:35 [32minfo[39m: GET /api/telecaller-leads/stats 200 278 - 40.910 ms
+2026-03-28 15:17:37: 2026-03-28 15:17:37 [32minfo[39m: OPTIONS /api/telecaller-leads/assigned/698ecf0c2cf455ff05611730 200 0 - 0.058 ms
+2026-03-28 15:17:37: 2026-03-28 15:17:37 [32minfo[39m: DELETE /api/telecaller-leads/assigned/698ecf0c2cf455ff05611730 200 54 - 46.368 ms
+2026-03-28 15:17:37: 2026-03-28 15:17:37 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.058 ms
+2026-03-28 15:17:37: 2026-03-28 15:17:37 [32minfo[39m: GET /api/telecaller-leads/stats 200 185 - 40.579 ms
+2026-03-28 15:17:38: 2026-03-28 15:17:38 [32minfo[39m: OPTIONS /api/telecaller-leads/assigned/699fdc6d30c6eb5e17ffd940 200 0 - 0.137 ms
+2026-03-28 15:17:39: 2026-03-28 15:17:39 [32minfo[39m: DELETE /api/telecaller-leads/assigned/699fdc6d30c6eb5e17ffd940 200 54 - 47.364 ms
+2026-03-28 15:17:39: 2026-03-28 15:17:39 [32minfo[39m: GET /api/telecaller-leads/stats 200 92 - 56.154 ms
+2026-03-28 15:17:52: 🔌 Socket KGxpqF7X3lhU3T1wAAAF disconnected. Reason: transport close
+2026-03-28 15:17:52: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:17:52: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.189 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.103 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.089 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.109 ms
+2026-03-28 15:17:53: 🔌 New socket connection: tdKww31BUGDecO4GAAAH
+2026-03-28 15:17:53: 🔗 Socket tdKww31BUGDecO4GAAAH joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:17:53: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket tdKww31BUGDecO4GAAAH
+2026-03-28 15:17:53: 🚪 Socket tdKww31BUGDecO4GAAAH joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/calls/sip-config 304 - - 25.372 ms
+2026-03-28 15:17:53: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:17:53: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:17:53: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:17:53: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:17:53: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:17:53: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:17:53: 🔍 [DEBUG] About to query database...
+2026-03-28 15:17:53: 📬 Unread count result: [33m0[39m
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/messages/unread-count 304 - - 63.979 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/calls/sip-config 304 - - 35.890 ms
+2026-03-28 15:17:53: 🚪 Socket tdKww31BUGDecO4GAAAH joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:17:53: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:17:53: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:17:53: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:17:53: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:17:53: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:17:53: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:17:53: 🔍 [DEBUG] About to query database...
+2026-03-28 15:17:53: 📬 Unread count result: [33m0[39m
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/messages/unread-count 304 - - 53.429 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.076 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: OPTIONS /api/users 200 0 - 0.055 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.069 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.126 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 43.438 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/calls/daily-stats 304 - - 57.401 ms
+2026-03-28 15:17:53: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:17:53: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/users 200 - - 117.275 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 141.738 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/calls/daily-stats 304 - - 41.280 ms
+2026-03-28 15:17:53: 2026-03-28 15:17:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 104.441 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/appointments/revenue/reports 200 0 - 0.129 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/appointments/all 200 0 - 0.090 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/tasks 200 0 - 0.083 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/users/all 200 0 - 0.093 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 200 0 - 0.063 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/admin-status 200 0 - 0.112 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.066 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.081 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 200 0 - 0.100 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.094 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.048 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.075 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.133 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: OPTIONS /api/admin-status 200 0 - 0.050 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/appointments/revenue/reports 304 - - 45.100 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/admin-status 200 48 - 75.339 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/appointments/all 304 - - 157.443 ms
+2026-03-28 15:17:54: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:17:54: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/users 304 - - 160.330 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/users/all 200 - - 138.655 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 81.140 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 304 - - 189.441 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 61.115 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/appointments/revenue/reports 304 - - 55.755 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/admin-status 304 - - 54.424 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/appointments/revenue 304 - - 70.281 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/tasks 304 - - 269.690 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/users/all 304 - - 98.222 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 62.253 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/appointments/all 304 - - 120.591 ms
+2026-03-28 15:17:54: 2026-03-28 15:17:54 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 70.887 ms
+2026-03-28 15:17:55: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:17:55: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:17:55: 2026-03-28 15:17:55 [32minfo[39m: GET /api/users 304 - - 109.030 ms
+2026-03-28 15:17:55: 2026-03-28 15:17:55 [32minfo[39m: GET /api/appointments/revenue 304 - - 69.743 ms
+2026-03-28 15:17:55: 2026-03-28 15:17:55 [32minfo[39m: GET /api/tasks 304 - - 70.765 ms
+2026-03-28 15:17:55: 2026-03-28 15:17:55 [32minfo[39m: GET /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 304 - - 158.252 ms
+2026-03-28 15:17:55: 2026-03-28 15:17:55 [32minfo[39m: GET /api/tasks 304 - - 71.362 ms
+2026-03-28 15:17:55: 2026-03-28 15:17:55 [32minfo[39m: GET /api/tasks 304 - - 71.296 ms
+2026-03-28 15:18:05: 2026-03-28 15:18:05 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.077 ms
+2026-03-28 15:18:05: 2026-03-28 15:18:05 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.074 ms
+2026-03-28 15:18:05: 2026-03-28 15:18:05 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.048 ms
+2026-03-28 15:18:05: 2026-03-28 15:18:05 [32minfo[39m: OPTIONS /api/users 200 0 - 0.061 ms
+2026-03-28 15:18:05: 2026-03-28 15:18:05 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 42.107 ms
+2026-03-28 15:18:05: 2026-03-28 15:18:05 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 49.836 ms
+2026-03-28 15:18:05: 2026-03-28 15:18:05 [32minfo[39m: GET /api/appointments/revenue 304 - - 69.052 ms
+2026-03-28 15:18:05: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:18:05: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:18:05: 2026-03-28 15:18:05 [32minfo[39m: GET /api/users 200 - - 111.770 ms
+2026-03-28 15:18:15: 2026-03-28 15:18:15 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.081 ms
+2026-03-28 15:18:15: 2026-03-28 15:18:15 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.046 ms
+2026-03-28 15:18:15: 2026-03-28 15:18:15 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.034 ms
+2026-03-28 15:18:15: 2026-03-28 15:18:15 [32minfo[39m: OPTIONS /api/users 200 0 - 0.028 ms
+2026-03-28 15:18:15: 2026-03-28 15:18:15 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 44.511 ms
+2026-03-28 15:18:15: 2026-03-28 15:18:15 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 47.732 ms
+2026-03-28 15:18:15: 2026-03-28 15:18:15 [32minfo[39m: GET /api/appointments/revenue 304 - - 84.638 ms
+2026-03-28 15:18:15: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:18:15: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:18:15: 2026-03-28 15:18:15 [32minfo[39m: GET /api/users 200 - - 124.426 ms
+2026-03-28 15:18:23: 2026-03-28 15:18:23 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.144 ms
+2026-03-28 15:18:23: 2026-03-28 15:18:23 [32minfo[39m: GET /api/attendance/2026/3 304 - - 137.129 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: OPTIONS /api/users/all 200 0 - 0.064 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: OPTIONS /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 200 0 - 0.073 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.042 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.044 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.071 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: OPTIONS /api/users 200 0 - 0.101 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: GET /api/users/all 200 - - 95.838 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: GET /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 304 - - 132.489 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 46.315 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 46.658 ms
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: GET /api/appointments/revenue 304 - - 66.324 ms
+2026-03-28 15:18:25: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:18:25: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:18:25: 2026-03-28 15:18:25 [32minfo[39m: GET /api/users 304 - - 108.941 ms
+2026-03-28 15:18:35: 2026-03-28 15:18:35 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.089 ms
+2026-03-28 15:18:35: 2026-03-28 15:18:35 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.051 ms
+2026-03-28 15:18:35: 2026-03-28 15:18:35 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.071 ms
+2026-03-28 15:18:35: 2026-03-28 15:18:35 [32minfo[39m: OPTIONS /api/users 200 0 - 0.057 ms
+2026-03-28 15:18:35: 2026-03-28 15:18:35 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 42.998 ms
+2026-03-28 15:18:35: 2026-03-28 15:18:35 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 48.597 ms
+2026-03-28 15:18:35: 2026-03-28 15:18:35 [32minfo[39m: GET /api/appointments/revenue 304 - - 75.910 ms
+2026-03-28 15:18:35: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:18:35: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:18:35: 2026-03-28 15:18:35 [32minfo[39m: GET /api/users 304 - - 109.646 ms
+2026-03-28 15:18:45: 2026-03-28 15:18:45 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.062 ms
+2026-03-28 15:18:45: 2026-03-28 15:18:45 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.057 ms
+2026-03-28 15:18:45: 2026-03-28 15:18:45 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.030 ms
+2026-03-28 15:18:45: 2026-03-28 15:18:45 [32minfo[39m: OPTIONS /api/users 200 0 - 0.031 ms
+2026-03-28 15:18:45: 2026-03-28 15:18:45 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 40.893 ms
+2026-03-28 15:18:45: 2026-03-28 15:18:45 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 39.331 ms
+2026-03-28 15:18:45: 2026-03-28 15:18:45 [32minfo[39m: GET /api/appointments/revenue 304 - - 67.727 ms
+2026-03-28 15:18:45: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:18:45: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:18:45: 2026-03-28 15:18:45 [32minfo[39m: GET /api/users 200 - - 113.036 ms
+2026-03-28 15:18:53: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket tdKww31BUGDecO4GAAAH
+2026-03-28 15:18:53: 2026-03-28 15:18:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.184 ms
+2026-03-28 15:18:53: 2026-03-28 15:18:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 134.612 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: OPTIONS /api/users/all 200 0 - 0.084 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: OPTIONS /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 200 0 - 0.059 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.113 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.060 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.056 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: OPTIONS /api/users 200 0 - 0.079 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: GET /api/users/all 200 - - 99.609 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: GET /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 304 - - 130.002 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 42.408 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 42.605 ms
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: GET /api/appointments/revenue 304 - - 70.788 ms
+2026-03-28 15:18:55: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:18:55: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:18:55: 2026-03-28 15:18:55 [32minfo[39m: GET /api/users 200 - - 126.131 ms
+2026-03-28 15:19:05: 2026-03-28 15:19:05 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.056 ms
+2026-03-28 15:19:05: 2026-03-28 15:19:05 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.048 ms
+2026-03-28 15:19:05: 2026-03-28 15:19:05 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.046 ms
+2026-03-28 15:19:05: 2026-03-28 15:19:05 [32minfo[39m: OPTIONS /api/users 200 0 - 0.045 ms
+2026-03-28 15:19:05: 2026-03-28 15:19:05 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 42.414 ms
+2026-03-28 15:19:05: 2026-03-28 15:19:05 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 47.877 ms
+2026-03-28 15:19:05: 2026-03-28 15:19:05 [32minfo[39m: GET /api/appointments/revenue 304 - - 76.310 ms
+2026-03-28 15:19:05: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:19:05: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:19:05: 2026-03-28 15:19:05 [32minfo[39m: GET /api/users 200 - - 122.082 ms
+2026-03-28 15:19:15: 2026-03-28 15:19:15 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.086 ms
+2026-03-28 15:19:15: 2026-03-28 15:19:15 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.050 ms
+2026-03-28 15:19:15: 2026-03-28 15:19:15 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.055 ms
+2026-03-28 15:19:15: 2026-03-28 15:19:15 [32minfo[39m: OPTIONS /api/users 200 0 - 0.046 ms
+2026-03-28 15:19:15: 2026-03-28 15:19:15 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 42.262 ms
+2026-03-28 15:19:15: 2026-03-28 15:19:15 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 41.363 ms
+2026-03-28 15:19:15: 2026-03-28 15:19:15 [32minfo[39m: GET /api/appointments/revenue 304 - - 73.084 ms
+2026-03-28 15:19:15: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:19:15: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:19:15: 2026-03-28 15:19:15 [32minfo[39m: GET /api/users 200 - - 107.890 ms
+2026-03-28 15:19:20: 2026-03-28 15:19:20 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.072 ms
+2026-03-28 15:19:20: 2026-03-28 15:19:20 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.087 ms
+2026-03-28 15:19:20: 2026-03-28 15:19:20 [32minfo[39m: GET /api/calls/daily-stats 304 - - 42.866 ms
+2026-03-28 15:19:20: 2026-03-28 15:19:20 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 64.139 ms
+2026-03-28 15:19:21: 2026-03-28 15:19:21 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.066 ms
+2026-03-28 15:19:21: 2026-03-28 15:19:21 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.071 ms
+2026-03-28 15:19:21: 2026-03-28 15:19:21 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 49.683 ms
+2026-03-28 15:19:21: 2026-03-28 15:19:21 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 40.603 ms
+2026-03-28 15:19:23: 2026-03-28 15:19:23 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.128 ms
+2026-03-28 15:19:23: 2026-03-28 15:19:23 [32minfo[39m: GET /api/attendance/2026/3 304 - - 164.264 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/appointments/revenue/reports 200 0 - 0.191 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/appointments/all 200 0 - 0.080 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/tasks 200 0 - 0.087 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/users/all 200 0 - 0.056 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 200 0 - 0.053 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/admin-status 200 0 - 0.035 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.086 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.080 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.103 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/users 200 0 - 0.085 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.110 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.064 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/revenue/reports 304 - - 51.908 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/admin-status 304 - - 46.081 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 78.764 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 67.172 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/users/all 200 - - 118.096 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/all 304 - - 155.013 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 304 - - 157.058 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/revenue 304 - - 79.932 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/revenue/reports 304 - - 58.500 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/admin-status 304 - - 48.726 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 68.506 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/users/all 304 - - 74.641 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 81.614 ms
+2026-03-28 15:19:24: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:19:24: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/users 304 - - 186.182 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/tasks 304 - - 325.653 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/all 304 - - 124.544 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 304 - - 125.371 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/appointments/revenue 304 - - 86.943 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/tasks 304 - - 82.547 ms
+2026-03-28 15:19:24: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:19:24: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/users 304 - - 119.749 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/tasks 304 - - 90.090 ms
+2026-03-28 15:19:24: 2026-03-28 15:19:24 [32minfo[39m: GET /api/tasks 304 - - 67.467 ms
+2026-03-28 15:19:34: 2026-03-28 15:19:34 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.157 ms
+2026-03-28 15:19:34: 2026-03-28 15:19:34 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.091 ms
+2026-03-28 15:19:34: 2026-03-28 15:19:34 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.050 ms
+2026-03-28 15:19:34: 2026-03-28 15:19:34 [32minfo[39m: OPTIONS /api/users 200 0 - 0.054 ms
+2026-03-28 15:19:34: 2026-03-28 15:19:34 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 42.743 ms
+2026-03-28 15:19:34: 2026-03-28 15:19:34 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 45.206 ms
+2026-03-28 15:19:34: 2026-03-28 15:19:34 [32minfo[39m: GET /api/appointments/revenue 304 - - 68.442 ms
+2026-03-28 15:19:34: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:19:34: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:19:34: 2026-03-28 15:19:34 [32minfo[39m: GET /api/users 304 - - 108.275 ms
+2026-03-28 15:19:44: 2026-03-28 15:19:44 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.134 ms
+2026-03-28 15:19:44: 2026-03-28 15:19:44 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.140 ms
+2026-03-28 15:19:44: 2026-03-28 15:19:44 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.076 ms
+2026-03-28 15:19:44: 2026-03-28 15:19:44 [32minfo[39m: OPTIONS /api/users 200 0 - 0.035 ms
+2026-03-28 15:19:44: 2026-03-28 15:19:44 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 40.364 ms
+2026-03-28 15:19:44: 2026-03-28 15:19:44 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 40.349 ms
+2026-03-28 15:19:44: 2026-03-28 15:19:44 [32minfo[39m: GET /api/appointments/revenue 304 - - 66.281 ms
+2026-03-28 15:19:44: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:19:44: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:19:44: 2026-03-28 15:19:44 [32minfo[39m: GET /api/users 200 - - 106.887 ms
+2026-03-28 15:19:53: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket tdKww31BUGDecO4GAAAH
+2026-03-28 15:19:53: 2026-03-28 15:19:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.100 ms
+2026-03-28 15:19:53: 2026-03-28 15:19:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 121.014 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: OPTIONS /api/users/all 200 0 - 0.125 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: OPTIONS /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 200 0 - 0.046 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.068 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.048 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.042 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: OPTIONS /api/users 200 0 - 0.042 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: GET /api/users/all 200 - - 97.566 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: GET /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 304 - - 126.886 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 43.530 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 52.799 ms
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: GET /api/appointments/revenue 304 - - 68.572 ms
+2026-03-28 15:19:54: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:19:54: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:19:54: 2026-03-28 15:19:54 [32minfo[39m: GET /api/users 200 - - 118.459 ms
+2026-03-28 15:20:04: 2026-03-28 15:20:04 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.060 ms
+2026-03-28 15:20:04: 2026-03-28 15:20:04 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.077 ms
+2026-03-28 15:20:04: 2026-03-28 15:20:04 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.051 ms
+2026-03-28 15:20:04: 2026-03-28 15:20:04 [32minfo[39m: OPTIONS /api/users 200 0 - 0.058 ms
+2026-03-28 15:20:04: 2026-03-28 15:20:04 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 45.671 ms
+2026-03-28 15:20:04: 2026-03-28 15:20:04 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 60.424 ms
+2026-03-28 15:20:04: 2026-03-28 15:20:04 [32minfo[39m: GET /api/appointments/revenue 304 - - 78.338 ms
+2026-03-28 15:20:04: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:20:04: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:20:04: 2026-03-28 15:20:04 [32minfo[39m: GET /api/users 304 - - 112.180 ms
+2026-03-28 15:20:10: 2026-03-28 15:20:10 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.056 ms
+2026-03-28 15:20:10: 2026-03-28 15:20:10 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.049 ms
+2026-03-28 15:20:10: 2026-03-28 15:20:10 [32minfo[39m: GET /api/calls/daily-stats 304 - - 41.797 ms
+2026-03-28 15:20:10: 2026-03-28 15:20:10 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 40.974 ms
+2026-03-28 15:20:12: 2026-03-28 15:20:12 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.061 ms
+2026-03-28 15:20:12: 2026-03-28 15:20:12 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.120 ms
+2026-03-28 15:20:12: 2026-03-28 15:20:12 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 39.516 ms
+2026-03-28 15:20:12: 2026-03-28 15:20:12 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 40.521 ms
+2026-03-28 15:20:17: 2026-03-28 15:20:17 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.067 ms
+2026-03-28 15:20:17: 2026-03-28 15:20:17 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.064 ms
+2026-03-28 15:20:17: 2026-03-28 15:20:17 [32minfo[39m: GET /api/calls/daily-stats 304 - - 56.753 ms
+2026-03-28 15:20:17: 2026-03-28 15:20:17 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 41.436 ms
+2026-03-28 15:20:23: 2026-03-28 15:20:23 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.073 ms
+2026-03-28 15:20:23: 2026-03-28 15:20:23 [32minfo[39m: GET /api/attendance/2026/3 304 - - 113.867 ms
+2026-03-28 15:20:53: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket tdKww31BUGDecO4GAAAH
+2026-03-28 15:20:53: 2026-03-28 15:20:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.156 ms
+2026-03-28 15:20:53: 2026-03-28 15:20:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 151.805 ms
+2026-03-28 15:21:15: 2026-03-28 15:21:15 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.090 ms
+2026-03-28 15:21:15: 2026-03-28 15:21:15 [32minfo[39m: GET /api/calls/daily-stats 304 - - 45.233 ms
+2026-03-28 15:21:23: 2026-03-28 15:21:23 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.068 ms
+2026-03-28 15:21:23: 2026-03-28 15:21:23 [32minfo[39m: GET /api/attendance/2026/3 304 - - 120.151 ms
+2026-03-28 15:21:53: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket tdKww31BUGDecO4GAAAH
+2026-03-28 15:21:53: 2026-03-28 15:21:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.151 ms
+2026-03-28 15:21:53: 2026-03-28 15:21:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 123.799 ms
+2026-03-28 15:22:13: ⏰ Session timeout check triggered at 28/3/2026, 3:22:13 pm
+2026-03-28 15:22:29: 2026-03-28 15:22:29 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.081 ms
+2026-03-28 15:22:29: 2026-03-28 15:22:29 [32minfo[39m: GET /api/attendance/2026/3 304 - - 110.677 ms
+2026-03-28 15:22:33: 2026-03-28 15:22:33 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.057 ms
+2026-03-28 15:22:33: 2026-03-28 15:22:33 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.071 ms
+2026-03-28 15:22:33: 2026-03-28 15:22:33 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 40.653 ms
+2026-03-28 15:22:33: 2026-03-28 15:22:33 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 40.481 ms
+2026-03-28 15:22:53: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket tdKww31BUGDecO4GAAAH
+2026-03-28 15:22:53: 2026-03-28 15:22:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.163 ms
+2026-03-28 15:22:53: 2026-03-28 15:22:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 116.521 ms
+2026-03-28 15:23:03: 2026-03-28 15:23:03 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.074 ms
+2026-03-28 15:23:03: 2026-03-28 15:23:03 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 39.282 ms
+2026-03-28 15:23:23: 2026-03-28 15:23:23 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.155 ms
+2026-03-28 15:23:23: 2026-03-28 15:23:23 [32minfo[39m: GET /api/attendance/2026/3 304 - - 138.089 ms
+2026-03-28 15:23:33: 2026-03-28 15:23:33 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.320 ms
+2026-03-28 15:23:33: 2026-03-28 15:23:33 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 49.522 ms
+2026-03-28 15:23:52: 2026-03-28 15:23:52 [32minfo[39m: OPTIONS /api/telecaller-leads/upload 200 0 - 0.070 ms
+2026-03-28 15:23:52: 2026-03-28 15:23:52 [32minfo[39m: POST /api/telecaller-leads/upload 201 72 - 151.484 ms
+2026-03-28 15:23:52: 2026-03-28 15:23:52 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.054 ms
+2026-03-28 15:23:52: 2026-03-28 15:23:52 [32minfo[39m: GET /api/telecaller-leads/stats 200 96 - 41.528 ms
+2026-03-28 15:23:53: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket tdKww31BUGDecO4GAAAH
+2026-03-28 15:23:53: 2026-03-28 15:23:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.050 ms
+2026-03-28 15:23:53: 2026-03-28 15:23:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 122.855 ms
+2026-03-28 15:24:03: 2026-03-28 15:24:03 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.052 ms
+2026-03-28 15:24:03: 2026-03-28 15:24:03 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 40.502 ms
+2026-03-28 15:24:06: 🔌 Socket tdKww31BUGDecO4GAAAH disconnected. Reason: transport close
+2026-03-28 15:24:06: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:24:06: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:24:06: 2026-03-28 15:24:06 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.099 ms
+2026-03-28 15:24:06: 2026-03-28 15:24:06 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.108 ms
+2026-03-28 15:24:06: 2026-03-28 15:24:06 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.176 ms
+2026-03-28 15:24:06: 2026-03-28 15:24:06 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.128 ms
+2026-03-28 15:24:07: 🔌 New socket connection: avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:24:07: 🔗 Socket avJvVGIedkSOgjx1AAAJ joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:24:07: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: GET /api/calls/sip-config 304 - - 22.065 ms
+2026-03-28 15:24:07: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:24:07: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:24:07: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:24:07: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:24:07: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:24:07: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:24:07: 🔍 [DEBUG] About to query database...
+2026-03-28 15:24:07: 🚪 Socket avJvVGIedkSOgjx1AAAJ joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:24:07: 🚪 Socket avJvVGIedkSOgjx1AAAJ joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: GET /api/calls/sip-config 304 - - 36.874 ms
+2026-03-28 15:24:07: 📬 Unread count result: [33m0[39m
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: GET /api/messages/unread-count 304 - - 60.888 ms
+2026-03-28 15:24:07: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:24:07: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:24:07: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:24:07: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:24:07: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:24:07: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:24:07: 🔍 [DEBUG] About to query database...
+2026-03-28 15:24:07: 📬 Unread count result: [33m0[39m
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: GET /api/messages/unread-count 304 - - 45.706 ms
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.101 ms
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: OPTIONS /api/users 200 0 - 0.078 ms
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 40.491 ms
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 41.209 ms
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 118.128 ms
+2026-03-28 15:24:07: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:24:07: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: GET /api/users 200 - - 124.275 ms
+2026-03-28 15:24:07: 2026-03-28 15:24:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 98.876 ms
+2026-03-28 15:24:37: 2026-03-28 15:24:37 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.113 ms
+2026-03-28 15:24:37: 2026-03-28 15:24:37 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.047 ms
+2026-03-28 15:24:37: 2026-03-28 15:24:37 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 42.777 ms
+2026-03-28 15:24:37: 2026-03-28 15:24:37 [32minfo[39m: GET /api/attendance/2026/3 304 - - 113.681 ms
+2026-03-28 15:25:06: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:25:07: 2026-03-28 15:25:07 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.163 ms
+2026-03-28 15:25:07: 2026-03-28 15:25:07 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.141 ms
+2026-03-28 15:25:07: 2026-03-28 15:25:07 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 70.582 ms
+2026-03-28 15:25:07: 2026-03-28 15:25:07 [32minfo[39m: OPTIONS /api/telecaller-leads/upload 200 0 - 0.054 ms
+2026-03-28 15:25:07: 2026-03-28 15:25:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 174.760 ms
+2026-03-28 15:25:07: 2026-03-28 15:25:07 [32minfo[39m: POST /api/telecaller-leads/upload 201 72 - 85.362 ms
+2026-03-28 15:25:07: 2026-03-28 15:25:07 [32minfo[39m: GET /api/telecaller-leads/stats 200 191 - 41.451 ms
+2026-03-28 15:25:37: 2026-03-28 15:25:37 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.180 ms
+2026-03-28 15:25:37: 2026-03-28 15:25:37 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.198 ms
+2026-03-28 15:25:37: 2026-03-28 15:25:37 [32minfo[39m: GET /api/telecaller-leads/stats 200 191 - 52.850 ms
+2026-03-28 15:25:37: 2026-03-28 15:25:37 [32minfo[39m: GET /api/attendance/2026/3 304 - - 130.497 ms
+2026-03-28 15:25:50: 2026-03-28 15:25:50 [32minfo[39m: OPTIONS /api/telecaller-leads/upload 200 0 - 0.053 ms
+2026-03-28 15:25:50: 2026-03-28 15:25:50 [32minfo[39m: POST /api/telecaller-leads/upload 201 72 - 86.011 ms
+2026-03-28 15:25:50: 2026-03-28 15:25:50 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.069 ms
+2026-03-28 15:25:50: 2026-03-28 15:25:50 [32minfo[39m: GET /api/telecaller-leads/stats 200 286 - 42.400 ms
+2026-03-28 15:26:06: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:26:07: 2026-03-28 15:26:07 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.254 ms
+2026-03-28 15:26:07: 2026-03-28 15:26:07 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.132 ms
+2026-03-28 15:26:07: 2026-03-28 15:26:07 [32minfo[39m: GET /api/telecaller-leads/stats 200 286 - 53.128 ms
+2026-03-28 15:26:07: 2026-03-28 15:26:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 138.927 ms
+2026-03-28 15:26:20: 2026-03-28 15:26:20 [32minfo[39m: OPTIONS /api/telecaller-leads/upload 200 0 - 0.069 ms
+2026-03-28 15:26:20: 2026-03-28 15:26:20 [32minfo[39m: POST /api/telecaller-leads/upload 201 72 - 82.175 ms
+2026-03-28 15:26:20: 2026-03-28 15:26:20 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.053 ms
+2026-03-28 15:26:20: 2026-03-28 15:26:20 [32minfo[39m: GET /api/telecaller-leads/stats 200 381 - 46.796 ms
+2026-03-28 15:26:37: 2026-03-28 15:26:37 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.167 ms
+2026-03-28 15:26:37: 2026-03-28 15:26:37 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.145 ms
+2026-03-28 15:26:37: 2026-03-28 15:26:37 [32minfo[39m: GET /api/telecaller-leads/stats 200 381 - 45.718 ms
+2026-03-28 15:26:37: 2026-03-28 15:26:37 [32minfo[39m: GET /api/attendance/2026/3 304 - - 118.863 ms
+2026-03-28 15:26:50: 2026-03-28 15:26:50 [32minfo[39m: OPTIONS /api/telecaller-leads/upload 200 0 - 0.054 ms
+2026-03-28 15:26:50: 2026-03-28 15:26:50 [32minfo[39m: POST /api/telecaller-leads/upload 201 72 - 81.565 ms
+2026-03-28 15:26:50: 2026-03-28 15:26:50 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.053 ms
+2026-03-28 15:26:50: 2026-03-28 15:26:50 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.661 ms
+2026-03-28 15:27:07: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:27:07: 2026-03-28 15:27:07 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.078 ms
+2026-03-28 15:27:07: 2026-03-28 15:27:07 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.065 ms
+2026-03-28 15:27:07: 2026-03-28 15:27:07 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 41.650 ms
+2026-03-28 15:27:07: 2026-03-28 15:27:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 109.997 ms
+2026-03-28 15:27:13: ⏰ Session timeout check triggered at 28/3/2026, 3:27:13 pm
+2026-03-28 15:27:37: 2026-03-28 15:27:37 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.124 ms
+2026-03-28 15:27:37: 2026-03-28 15:27:37 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.035 ms
+2026-03-28 15:27:37: 2026-03-28 15:27:37 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 43.950 ms
+2026-03-28 15:27:37: 2026-03-28 15:27:37 [32minfo[39m: GET /api/attendance/2026/3 304 - - 136.180 ms
+2026-03-28 15:28:07: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:28:09: 2026-03-28 15:28:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.126 ms
+2026-03-28 15:28:09: 2026-03-28 15:28:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.122 ms
+2026-03-28 15:28:09: 2026-03-28 15:28:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 50.359 ms
+2026-03-28 15:28:09: 2026-03-28 15:28:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 136.732 ms
+2026-03-28 15:29:07: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:29:09: 2026-03-28 15:29:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.242 ms
+2026-03-28 15:29:09: 2026-03-28 15:29:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.205 ms
+2026-03-28 15:29:09: 2026-03-28 15:29:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 50.170 ms
+2026-03-28 15:29:09: 2026-03-28 15:29:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 129.909 ms
+2026-03-28 15:29:37: 2026-03-28 15:29:37 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.169 ms
+2026-03-28 15:29:37: 2026-03-28 15:29:37 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.187 ms
+2026-03-28 15:29:37: 2026-03-28 15:29:37 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 52.135 ms
+2026-03-28 15:29:37: 2026-03-28 15:29:37 [32minfo[39m: GET /api/attendance/2026/3 304 - - 134.853 ms
+2026-03-28 15:30:06: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:30:07: 2026-03-28 15:30:07 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.073 ms
+2026-03-28 15:30:07: 2026-03-28 15:30:07 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.051 ms
+2026-03-28 15:30:07: 2026-03-28 15:30:07 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 41.838 ms
+2026-03-28 15:30:07: 2026-03-28 15:30:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 115.313 ms
+2026-03-28 15:30:37: 2026-03-28 15:30:37 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.326 ms
+2026-03-28 15:30:37: 2026-03-28 15:30:37 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.165 ms
+2026-03-28 15:30:37: 2026-03-28 15:30:37 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 49.332 ms
+2026-03-28 15:30:37: 2026-03-28 15:30:37 [32minfo[39m: GET /api/attendance/2026/3 304 - - 145.228 ms
+2026-03-28 15:31:07: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:31:07: 2026-03-28 15:31:07 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.157 ms
+2026-03-28 15:31:07: 2026-03-28 15:31:07 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.183 ms
+2026-03-28 15:31:07: 2026-03-28 15:31:07 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 45.582 ms
+2026-03-28 15:31:07: 2026-03-28 15:31:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 145.676 ms
+2026-03-28 15:31:37: 2026-03-28 15:31:37 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.067 ms
+2026-03-28 15:31:37: 2026-03-28 15:31:37 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.082 ms
+2026-03-28 15:31:37: 2026-03-28 15:31:37 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 55.900 ms
+2026-03-28 15:31:37: 2026-03-28 15:31:37 [32minfo[39m: GET /api/attendance/2026/3 304 - - 129.808 ms
+2026-03-28 15:32:07: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:32:07: 2026-03-28 15:32:07 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.076 ms
+2026-03-28 15:32:07: 2026-03-28 15:32:07 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.087 ms
+2026-03-28 15:32:07: 2026-03-28 15:32:07 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 43.264 ms
+2026-03-28 15:32:07: 2026-03-28 15:32:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 117.064 ms
+2026-03-28 15:32:13: ⏰ Session timeout check triggered at 28/3/2026, 3:32:13 pm
+2026-03-28 15:33:09: 2026-03-28 15:33:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.236 ms
+2026-03-28 15:33:09: 2026-03-28 15:33:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.119 ms
+2026-03-28 15:33:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket avJvVGIedkSOgjx1AAAJ
+2026-03-28 15:33:09: 2026-03-28 15:33:09 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 43.716 ms
+2026-03-28 15:33:09: 2026-03-28 15:33:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 117.162 ms
+2026-03-28 15:33:49: 2026-03-28 15:33:49 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.108 ms
+2026-03-28 15:33:49: 2026-03-28 15:33:49 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.094 ms
+2026-03-28 15:33:49: 2026-03-28 15:33:49 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.680 ms
+2026-03-28 15:33:50: 2026-03-28 15:33:50 [32minfo[39m: GET /api/attendance/2026/3 304 - - 112.596 ms
+2026-03-28 15:33:53: 🔌 Socket avJvVGIedkSOgjx1AAAJ disconnected. Reason: transport close
+2026-03-28 15:33:53: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:33:53: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.129 ms
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.082 ms
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.062 ms
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: GET /api/calls/sip-config 304 - - 21.285 ms
+2026-03-28 15:33:54: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:33:54: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:33:54: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:33:54: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:33:54: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:33:54: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:33:54: 🔍 [DEBUG] About to query database...
+2026-03-28 15:33:54: 📬 Unread count result: [33m0[39m
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: GET /api/messages/unread-count 304 - - 42.125 ms
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: GET /api/calls/sip-config 304 - - 22.390 ms
+2026-03-28 15:33:54: 🔌 New socket connection: Fo21nC0RAQ1PAeRMAAAL
+2026-03-28 15:33:54: 🔗 Socket Fo21nC0RAQ1PAeRMAAAL joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:33:54: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket Fo21nC0RAQ1PAeRMAAAL
+2026-03-28 15:33:54: 🚪 Socket Fo21nC0RAQ1PAeRMAAAL joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:33:54: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:33:54: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:33:54: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:33:54: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:33:54: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:33:54: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:33:54: 🔍 [DEBUG] About to query database...
+2026-03-28 15:33:54: 🚪 Socket Fo21nC0RAQ1PAeRMAAAL joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:33:54: 📬 Unread count result: [33m0[39m
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: GET /api/messages/unread-count 304 - - 46.304 ms
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: OPTIONS /api/users 200 0 - 0.055 ms
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.523 ms
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 52.615 ms
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: GET /api/attendance/2026/3 304 - - 120.097 ms
+2026-03-28 15:33:54: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:33:54: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: GET /api/users 200 - - 125.926 ms
+2026-03-28 15:33:54: 2026-03-28 15:33:54 [32minfo[39m: GET /api/attendance/2026/3 304 - - 97.839 ms
+2026-03-28 15:34:25: 2026-03-28 15:34:25 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.172 ms
+2026-03-28 15:34:25: 2026-03-28 15:34:25 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.202 ms
+2026-03-28 15:34:25: 2026-03-28 15:34:25 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 44.009 ms
+2026-03-28 15:34:25: 2026-03-28 15:34:25 [32minfo[39m: GET /api/attendance/2026/3 304 - - 117.307 ms
+2026-03-28 15:34:54: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket Fo21nC0RAQ1PAeRMAAAL
+2026-03-28 15:34:55: 2026-03-28 15:34:55 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.109 ms
+2026-03-28 15:34:55: 2026-03-28 15:34:55 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.086 ms
+2026-03-28 15:34:55: 2026-03-28 15:34:55 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 45.654 ms
+2026-03-28 15:34:55: 2026-03-28 15:34:55 [32minfo[39m: GET /api/attendance/2026/3 304 - - 127.291 ms
+2026-03-28 15:35:00: 2026-03-28 15:35:00 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.125 ms
+2026-03-28 15:35:00: 2026-03-28 15:35:00 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.076 ms
+2026-03-28 15:35:00: 2026-03-28 15:35:00 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.065 ms
+2026-03-28 15:35:00: 2026-03-28 15:35:00 [32minfo[39m: GET /api/calls/sip-config - - - - ms
+2026-03-28 15:35:00: 2026-03-28 15:35:00 [32minfo[39m: GET /api/messages/unread-count - - - - ms
+2026-03-28 15:35:00: 🔌 Socket Fo21nC0RAQ1PAeRMAAAL disconnected. Reason: transport close
+2026-03-28 15:35:00: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:35:00: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:35:00: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:35:00: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:35:00: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:35:00: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:35:00: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:35:00: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:35:00: 🔍 [DEBUG] About to query database...
+2026-03-28 15:35:00: 📬 Unread count result: [33m0[39m
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: GET /api/calls/sip-config 200 197 - 22.605 ms
+2026-03-28 15:35:01: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:35:01: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:35:01: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:35:01: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:35:01: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:35:01: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:35:01: 🔍 [DEBUG] About to query database...
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: GET /api/calls/sip-config 304 - - 22.449 ms
+2026-03-28 15:35:01: 📬 Unread count result: [33m0[39m
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: GET /api/messages/unread-count 200 17 - 48.435 ms
+2026-03-28 15:35:01: 🔌 New socket connection: e23R4TvGWb20nltpAAAN
+2026-03-28 15:35:01: 🔗 Socket e23R4TvGWb20nltpAAAN joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:35:01: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket e23R4TvGWb20nltpAAAN
+2026-03-28 15:35:01: 🚪 Socket e23R4TvGWb20nltpAAAN joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:35:01: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:35:01: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:35:01: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:35:01: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:35:01: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:35:01: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:35:01: 🔍 [DEBUG] About to query database...
+2026-03-28 15:35:01: 🚪 Socket e23R4TvGWb20nltpAAAN joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:35:01: 📬 Unread count result: [33m0[39m
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: GET /api/messages/unread-count 304 - - 46.533 ms
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.074 ms
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: OPTIONS /api/users 200 0 - 0.046 ms
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.039 ms
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 51.999 ms
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: GET /api/attendance/2026/3 304 - - 111.607 ms
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 51.302 ms
+2026-03-28 15:35:01: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:35:01: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: GET /api/users 200 - - 150.640 ms
+2026-03-28 15:35:01: 2026-03-28 15:35:01 [32minfo[39m: GET /api/attendance/2026/3 304 - - 115.611 ms
+2026-03-28 15:35:04: 🔌 Socket e23R4TvGWb20nltpAAAN disconnected. Reason: transport close
+2026-03-28 15:35:04: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:35:04: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:35:05: 🔌 New socket connection: n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:35:05: 🔗 Socket n8MuLYXZcoJI1XTjAAAP joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:35:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:35:05: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:35:05: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:35:05: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:35:05: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:35:05: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:35:05: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:35:05: 🔍 [DEBUG] About to query database...
+2026-03-28 15:35:05: 2026-03-28 15:35:05 [32minfo[39m: GET /api/calls/sip-config 304 - - 29.067 ms
+2026-03-28 15:35:05: 🚪 Socket n8MuLYXZcoJI1XTjAAAP joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:35:05: 📬 Unread count result: [33m0[39m
+2026-03-28 15:35:05: 2026-03-28 15:35:05 [32minfo[39m: GET /api/messages/unread-count 304 - - 44.904 ms
+2026-03-28 15:35:05: 2026-03-28 15:35:05 [32minfo[39m: GET /api/calls/sip-config 304 - - 22.428 ms
+2026-03-28 15:35:05: 🚪 Socket n8MuLYXZcoJI1XTjAAAP joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:35:05: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:35:05: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:35:05: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:35:05: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:35:05: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:35:05: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:35:05: 🔍 [DEBUG] About to query database...
+2026-03-28 15:35:05: 📬 Unread count result: [33m0[39m
+2026-03-28 15:35:05: 2026-03-28 15:35:05 [32minfo[39m: GET /api/messages/unread-count 304 - - 45.684 ms
+2026-03-28 15:35:05: 2026-03-28 15:35:05 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 45.307 ms
+2026-03-28 15:35:05: 2026-03-28 15:35:05 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 45.733 ms
+2026-03-28 15:35:05: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:35:05: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:35:05: 2026-03-28 15:35:05 [32minfo[39m: GET /api/users 200 - - 110.776 ms
+2026-03-28 15:35:05: 2026-03-28 15:35:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 131.774 ms
+2026-03-28 15:35:05: 2026-03-28 15:35:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 103.588 ms
+2026-03-28 15:35:35: 2026-03-28 15:35:35 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.362 ms
+2026-03-28 15:35:35: 2026-03-28 15:35:35 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.120 ms
+2026-03-28 15:35:35: 2026-03-28 15:35:35 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 93.957 ms
+2026-03-28 15:35:35: 2026-03-28 15:35:35 [32minfo[39m: GET /api/attendance/2026/3 304 - - 169.464 ms
+2026-03-28 15:36:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:36:05: 2026-03-28 15:36:05 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.065 ms
+2026-03-28 15:36:05: 2026-03-28 15:36:05 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.049 ms
+2026-03-28 15:36:05: 2026-03-28 15:36:05 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.380 ms
+2026-03-28 15:36:05: 2026-03-28 15:36:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 108.799 ms
+2026-03-28 15:36:35: 2026-03-28 15:36:35 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.143 ms
+2026-03-28 15:36:35: 2026-03-28 15:36:35 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.165 ms
+2026-03-28 15:36:35: 2026-03-28 15:36:35 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 48.343 ms
+2026-03-28 15:36:35: 2026-03-28 15:36:35 [32minfo[39m: GET /api/attendance/2026/3 304 - - 125.476 ms
+2026-03-28 15:37:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:37:05: 2026-03-28 15:37:05 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.050 ms
+2026-03-28 15:37:05: 2026-03-28 15:37:05 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.060 ms
+2026-03-28 15:37:05: 2026-03-28 15:37:05 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 41.654 ms
+2026-03-28 15:37:05: 2026-03-28 15:37:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 120.062 ms
+2026-03-28 15:37:13: ⏰ Session timeout check triggered at 28/3/2026, 3:37:13 pm
+2026-03-28 15:37:35: 2026-03-28 15:37:35 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.156 ms
+2026-03-28 15:37:35: 2026-03-28 15:37:35 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.199 ms
+2026-03-28 15:37:35: 2026-03-28 15:37:35 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 46.634 ms
+2026-03-28 15:37:35: 2026-03-28 15:37:35 [32minfo[39m: GET /api/attendance/2026/3 304 - - 136.397 ms
+2026-03-28 15:38:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:38:05: 2026-03-28 15:38:05 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.079 ms
+2026-03-28 15:38:05: 2026-03-28 15:38:05 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.039 ms
+2026-03-28 15:38:05: 2026-03-28 15:38:05 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.961 ms
+2026-03-28 15:38:05: 2026-03-28 15:38:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 112.662 ms
+2026-03-28 15:39:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:39:09: 2026-03-28 15:39:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.260 ms
+2026-03-28 15:39:09: 2026-03-28 15:39:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.144 ms
+2026-03-28 15:39:09: 2026-03-28 15:39:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 48.117 ms
+2026-03-28 15:39:09: 2026-03-28 15:39:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 117.529 ms
+2026-03-28 15:40:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:40:09: 2026-03-28 15:40:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.071 ms
+2026-03-28 15:40:09: 2026-03-28 15:40:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.068 ms
+2026-03-28 15:40:09: 2026-03-28 15:40:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 43.176 ms
+2026-03-28 15:40:09: 2026-03-28 15:40:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 111.888 ms
+2026-03-28 15:40:35: 2026-03-28 15:40:35 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.053 ms
+2026-03-28 15:40:35: 2026-03-28 15:40:35 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.051 ms
+2026-03-28 15:40:35: 2026-03-28 15:40:35 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.498 ms
+2026-03-28 15:40:35: 2026-03-28 15:40:35 [32minfo[39m: GET /api/attendance/2026/3 304 - - 116.590 ms
+2026-03-28 15:41:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:41:05: 2026-03-28 15:41:05 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.062 ms
+2026-03-28 15:41:05: 2026-03-28 15:41:05 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.056 ms
+2026-03-28 15:41:05: 2026-03-28 15:41:05 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.031 ms
+2026-03-28 15:41:05: 2026-03-28 15:41:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 113.827 ms
+2026-03-28 15:41:47: 2026-03-28 15:41:47 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.153 ms
+2026-03-28 15:41:47: 2026-03-28 15:41:47 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.060 ms
+2026-03-28 15:41:47: 2026-03-28 15:41:47 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 44.005 ms
+2026-03-28 15:41:47: 2026-03-28 15:41:47 [32minfo[39m: GET /api/attendance/2026/3 304 - - 114.801 ms
+2026-03-28 15:42:04: 2026-03-28 15:42:04 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.165 ms
+2026-03-28 15:42:04: 2026-03-28 15:42:04 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.050 ms
+2026-03-28 15:42:04: 2026-03-28 15:42:04 [32minfo[39m: GET /api/calls/daily-stats 304 - - 42.302 ms
+2026-03-28 15:42:04: 2026-03-28 15:42:04 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 40.849 ms
+2026-03-28 15:42:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:42:05: 2026-03-28 15:42:05 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.050 ms
+2026-03-28 15:42:05: 2026-03-28 15:42:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 115.899 ms
+2026-03-28 15:42:13: ⏰ Session timeout check triggered at 28/3/2026, 3:42:13 pm
+2026-03-28 15:42:35: 2026-03-28 15:42:35 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.077 ms
+2026-03-28 15:42:35: 2026-03-28 15:42:35 [32minfo[39m: GET /api/attendance/2026/3 304 - - 143.769 ms
+2026-03-28 15:43:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:43:05: 2026-03-28 15:43:05 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.047 ms
+2026-03-28 15:43:05: 2026-03-28 15:43:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 126.074 ms
+2026-03-28 15:43:35: 2026-03-28 15:43:35 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.057 ms
+2026-03-28 15:43:35: 2026-03-28 15:43:35 [32minfo[39m: GET /api/attendance/2026/3 304 - - 127.809 ms
+2026-03-28 15:44:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:44:05: 2026-03-28 15:44:05 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.146 ms
+2026-03-28 15:44:05: 2026-03-28 15:44:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 153.557 ms
+2026-03-28 15:44:35: 2026-03-28 15:44:35 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.280 ms
+2026-03-28 15:44:35: 2026-03-28 15:44:35 [32minfo[39m: GET /api/attendance/2026/3 304 - - 158.601 ms
+2026-03-28 15:45:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:45:05: 2026-03-28 15:45:05 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.163 ms
+2026-03-28 15:45:05: 2026-03-28 15:45:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 118.195 ms
+2026-03-28 15:46:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:46:09: 2026-03-28 15:46:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.195 ms
+2026-03-28 15:46:09: 2026-03-28 15:46:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 117.093 ms
+2026-03-28 15:47:02: 2026-03-28 15:47:02 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.100 ms
+2026-03-28 15:47:02: 2026-03-28 15:47:02 [32minfo[39m: GET /api/attendance/2026/3 304 - - 111.179 ms
+2026-03-28 15:47:05: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:47:05: 2026-03-28 15:47:05 [32minfo[39m: GET /api/attendance/2026/3 304 - - 108.489 ms
+2026-03-28 15:47:13: ⏰ Session timeout check triggered at 28/3/2026, 3:47:13 pm
+2026-03-28 15:47:35: 2026-03-28 15:47:35 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.309 ms
+2026-03-28 15:47:35: 2026-03-28 15:47:35 [32minfo[39m: GET /api/attendance/2026/3 304 - - 138.708 ms
+2026-03-28 15:48:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:48:09: 2026-03-28 15:48:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.101 ms
+2026-03-28 15:48:09: 2026-03-28 15:48:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 134.055 ms
+2026-03-28 15:49:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket n8MuLYXZcoJI1XTjAAAP
+2026-03-28 15:49:09: 2026-03-28 15:49:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.146 ms
+2026-03-28 15:49:09: 2026-03-28 15:49:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 126.610 ms
+2026-03-28 15:49:26: 2026-03-28 15:49:26 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.089 ms
+2026-03-28 15:49:26: 2026-03-28 15:49:26 [32minfo[39m: GET /api/calls/daily-stats 304 - - 43.687 ms
+2026-03-28 15:49:48: 2026-03-28 15:49:48 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.123 ms
+2026-03-28 15:49:48: 2026-03-28 15:49:48 [32minfo[39m: GET /api/attendance/2026/3 304 - - 110.872 ms
+2026-03-28 15:49:52: 🔌 Socket n8MuLYXZcoJI1XTjAAAP disconnected. Reason: transport close
+2026-03-28 15:49:52: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:49:52: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:49:52: 2026-03-28 15:49:52 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.181 ms
+2026-03-28 15:49:52: 2026-03-28 15:49:52 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.133 ms
+2026-03-28 15:49:52: 2026-03-28 15:49:52 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.095 ms
+2026-03-28 15:49:52: 2026-03-28 15:49:52 [32minfo[39m: GET /api/calls/sip-config 304 - - 21.615 ms
+2026-03-28 15:49:52: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:49:52: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:49:52: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:49:52: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:49:52: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:49:52: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:49:52: 🔍 [DEBUG] About to query database...
+2026-03-28 15:49:52: 2026-03-28 15:49:52 [32minfo[39m: GET /api/calls/sip-config 304 - - 22.253 ms
+2026-03-28 15:49:52: 📬 Unread count result: [33m0[39m
+2026-03-28 15:49:52: 2026-03-28 15:49:52 [32minfo[39m: GET /api/messages/unread-count 304 - - 48.590 ms
+2026-03-28 15:49:52: 🔌 New socket connection: 03asaYP55fBlzDuAAAAR
+2026-03-28 15:49:52: 🔗 Socket 03asaYP55fBlzDuAAAAR joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:49:52: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket 03asaYP55fBlzDuAAAAR
+2026-03-28 15:49:52: 🚪 Socket 03asaYP55fBlzDuAAAAR joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:49:52: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:49:52: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:49:52: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:49:52: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:49:52: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:49:52: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:49:52: 🔍 [DEBUG] About to query database...
+2026-03-28 15:49:52: 🚪 Socket 03asaYP55fBlzDuAAAAR joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:49:52: 📬 Unread count result: [33m0[39m
+2026-03-28 15:49:52: 2026-03-28 15:49:52 [32minfo[39m: GET /api/messages/unread-count 304 - - 53.286 ms
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.050 ms
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: OPTIONS /api/users 200 0 - 0.047 ms
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.043 ms
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.071 ms
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 42.510 ms
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: GET /api/calls/daily-stats 304 - - 45.154 ms
+2026-03-28 15:49:53: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:49:53: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: GET /api/users 200 - - 117.033 ms
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 138.599 ms
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 41.904 ms
+2026-03-28 15:49:53: 2026-03-28 15:49:53 [32minfo[39m: GET /api/attendance/2026/3 304 - - 112.560 ms
+2026-03-28 15:50:06: 2026-03-28 15:50:06 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.114 ms
+2026-03-28 15:50:06: 2026-03-28 15:50:06 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.079 ms
+2026-03-28 15:50:06: 2026-03-28 15:50:06 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.071 ms
+2026-03-28 15:50:06: 2026-03-28 15:50:06 [32minfo[39m: GET /api/calls/sip-config - - - - ms
+2026-03-28 15:50:06: 🔌 Socket 03asaYP55fBlzDuAAAAR disconnected. Reason: transport close
+2026-03-28 15:50:06: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:50:06: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:50:06: 🔌 New socket connection: YACtPAwS0CCWdBwKAAAT
+2026-03-28 15:50:06: 🔗 Socket YACtPAwS0CCWdBwKAAAT joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:50:06: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket YACtPAwS0CCWdBwKAAAT
+2026-03-28 15:50:06: 🚪 Socket YACtPAwS0CCWdBwKAAAT joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:50:06: 2026-03-28 15:50:06 [32minfo[39m: GET /api/calls/sip-config 200 197 - 24.942 ms
+2026-03-28 15:50:06: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:50:06: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:50:06: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:50:06: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:50:06: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:50:06: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:50:06: 🔍 [DEBUG] About to query database...
+2026-03-28 15:50:06: 2026-03-28 15:50:06 [32minfo[39m: GET /api/calls/sip-config 304 - - 21.295 ms
+2026-03-28 15:50:07: 📬 Unread count result: [33m0[39m
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/messages/unread-count 200 17 - 56.170 ms
+2026-03-28 15:50:07: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:50:07: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:50:07: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:50:07: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 🔍 [DEBUG] About to query database...
+2026-03-28 15:50:07: 🚪 Socket YACtPAwS0CCWdBwKAAAT joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 📬 Unread count result: [33m0[39m
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/messages/unread-count 304 - - 49.943 ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.076 ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: OPTIONS /api/users 200 0 - 0.043 ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.081 ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 42.781 ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 48.954 ms
+2026-03-28 15:50:07: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:50:07: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/users 200 - - 119.486 ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 147.205 ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/calls/daily-stats 304 - - 53.828 ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/attendance/2026/3 304 - - 118.462 ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/messages/unread-count - - - - ms
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/messages/unread-count - - - - ms
+2026-03-28 15:50:07: 🔌 Socket YACtPAwS0CCWdBwKAAAT disconnected. Reason: transport close
+2026-03-28 15:50:07: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:50:07: 2026-03-28 15:50:07 [32minfo[39m: GET /api/calls/sip-config - - - - ms
+2026-03-28 15:50:07: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:50:07: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:50:07: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:50:07: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 🔍 [DEBUG] About to query database...
+2026-03-28 15:50:07: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:50:07: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:50:07: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:50:07: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:50:07: 🔍 [DEBUG] About to query database...
+2026-03-28 15:50:07: 📬 Unread count result: [33m0[39m
+2026-03-28 15:50:07: 📬 Unread count result: [33m0[39m
+2026-03-28 15:50:08: 🔌 New socket connection: H3VcK6cu1rtm2M5lAAAV
+2026-03-28 15:50:08: 🔗 Socket H3VcK6cu1rtm2M5lAAAV joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:50:08: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket H3VcK6cu1rtm2M5lAAAV
+2026-03-28 15:50:08: 🚪 Socket H3VcK6cu1rtm2M5lAAAV joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/calls/sip-config 200 197 - 28.350 ms
+2026-03-28 15:50:08: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:50:08: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:50:08: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:50:08: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:50:08: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:50:08: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:50:08: 🔍 [DEBUG] About to query database...
+2026-03-28 15:50:08: 📬 Unread count result: [33m0[39m
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/messages/unread-count 200 17 - 49.740 ms
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/calls/sip-config 304 - - 29.401 ms
+2026-03-28 15:50:08: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:50:08: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:50:08: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:50:08: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:50:08: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:50:08: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:50:08: 🔍 [DEBUG] About to query database...
+2026-03-28 15:50:08: 📬 Unread count result: [33m0[39m
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/messages/unread-count 304 - - 50.664 ms
+2026-03-28 15:50:08: 🚪 Socket H3VcK6cu1rtm2M5lAAAV joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/calls/daily-stats 304 - - 51.041 ms
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 54.564 ms
+2026-03-28 15:50:08: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:50:08: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/attendance/2026/3 304 - - 128.228 ms
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/users 200 - - 116.938 ms
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/calls/daily-stats 304 - - 41.191 ms
+2026-03-28 15:50:08: 2026-03-28 15:50:08 [32minfo[39m: GET /api/attendance/2026/3 304 - - 101.352 ms
+2026-03-28 15:50:15: 🔌 Socket H3VcK6cu1rtm2M5lAAAV disconnected. Reason: transport close
+2026-03-28 15:50:15: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 15:50:15: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 15:50:15: 2026-03-28 15:50:15 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.165 ms
+2026-03-28 15:50:15: 2026-03-28 15:50:15 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.068 ms
+2026-03-28 15:50:15: 2026-03-28 15:50:15 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.075 ms
+2026-03-28 15:50:15: 2026-03-28 15:50:15 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.062 ms
+2026-03-28 15:50:15: 🔌 New socket connection: JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:50:15: 🔗 Socket JPRc73k9MkuI-QuQAAAX joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 15:50:15: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:50:15: 🚪 Socket JPRc73k9MkuI-QuQAAAX joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:50:15: 2026-03-28 15:50:15 [32minfo[39m: GET /api/calls/sip-config 304 - - 22.808 ms
+2026-03-28 15:50:15: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:50:15: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:50:15: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:50:15: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:50:15: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:50:15: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:50:15: 🔍 [DEBUG] About to query database...
+2026-03-28 15:50:15: 🚪 Socket JPRc73k9MkuI-QuQAAAX joined user room user_682d790e78aafec97417cd5f
+2026-03-28 15:50:15: 📬 Unread count result: [33m0[39m
+2026-03-28 15:50:15: 2026-03-28 15:50:15 [32minfo[39m: GET /api/messages/unread-count 304 - - 44.659 ms
+2026-03-28 15:50:15: 2026-03-28 15:50:15 [32minfo[39m: GET /api/calls/sip-config 304 - - 23.490 ms
+2026-03-28 15:50:15: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 15:50:15: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 15:50:15: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 15:50:15: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 15:50:15: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 15:50:15: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 15:50:15: 🔍 [DEBUG] About to query database...
+2026-03-28 15:50:15: 📬 Unread count result: [33m0[39m
+2026-03-28 15:50:15: 2026-03-28 15:50:15 [32minfo[39m: GET /api/messages/unread-count 304 - - 57.311 ms
+2026-03-28 15:50:16: 2026-03-28 15:50:16 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.050 ms
+2026-03-28 15:50:16: 2026-03-28 15:50:16 [32minfo[39m: OPTIONS /api/users 200 0 - 0.031 ms
+2026-03-28 15:50:16: 2026-03-28 15:50:16 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.029 ms
+2026-03-28 15:50:16: 2026-03-28 15:50:16 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 41.622 ms
+2026-03-28 15:50:16: 2026-03-28 15:50:16 [32minfo[39m: GET /api/calls/daily-stats 304 - - 49.280 ms
+2026-03-28 15:50:16: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 15:50:16: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 15:50:16: 2026-03-28 15:50:16 [32minfo[39m: GET /api/attendance/2026/3 304 - - 115.523 ms
+2026-03-28 15:50:16: 2026-03-28 15:50:16 [32minfo[39m: GET /api/users 200 - - 109.087 ms
+2026-03-28 15:50:16: 2026-03-28 15:50:16 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 41.160 ms
+2026-03-28 15:50:16: 2026-03-28 15:50:16 [32minfo[39m: GET /api/attendance/2026/3 304 - - 98.458 ms
+2026-03-28 15:50:46: 2026-03-28 15:50:46 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.178 ms
+2026-03-28 15:50:46: 2026-03-28 15:50:46 [32minfo[39m: GET /api/attendance/2026/3 304 - - 155.596 ms
+2026-03-28 15:51:16: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:51:16: 2026-03-28 15:51:16 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.049 ms
+2026-03-28 15:51:16: 2026-03-28 15:51:16 [32minfo[39m: GET /api/attendance/2026/3 304 - - 107.341 ms
+2026-03-28 15:51:46: 2026-03-28 15:51:46 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.085 ms
+2026-03-28 15:51:46: 2026-03-28 15:51:46 [32minfo[39m: GET /api/attendance/2026/3 304 - - 126.807 ms
+2026-03-28 15:52:13: ⏰ Session timeout check triggered at 28/3/2026, 3:52:13 pm
+2026-03-28 15:52:16: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:52:16: 2026-03-28 15:52:16 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.074 ms
+2026-03-28 15:52:16: 2026-03-28 15:52:16 [32minfo[39m: GET /api/attendance/2026/3 304 - - 136.583 ms
+2026-03-28 15:52:31: 2026-03-28 15:52:31 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.070 ms
+2026-03-28 15:52:31: 2026-03-28 15:52:31 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.066 ms
+2026-03-28 15:52:31: 2026-03-28 15:52:31 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.506 ms
+2026-03-28 15:52:31: 2026-03-28 15:52:31 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 56.143 ms
+2026-03-28 15:52:46: 2026-03-28 15:52:46 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.082 ms
+2026-03-28 15:52:46: 2026-03-28 15:52:46 [32minfo[39m: GET /api/attendance/2026/3 304 - - 111.404 ms
+2026-03-28 15:53:01: 2026-03-28 15:53:01 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.057 ms
+2026-03-28 15:53:01: 2026-03-28 15:53:01 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 40.993 ms
+2026-03-28 15:53:16: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:53:16: 2026-03-28 15:53:16 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.049 ms
+2026-03-28 15:53:16: 2026-03-28 15:53:16 [32minfo[39m: GET /api/attendance/2026/3 304 - - 130.257 ms
+2026-03-28 15:53:31: 2026-03-28 15:53:31 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.134 ms
+2026-03-28 15:53:31: 2026-03-28 15:53:31 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 46.994 ms
+2026-03-28 15:54:01: 2026-03-28 15:54:01 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.160 ms
+2026-03-28 15:54:01: 2026-03-28 15:54:01 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 47.766 ms
+2026-03-28 15:54:09: 2026-03-28 15:54:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.115 ms
+2026-03-28 15:54:09: 2026-03-28 15:54:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 127.888 ms
+2026-03-28 15:54:16: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:54:31: 2026-03-28 15:54:31 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.057 ms
+2026-03-28 15:54:31: 2026-03-28 15:54:31 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 41.126 ms
+2026-03-28 15:55:01: 2026-03-28 15:55:01 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.054 ms
+2026-03-28 15:55:01: 2026-03-28 15:55:01 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.849 ms
+2026-03-28 15:55:09: 2026-03-28 15:55:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.065 ms
+2026-03-28 15:55:09: 2026-03-28 15:55:09 [32minfo[39m: GET /api/attendance/2026/3 200 - - 117.188 ms
+2026-03-28 15:55:16: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:55:31: 2026-03-28 15:55:31 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.164 ms
+2026-03-28 15:55:31: 2026-03-28 15:55:31 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 46.066 ms
+2026-03-28 15:56:09: 2026-03-28 15:56:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.071 ms
+2026-03-28 15:56:09: 2026-03-28 15:56:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.069 ms
+2026-03-28 15:56:09: 2026-03-28 15:56:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 42.431 ms
+2026-03-28 15:56:09: 2026-03-28 15:56:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 109.160 ms
+2026-03-28 15:56:16: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:57:09: 2026-03-28 15:57:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.215 ms
+2026-03-28 15:57:09: 2026-03-28 15:57:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.141 ms
+2026-03-28 15:57:09: 2026-03-28 15:57:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 50.840 ms
+2026-03-28 15:57:09: 2026-03-28 15:57:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 116.262 ms
+2026-03-28 15:57:13: ⏰ Session timeout check triggered at 28/3/2026, 3:57:13 pm
+2026-03-28 15:58:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:58:09: 2026-03-28 15:58:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.166 ms
+2026-03-28 15:58:09: 2026-03-28 15:58:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.212 ms
+2026-03-28 15:58:09: 2026-03-28 15:58:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 45.532 ms
+2026-03-28 15:58:09: 2026-03-28 15:58:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 116.548 ms
+2026-03-28 15:59:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:59:09: 2026-03-28 15:59:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.402 ms
+2026-03-28 15:59:09: 2026-03-28 15:59:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.214 ms
+2026-03-28 15:59:09: 2026-03-28 15:59:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 45.102 ms
+2026-03-28 15:59:09: 2026-03-28 15:59:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 116.042 ms
+2026-03-28 15:59:35: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 15:59:35: 2026-03-28 15:59:35 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.150 ms
+2026-03-28 15:59:35: 2026-03-28 15:59:35 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.277 ms
+2026-03-28 15:59:35: 2026-03-28 15:59:35 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 48.100 ms
+2026-03-28 15:59:35: 2026-03-28 15:59:35 [32minfo[39m: GET /api/attendance/2026/3 304 - - 146.981 ms
+2026-03-28 15:59:46: 2026-03-28 15:59:46 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.078 ms
+2026-03-28 15:59:46: 2026-03-28 15:59:46 [32minfo[39m: GET /api/attendance/2026/3 304 - - 110.236 ms
+2026-03-28 16:00:01: 2026-03-28 16:00:01 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.048 ms
+2026-03-28 16:00:01: 2026-03-28 16:00:01 [32minfo[39m: GET /api/telecaller-leads/stats 200 476 - 41.653 ms
+2026-03-28 16:00:15: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket JPRc73k9MkuI-QuQAAAX
+2026-03-28 16:00:16: 2026-03-28 16:00:16 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.150 ms
+2026-03-28 16:00:16: 2026-03-28 16:00:16 [32minfo[39m: GET /api/attendance/2026/3 304 - - 130.801 ms
+2026-03-28 16:00:21: 2026-03-28 16:00:21 [32minfo[39m: OPTIONS /api/telecaller-leads/upload 200 0 - 0.057 ms
+2026-03-28 16:00:21: 2026-03-28 16:00:21 [32minfo[39m: POST /api/telecaller-leads/upload 201 68 - 49.660 ms
+2026-03-28 16:00:21: 2026-03-28 16:00:21 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.053 ms
+2026-03-28 16:00:21: 2026-03-28 16:00:21 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 42.330 ms
+2026-03-28 16:00:26: 2026-03-28 16:00:26 [32minfo[39m: OPTIONS /api/auth/logout 200 0 - 0.052 ms
+2026-03-28 16:00:26: 2026-03-28 16:00:26 [32minfo[39m: POST /api/auth/logout 200 31 - 1.275 ms
+2026-03-28 16:00:26: 2026-03-28 16:00:26 [32minfo[39m: OPTIONS /api/users/logout 200 0 - 0.057 ms
+2026-03-28 16:00:26: Received logout for userId: 682d790e78aafec97417cd5f body: { userId: [32m'682d790e78aafec97417cd5f'[39m }
+2026-03-28 16:00:26: 2026-03-28 16:00:26 [32minfo[39m: POST /api/users/logout 200 33 - 108.758 ms
+2026-03-28 16:00:26: 🔌 Socket JPRc73k9MkuI-QuQAAAX disconnected. Reason: client namespace disconnect
+2026-03-28 16:00:26: 🚫 Recorded user disconnection: 682d790e78aafec97417cd5f
+2026-03-28 16:00:26: 👤 User undefined (682d790e78aafec97417cd5f) disconnected
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: OPTIONS /api/auth/login 200 0 - 0.091 ms
+2026-03-28 16:00:41: Login attempt for user: Dinesh@bny
+2026-03-28 16:00:41: Login successful: Dinesh@bny
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: POST /api/auth/login 200 784 - 228.288 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.109 ms
+2026-03-28 16:00:41: 🔌 New socket connection: HHeL9XpVV1_JQ5oNAAAZ
+2026-03-28 16:00:41: 🔗 Socket HHeL9XpVV1_JQ5oNAAAZ joined room user_68fcc5bfb85c2281711925bb (auto-join on connection)
+2026-03-28 16:00:41: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket HHeL9XpVV1_JQ5oNAAAZ
+2026-03-28 16:00:41: 🚪 Socket HHeL9XpVV1_JQ5oNAAAZ joined user room user_68fcc5bfb85c2281711925bb
+2026-03-28 16:00:41: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 16:00:41: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 16:00:41: 🔍 [DEBUG] req.user.id: 68fcc5bfb85c2281711925bb
+2026-03-28 16:00:41: 🔍 [DEBUG] req.user._id: new ObjectId([32m'68fcc5bfb85c2281711925bb'[39m)
+2026-03-28 16:00:41: 🔍 [DEBUG] Extracted user ID: 68fcc5bfb85c2281711925bb
+2026-03-28 16:00:41: 📬 Fetching unread count for user: 68fcc5bfb85c2281711925bb
+2026-03-28 16:00:41: 🔍 [DEBUG] About to query database...
+2026-03-28 16:00:41: 📬 Unread count result: [33m4[39m
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: GET /api/messages/unread-count 200 17 - 55.255 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.059 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: OPTIONS /api/users 200 0 - 0.064 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: OPTIONS /api/tasks 200 0 - 0.054 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.065 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: OPTIONS /api/users 200 0 - 0.040 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: OPTIONS /api/tasks 200 0 - 0.039 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: GET /api/tasks 200 2 - 45.291 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: GET /api/tasks 304 - - 42.928 ms
+2026-03-28 16:00:41: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 16:00:41: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: GET /api/users 200 - - 108.677 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: GET /api/attendance/2026/3 200 - - 116.724 ms
+2026-03-28 16:00:41: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 16:00:41: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: GET /api/users 304 - - 78.258 ms
+2026-03-28 16:00:41: 2026-03-28 16:00:41 [32minfo[39m: GET /api/attendance/2026/3 304 - - 112.264 ms
+2026-03-28 16:00:47: 2026-03-28 16:00:47 [32minfo[39m: OPTIONS /api/telecaller-leads/shuffle 200 0 - 0.070 ms
+2026-03-28 16:00:47: 2026-03-28 16:00:47 [32minfo[39m: GET /api/telecaller-leads/shuffle 200 233 - 99.514 ms
+2026-03-28 16:00:52: 2026-03-28 16:00:52 [32minfo[39m: GET /api/telecaller-leads/shuffle 404 46 - 40.186 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: OPTIONS /api/users/me 200 0 - 0.096 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: OPTIONS /api/users 200 0 - 0.050 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: OPTIONS /api/tasks 200 0 - 0.034 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/tasks 304 - - 40.039 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/users/me 200 - - 49.967 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/tasks 304 - - 41.008 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/users/me 304 - - 42.968 ms
+2026-03-28 16:01:01: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 16:01:01: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/users 200 - - 136.775 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: OPTIONS /api/queries 200 0 - 0.076 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: OPTIONS /api/reports 200 0 - 0.042 ms
+2026-03-28 16:01:01: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 16:01:01: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/users 304 - - 83.724 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/queries 200 2 - 47.277 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/reports 200 - - 80.429 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/queries 304 - - 52.540 ms
+2026-03-28 16:01:01: 2026-03-28 16:01:01 [32minfo[39m: GET /api/reports 304 - - 59.287 ms
+2026-03-28 16:01:11: 2026-03-28 16:01:11 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.165 ms
+2026-03-28 16:01:11: 2026-03-28 16:01:11 [32minfo[39m: GET /api/attendance/2026/3 304 - - 149.040 ms
+2026-03-28 16:01:19: 2026-03-28 16:01:19 [32minfo[39m: OPTIONS /api/reports 200 0 - 0.045 ms
+2026-03-28 16:01:19: 2026-03-28 16:01:19 [32minfo[39m: POST /api/reports 201 - - 50.788 ms
+2026-03-28 16:01:41: 🔗 Recorded user connection: 68fcc5bfb85c2281711925bb with socket HHeL9XpVV1_JQ5oNAAAZ
+2026-03-28 16:01:41: 2026-03-28 16:01:41 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.171 ms
+2026-03-28 16:01:41: 2026-03-28 16:01:41 [32minfo[39m: GET /api/attendance/2026/3 304 - - 142.052 ms
+2026-03-28 16:02:08: 2026-03-28 16:02:08 [32minfo[39m: OPTIONS /api/reports 200 0 - 0.072 ms
+2026-03-28 16:02:08: 2026-03-28 16:02:08 [32minfo[39m: POST /api/reports 201 465 - 53.086 ms
+2026-03-28 16:02:11: 2026-03-28 16:02:11 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.050 ms
+2026-03-28 16:02:11: 2026-03-28 16:02:11 [32minfo[39m: GET /api/attendance/2026/3 304 - - 115.260 ms
+2026-03-28 16:02:12: 2026-03-28 16:02:12 [32minfo[39m: OPTIONS /api/auth/logout 200 0 - 0.060 ms
+2026-03-28 16:02:12: 2026-03-28 16:02:12 [32minfo[39m: POST /api/auth/logout 200 31 - 0.489 ms
+2026-03-28 16:02:12: 2026-03-28 16:02:12 [32minfo[39m: OPTIONS /api/users/logout 200 0 - 0.049 ms
+2026-03-28 16:02:12: Received logout for userId: 68fcc5bfb85c2281711925bb body: { userId: [32m'68fcc5bfb85c2281711925bb'[39m }
+2026-03-28 16:02:13: 2026-03-28 16:02:13 [32minfo[39m: POST /api/users/logout 200 33 - 123.123 ms
+2026-03-28 16:02:13: 🔌 Socket HHeL9XpVV1_JQ5oNAAAZ disconnected. Reason: client namespace disconnect
+2026-03-28 16:02:13: 🚫 Recorded user disconnection: 68fcc5bfb85c2281711925bb
+2026-03-28 16:02:13: 👤 User undefined (68fcc5bfb85c2281711925bb) disconnected
+2026-03-28 16:02:13: ⏰ Session timeout check triggered at 28/3/2026, 4:02:13 pm
+2026-03-28 16:02:23: 2026-03-28 16:02:23 [32minfo[39m: OPTIONS /api/auth/login 200 0 - 0.069 ms
+2026-03-28 16:02:23: Login attempt for user: admin
+2026-03-28 16:02:23: Login successful: admin
+2026-03-28 16:02:23: 2026-03-28 16:02:23 [32minfo[39m: POST /api/auth/login 200 750 - 203.623 ms
+2026-03-28 16:02:23: 2026-03-28 16:02:23 [32minfo[39m: OPTIONS /api/calls/sip-config 200 0 - 0.166 ms
+2026-03-28 16:02:23: 2026-03-28 16:02:23 [32minfo[39m: OPTIONS /api/messages/unread-count 200 0 - 0.051 ms
+2026-03-28 16:02:23: 🔌 New socket connection: R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:02:23: 🔗 Socket R-TrX3gzLcS1kDyiAAAb joined room user_682d790e78aafec97417cd5f (auto-join on connection)
+2026-03-28 16:02:23: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:02:23: 🚪 Socket R-TrX3gzLcS1kDyiAAAb joined user room user_682d790e78aafec97417cd5f
+2026-03-28 16:02:23: 2026-03-28 16:02:23 [32minfo[39m: GET /api/calls/sip-config 304 - - 22.930 ms
+2026-03-28 16:02:23: 🔍 [DEBUG] Unread count endpoint hit
+2026-03-28 16:02:23: 🔍 [DEBUG] req.user exists: [33mtrue[39m
+2026-03-28 16:02:23: 🔍 [DEBUG] req.user.id: 682d790e78aafec97417cd5f
+2026-03-28 16:02:23: 🔍 [DEBUG] req.user._id: new ObjectId([32m'682d790e78aafec97417cd5f'[39m)
+2026-03-28 16:02:23: 🔍 [DEBUG] Extracted user ID: 682d790e78aafec97417cd5f
+2026-03-28 16:02:23: 📬 Fetching unread count for user: 682d790e78aafec97417cd5f
+2026-03-28 16:02:23: 🔍 [DEBUG] About to query database...
+2026-03-28 16:02:23: 📬 Unread count result: [33m0[39m
+2026-03-28 16:02:23: 2026-03-28 16:02:23 [32minfo[39m: GET /api/messages/unread-count 200 17 - 52.833 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.102 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/appointments/revenue/reports 200 0 - 0.070 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/appointments/all 200 0 - 0.070 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/tasks 200 0 - 0.094 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/users/all 200 0 - 0.053 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 200 0 - 0.066 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/admin-status 200 0 - 0.058 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/appointments/stats?month=3&year=2026 200 0 - 0.067 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/appointments/stats?month=2&year=2026 200 0 - 0.063 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/appointments/revenue 200 0 - 0.045 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: OPTIONS /api/users 200 0 - 0.057 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/revenue/reports 304 - - 43.156 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/admin-status 304 - - 61.387 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/all 304 - - 178.274 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/tasks 200 - - 97.633 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/attendance/2026/3 200 - - 171.896 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/users/all 200 - - 138.807 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 63.404 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 200 - - 192.118 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 56.700 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/revenue/reports 304 - - 47.253 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/admin-status 304 - - 47.178 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/revenue 304 - - 79.179 ms
+2026-03-28 16:02:24: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 16:02:24: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/users/all 304 - - 75.697 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/stats?month=3&year=2026 304 - - 69.730 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/tasks 304 - - 95.259 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/all 304 - - 138.870 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/users 200 - - 102.082 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/stats?month=2&year=2026 304 - - 48.526 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/attendance/2026/3 304 - - 157.901 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/appointments/revenue 304 - - 65.766 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/tasks 304 - - 69.246 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/attendance/range?start=2026-02-28T18:30:00.000Z&end=2026-03-31T18:29:59.999Z 304 - - 123.973 ms
+2026-03-28 16:02:24: [DEBUG] Date range: Sat Mar 28 2026 00:00:00 GMT+0530 (India Standard Time) to Sat Mar 28 2026 23:59:59 GMT+0530 (India Standard Time)
+2026-03-28 16:02:24: [DEBUG] Appointment stats found: 1 [
+  { _id: new ObjectId([32m'68ef7ad1dc07502f5a342a11'[39m), met: [33m1[39m, notMet: [33m0[39m }
+]
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/users 304 - - 123.129 ms
+2026-03-28 16:02:24: 2026-03-28 16:02:24 [32minfo[39m: GET /api/tasks 304 - - 80.094 ms
+2026-03-28 16:02:28: 2026-03-28 16:02:28 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.081 ms
+2026-03-28 16:02:28: 2026-03-28 16:02:28 [32minfo[39m: OPTIONS /api/calls/daily-stats 200 0 - 0.069 ms
+2026-03-28 16:02:28: 2026-03-28 16:02:28 [32minfo[39m: GET /api/calls/daily-stats 304 - - 42.541 ms
+2026-03-28 16:02:28: 2026-03-28 16:02:28 [32minfo[39m: GET /api/calls/daily-stats 200 368 - 40.521 ms
+2026-03-28 16:02:29: 2026-03-28 16:02:29 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.049 ms
+2026-03-28 16:02:29: 2026-03-28 16:02:29 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.038 ms
+2026-03-28 16:02:29: 2026-03-28 16:02:29 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 41.842 ms
+2026-03-28 16:02:29: 2026-03-28 16:02:29 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 47.780 ms
+2026-03-28 16:02:54: 2026-03-28 16:02:54 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.057 ms
+2026-03-28 16:02:54: 2026-03-28 16:02:54 [32minfo[39m: GET /api/attendance/2026/3 304 - - 386.835 ms
+2026-03-28 16:03:00: 2026-03-28 16:03:00 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.071 ms
+2026-03-28 16:03:00: 2026-03-28 16:03:00 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 42.938 ms
+2026-03-28 16:03:24: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:03:24: 2026-03-28 16:03:24 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.071 ms
+2026-03-28 16:03:24: 2026-03-28 16:03:24 [32minfo[39m: GET /api/attendance/2026/3 304 - - 124.212 ms
+2026-03-28 16:03:30: 2026-03-28 16:03:30 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.076 ms
+2026-03-28 16:03:30: 2026-03-28 16:03:30 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 44.798 ms
+2026-03-28 16:03:54: 2026-03-28 16:03:54 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.062 ms
+2026-03-28 16:03:54: 2026-03-28 16:03:54 [32minfo[39m: GET /api/attendance/2026/3 304 - - 111.388 ms
+2026-03-28 16:04:00: 2026-03-28 16:04:00 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.093 ms
+2026-03-28 16:04:00: 2026-03-28 16:04:00 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 59.048 ms
+2026-03-28 16:04:24: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:04:24: 2026-03-28 16:04:24 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.077 ms
+2026-03-28 16:04:24: 2026-03-28 16:04:24 [32minfo[39m: GET /api/attendance/2026/3 304 - - 139.203 ms
+2026-03-28 16:04:30: 2026-03-28 16:04:30 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.077 ms
+2026-03-28 16:04:30: 2026-03-28 16:04:30 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 45.280 ms
+2026-03-28 16:04:55: 2026-03-28 16:04:55 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.137 ms
+2026-03-28 16:04:55: 2026-03-28 16:04:55 [32minfo[39m: GET /api/attendance/2026/3 304 - - 210.295 ms
+2026-03-28 16:05:00: 2026-03-28 16:05:00 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.051 ms
+2026-03-28 16:05:00: 2026-03-28 16:05:00 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 50.259 ms
+2026-03-28 16:05:24: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:05:24: 2026-03-28 16:05:24 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.076 ms
+2026-03-28 16:05:24: 2026-03-28 16:05:24 [32minfo[39m: GET /api/attendance/2026/3 304 - - 142.804 ms
+2026-03-28 16:05:30: 2026-03-28 16:05:30 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.096 ms
+2026-03-28 16:05:30: 2026-03-28 16:05:30 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 44.502 ms
+2026-03-28 16:06:09: 2026-03-28 16:06:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.085 ms
+2026-03-28 16:06:09: 2026-03-28 16:06:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.103 ms
+2026-03-28 16:06:09: 2026-03-28 16:06:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 45.144 ms
+2026-03-28 16:06:09: 2026-03-28 16:06:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 114.111 ms
+2026-03-28 16:06:24: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:07:01: 2026-03-28 16:07:01 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.140 ms
+2026-03-28 16:07:01: 2026-03-28 16:07:01 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.088 ms
+2026-03-28 16:07:01: 2026-03-28 16:07:01 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 103.010 ms
+2026-03-28 16:07:01: 2026-03-28 16:07:01 [32minfo[39m: GET /api/attendance/2026/3 304 - - 185.098 ms
+2026-03-28 16:07:13: ⏰ Session timeout check triggered at 28/3/2026, 4:07:13 pm
+2026-03-28 16:07:24: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:07:24: 2026-03-28 16:07:24 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.125 ms
+2026-03-28 16:07:24: 2026-03-28 16:07:24 [32minfo[39m: GET /api/attendance/2026/3 304 - - 130.085 ms
+2026-03-28 16:07:30: 2026-03-28 16:07:30 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.075 ms
+2026-03-28 16:07:30: 2026-03-28 16:07:30 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 57.004 ms
+2026-03-28 16:07:54: 2026-03-28 16:07:54 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.212 ms
+2026-03-28 16:07:54: 2026-03-28 16:07:54 [32minfo[39m: GET /api/attendance/2026/3 304 - - 137.557 ms
+2026-03-28 16:08:00: 2026-03-28 16:08:00 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.248 ms
+2026-03-28 16:08:00: 2026-03-28 16:08:00 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 46.928 ms
+2026-03-28 16:08:24: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:09:09: 2026-03-28 16:09:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.064 ms
+2026-03-28 16:09:09: 2026-03-28 16:09:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.068 ms
+2026-03-28 16:09:09: 2026-03-28 16:09:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 41.838 ms
+2026-03-28 16:09:09: 2026-03-28 16:09:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 111.162 ms
+2026-03-28 16:10:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:10:09: 2026-03-28 16:10:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.174 ms
+2026-03-28 16:10:09: 2026-03-28 16:10:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.131 ms
+2026-03-28 16:10:09: 2026-03-28 16:10:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 46.762 ms
+2026-03-28 16:10:09: 2026-03-28 16:10:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 123.787 ms
+2026-03-28 16:11:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:11:09: 2026-03-28 16:11:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.085 ms
+2026-03-28 16:11:09: 2026-03-28 16:11:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.106 ms
+2026-03-28 16:11:09: 2026-03-28 16:11:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 43.431 ms
+2026-03-28 16:11:09: 2026-03-28 16:11:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 139.860 ms
+2026-03-28 16:12:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:12:09: 2026-03-28 16:12:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.087 ms
+2026-03-28 16:12:09: 2026-03-28 16:12:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.122 ms
+2026-03-28 16:12:09: 2026-03-28 16:12:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 50.218 ms
+2026-03-28 16:12:09: 2026-03-28 16:12:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 127.193 ms
+2026-03-28 16:12:13: ⏰ Session timeout check triggered at 28/3/2026, 4:12:13 pm
+2026-03-28 16:13:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:13:09: 2026-03-28 16:13:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.089 ms
+2026-03-28 16:13:09: 2026-03-28 16:13:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.099 ms
+2026-03-28 16:13:09: 2026-03-28 16:13:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 65.197 ms
+2026-03-28 16:13:09: 2026-03-28 16:13:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 162.193 ms
+2026-03-28 16:14:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:14:12: 2026-03-28 16:14:12 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.072 ms
+2026-03-28 16:14:12: 2026-03-28 16:14:12 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.079 ms
+2026-03-28 16:14:12: 2026-03-28 16:14:12 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 50.404 ms
+2026-03-28 16:14:12: 2026-03-28 16:14:12 [32minfo[39m: GET /api/attendance/2026/3 304 - - 166.510 ms
+2026-03-28 16:15:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:15:10: 2026-03-28 16:15:10 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.116 ms
+2026-03-28 16:15:10: 2026-03-28 16:15:10 [32minfo[39m: GET /api/attendance/2026/3 304 - - 182.659 ms
+2026-03-28 16:15:11: 2026-03-28 16:15:11 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.060 ms
+2026-03-28 16:15:11: 2026-03-28 16:15:11 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 57.697 ms
+2026-03-28 16:16:16: 2026-03-28 16:16:16 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.153 ms
+2026-03-28 16:16:16: 2026-03-28 16:16:16 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.093 ms
+2026-03-28 16:16:17: 2026-03-28 16:16:17 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 257.033 ms
+2026-03-28 16:16:17: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:16:17: 2026-03-28 16:16:17 [32minfo[39m: GET /api/attendance/2026/3 304 - - 160.496 ms
+2026-03-28 16:17:13: ⏰ Session timeout check triggered at 28/3/2026, 4:17:13 pm
+2026-03-28 16:17:15: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:17:15: 2026-03-28 16:17:15 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.092 ms
+2026-03-28 16:17:15: 2026-03-28 16:17:15 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.099 ms
+2026-03-28 16:17:16: 2026-03-28 16:17:16 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 157.680 ms
+2026-03-28 16:17:16: 2026-03-28 16:17:16 [32minfo[39m: GET /api/attendance/2026/3 304 - - 244.208 ms
+2026-03-28 16:18:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:18:09: 2026-03-28 16:18:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.090 ms
+2026-03-28 16:18:09: 2026-03-28 16:18:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.087 ms
+2026-03-28 16:18:10: 2026-03-28 16:18:10 [32minfo[39m: GET /api/attendance/2026/3 304 - - 222.899 ms
+2026-03-28 16:18:10: 2026-03-28 16:18:10 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 73.547 ms
+2026-03-28 16:19:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:19:09: 2026-03-28 16:19:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.091 ms
+2026-03-28 16:19:09: 2026-03-28 16:19:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.064 ms
+2026-03-28 16:19:09: 2026-03-28 16:19:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 73.319 ms
+2026-03-28 16:19:09: 2026-03-28 16:19:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 206.629 ms
+2026-03-28 16:20:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:20:09: 2026-03-28 16:20:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.117 ms
+2026-03-28 16:20:09: 2026-03-28 16:20:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.066 ms
+2026-03-28 16:20:09: 2026-03-28 16:20:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 71.089 ms
+2026-03-28 16:20:09: 2026-03-28 16:20:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 193.522 ms
+2026-03-28 16:21:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:21:09: 2026-03-28 16:21:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.073 ms
+2026-03-28 16:21:09: 2026-03-28 16:21:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.054 ms
+2026-03-28 16:21:09: 2026-03-28 16:21:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 165.781 ms
+2026-03-28 16:21:10: 2026-03-28 16:21:10 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 66.375 ms
+2026-03-28 16:22:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:22:09: 2026-03-28 16:22:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.087 ms
+2026-03-28 16:22:09: 2026-03-28 16:22:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.079 ms
+2026-03-28 16:22:09: 2026-03-28 16:22:09 [32minfo[39m: GET /api/telecaller-leads/stats 304 - - 58.635 ms
+2026-03-28 16:22:09: 2026-03-28 16:22:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 154.794 ms
+2026-03-28 16:22:13: ⏰ Session timeout check triggered at 28/3/2026, 4:22:13 pm
+2026-03-28 16:23:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:23:09: 2026-03-28 16:23:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.077 ms
+2026-03-28 16:23:09: 2026-03-28 16:23:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.050 ms
+2026-03-28 16:23:09: 2026-03-28 16:23:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 42.041 ms
+2026-03-28 16:23:09: 2026-03-28 16:23:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 109.849 ms
+2026-03-28 16:24:09: 🔗 Recorded user connection: 682d790e78aafec97417cd5f with socket R-TrX3gzLcS1kDyiAAAb
+2026-03-28 16:24:09: 2026-03-28 16:24:09 [32minfo[39m: OPTIONS /api/attendance/2026/3 200 0 - 0.061 ms
+2026-03-28 16:24:09: 2026-03-28 16:24:09 [32minfo[39m: OPTIONS /api/telecaller-leads/stats 200 0 - 0.058 ms
+2026-03-28 16:24:09: 2026-03-28 16:24:09 [32minfo[39m: GET /api/telecaller-leads/stats 200 567 - 45.601 ms
+2026-03-28 16:24:09: 2026-03-28 16:24:09 [32minfo[39m: GET /api/attendance/2026/3 304 - - 122.641 ms
