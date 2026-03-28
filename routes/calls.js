@@ -6,6 +6,31 @@ const cloudConnect = require('../services/cloudConnect');
 const { getIOInstance } = require('../sockets/io');
 const User = require('../models/User');
 
+const firstNonEmpty = (...values) => {
+  for (const value of values) {
+    if (typeof value === 'string' && value.trim()) {
+      return value.trim();
+    }
+  }
+  return '';
+};
+
+const getSipEnv = (key, fallback = '') => firstNonEmpty(
+  process.env[key],
+  process.env[`VITE_${key}`],
+  fallback
+);
+
+const normalizeSipDomain = (value) => {
+  const raw = firstNonEmpty(value);
+  if (!raw) return '';
+  const lower = raw.toLowerCase();
+  if (lower === 'cccpl' || lower === 'cloudconnect' || lower === 'cloud-connect') {
+    return 'sip2.cloud-connect.in';
+  }
+  return raw;
+};
+
 // Middleware to validate request body
 const validateCallLog = (req, res, next) => {
   const { phoneNumber, personName, companyName } = req.body;
@@ -123,14 +148,30 @@ router.get('/daily-stats', auth, async (req, res) => {
 });
 
 router.get('/sip-config', auth, (req, res) => {
+  const userSipExtension = firstNonEmpty(req.user?.sipExtension?.toString());
+  const userSipUsernameRaw = firstNonEmpty(req.user?.sipUsername?.toString());
+  const userSipUsername = userSipUsernameRaw.includes('@')
+    ? userSipUsernameRaw.split('@')[0]
+    : userSipUsernameRaw;
+  const userSipPassword = firstNonEmpty(req.user?.sipPassword?.toString());
+  const userSipDomain = firstNonEmpty(req.user?.sipDomain?.toString());
+
+  const domain = normalizeSipDomain(firstNonEmpty(userSipDomain, getSipEnv('SIP_DOMAIN', 'sip2.cloud-connect.in')));
+  const registrar = normalizeSipDomain(firstNonEmpty(getSipEnv('SIP_REGISTRAR'), domain));
+  const user = firstNonEmpty(userSipUsername, getSipEnv('SIP_USERNAME'), userSipExtension, getSipEnv('SIP_USER'));
+  const username = firstNonEmpty(userSipUsername, getSipEnv('SIP_USERNAME'), user);
+  const extension = firstNonEmpty(userSipExtension, getSipEnv('SIP_USER'), user);
+  const password = firstNonEmpty(userSipPassword, getSipEnv('SIP_PASSWORD'));
+  const wssUrl = firstNonEmpty(getSipEnv('SIP_WSS_URL'), domain ? `wss://${domain}:7443/` : '');
+
   res.json({
-    user: process.env.SIP_USER || '702',
-    username: process.env.SIP_USERNAME || '102597702',
-    domain: process.env.SIP_DOMAIN || 'sip2.cloud-connect.in', // Point 2: Fix Backend Domain
-    registrar: process.env.SIP_REGISTRAR || 'sip2.cloud-connect.in',
-    password: process.env.SIP_PASSWORD || 'B&Y@005#',
-    wssUrl: process.env.SIP_WSS_URL || 'wss://sip2.cloud-connect.in:7443/',
-    extension: req.user?.extension || '702'
+    user,
+    username,
+    domain,
+    registrar,
+    password,
+    wssUrl,
+    extension
   });
 });
 
@@ -198,12 +239,18 @@ router.delete('/:id', auth, async (req, res) => {
 // POST /api/calls/click-to-call - Initiate Click-to-Call
 router.post('/click-to-call', auth, async (req, res) => {
   try {
-    const { phoneNumber, extensionNumber, extensionPassword } = req.body;
+    const { phoneNumber, extensionNumber } = req.body;
     if (!phoneNumber || !extensionNumber) {
       return res.status(400).json({ error: 'phoneNumber and extensionNumber are required' });
     }
     // Point 9: Secure Click-to-Call (Don't allow password in body)
-    const password = process.env.SIP_PASSWORD || 'B&Y@005#'; 
+    const password = firstNonEmpty(
+      req.user?.sipPassword?.toString(),
+      getSipEnv('SIP_PASSWORD')
+    );
+    if (!password) {
+      return res.status(500).json({ error: 'SIP password is not configured for click-to-call' });
+    }
     const result = await cloudConnect.clickToCall(phoneNumber, extensionNumber, password);
     res.json(result);
   } catch (error) {

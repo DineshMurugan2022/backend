@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const TelecallerLead = require('../models/TelecallerLead');
+const CallLog = require('../models/CallLog');
 const auth = require('../middleware/auth');
 const mongoose = require('mongoose');
 
@@ -11,10 +12,7 @@ router.post('/upload', auth, async (req, res) => {
         // Check if user is admin, teamleader, telecaller tl, or Hr
         const role = req.user.userGroup.toLowerCase().trim();
         const isAllowed = 
-            ['admin', 'teamleader', 'team leader', 'hr'].includes(role) || 
-            role.includes('tl') || 
-            role.includes('teamleader') || 
-            role.includes('hr');
+            ['admin', 'teamleader', 'team leader'].includes(role);
         
         if (!isAllowed) {
             console.warn(`Unauthorized lead upload attempt by user: ${req.user.username}, role: ${role}`);
@@ -154,12 +152,63 @@ router.get('/stats', auth, async (req, res) => {
 router.patch('/mark-called/:id', auth, async (req, res) => {
     try {
         const { id } = req.params;
-        const updated = await TelecallerLead.findByIdAndUpdate(id, { status: 'called' }, { new: true });
-        if (!updated) return res.status(404).json({ error: 'Lead not found' });
-        res.json({ success: true, message: 'Lead marked as called' });
+        const userId = req.user.id || req.user._id;
+
+        // 1. Fetch the lead to get its phone number
+        const lead = await TelecallerLead.findById(id);
+        if (!lead) return res.status(404).json({ error: 'Lead not found' });
+
+        // 2. Security Check: Verify that an OUTBOUND call was made to this number 
+        // by THIS user within the last 20 minutes.
+        const twentyMinutesAgo = new Date(Date.now() - 20 * 60 * 1000);
+        
+        // Clean the lead number for robust matching (last 10 digits)
+        const cleanLeadNumber = lead.phoneNumber.replace(/\D/g, '').slice(-10);
+        
+        // Use a regex to match the last 10 digits in the CallLog
+        const recentCall = await CallLog.findOne({
+            userId: new mongoose.Types.ObjectId(userId),
+            direction: 'outbound',
+            callTime: { $gte: twentyMinutesAgo },
+            phoneNumber: { $regex: new RegExp(cleanLeadNumber + '$') }
+        });
+
+        if (!recentCall) {
+            console.warn(`[SECURITY] User ${req.user.username} tried to mark lead ${id} (${lead.phoneNumber}) as called without a matching recent call log.`);
+            return res.status(403).json({ 
+                error: 'Validation failed: You must call this number using the integrated dialer before marking it as called.',
+                requiresCall: true
+            });
+        }
+
+        // 3. Update the lead status
+        lead.status = 'called';
+        await lead.save();
+
+        res.json({ success: true, message: 'Lead marked as called successfully' });
     } catch (error) {
         console.error('Error marking lead called:', error);
-        res.status(500).json({ error: 'Failed to update lead status' });
+        res.status(500).json({ error: 'Failed to update lead status', details: error.message });
+    }
+});
+
+// DELETE /api/telecaller-leads/assigned/:userId
+// Clear ALL leads assigned to a specific user
+router.delete('/assigned/:userId', auth, async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const role = req.user.userGroup.toLowerCase().trim();
+        const isAdminOrTL = ['admin', 'teamleader', 'team leader'].includes(role);
+
+        if (!isAdminOrTL) {
+            return res.status(403).json({ error: 'Only admins, teamleaders, or HR can clear leads' });
+        }
+
+        const result = await TelecallerLead.deleteMany({ assignedTo: new mongoose.Types.ObjectId(userId) });
+        res.json({ success: true, message: `Deleted ${result.deletedCount} leads for user` });
+    } catch (error) {
+        console.error('Error clearing leads:', error);
+        res.status(500).json({ error: 'Failed to clear leads', details: error.message });
     }
 });
 
