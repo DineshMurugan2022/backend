@@ -212,4 +212,26 @@ router.delete('/assigned/:userId', auth, async (req, res) => {
     }
 });
 
+// GET /api/telecaller-leads/assigned/:userId
+// Fetch all raw leads assigned to a specific user (Admin/TL view)
+router.get('/assigned/:userId', auth, async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const role = req.user.userGroup.toLowerCase().trim();
+        const isAdminOrTL = ['admin', 'teamleader', 'team leader', 'telecaller-tl', 'telecaller tl', 'hr'].includes(role);
+
+        if (!isAdminOrTL && String(req.user.id || req.user._id) !== userId) {
+            return res.status(403).json({ error: 'Not authorized to view these leads' });
+        }
+
+        const leads = await TelecallerLead.find({ assignedTo: new mongoose.Types.ObjectId(userId) })
+            .sort({ status: -1, _id: -1 }); // Groups uncalled together, then sorts by newest
+
+        res.json(leads);
+    } catch (error) {
+        console.error('Error fetching user leads:', error);
+        res.status(500).json({ error: 'Failed to fetch assigned leads', details: error.message });
+    }
+});
+
 module.exports = router;

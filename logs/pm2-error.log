@@ -8169,3 +8169,91 @@ Require stack:
 2026-03-28 15:17:12: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
 2026-03-28 15:17:12: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
 2026-03-28 15:17:12: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-04-01 10:31:57: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-04-01 10:31:57: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-04-01 10:31:57: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-04-01 10:31:57: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-04-01 10:31:57: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-04-01 10:32:12: Auth middleware: Token has expired
+2026-04-01 10:32:12: Auth middleware: Token has expired
+2026-04-01 10:32:12: Auth middleware: Token has expired
+2026-04-01 10:32:12: Auth middleware: Token has expired
+2026-04-01 10:41:56: 🔌 Mongoose disconnected
+2026-04-01 10:42:02: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-04-01 10:42:02: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-04-01 10:42:02: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-04-01 10:42:02: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-04-01 10:42:02: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-04-01 10:57:21: Auth middleware: Token has expired
+2026-04-01 10:57:21: Auth middleware: Token has expired
+2026-04-01 11:45:59: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-04-01 11:45:59: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-04-01 11:45:59: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-04-01 11:45:59: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-04-01 11:45:59: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-04-01 15:37:52: 🔌 Mongoose disconnected
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+Error: The client is closed
+    at Class.sendCommand (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:639:35)
+    at fn (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:605:40)
+    at Class._executeCommand (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:610:33)
+    at Class.publish (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:33:31)
+    at RedisAdapter.broadcast (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@socket.io\redis-adapter\dist\index.js:473:28)
+    at BroadcastOperator.emit (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\broadcast-operator.js:169:26)
+    at Socket.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\sockets\index.js:86:40)
+    at Socket.emit (node:events:508:28)
+    at Socket.emitReserved (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\typed-events.js:56:22)
+    at Socket._onclose (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\socket.js:554:14)
+    at Client.onclose (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\client.js:247:20)
+    at Socket.emit (node:events:520:35)
+    at Socket.onClose (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\engine.io\build\socket.js:320:18)
+    at Object.onceWrapper (node:events:622:28)
+    at WebSocket.emit (node:events:508:28)
+    at WebSocket.onClose (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\engine.io\build\transport.js:114:14)
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+Error: The client is closed
+    at Class.sendCommand (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:639:35)
+    at fn (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:605:40)
+    at Class._executeCommand (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:610:33)
+    at Class.publish (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:33:31)
+    at RedisAdapter.broadcast (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@socket.io\redis-adapter\dist\index.js:473:28)
+    at BroadcastOperator.emit (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\broadcast-operator.js:169:26)
+    at Namespace.emit (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\namespace.js:309:73)
+    at Server.<computed> [as emit] (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\index.js:798:33)
+    at updateUserStatus (C:\Users\user\Desktop\Dinesh\CRM\backend\services\session.js:43:18)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+Error: The client is closed
+    at Class.sendCommand (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:639:35)
+    at fn (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:605:40)
+    at Class._executeCommand (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:610:33)
+    at Class.publish (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:33:31)
+    at RedisAdapter.broadcast (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@socket.io\redis-adapter\dist\index.js:473:28)
+    at BroadcastOperator.emit (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\broadcast-operator.js:169:26)
+    at Namespace.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\sockets\index.js:49:36)
+    at Namespace.emit (node:events:508:28)
+    at Namespace.emitReserved (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\typed-events.js:56:22)
+    at Namespace._doConnect (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\namespace.js:276:14)
+    at C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\namespace.js:238:22
+    at process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+You have triggered an unhandledRejection, you may have forgotten to catch a Promise rejection:
+Error: The client is closed
+    at Class.sendCommand (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:639:35)
+    at fn (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:605:40)
+    at Class._executeCommand (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:610:33)
+    at Class.publish (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@redis\client\dist\lib\client\index.js:33:31)
+    at RedisAdapter.broadcast (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\@socket.io\redis-adapter\dist\index.js:473:28)
+    at BroadcastOperator.emit (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\broadcast-operator.js:169:26)
+    at setupChatHandlers (C:\Users\user\Desktop\Dinesh\CRM\backend\sockets\chatHandlers.js:37:32)
+    at Namespace.<anonymous> (C:\Users\user\Desktop\Dinesh\CRM\backend\sockets\index.js:59:9)
+    at Namespace.emit (node:events:508:28)
+    at Namespace.emitReserved (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\typed-events.js:56:22)
+    at Namespace._doConnect (C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\namespace.js:276:14)
+    at C:\Users\user\Desktop\Dinesh\CRM\backend\node_modules\socket.io\dist\namespace.js:238:22
+    at process.processTicksAndRejections (node:internal/process/task_queues:84:11)
+2026-04-01 16:25:34: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-04-01 16:25:34: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-04-01 16:25:34: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-04-01 16:25:34: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-04-01 16:25:34: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-04-01 17:10:02: 🔌 Mongoose disconnected
