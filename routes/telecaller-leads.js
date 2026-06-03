@@ -234,4 +234,43 @@ router.get('/assigned/:userId', auth, async (req, res) => {
     }
 });
 
+// PUT /api/telecaller-leads/:id
+// Update a specific lead's details (Admin/TL)
+router.put('/:id', auth, async (req, res) => {
+    try {
+        const role = req.user.userGroup.toLowerCase().trim();
+        const isAdminOrTL = ['admin', 'teamleader', 'team leader', 'telecaller-tl', 'telecaller tl', 'hr'].includes(role);
+        if (!isAdminOrTL) return res.status(403).json({ error: 'Not authorized' });
+
+        const updatedLead = await TelecallerLead.findByIdAndUpdate(
+            req.params.id,
+            { $set: req.body },
+            { new: true }
+        );
+        if (!updatedLead) return res.status(404).json({ error: 'Lead not found' });
+        res.json(updatedLead);
+    } catch (error) {
+        console.error('Error updating lead:', error);
+        res.status(500).json({ error: 'Failed to update lead', details: error.message });
+    }
+});
+
+// DELETE /api/telecaller-leads/:id
+// Delete a specific lead (Admin/TL)
+router.delete('/:id', auth, async (req, res) => {
+    try {
+        const role = req.user.userGroup.toLowerCase().trim();
+        const isAdminOrTL = ['admin', 'teamleader', 'team leader', 'telecaller-tl', 'telecaller tl', 'hr'].includes(role);
+        if (!isAdminOrTL) return res.status(403).json({ error: 'Not authorized' });
+
+        const deletedLead = await TelecallerLead.findByIdAndDelete(req.params.id);
+        if (!deletedLead) return res.status(404).json({ error: 'Lead not found' });
+        res.json({ success: true, message: 'Lead deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting lead:', error);
+        res.status(500).json({ error: 'Failed to delete lead', details: error.message });
+    }
+});
+
 module.exports = router;
+
