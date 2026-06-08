@@ -15,7 +15,13 @@ const appointmentStatusSchema = new mongoose.Schema({
     follow: { type: Boolean, default: false },
     value: { type: Number, default: 0 },
     pending: { type: Boolean, default: false },
-    remark: { type: String, default: '' }
+    pendingValue: { type: Number, default: 0 },
+    remark: { type: String, default: '' },
+    phoneNumber: { type: String, default: '' },
+    address: { type: String, default: '' },
+    assignedBdm: { type: String, default: '' },
+    tmeId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    tmeName: { type: String, default: '' }
 }, { timestamps: true });
 
 module.exports = mongoose.model('AppointmentStatus', appointmentStatusSchema);

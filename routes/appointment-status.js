@@ -33,7 +33,7 @@ router.post('/', auth, async (req, res) => {
             return res.status(403).json({ message: 'Access denied. Only Telecaller TLs or Admins can create.' });
         }
 
-        const { companyName, clientName, dateTime, type, met, signed, follow, value, pending, remark } = req.body;
+        const { companyName, clientName, dateTime, type, met, signed, follow, value, pending, pendingValue, remark, phoneNumber, address, assignedBdm, tmeId, tmeName } = req.body;
 
         const newStatus = new AppointmentStatus({
             user: req.user._id,
@@ -49,7 +49,13 @@ router.post('/', auth, async (req, res) => {
             follow,
             value,
             pending,
-            remark
+            pendingValue,
+            remark,
+            phoneNumber,
+            address,
+            assignedBdm,
+            tmeId,
+            tmeName
         });
 
         await newStatus.save();
