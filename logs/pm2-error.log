@@ -8301,3 +8301,1707 @@ Error: The client is closed
 2026-06-06 17:33:24: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
 2026-06-06 17:33:24: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
 2026-06-06 17:33:24: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-06-16 16:43:04: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 16:43:04: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 16:43:04: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 16:43:04: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 16:43:04: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-06-16 16:43:17: Auth middleware: Invalid token
+2026-06-16 16:43:17: Auth middleware: Invalid token
+2026-06-16 16:43:17: Auth middleware: Invalid token
+2026-06-16 16:43:17: Auth middleware: Invalid token
+2026-06-16 17:10:14: 🔌 Mongoose disconnected
+2026-06-16 17:10:24: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:10:24: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:10:24: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:10:24: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:10:24: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:10:30: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:10:30: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:10:30: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:10:30: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:10:30: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:10:36: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:10:36: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:10:36: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:10:36: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:10:36: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:10:42: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:10:42: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:10:42: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:10:42: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:10:42: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:10:48: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:10:48: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:10:48: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:10:48: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:10:48: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:10:54: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:10:54: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:10:54: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:10:54: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:10:54: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:00: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:00: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:00: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:00: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:00: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:06: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:06: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:06: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:06: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:06: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:12: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:12: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:12: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:12: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:12: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:18: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:18: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:18: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:18: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:18: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:24: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:24: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:24: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:24: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:24: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:29: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:29: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:29: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:29: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:29: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:35: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:35: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:35: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:35: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:35: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:41: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:41: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:41: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:41: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:41: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:48: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:48: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:48: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:48: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:48: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:11:53: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:11:53: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:11:53: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:11:53: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:11:53: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:00: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:00: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:00: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:00: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:00: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:01: 🔥 Port 5000 is already in use by another process.
+2026-06-16 17:12:03: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:03: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:03: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:03: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:03: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:09: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:09: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:09: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:09: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:09: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:15: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:15: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:15: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:15: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:15: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:21: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:21: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:21: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:21: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:21: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:29: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:29: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:29: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:29: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:29: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:35: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:35: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:35: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:35: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:35: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:41: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:41: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:41: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:41: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:41: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:47: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:47: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:47: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:47: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:47: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:53: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:53: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:53: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:53: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:53: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:12:59: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:12:59: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:12:59: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:12:59: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:12:59: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:05: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:05: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:05: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:05: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:05: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:11: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:11: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:11: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:11: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:11: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:17: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:17: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:17: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:17: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:17: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:23: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:23: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:23: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:23: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:23: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:29: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:29: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:29: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:29: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:29: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:35: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:35: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:35: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:35: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:35: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:41: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:41: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:41: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:41: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:41: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:47: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:47: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:47: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:47: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:47: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:53: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:53: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:53: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:53: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:53: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:13:59: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:13:59: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:13:59: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:13:59: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:13:59: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:05: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:05: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:05: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:05: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:05: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:11: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:11: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:11: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:11: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:11: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:17: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:17: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:17: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:17: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:17: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:23: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:23: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:23: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:23: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:23: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:29: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:29: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:29: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:29: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:29: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:34: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:34: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:34: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:34: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:34: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:40: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:40: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:40: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:40: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:40: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:46: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:46: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:46: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:46: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:46: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:52: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:52: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:52: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:52: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:52: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:14:58: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:14:58: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:14:58: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:14:58: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:14:58: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:04: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:04: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:04: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:04: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:04: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:10: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:10: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:10: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:10: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:10: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:16: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:16: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:16: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:16: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:16: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:22: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:22: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:22: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:22: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:22: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:29: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:29: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:29: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:29: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:29: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:35: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:35: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:35: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:35: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:35: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:41: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:41: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:41: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:41: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:41: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:47: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:47: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:47: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:47: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:47: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:53: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:53: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:53: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:53: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:53: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:15:59: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:15:59: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:15:59: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:15:59: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:15:59: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:05: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:05: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:05: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:05: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:05: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:11: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:11: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:11: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:11: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:11: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:17: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:17: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:17: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:17: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:17: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:23: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:23: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:23: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:23: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:23: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:29: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:29: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:29: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:29: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:29: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:34: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:34: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:34: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:34: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:34: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:40: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:40: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:40: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:40: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:40: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:46: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:46: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:46: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:46: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:46: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:52: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:52: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:52: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:52: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:52: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:16:58: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:16:58: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:16:58: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:16:58: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:16:58: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:04: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:04: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:04: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:04: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:04: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:10: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:10: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:10: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:10: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:10: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:16: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:16: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:16: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:16: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:16: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:22: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:22: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:22: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:22: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:22: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:28: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:28: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:28: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:28: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:28: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:34: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:34: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:34: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:34: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:34: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:35: 🔥 Port 5000 is already in use by another process.
+2026-06-16 17:17:37: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:37: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:37: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:37: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:37: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:43: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:43: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:43: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:43: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:43: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:49: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:49: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:49: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:49: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:49: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:17:55: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:17:55: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:17:55: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:17:55: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:17:55: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:01: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:01: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:01: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:01: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:01: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:07: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:07: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:07: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:07: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:07: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:13: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:13: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:13: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:13: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:13: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:19: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:19: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:19: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:19: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:19: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:25: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:25: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:25: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:25: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:25: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:31: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:31: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:31: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:31: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:31: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:37: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:37: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:37: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:37: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:37: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:42: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:42: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:42: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:42: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:42: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:48: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:48: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:48: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:48: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:48: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:18:55: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:18:55: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:18:55: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:18:55: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:18:55: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:19:00: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:19:00: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:19:00: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:19:00: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:19:00: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+ReferenceError: reportsRouter is not defined
+    at Object.<anonymous> (F:\dineshworks\CRM\backend\server.js:260:25)
+    at Module._compile (node:internal/modules/cjs/loader:1761:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1481:32)
+    at Module._load (node:internal/modules/cjs/loader:1300:12)
+    at F:\dineshworks\CRM\backend\node_modules\pm2\lib\ProcessContainer.js:292:27
+    at wrapper (F:\dineshworks\CRM\backend\node_modules\async\internal\once.js:12:16)
+    at next (F:\dineshworks\CRM\backend\node_modules\async\waterfall.js:96:20)
+    at F:\dineshworks\CRM\backend\node_modules\async\internal\onlyOnce.js:12:16
+    at WriteStream.<anonymous> (F:\dineshworks\CRM\backend\node_modules\pm2\lib\Utility.js:186:13)
+    at WriteStream.emit (node:events:508:28)
+    at node:internal/fs/streams:79:16
+    at FSReqCallback.oncomplete (node:fs:184:23)
+2026-06-16 17:19:07: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:19:07: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:19:07: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:19:07: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:19:07: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-06-16 17:20:05: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:20:05: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:20:05: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:20:05: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:20:05: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-06-16 17:21:16: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:21:16: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:21:16: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:21:16: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:21:16: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)
+2026-06-16 17:33:20: ⚠️ Redis not available. Rate limiter "rl:auth:" using memory store (not distributed)
+2026-06-16 17:33:20: ⚠️ Redis not available. Rate limiter "rl:api:" using memory store (not distributed)
+2026-06-16 17:33:20: ⚠️ Redis not available. Rate limiter "rl:upload:" using memory store (not distributed)
+2026-06-16 17:33:20: ⚠️ Redis not available. Rate limiter "rl:moderate:" using memory store (not distributed)
+2026-06-16 17:33:20: ⚠️ Redis not available. Rate limiter "rl:read:" using memory store (not distributed)

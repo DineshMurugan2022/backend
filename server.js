@@ -34,9 +34,11 @@ const leadsRouter = require("./routes/leads");
 const proxyRouter = require("./routes/proxy");
 const tasksRouter = require("./routes/tasks");
 const messagesRouter = require("./routes/messages");
-const telecallerLeadsRouter = require("./routes/telecaller-leads");
+const reportsRouter = require("./routes/reports");
 const telecallerReportsRouter = require("./routes/telecaller-reports");
+const telecallerLeadsRouter = require("./routes/telecaller-leads");
 const appointmentStatusRouter = require("./routes/appointment-status");
+const applicationAppointmentsRouter = require("./routes/application-appointments");
 
 const app = express();
 
@@ -257,10 +259,10 @@ app.use("/api/auth", authLimiter, authRouter);
 
 app.use("/api/calls", callsRouter);
 app.use("/api/messages", messagesRouter);
-const reportsRouter = require("./routes/reports");
 app.use("/api/reports", reportsRouter);
 app.use("/api/telecaller-reports", telecallerReportsRouter);
 app.use("/api/appointment-status", appointmentStatusRouter);
+app.use("/api/application-appointments", applicationAppointmentsRouter);
 app.use("/api", proxyRouter);
 
 // Error Handling Middleware

@@ -10,8 +10,8 @@ router.get('/', auth, async (req, res) => {
         const userGroup = req.user.userGroup.toLowerCase().trim();
         let query = {};
         
-        // If it's a telecaller TL, they can only see what they created. Admins see all.
-        if (['telecaller-tl', 'telecaller tl'].includes(userGroup)) {
+        // If it's a telecaller TL or BDM sale, they can only see what they created. Admins see all.
+        if (['telecaller-tl', 'telecaller tl', 'bdm (sale)', 'bdm sale'].includes(userGroup)) {
             query.user = req.user._id;
         } else if (!['admin', 'teamleader', 'team leader'].includes(userGroup)) {
             return res.status(403).json({ message: 'Access denied' });
@@ -29,8 +29,8 @@ router.get('/', auth, async (req, res) => {
 router.post('/', auth, async (req, res) => {
     try {
         const userGroup = req.user.userGroup.toLowerCase().trim();
-        if (!['admin', 'telecaller-tl', 'telecaller tl'].includes(userGroup)) {
-            return res.status(403).json({ message: 'Access denied. Only Telecaller TLs or Admins can create.' });
+        if (!['admin', 'telecaller-tl', 'telecaller tl', 'bdm (sale)', 'bdm sale', 'teamleader', 'team leader'].includes(userGroup)) {
+            return res.status(403).json({ message: 'Access denied. Only authorized roles can create.' });
         }
 
         const { companyName, clientName, dateTime, type, met, signed, follow, value, pending, pendingValue, remark, phoneNumber, address, assignedBdm, tmeId, tmeName } = req.body;
@@ -70,7 +70,7 @@ router.post('/', auth, async (req, res) => {
 router.put('/:id', auth, async (req, res) => {
     try {
         const userGroup = req.user.userGroup.toLowerCase().trim();
-        if (!['admin', 'telecaller-tl', 'telecaller tl'].includes(userGroup)) {
+        if (!['admin', 'telecaller-tl', 'telecaller tl', 'bdm', 'bdm (sale)', 'bdm sale', 'teamleader', 'team leader'].includes(userGroup)) {
             return res.status(403).json({ message: 'Access denied' });
         }
 
@@ -93,7 +93,7 @@ router.delete('/:id', auth, async (req, res) => {
     try {
         const userGroup = req.user.userGroup.toLowerCase().trim();
         // Maybe only admin can delete? Or TL can delete their own.
-        if (!['admin', 'telecaller-tl', 'telecaller tl'].includes(userGroup)) {
+        if (!['admin', 'telecaller-tl', 'telecaller tl', 'bdm', 'bdm (sale)', 'bdm sale', 'teamleader', 'team leader'].includes(userGroup)) {
             return res.status(403).json({ message: 'Access denied' });
         }
 
