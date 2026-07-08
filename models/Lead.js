@@ -31,6 +31,12 @@ const leadSchema = new mongoose.Schema({
     emailMarketing: Boolean,
     ecommerce: Boolean,
   },
+  projectType: { type: String, default: 'fresh' },
+  renewalItems: [{
+    subscription: String,
+    price: String,
+    amount: String,
+  }],
 
   // Payment Details
   actualAmount: String,
