@@ -23,6 +23,17 @@ const userSchema = new mongoose.Schema({
   sipPassword: { type: String, default: "" },
   sipDomain: { type: String, default: "" },
 
+  // Deep Employee Profile / HR Data
+  dob: { type: Date, default: null },
+  address: { type: String, default: "" },
+  bankName: { type: String, default: "" },
+  bankAccountNo: { type: String, default: "" },
+  ifscCode: { type: String, default: "" },
+  panNumber: { type: String, default: "" },
+  aadharNumber: { type: String, default: "" },
+  emergencyContactName: { type: String, default: "" },
+  emergencyContactPhone: { type: String, default: "" },
+
   refreshToken: { type: String } // Store refresh token for session management
 }, { timestamps: true });
 

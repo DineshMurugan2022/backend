@@ -156,12 +156,12 @@ router.get('/sip-config', auth, (req, res) => {
   const userSipPassword = firstNonEmpty(req.user?.sipPassword?.toString());
   const userSipDomain = firstNonEmpty(req.user?.sipDomain?.toString());
 
-  const domain = normalizeSipDomain(firstNonEmpty(userSipDomain, getSipEnv('SIP_DOMAIN', 'sip2.cloud-connect.in')));
+  const domain = normalizeSipDomain(firstNonEmpty(userSipDomain, getSipEnv('SIP_DOMAIN'), 'sip2.cloud-connect.in'));
   const registrar = normalizeSipDomain(firstNonEmpty(getSipEnv('SIP_REGISTRAR'), domain));
-  const user = firstNonEmpty(userSipUsername, getSipEnv('SIP_USERNAME'), userSipExtension, getSipEnv('SIP_USER'));
-  const username = firstNonEmpty(userSipUsername, getSipEnv('SIP_USERNAME'), user);
-  const extension = firstNonEmpty(userSipExtension, getSipEnv('SIP_USER'), user);
-  const password = firstNonEmpty(userSipPassword, getSipEnv('SIP_PASSWORD'));
+  const user = firstNonEmpty(userSipUsername, getSipEnv('SIP_USERNAME'), userSipExtension, getSipEnv('SIP_USER'), '102597701');
+  const username = firstNonEmpty(userSipUsername, getSipEnv('SIP_USERNAME'), user, '102597701');
+  const extension = firstNonEmpty(userSipExtension, getSipEnv('SIP_USER'), user, '701');
+  const password = firstNonEmpty(userSipPassword, getSipEnv('SIP_PASSWORD'), 'B&Y@005#');
   const wssUrl = firstNonEmpty(getSipEnv('SIP_WSS_URL'), domain ? `wss://${domain}:7443/` : '');
 
   res.json({
