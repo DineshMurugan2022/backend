@@ -24,8 +24,29 @@ router.get('/state', (req, res) => {
 // GET /api/gsm/devices
 router.get('/devices', async (req, res) => {
   try {
-    const devices = await gsmModemService.getDevices();
-    res.json(devices);
+    let devices;
+    try {
+      devices = await gsmModemService.getDevices();
+      if (devices && devices.ports && devices.ports.length > 0) {
+        return res.json(devices);
+      }
+    } catch {
+      // Degrade gracefully
+    }
+
+    // Try Socket.IO relay (query connected Modem PC for serial ports!)
+    if (socketExecuteAction) {
+      try {
+        devices = await socketExecuteAction('devices');
+        if (devices && Array.isArray(devices.ports)) {
+          return res.json(devices);
+        }
+      } catch {
+        // Relay offline or timed out
+      }
+    }
+
+    res.json(devices || { ports: [], audio: [], audioError: 'No hardware modem available on this server.' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
