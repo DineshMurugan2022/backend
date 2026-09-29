@@ -146,9 +146,13 @@ const initializeServices = async () => {
     const setupSocketIO = require("./sockets");
     setupSocketIO(io);
 
-    // 5. Initialize GSM Modem Service directly inside backend
-    const gsmModemService = require("./services/gsmModemService");
-    gsmModemService.init(io);
+    // 5. Initialize GSM Modem Service (gracefully degrades on cloud with no USB modem)
+    try {
+      const gsmModemService = require("./services/gsmModemService");
+      gsmModemService.init(io);
+    } catch (gsmErr) {
+      console.warn('⚠️ [GSM] Modem service failed to initialize (expected on cloud):', gsmErr.message);
+    }
 
     console.log('✅ All services initialized successfully');
   } catch (error) {
