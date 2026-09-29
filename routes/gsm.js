@@ -2,12 +2,19 @@
 const express = require('express');
 const router = express.Router();
 const gsmModemService = require('../services/gsmModemService');
-const { getLatestState, executeAction: socketExecuteAction } = require('../sockets/gsmHandlers');
+
+let socketExecuteAction = null;
+try {
+  const handlers = require('../sockets/gsmHandlers');
+  socketExecuteAction = handlers.executeAction;
+} catch {
+  // gsmHandlers may not be available in all environments
+}
 
 // GET /api/gsm/state
 router.get('/state', (req, res) => {
   try {
-    const state = gsmModemService.getStatus() || getLatestState();
+    const state = gsmModemService.getStatus();
     res.json(state);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -31,14 +38,34 @@ router.post('/:action', async (req, res) => {
 
   try {
     let result;
+    let lastErr;
+
+    // 1. Try integrated modem service first
     try {
       result = await gsmModemService.executeAction(action, payload);
-    } catch {
-      result = await socketExecuteAction(action, payload);
+      return res.json(result);
+    } catch (err) {
+      lastErr = err;
     }
-    return res.json(result);
+
+    // 2. Try Socket.IO relay (modem PC forwarded state)
+    if (socketExecuteAction) {
+      try {
+        result = await socketExecuteAction(action, payload);
+        return res.json(result);
+      } catch (err) {
+        lastErr = err;
+      }
+    }
+
+    // 3. Both failed — return a helpful 503 so the frontend knows to fallback
+    //    to the direct modem server (3174) or show the right error to the user.
+    return res.status(503).json({
+      error: lastErr?.message || 'GSM modem not available on this server.',
+      hint: 'Use Start-GSM-Modem.bat on the modem PC, then enter the modem PC LAN IP in the Modem Server Address field.',
+    });
   } catch (err) {
-    return res.status(400).json({ error: err.message });
+    return res.status(500).json({ error: err.message });
   }
 });
 
