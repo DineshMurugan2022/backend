@@ -39,6 +39,8 @@ const telecallerReportsRouter = require("./routes/telecaller-reports");
 const telecallerLeadsRouter = require("./routes/telecaller-leads");
 const appointmentStatusRouter = require("./routes/appointment-status");
 const applicationAppointmentsRouter = require("./routes/application-appointments");
+const driverDownloadRouter = require("./routes/driver-download");
+const gsmRouter = require("./routes/gsm");
 
 const app = express();
 
@@ -80,7 +82,7 @@ const corsOptions = {
   credentials: true,
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'Accept', 'X-App-Token', 'x-app-token'],
   exposedHeaders: ['Authorization', 'Set-Cookie']
 };
 
@@ -143,6 +145,10 @@ const initializeServices = async () => {
     // 4. Setup Socket.IO handlers
     const setupSocketIO = require("./sockets");
     setupSocketIO(io);
+
+    // 5. Initialize GSM Modem Service directly inside backend
+    const gsmModemService = require("./services/gsmModemService");
+    gsmModemService.init(io);
 
     console.log('✅ All services initialized successfully');
   } catch (error) {
@@ -263,6 +269,8 @@ app.use("/api/reports", reportsRouter);
 app.use("/api/telecaller-reports", telecallerReportsRouter);
 app.use("/api/appointment-status", appointmentStatusRouter);
 app.use("/api/application-appointments", applicationAppointmentsRouter);
+app.use("/api/drivers", driverDownloadRouter);
+app.use("/api/gsm", gsmRouter);
 app.use("/api", proxyRouter);
 
 // Error Handling Middleware

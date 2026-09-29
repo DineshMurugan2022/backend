@@ -38,7 +38,7 @@ const validateCallLog = (req, res, next) => {
     return res.status(400).json({ error: 'All fields (phoneNumber, personName, companyName) are required' });
   }
   // Point 6: Strengthen phone number regex validation
-  if (!/^\+?\d{8,15}$/.test(phoneNumber.replace(/[^\d+]/g, ''))) {
+  if (!/^\+?\d{2,15}$/.test(phoneNumber.replace(/[^\d+]/g, ''))) {
     return res.status(400).json({ error: 'Invalid phone number format' });
   }
   next();
@@ -47,13 +47,14 @@ const validateCallLog = (req, res, next) => {
 // POST /api/calls - Add a new call log
 router.post('/', auth, validateCallLog, async (req, res) => {
   try {
-    const { phoneNumber, personName, companyName, direction } = req.body;
+    const { phoneNumber, personName, companyName, direction, status } = req.body;
     const log = new CallLog({
       phoneNumber,
       personName,
       companyName,
       callTime: new Date(),
       duration: 0,
+      status: status === 'ringing' ? 'ringing' : 'initiated',
       direction: direction || 'outbound',
       userId: req.user._id
     });
@@ -157,11 +158,12 @@ router.get('/sip-config', auth, (req, res) => {
   const userSipDomain = firstNonEmpty(req.user?.sipDomain?.toString());
 
   const domain = normalizeSipDomain(firstNonEmpty(userSipDomain, getSipEnv('SIP_DOMAIN'), 'sip2.cloud-connect.in'));
-  const registrar = normalizeSipDomain(firstNonEmpty(getSipEnv('SIP_REGISTRAR'), domain));
-  const user = firstNonEmpty(userSipUsername, getSipEnv('SIP_USERNAME'), userSipExtension, getSipEnv('SIP_USER'), '102597701');
-  const username = firstNonEmpty(userSipUsername, getSipEnv('SIP_USERNAME'), user, '102597701');
-  const extension = firstNonEmpty(userSipExtension, getSipEnv('SIP_USER'), user, '701');
-  const password = firstNonEmpty(userSipPassword, getSipEnv('SIP_PASSWORD'), 'B&Y@005#');
+  const registrar = normalizeSipDomain(firstNonEmpty(getSipEnv('SIP_REGISTRAR'), domain === 'sip2.cloud-connect.in' ? 'sip:sip2.cloud-connect.in:7065' : domain));
+  const user = userSipUsername;
+  const username = userSipUsername;
+  const extension = userSipExtension;
+  const password = userSipPassword;
+  if (!username || !password || !extension) return res.status(409).json({ error: 'SIP credentials are not configured for this user' });
   const wssUrl = firstNonEmpty(getSipEnv('SIP_WSS_URL'), domain ? `wss://${domain}:7443/` : '');
 
   res.json({
@@ -182,6 +184,8 @@ router.patch('/:id', auth, async (req, res) => {
     const { duration, status, callStart, callEnd } = req.body; // Point 8: Duration Calculation
 
     const updateData = {};
+    if ((callStart && !Number.isFinite(Date.parse(callStart))) || (callEnd && !Number.isFinite(Date.parse(callEnd))) || (callStart && callEnd && Date.parse(callEnd) < Date.parse(callStart))) return res.status(400).json({error: 'Invalid call timestamps'});
+    if (status && !['initiated', 'ringing', 'in-progress', 'completed', 'failed', 'missed', 'rejected', 'cancelled'].includes(status)) return res.status(400).json({error: 'Invalid call status'});
     if (callStart) updateData.callStart = callStart;
     if (callEnd) updateData.callEnd = callEnd;
 
@@ -198,8 +202,8 @@ router.patch('/:id', auth, async (req, res) => {
       updateData.status = status;
     }
 
-    const log = await CallLog.findByIdAndUpdate(
-      id,
+    const log = await CallLog.findOneAndUpdate(
+      { _id: id, userId: req.user._id },
       updateData,
       { new: true, runValidators: true }
     );
@@ -209,7 +213,7 @@ router.patch('/:id', auth, async (req, res) => {
 
     const io = getIOInstance();
     if (io && log.userId) {
-      io.emit('callLogUpdated', { userId: log.userId, logId: log._id });
+      io.to(`user_${log.userId}`).emit('callLogUpdated', { userId: log.userId, logId: log._id });
     }
 
     res.json(log);
@@ -223,7 +227,7 @@ router.patch('/:id', auth, async (req, res) => {
 router.delete('/:id', auth, async (req, res) => {
   try {
     const { id } = req.params;
-    const log = await CallLog.findByIdAndDelete(id);
+    const log = await CallLog.findOneAndDelete({ _id: id, userId: req.user._id });
     if (!log) {
       return res.status(404).json({ error: 'Call log not found' });
     }
