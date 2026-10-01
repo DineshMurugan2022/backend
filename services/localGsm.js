@@ -14,6 +14,10 @@ class LocalGsm {
     this.operation = Promise.resolve();
   }
   init() {
+    if (!this.createModem && (process.platform !== 'win32' || process.env.ENABLE_MODEM === 'false')) {
+      this.scanError = '';
+      return;
+    }
     try {
       if (!this.createModem) {
         const { Modem } = require('../../huawei-e173-test/lib/modem');
@@ -41,6 +45,7 @@ class LocalGsm {
       try { audio = this.audioDevices(); } catch (error) { audioError = error.message; }
       this.devicesCache = { ports, audio, audioError };
       this.scanError = '';
+      if (this.modem?.retryHistory) this.modem.retryHistory();
       if (this.owner && (this.lease < this.now() || (this.modem?.settings &&
         (!ports.some(p => p.path === this.modem.settings.control) || !ports.some(p => p.path === this.modem.settings.voice))))) {
         await this.release(this.owner);
@@ -79,7 +84,8 @@ class LocalGsm {
     if (action === 'connect' && !this.owner) {
       const modem = this.createModem();
       const saved = new Set(), saving = new Set();
-      modem.on('state', () => this.persist(modem, userId, saved, saving));
+      modem.retryHistory = () => this.persist(modem, userId, saved, saving);
+      modem.on('state', modem.retryHistory);
       this.modem = modem;
       this.owner = userId;
     }
