@@ -146,13 +146,8 @@ const initializeServices = async () => {
     const setupSocketIO = require("./sockets");
     setupSocketIO(io);
 
-    // 5. Initialize GSM Modem Service (gracefully degrades on cloud with no USB modem)
-    try {
-      const gsmModemService = require("./services/gsmModemService");
-      gsmModemService.init(io);
-    } catch (gsmErr) {
-      console.warn('⚠️ [GSM] Modem service failed to initialize (expected on cloud):', gsmErr.message);
-    }
+    // The normal backend owns USB access; Connect assigns it to one logged-in user.
+    require('./services/localGsm').localGsm.init();
 
     console.log('✅ All services initialized successfully');
   } catch (error) {
@@ -343,6 +338,7 @@ setInterval(() => handleTimeout(), 5 * 60 * 1000);
 // ----------------- GRACEFUL SHUTDOWN -----------------
 process.on('SIGTERM', async () => {
   console.log('SIGTERM signal received: closing HTTP server');
+  await require('./services/localGsm').localGsm.stop().catch(console.error);
   server.close(() => {
     console.log('HTTP server closed');
     process.exit(0);
@@ -351,6 +347,7 @@ process.on('SIGTERM', async () => {
 
 process.on('SIGINT', async () => {
   console.log('SIGINT signal received: closing HTTP server');
+  await require('./services/localGsm').localGsm.stop().catch(console.error);
   server.close(() => {
     console.log('HTTP server closed');
     process.exit(0);
