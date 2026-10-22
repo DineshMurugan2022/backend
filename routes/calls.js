@@ -33,13 +33,20 @@ const normalizeSipDomain = (value) => {
 
 // Middleware to validate request body
 const validateCallLog = (req, res, next) => {
-  const { phoneNumber, personName, companyName } = req.body;
-  if (!phoneNumber || !personName || !companyName) {
-    return res.status(400).json({ error: 'All fields (phoneNumber, personName, companyName) are required' });
+  let { phoneNumber, personName, companyName } = req.body;
+  if (!phoneNumber) {
+    return res.status(400).json({ error: 'Phone number is required' });
   }
-  // Point 6: Strengthen phone number regex validation
-  if (!/^\+?\d{2,15}$/.test(phoneNumber.replace(/[^\d+]/g, ''))) {
+  const cleanPhone = String(phoneNumber).replace(/[^\d+]/g, '');
+  if (cleanPhone.length < 2) {
     return res.status(400).json({ error: 'Invalid phone number format' });
+  }
+  req.body.phoneNumber = cleanPhone;
+  if (!personName || !String(personName).trim()) {
+    req.body.personName = cleanPhone;
+  }
+  if (!companyName || !String(companyName).trim()) {
+    req.body.companyName = req.body.direction === 'inbound' ? 'Inbound Call' : 'General Call';
   }
   next();
 };
@@ -47,24 +54,30 @@ const validateCallLog = (req, res, next) => {
 // POST /api/calls - Add a new call log
 router.post('/', auth, validateCallLog, async (req, res) => {
   try {
-    const { phoneNumber, personName, companyName, direction, status } = req.body;
+    const { phoneNumber, personName, companyName, direction, status, sid } = req.body;
     const log = new CallLog({
       phoneNumber,
       personName,
       companyName,
       callTime: new Date(),
       duration: 0,
-      status: status === 'ringing' ? 'ringing' : 'initiated',
+      status: status || (direction === 'inbound' ? 'ringing' : 'initiated'),
       direction: direction || 'outbound',
-      userId: req.user._id
+      userId: req.user._id,
+      sid: sid || undefined
     });
     await log.save();
 
     const io = getIOInstance();
     if (io) {
-      // Point 4: Target specific user rooms
+      // Emit to user's private room AND broadcast to all dashboards/admins
       io.to(`user_${req.user._id}`).emit('callLogAdded', { 
-        logId: log._id 
+        logId: log._id,
+        userId: req.user._id 
+      });
+      io.emit('callLogAdded', { 
+        logId: log._id,
+        userId: req.user._id 
       });
     }
 
@@ -75,16 +88,79 @@ router.post('/', auth, validateCallLog, async (req, res) => {
   }
 });
 
-// GET /api/calls - Get all call logs, or filter by phone
+// GET /api/calls/history-export - Full call history export with date and telecaller filters
+// Access: admin, hr, teamleader, telecaller-tl
+router.get('/history-export', auth, async (req, res) => {
+  try {
+    const privilegedRoles = ['admin', 'hr', 'teamleader', 'telecaller-tl'];
+    const isPrivileged = privilegedRoles.includes(req.user.userGroup);
+
+    const query = {};
+
+    // If not privileged, restrict strictly to own calls
+    if (!isPrivileged) {
+      query.userId = req.user._id;
+    } else if (req.query.userId && req.query.userId !== 'all') {
+      query.userId = req.query.userId;
+    }
+
+    // Date filtering (supports single 'date' YYYY-MM-DD or startDate / endDate)
+    if (req.query.date) {
+      const dateStr = req.query.date.trim();
+      const startOfDay = new Date(`${dateStr}T00:00:00.000+05:30`);
+      const endOfDay = new Date(`${dateStr}T23:59:59.999+05:30`);
+      query.callTime = { $gte: startOfDay, $lte: endOfDay };
+    } else if (req.query.startDate && req.query.endDate) {
+      const startOfDay = new Date(`${req.query.startDate.trim()}T00:00:00.000+05:30`);
+      const endOfDay = new Date(`${req.query.endDate.trim()}T23:59:59.999+05:30`);
+      query.callTime = { $gte: startOfDay, $lte: endOfDay };
+    }
+
+    if (req.query.direction && ['inbound', 'outbound'].includes(req.query.direction)) {
+      query.direction = req.query.direction;
+    }
+
+    const logs = await CallLog.find(query)
+      .populate('userId', 'name email phone sipExtension userGroup')
+      .sort({ callTime: -1 })
+      .lean();
+
+    res.json(logs);
+  } catch (error) {
+    console.error('Failed to export call history:', error);
+    res.status(500).json({ error: 'Failed to export call history', details: error.message });
+  }
+});
+
+// GET /api/calls - Get all call logs, or filter by telecaller, phone, date
 router.get('/', auth, async (req, res) => {
   try {
-    // Point 7: Add User Filtering to Call Logs
-    const query = { userId: req.user._id };
+    const privilegedRoles = ['admin', 'hr', 'teamleader', 'telecaller-tl'];
+    const isPrivileged = privilegedRoles.includes(req.user.userGroup);
+
+    const query = {};
+    if (!isPrivileged || req.query.self === 'true') {
+      query.userId = req.user._id;
+    } else if (req.query.userId && req.query.userId !== 'all') {
+      query.userId = req.query.userId;
+    }
+
+    if (req.query.date) {
+      const dateStr = req.query.date.trim();
+      const startOfDay = new Date(`${dateStr}T00:00:00.000+05:30`);
+      const endOfDay = new Date(`${dateStr}T23:59:59.999+05:30`);
+      query.callTime = { $gte: startOfDay, $lte: endOfDay };
+    }
+
     const phone = req.query?.phone;
     if (phone) {
       query.phoneNumber = phone;
     }
-    const logs = await CallLog.find(query).sort({ callTime: -1 }).limit(100);
+    const limit = parseInt(req.query?.limit, 10) || 50;
+    const logs = await CallLog.find(query)
+      .populate('userId', 'name email phone sipExtension userGroup')
+      .sort({ callTime: -1 })
+      .limit(limit);
     res.json(logs);
   } catch (error) {
     console.error('Failed to fetch call logs:', error);
@@ -95,14 +171,22 @@ router.get('/', auth, async (req, res) => {
 // GET /api/calls/daily-stats - Get aggregated daily stats for monitoring dashboard
 router.get('/daily-stats', auth, async (req, res) => {
   try {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    // Calculate start of day in Indian Standard Time (UTC+5:30)
+    const now = new Date();
+    const istOffsetMs = 330 * 60 * 1000; // 5.5 hours in ms
+    const istDate = new Date(now.getTime() + istOffsetMs);
+    const startOfIstDayInUtc = new Date(Date.UTC(
+      istDate.getUTCFullYear(),
+      istDate.getUTCMonth(),
+      istDate.getUTCDate(),
+      0, 0, 0, 0
+    ) - istOffsetMs);
 
     const stats = await CallLog.aggregate([
       {
         $match: {
-          callTime: { $gte: today },
-          userId: { $exists: true } // Point 11: Fix Daily Stats Filter
+          callTime: { $gte: startOfIstDayInUtc },
+          userId: { $ne: null }
         }
       },
       {
@@ -136,10 +220,13 @@ router.get('/daily-stats', auth, async (req, res) => {
       }
     ]);
 
-    const statsMap = stats.reduce((acc, curr) => {
-      acc[curr.userId.toString()] = curr;
-      return acc;
-    }, {});
+    const statsMap = {};
+    for (const curr of stats) {
+      if (curr.userId) {
+        const idStr = curr.userId.toString();
+        statsMap[idStr] = curr;
+      }
+    }
 
     res.json(statsMap);
   } catch (error) {
@@ -181,7 +268,10 @@ router.get('/sip-config', auth, (req, res) => {
 router.patch('/:id', auth, async (req, res) => {
   try {
     const { id } = req.params;
-    const { duration, status, callStart, callEnd } = req.body; // Point 8: Duration Calculation
+    let { duration, status, callStart, callEnd } = req.body;
+
+    if (status === 'connected') status = 'in-progress';
+    if (status === 'ended' || status === 'terminated') status = 'completed';
 
     const updateData = {};
     if ((callStart && !Number.isFinite(Date.parse(callStart))) || (callEnd && !Number.isFinite(Date.parse(callEnd))) || (callStart && callEnd && Date.parse(callEnd) < Date.parse(callStart))) return res.status(400).json({error: 'Invalid call timestamps'});
@@ -202,8 +292,13 @@ router.patch('/:id', auth, async (req, res) => {
       updateData.status = status;
     }
 
+    const query = { _id: id };
+    if (req.user?.userGroup !== 'admin') {
+      query.userId = req.user._id;
+    }
+
     const log = await CallLog.findOneAndUpdate(
-      { _id: id, userId: req.user._id },
+      query,
       updateData,
       { new: true, runValidators: true }
     );
@@ -212,8 +307,11 @@ router.patch('/:id', auth, async (req, res) => {
     }
 
     const io = getIOInstance();
-    if (io && log.userId) {
-      io.to(`user_${log.userId}`).emit('callLogUpdated', { userId: log.userId, logId: log._id });
+    if (io) {
+      if (log.userId) {
+        io.to(`user_${log.userId}`).emit('callLogUpdated', { userId: log.userId, logId: log._id });
+      }
+      io.emit('callLogUpdated', { userId: log.userId, logId: log._id });
     }
 
     res.json(log);
@@ -273,26 +371,40 @@ router.post('/webhook', async (req, res) => {
       console.error('⚠️ Webhook received but Socket.IO instance is not available');
     }
 
-    if (event.event_type === 'incoming_call') {
-      // Map CloudConnect extension/agent identifiers -> our User._id (rooms are keyed by Mongo _id)
-      const extensionCandidate =
-        (event.extension_number ?? event.extension ?? event.agent_extension ?? event.agent_id ?? '')
-          .toString()
-          .trim();
+    const rawType = (event.event_type || event.type || event.status || event.call_status || '').toString().toLowerCase();
+    const isIncoming = ['incoming_call', 'inbound_call', 'ringing', 'call_ringing', 'call_start'].includes(rawType);
+    const isTerminated = ['call_hangup', 'hangup', 'call_ended', 'completed', 'missed', 'rejected', 'cancelled'].includes(rawType);
+    const isAnswered = ['answered', 'call_answered', 'connected', 'in-progress'].includes(rawType);
 
-      let userId = null;
-      if (extensionCandidate) {
-        const user = await User.findOne({ sipExtension: extensionCandidate }).select('_id sipExtension');
-        if (user?._id) userId = user._id;
-      }
+    // Map CloudConnect extension/agent identifiers -> our User._id
+    const extensionCandidate =
+      (event.extension_number ?? event.extension ?? event.agent_extension ?? event.agent_id ?? event.callee_extension ?? '')
+        .toString()
+        .trim();
 
+    let userId = null;
+    let matchedUser = null;
+    if (extensionCandidate) {
+      matchedUser = await User.findOne({
+        $or: [
+          { sipExtension: extensionCandidate },
+          { sipUsername: extensionCandidate }
+        ]
+      }).select('_id sipExtension sipUsername');
+      if (matchedUser?._id) userId = matchedUser._id;
+    }
+
+    const callerNumber = (event.caller_number ?? event.caller ?? event.from ?? event.phone_number ?? event.src ?? 'Unknown').toString().trim();
+
+    if (isIncoming) {
       const log = new CallLog({
-        phoneNumber: event.caller_number,
-        personName: event.caller_name || event.caller_number,
+        phoneNumber: callerNumber,
+        personName: event.caller_name || callerNumber,
         companyName: 'CloudConnect Inbound',
         callTime: new Date(),
         duration: 0,
         direction: 'inbound',
+        status: 'ringing',
         userId
       });
       await log.save();
@@ -324,20 +436,24 @@ router.post('/webhook', async (req, res) => {
 
     if (io) {
       io.emit('cloudConnectEvent', event); // Still broadcast for monitoring
-      if (event.extension_number) {
-        // Prefer user room by Mongo _id (sockets join user_<mongoId>), but keep legacy extension room too.
-        const extension = event.extension_number.toString().trim();
-        const user = extension
-          ? await User.findOne({ sipExtension: extension }).select('_id sipExtension')
-          : null;
-        const targetRoom = user?._id ? `user_${user._id.toString()}` : `user_${extension}`;
+      const statusPayload = {
+        ...event,
+        status: isTerminated ? 'ended' : (isAnswered ? 'answered' : (isIncoming ? 'ringing' : rawType)),
+        phoneNumber: callerNumber,
+        userId: userId
+      };
 
-        // 1) Global status update for any listeners
-        io.emit('call:status', event);
+      // Broadcast call status updates to all and user-targeted rooms
+      io.emit('call:status', statusPayload);
 
-        // 2) Targeted legacy + new events
-        io.to(targetRoom).emit('callStatusUpdate', event);
-        io.to(targetRoom).emit('call:status', event);
+      if (userId) {
+        const targetRoom = `user_${userId.toString()}`;
+        io.to(targetRoom).emit('callStatusUpdate', statusPayload);
+        io.to(targetRoom).emit('call:status', statusPayload);
+      } else if (extensionCandidate) {
+        const legacyRoom = `user_${extensionCandidate}`;
+        io.to(legacyRoom).emit('callStatusUpdate', statusPayload);
+        io.to(legacyRoom).emit('call:status', statusPayload);
       }
     }
     res.json({ status: 'SUCCESS' });

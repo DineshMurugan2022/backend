@@ -21,6 +21,7 @@
 const mongoose = require('mongoose');
 const User = require('./models/User');
 require('dotenv').config();
+if (!process.env.SIP_PASSWORD) throw new Error('Set SIP_PASSWORD in the environment before running this maintenance script.');
 
 // ══════════════════════════════════════════════════════════════
 // OPTION 1: SHARED - All users use the single working ext 701
@@ -29,7 +30,7 @@ require('dotenv').config();
 const SHARED_WORKING_EXT = {
     sipExtension: '701',
     sipUsername: '102597701',
-    sipPassword: 'B&Y@005#',
+    sipPassword: process.env.SIP_PASSWORD,
     sipDomain: 'sip2.cloud-connect.in'
 };
 

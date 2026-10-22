@@ -72,7 +72,7 @@ const allowedOrigins = [...new Set([...hardcodedOrigins, ...envOrigins])];
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
-    if (allowedOrigins.some(ao => ao === origin || (typeof origin === 'string' && origin.startsWith(ao)))) {
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       console.log(`⚠️ CORS Blocked: Origin ${origin} not allowed`);
@@ -95,7 +95,7 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        connectSrc: ["'self'", "http://localhost:*", "ws://localhost:*", "wss://localhost:*", "https://backend-4jwl.onrender.com", "wss://backend-4jwl.onrender.com", "https://*.onrender.com", "wss://*.cloud-connect.in:*", "https://*.cloud-connect.in:*", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
+        connectSrc: ["'self'", "http://localhost:*", "http://127.0.0.1:*", "ws://localhost:*", "wss://localhost:*", "https://backend-4jwl.onrender.com", "wss://backend-4jwl.onrender.com", "https://*.onrender.com", "wss://*.cloud-connect.in:*", "https://*.cloud-connect.in:*", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
         scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://www.googletagmanager.com", "https://*.googletagmanager.com", "https://www.google-analytics.com"],
         styleSrc: ["'self'", "'unsafe-inline'"],
         imgSrc: ["'self'", "data:", "blob:", "https://res.cloudinary.com", "https://user-images.githubusercontent.com", "https://www.googletagmanager.com", "https://www.google-analytics.com"],
@@ -148,6 +148,7 @@ const initializeServices = async () => {
 
     // The normal backend owns USB access; Connect assigns it to one logged-in user.
     require('./services/localGsm').localGsm.init();
+    require('./services/desktopRelay').desktopRelay.attach(io);
 
     console.log('✅ All services initialized successfully');
   } catch (error) {
@@ -227,7 +228,11 @@ app.post("/api/create-session", (req, res) => {
 
 // ----------------- ROUTES -----------------
 // Apply general API rate limiting to all /api routes
-app.use("/api", apiLimiter);
+app.use('/api', (req, res, next) => {
+  // Modem polling has an authenticated per-account limit on its route.
+  if (req.method === 'GET' && req.path === '/gsm/snapshot') return next();
+  return apiLimiter(req, res, next);
+});
 
 // Mount appointments router
 app.use("/api/appointments", appointmentsRouter);
