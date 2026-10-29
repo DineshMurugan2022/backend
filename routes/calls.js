@@ -55,14 +55,38 @@ const validateCallLog = (req, res, next) => {
 router.post('/', auth, validateCallLog, async (req, res) => {
   try {
     const { phoneNumber, personName, companyName, direction, status, sid } = req.body;
+    const callDir = direction || 'outbound';
+
+    // Prevent duplicate entries if multiple systems (desktop PBX bridge, REST API) log simultaneously
+    const cleanPhone = String(phoneNumber || '').replace(/\D/g, '').slice(-10);
+    if (cleanPhone.length >= 7) {
+      const windowStart = new Date(Date.now() - 45 * 1000);
+      const existingLog = await CallLog.findOne({
+        userId: req.user._id,
+        direction: callDir,
+        callTime: { $gte: windowStart },
+        phoneNumber: { $regex: cleanPhone + '$' }
+      }).sort({ callTime: -1 });
+
+      if (existingLog) {
+        // If the new attempt is from the native PBX or has a SID, enrich the existing record
+        if (companyName && !existingLog.companyName?.includes('PBX') && companyName.includes('PBX')) {
+          existingLog.companyName = companyName;
+        }
+        if (sid && !existingLog.sid) existingLog.sid = sid;
+        await existingLog.save();
+        return res.status(200).json(existingLog);
+      }
+    }
+
     const log = new CallLog({
       phoneNumber,
       personName,
       companyName,
       callTime: new Date(),
       duration: 0,
-      status: status || (direction === 'inbound' ? 'ringing' : 'initiated'),
-      direction: direction || 'outbound',
+      status: status || (callDir === 'inbound' ? 'ringing' : 'initiated'),
+      direction: callDir,
       userId: req.user._id,
       sid: sid || undefined
     });
@@ -87,6 +111,56 @@ router.post('/', auth, validateCallLog, async (req, res) => {
     res.status(500).json({ error: 'Failed to log call', details: error.message });
   }
 });
+
+
+/**
+ * Deduplicate call logs that represent the same call.
+ * A duplicate occurs when multiple systems (e.g. PBX desktop bridge and Web SIP/Click-to-Call)
+ * logged the same event. We identify duplicates by:
+ * - Same telecaller (userId)
+ * - Same phone number (normalized)
+ * - Same direction (inbound vs outbound)
+ * - Timestamps within 60 seconds of each other
+ * The entry with the highest duration (the answered call) is retained.
+ */
+function deduplicateCallLogs(logs) {
+  if (!Array.isArray(logs) || logs.length <= 1) return logs || [];
+
+  // Sort chronologically ascending for sliding window comparison
+  const sorted = [...logs].sort((a, b) => new Date(a.callTime).getTime() - new Date(b.callTime).getTime());
+  const kept = [];
+
+  for (const log of sorted) {
+    const uid = String(log.userId?._id || log.userId || '');
+    const phone = String(log.phoneNumber || '').replace(/[^\d+]/g, '');
+    const dir = String(log.direction || '');
+    const logTime = new Date(log.callTime).getTime();
+
+    // Look for an existing call matching same user + phone + direction within 60 seconds
+    const matchIndex = kept.findIndex(existing => {
+      const exUid = String(existing.userId?._id || existing.userId || '');
+      const exPhone = String(existing.phoneNumber || '').replace(/[^\d+]/g, '');
+      const exDir = String(existing.direction || '');
+      const exTime = new Date(existing.callTime).getTime();
+      return uid === exUid && phone === exPhone && dir === exDir && Math.abs(logTime - exTime) <= 60000;
+    });
+
+    if (matchIndex >= 0) {
+      // Duplicate found — retain the one with higher duration (i.e. answered call)
+      const existing = kept[matchIndex];
+      const existingDur = Number(existing.duration) || 0;
+      const logDur = Number(log.duration) || 0;
+      if (logDur > existingDur) {
+        kept[matchIndex] = log;
+      }
+    } else {
+      kept.push(log);
+    }
+  }
+
+  // Return sorted descending (newest first)
+  return kept.sort((a, b) => new Date(b.callTime).getTime() - new Date(a.callTime).getTime());
+}
 
 // GET /api/calls/history-export - Full call history export with date and telecaller filters
 // Access: admin, hr, teamleader, telecaller-tl
@@ -120,12 +194,14 @@ router.get('/history-export', auth, async (req, res) => {
       query.direction = req.query.direction;
     }
 
-    const logs = await CallLog.find(query)
+    const rawLogs = await CallLog.find(query)
       .populate('userId', 'name email phone sipExtension userGroup')
       .sort({ callTime: -1 })
       .lean();
 
-    res.json(logs);
+    const finalLogs = deduplicateCallLogs(rawLogs);
+
+    res.json(finalLogs);
   } catch (error) {
     console.error('Failed to export call history:', error);
     res.status(500).json({ error: 'Failed to export call history', details: error.message });
@@ -157,11 +233,13 @@ router.get('/', auth, async (req, res) => {
       query.phoneNumber = phone;
     }
     const limit = parseInt(req.query?.limit, 10) || 50;
-    const logs = await CallLog.find(query)
+    const rawLogs = await CallLog.find(query)
       .populate('userId', 'name email phone sipExtension userGroup')
       .sort({ callTime: -1 })
-      .limit(limit);
-    res.json(logs);
+      .limit(limit * 2)
+      .lean();
+    const finalLogs = deduplicateCallLogs(rawLogs).slice(0, limit);
+    res.json(finalLogs);
   } catch (error) {
     console.error('Failed to fetch call logs:', error);
     res.status(500).json({ error: 'Failed to fetch call logs', details: error.message });
@@ -182,50 +260,45 @@ router.get('/daily-stats', auth, async (req, res) => {
       0, 0, 0, 0
     ) - istOffsetMs);
 
-    const stats = await CallLog.aggregate([
-      {
-        $match: {
-          callTime: { $gte: startOfIstDayInUtc },
-          userId: { $ne: null }
-        }
-      },
-      {
-        $group: {
-          _id: "$userId",
-          totalCalls: { $sum: 1 },
-          inboundCount: {
-            $sum: { $cond: [{ $eq: ["$direction", "inbound"] }, 1, 0] }
-          },
-          outboundCount: {
-            $sum: { $cond: [{ $eq: ["$direction", "outbound"] }, 1, 0] }
-          },
-          totalDuration: { $sum: { $ifNull: ["$duration", 0] } }
-        }
-      },
-      {
-        $project: {
-          userId: "$_id",
-          totalCalls: 1,
-          inboundCount: 1,
-          outboundCount: 1,
-          totalDuration: 1,
-          avgDuration: {
-            $cond: [
-              { $eq: ["$totalCalls", 0] },
-              0,
-              { $round: [{ $divide: ["$totalDuration", "$totalCalls"] }, 0] }
-            ]
-          }
-        }
-      }
-    ]);
+    // Fetch today's calls and deduplicate with the exact same algorithm as history-export
+    const rawTodayLogs = await CallLog.find({
+      callTime: { $gte: startOfIstDayInUtc },
+      userId: { $ne: null }
+    }).lean();
 
+    const dedupedLogs = deduplicateCallLogs(rawTodayLogs);
+
+    // Aggregate stats per user
     const statsMap = {};
-    for (const curr of stats) {
-      if (curr.userId) {
-        const idStr = curr.userId.toString();
-        statsMap[idStr] = curr;
+    for (const log of dedupedLogs) {
+      const uid = String(log.userId?._id || log.userId);
+      if (!uid) continue;
+
+      if (!statsMap[uid]) {
+        statsMap[uid] = {
+          userId: uid,
+          totalCalls: 0,
+          inboundCount: 0,
+          outboundCount: 0,
+          totalDuration: 0,
+          avgDuration: 0
+        };
       }
+
+      statsMap[uid].totalCalls += 1;
+      const dir = String(log.direction || 'outbound').toLowerCase();
+      if (dir === 'inbound') {
+        statsMap[uid].inboundCount += 1;
+      } else {
+        statsMap[uid].outboundCount += 1;
+      }
+      statsMap[uid].totalDuration += (Number(log.duration) || 0);
+    }
+
+    // Calculate avgDuration
+    for (const uid of Object.keys(statsMap)) {
+      const item = statsMap[uid];
+      item.avgDuration = item.totalCalls > 0 ? Math.round(item.totalDuration / item.totalCalls) : 0;
     }
 
     res.json(statsMap);
