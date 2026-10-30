@@ -17,7 +17,8 @@ router.get('/', auth, async (req, res) => {
             userGroup === 'teamleader' ||
             userGroup === 'team leader' ||
             userGroup === 'telecaller-tl' ||
-            userGroup === 'telecaller tl'
+            userGroup === 'telecaller tl' ||
+            userGroup === 'hr'
         ) {
             reports = await TelecallerReport.find().sort({ date: -1, createdAt: -1 });
         } else {
@@ -37,7 +38,7 @@ router.post('/', auth, async (req, res) => {
         const { date, totalCallsSpoke, totalCallsAttempted, appointments, remarks, targetUserId } = req.body;
         const userGroup = req.user.userGroup.toLowerCase().trim();
         const isAdminOrLeader = userGroup === 'admin' || userGroup === 'teamleader' || userGroup === 'team leader' ||
-            userGroup === 'telecaller-tl' || userGroup === 'telecaller tl';
+            userGroup === 'telecaller-tl' || userGroup === 'telecaller tl' || userGroup === 'hr';
 
         let targetUser = req.user;
         let createdBy = req.user._id;
@@ -82,7 +83,7 @@ router.put('/:id', auth, async (req, res) => {
         const userGroup = req.user.userGroup.toLowerCase().trim();
         const isOwner = report.user.toString() === req.user._id.toString();
         const isAdminOrLeader = userGroup === 'admin' || userGroup === 'teamleader' || userGroup === 'team leader' ||
-            userGroup === 'telecaller-tl' || userGroup === 'telecaller tl';
+            userGroup === 'telecaller-tl' || userGroup === 'telecaller tl' || userGroup === 'hr';
 
         if (!isOwner && !isAdminOrLeader) {
             return res.status(401).json({ error: 'Not authorized to edit this report' });
@@ -110,7 +111,7 @@ router.delete('/:id', auth, async (req, res) => {
         const userGroup = req.user.userGroup.toLowerCase().trim();
         const isOwner = report.user.toString() === req.user._id.toString();
         const isAdminOrLeader = userGroup === 'admin' || userGroup === 'teamleader' || userGroup === 'team leader' ||
-            userGroup === 'telecaller-tl' || userGroup === 'telecaller tl';
+            userGroup === 'telecaller-tl' || userGroup === 'telecaller tl' || userGroup === 'hr';
 
         if (!isOwner && !isAdminOrLeader) {
             return res.status(401).json({ error: 'Not authorized to delete this report' });
@@ -129,7 +130,7 @@ router.get('/marketing-summary', auth, async (req, res) => {
     try {
         const userGroup = req.user.userGroup.toLowerCase().trim();
         const isAdminOrLeader = userGroup === 'admin' || userGroup === 'teamleader' || userGroup === 'team leader' || 
-            userGroup === 'telecaller-tl' || userGroup === 'telecaller tl';
+            userGroup === 'telecaller-tl' || userGroup === 'telecaller tl' || userGroup === 'hr';
         if (!isAdminOrLeader) {
             return res.status(403).json({ error: 'Unauthorized' });
         }
