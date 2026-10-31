@@ -73,8 +73,8 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
     }
 
     // Validate status
-    if (!['present', 'absent', 'leave', 'permission', 'half-day'].includes(status)) {
-      return res.status(400).json({ error: 'Status must be either "present", "absent", "leave", "permission", or "half-day"' });
+    if (!['present', 'absent', 'leave', 'permission', 'half-day', 'holiday'].includes(status)) {
+      return res.status(400).json({ error: 'Status must be either "present", "absent", "leave", "permission", "half-day", or "holiday"' });
     }
 
     // Find user by userId or username
@@ -116,15 +116,14 @@ router.post('/manual', auth, requireAdminOrLeader, async (req, res) => {
         date: attendanceDate,
         loginTime: null,
         logoutTime: null,
-        totalHours: status === 'present' ? 8 : (status === 'leave' || status === 'permission' || status === 'half-day') ? 4 : 0,
+        totalHours: (status === 'present' || status === 'holiday') ? 8 : (status === 'leave' || status === 'permission' || status === 'half-day') ? 4 : 0,
         status: status
       });
     } else {
       // Update existing record
       attendanceRecord.status = status;
-      if (status === 'present') {
+      if (status === 'present' || status === 'holiday') {
         attendanceRecord.totalHours = 8;
-        // Ensure not marked as absent overrides
       } else if (status === 'leave' || status === 'permission' || status === 'half-day') {
         attendanceRecord.totalHours = 4;
       } else {
@@ -360,14 +359,16 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
             displayStatus = 'H/D';
           } else if (record.status === 'leave') {
             displayStatus = 'L';
+          } else if (record.status === 'holiday') {
+            displayStatus = 'H';
           } else if (record.loginTime) {
             // Fallback if status not set but logged in
             displayStatus = 'P';
           }
         }
 
-        // Increment counters
-        if (displayStatus === 'P' || displayStatus === 'L') presentCount++;
+        // Increment counters: Holiday (H), Leave (L), Present (P) are counted as paid working days
+        if (displayStatus === 'P' || displayStatus === 'L' || displayStatus === 'H') presentCount++;
         else if (displayStatus === 'H/D') {
           presentCount += 0.5;
           absentCount += 0.5;
@@ -385,13 +386,68 @@ router.get('/:year/:month/download', auth, requireAdminOrLeader, async (req, res
       worksheet.addRow(userRow);
     });
 
-    // Formatting
-    const headerRowObj = worksheet.getRow(1);
-    headerRowObj.font = { bold: true };
-    headerRowObj.alignment = { horizontal: 'center' };
+    // Formatting & Styling
+    worksheet.columns.forEach((col, idx) => {
+      if (idx === 0) col.width = 26; // Full Name
+      else if (idx <= datesInMonth.length) col.width = 6.5; // Date columns
+      else col.width = 16; // Summary columns
+    });
 
-    // Auto-filter
-    worksheet.autoFilter = { from: 'A1', to: `${String.fromCharCode(64 + headerRow.length)}1` };
+    worksheet.eachRow((row, rowNumber) => {
+      if (rowNumber === 1) {
+        row.height = 28;
+        row.eachCell((cell) => {
+          cell.font = { bold: true, color: { argb: 'FFFFFFFF' }, size: 10 };
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF1E293B' } };
+          cell.alignment = { vertical: 'middle', horizontal: 'center', wrapText: true };
+          cell.border = {
+            top: { style: 'thin', color: { argb: 'FFCBD5E1' } },
+            bottom: { style: 'medium', color: { argb: 'FF0F172A' } },
+            left: { style: 'thin', color: { argb: 'FFCBD5E1' } },
+            right: { style: 'thin', color: { argb: 'FFCBD5E1' } }
+          };
+        });
+        return;
+      }
+
+      row.height = 20;
+      row.eachCell((cell, colNumber) => {
+        const val = String(cell.value || '').trim();
+        cell.alignment = { vertical: 'middle', horizontal: colNumber === 1 ? 'left' : 'center' };
+        cell.border = {
+          top: { style: 'thin', color: { argb: 'FFE2E8F0' } },
+          bottom: { style: 'thin', color: { argb: 'FFE2E8F0' } },
+          left: { style: 'thin', color: { argb: 'FFE2E8F0' } },
+          right: { style: 'thin', color: { argb: 'FFE2E8F0' } }
+        };
+
+        if (val === 'P') {
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFDCFCE7' } };
+          cell.font = { bold: true, color: { argb: 'FF166534' } };
+        } else if (val === 'A') {
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFEE2E2' } };
+          cell.font = { bold: true, color: { argb: 'FF991B1B' } };
+        } else if (val === 'L') {
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFFEF3C7' } };
+          cell.font = { bold: true, color: { argb: 'FF92400E' } };
+        } else if (val === 'H') {
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFEDE9FE' } }; // Light purple
+          cell.font = { bold: true, color: { argb: 'FF6D28D9' } }; // Deep purple
+        } else if (val === 'Sun') {
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF1F5F9' } };
+          cell.font = { color: { argb: 'FF64748B' } };
+        } else if (val === 'H/D') {
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFE0F2FE' } };
+          cell.font = { bold: true, color: { argb: 'FF0369A1' } };
+        }
+      });
+    });
+
+    // Auto-filter safely using object coordinates
+    worksheet.autoFilter = {
+      from: { row: 1, column: 1 },
+      to: { row: 1, column: headerRow.length }
+    };
 
     const monthName = new Date(yearNum, monthNum - 1).toLocaleString('default', { month: 'long' });
     res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -414,7 +470,7 @@ router.post('/bulk-manual', auth, requireAdminOrLeader, async (req, res) => {
       return res.status(400).json({ error: 'userIds, date, and status are required' });
     }
 
-    if (!['present', 'absent', 'leave', 'permission', 'half-day'].includes(status)) {
+    if (!['present', 'absent', 'leave', 'permission', 'half-day', 'holiday'].includes(status)) {
       return res.status(400).json({ error: 'Invalid status' });
     }
 
@@ -423,7 +479,7 @@ router.post('/bulk-manual', auth, requireAdminOrLeader, async (req, res) => {
     const endOfDay = new Date(`${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}T23:59:59.999Z`);
     const attendanceDate = new Date(`${yyyy}-${String(mm).padStart(2, '0')}-${String(dd).padStart(2, '0')}T00:00:00.000Z`);
 
-    const totalHours = status === 'present' ? 8 : (status === 'leave' || status === 'permission' || status === 'half-day') ? 4 : 0;
+    const totalHours = (status === 'present' || status === 'holiday') ? 8 : (status === 'leave' || status === 'permission' || status === 'half-day') ? 4 : 0;
 
     const bulkOps = userIds.map(userId => ({
       updateOne: {

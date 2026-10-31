@@ -23,7 +23,7 @@ const attendanceSchema = new mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ['present', 'absent', 'leave', 'permission', 'half-day'],
+        enum: ['present', 'absent', 'leave', 'permission', 'half-day', 'holiday'],
         default: 'absent'
     },
     locationLogs: [{ // Optional: Track location pings during the day if needed here, or keep separate
