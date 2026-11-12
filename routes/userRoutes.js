@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const auth = require('../middleware/auth');
 const bcrypt = require('bcryptjs');
 const attendanceService = require('../services/attendanceService');
+const { getIOInstance } = require('../sockets/io');
 
 // Helper: require admin or team leader
 function requireAdminOrLeader(req, res, next) {
@@ -161,6 +162,13 @@ router.put('/:id', auth, requireAdminOrLeader, async (req, res) => {
 
     if (!updated) return res.status(404).json({ message: 'User not found' });
 
+    try {
+      const io = getIOInstance();
+      if (io) {
+        io.emit('userUpdated', updated);
+      }
+    } catch (_) {}
+
     res.json(updated);
   } catch (err) {
     console.error('Error updating user:', err);
@@ -211,6 +219,48 @@ router.delete('/:id', auth, requireAdminOrLeader, async (req, res) => {
   } catch (err) {
     console.error('Error deleting user:', err);
     res.status(500).json({ message: 'Server error' });
+  }
+});
+
+// @route   PUT /api/users/me/pbx-settings
+// @desc    Update current user's PBX extension & SIP credentials
+// @access  Private (any authenticated telecaller/employee can update their own PBX extension)
+router.put('/me/pbx-settings', auth, async (req, res) => {
+  try {
+    const { sipExtension, sipUsername, sipPassword, sipDomain } = req.body;
+    const update = {};
+    if (typeof sipExtension === 'string') update.sipExtension = sipExtension.trim();
+    if (typeof sipUsername === 'string') update.sipUsername = sipUsername.trim();
+    if (typeof sipDomain === 'string') update.sipDomain = sipDomain.trim();
+    if (sipPassword && typeof sipPassword === 'string' && sipPassword.trim()) {
+      update.sipPassword = sipPassword.trim();
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(
+      req.user._id,
+      { $set: update },
+      { new: true }
+    ).select('-passwordHash -refreshToken -__v');
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    try {
+      const io = getIOInstance();
+      if (io) {
+        io.emit('userUpdated', updatedUser);
+      }
+    } catch (_) {}
+
+    res.json({
+      success: true,
+      message: 'PBX extension updated successfully',
+      user: updatedUser
+    });
+  } catch (err) {
+    console.error('Error saving PBX settings:', err);
+    res.status(500).json({ message: 'Failed to save PBX settings' });
   }
 });
 
